@@ -8,8 +8,6 @@ angular
     'templates',
     'ui.router',
     'ui.router.compat',
-
-    'segue.submission.home',
   ])
 
   .controller('SubmissionCtrl', function($scope) {
