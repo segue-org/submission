@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="segue.submission">
+  <head>
+    <meta charset="utf-8">
+    <title>submission</title>
+    <!-- inject:vendor:css -->
+    <!-- endinject -->
+    <!-- inject:custom:css -->
+    <!-- endinject -->
+    <!-- inject:vendor:js -->
+    <!-- endinject -->
+    <!-- inject:custom:js -->
+    <!-- endinject -->
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+    <script src='config.js'></script>
+  </head>
+  <body ng-controller="SubmissionCtrl">
+    <header class="noprint {{ topState }}" ui-view="header">
+    </header>
+
+    <main class="{{ topState }}" ui-view="main">
+    </main>
+
+    <footer class="noprint">
+      {{ state.name }}
+    </footer>
+  </body>

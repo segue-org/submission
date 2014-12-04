@@ -1,0 +1,25 @@
+{
+  "name": "submission",
+  "version": "0.0.1",
+  "homepage": "https://github.com/segue-org/submission",
+  "authors": [
+    "Felipe Mobus <fmobus@gmail.com>"
+  ],
+  "description": "Talk Proposal Submission Single Page Application",
+  "main": "app/index.js",
+  "license": "GPLv3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.1",
+    "angular-ui-router": "~0.2.11",
+    "underscore": "~1.7.0"
+  }
+}
