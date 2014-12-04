@@ -7,7 +7,7 @@ var paths = require('./support').paths;
 function fdInject(stream, ext, namespace) {
   function debugInject(file) {
     console.log(namespace, ext, file.path);
-  }
+  };
   var inject = require('gulp-inject');
   stream.on('data', debugInject);
   return inject(stream, {
@@ -39,8 +39,8 @@ gulp.task('build:javascripts:templates', function () {
 
 gulp.task('build:inject:index', function () {
   return gulp.src(paths.index)
-    .pipe(fdInject(all.stylesheets.vendor(), 'css', 'vendor'))
     .pipe(fdInject(all.stylesheets.custom(), 'css', 'custom'))
+    .pipe(fdInject(all.stylesheets.vendor(), 'css', 'vendor'))
     .pipe(fdInject(all.javascripts.vendor(), 'js', 'vendor'))
     .pipe(fdInject(all.javascripts.custom(), 'js', 'custom'))
     .pipe(fdInject(all.templates(), 'js', 'templates'))

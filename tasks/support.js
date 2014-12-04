@@ -6,7 +6,7 @@ var plugins = require('gulp-load-plugins')();
 var mainBowerFiles = require('main-bower-files');
 
 var paths = exports.paths = {
-  stylesheets   : 'app/modules/**/*.s?ss',
+  stylesheets   : ['app/modules/**/*.scss'],
   javascripts   : 'app/modules/**/*.js',
   templates     : 'app/modules/**/*.html',
   index         : 'app/index.html',
@@ -20,7 +20,6 @@ function streamStylesheets() {
   var sassParms = {
     errLogToConsole: !plugins.util.env.production,
     includePaths: [ './app' ],
-    sourceComments: 'map'
   };
 
   self.vendor = function() {

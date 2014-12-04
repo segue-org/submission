@@ -1,0 +1,33 @@
+<h1>proposal</h1>
+
+<form>
+  <p>
+    <label>título da palestra</label>
+    <input type="text" id="proposal_title" ng-model="proposal.title" />
+  </p>
+
+  <p>
+    <label>
+      resumo da proposta
+      <small>(até 200 caracteres)</small>
+    </label>
+    <textarea ng-model="proposal.summary"></textarea>
+  </p>
+
+  <p>
+    <label>
+      proposta completa
+      <small>(até 2000 caracteres)</small>
+    </label>
+    <textarea ng-model="proposal.full" class="large"></textarea>
+  </p>
+
+  <p>
+    <label>
+      e-mail
+      <small>(somente o do autor principal)</small>
+    </label>
+    <input ng-model="proposal.email" class="large"/>
+  </p>
+
+</form>

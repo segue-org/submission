@@ -1,0 +1,35 @@
+main.proposal {
+  p {
+    margin: 1em;
+
+    label {
+      display: block;
+      float: left;
+      text-align: right;
+      margin-top: 0.3rem;
+      width: 15rem;
+      margin-right: 1em;
+
+      small {
+        display: block;
+        font-size: small;
+        color: gray;
+      }
+    }
+    input, textarea {
+      width: 30rem;
+      border: 1px solid gray;
+    }
+    input {
+      font-size: large;
+    }
+    textarea {
+      font-size: normal;
+      height: 5rem;
+
+      &.large {
+        height: 10rem;
+      }
+    }
+  }
+}

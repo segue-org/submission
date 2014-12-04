@@ -9,6 +9,8 @@
       'templates',
       'ui.router',
       'ui.router.compat',
+
+      'segue.submission.proposal'
     ])
 
     .controller('SubmissionCtrl', function($scope) {

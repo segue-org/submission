@@ -1,0 +1,19 @@
+body {
+  &>header {
+    border-bottom: 1px solid black;
+  }
+
+  &>footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: black;
+    font-size: small;
+    background: gray;
+    padding: 0.5rem;
+    opacity: .4;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
