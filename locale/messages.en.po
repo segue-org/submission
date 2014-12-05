@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: segue-submission\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Felipe Mobus <fmobus@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(até 200 caracteres)"
+msgstr "(up to 200 characters)"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(até 2000 caracteres)"
+msgstr "(up to 2000 characters)"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(somente o do autor principal)"
+msgstr "(main author's only)"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "criar proposta de palestra"
+msgstr "create talk proposal"
+
+#: /Users/fmobus/segue/submission/app/modules/views/nav.html
+msgid "envio de propostas de palestra"
+msgstr "talk proposal submission"

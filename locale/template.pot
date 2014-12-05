@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(até 200 caracteres)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(até 2000 caracteres)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(somente o do autor principal)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "criar proposta de palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/nav.html
+msgid "envio de propostas de palestra"
+msgstr ""
