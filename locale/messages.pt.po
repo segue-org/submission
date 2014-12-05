@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: segue-submission\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Felipe Mobus <fmobus@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -28,6 +28,22 @@ msgstr ""
 msgid "criar proposta de palestra"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "e-mail"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/views/nav.html
 msgid "envio de propostas de palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "proposta completa"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "resumo da proposta"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "título da palestra"
 msgstr ""

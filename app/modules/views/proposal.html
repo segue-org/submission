@@ -2,15 +2,13 @@
 
 <form action="">
   <p>
-    <label>
-      <translate>título da palestra</translate>
-    </label>
+    <label translate>título da palestra</label>
     <input type="text" id="proposal_title" ng-model="proposal.title" />
   </p>
 
   <p>
     <label>
-      <translate>resumo da proposta</translate>
+      <span translate>resumo da proposta</span>
       <small translate>(até 200 caracteres)</small>
     </label>
     <textarea ng-model="proposal.summary"></textarea>
@@ -18,7 +16,7 @@
 
   <p>
     <label>
-      <translate>proposta completa</translate>
+      <span translate>proposta completa</span>
       <small translate>(até 2000 caracteres)</small>
     </label>
     <textarea ng-model="proposal.full" class="large"></textarea>
@@ -26,7 +24,7 @@
 
   <p>
     <label>
-      <translate>e-mail</translate>
+      <span translate>e-mail</span>
       <small translate>(somente o do autor principal)</small>
     </label>
     <input ng-model="proposal.email" class="large"/>

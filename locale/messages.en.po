@@ -28,6 +28,22 @@ msgstr "(main author's only)"
 msgid "criar proposta de palestra"
 msgstr "create talk proposal"
 
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "e-mail"
+msgstr "e-mail"
+
 #: /Users/fmobus/segue/submission/app/modules/views/nav.html
 msgid "envio de propostas de palestra"
 msgstr "talk proposal submission"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "proposta completa"
+msgstr "complete proposal"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "resumo da proposta"
+msgstr "proposal summary"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "título da palestra"
+msgstr "title for this talk"

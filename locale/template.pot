@@ -20,6 +20,22 @@ msgstr ""
 msgid "criar proposta de palestra"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "e-mail"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/views/nav.html
 msgid "envio de propostas de palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "proposta completa"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "resumo da proposta"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "título da palestra"
 msgstr ""
