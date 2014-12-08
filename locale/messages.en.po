@@ -21,8 +21,16 @@ msgid "(até 2000 caracteres)"
 msgstr "(up to 2000 characters)"
 
 #: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "(de 5 até 80 caracteres)"
+msgstr "(from 5 up to 80 characters)"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
 msgid "(somente o do autor principal)"
 msgstr "(main author's only)"
+
+#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+msgid "criar proposta"
+msgstr "create proposal"
 
 #: /Users/fmobus/segue/submission/app/modules/views/proposal.html
 msgid "criar proposta de palestra"
