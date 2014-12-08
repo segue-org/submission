@@ -7,6 +7,9 @@
     ])
     .controller('ProposalCtrl', function($scope) {
       $scope.proposal = {};
+
+      $scope.submit = function() {
+      };
     })
     .config(function($stateProvider) {
       $stateProvider

@@ -1,13 +1,15 @@
 main.proposal {
-  p {
-    margin: 1em;
+  margin: 0 auto;
+  width: 45rem;
+
+  form {
 
     label {
       display: block;
       float: left;
       text-align: right;
       margin-top: 0.3rem;
-      width: 15rem;
+      width: 10rem;
       margin-right: 1em;
 
       small {
@@ -18,11 +20,24 @@ main.proposal {
     }
     input, textarea {
       width: 30rem;
-      border: 1px solid gray;
+      border: 3px solid lightgray;
+      border-radius: 5px;
+      padding-right: 0.2rem;
+
+      &+.fa-check {
+        color: transparent;
+        vertical-align: top;
+        margin-top: 0.5rem;
+        margin-left: -1.5rem;
+      }
+      &.ng-valid + .fa-check {
+        color: green;
+      }
     }
     input {
       font-size: large;
     }
+
     textarea {
       font-size: normal;
       height: 5rem;
@@ -31,5 +46,12 @@ main.proposal {
         height: 10rem;
       }
     }
+
+    button {
+      text-align: right;
+      font-size: x-large;
+      padding: 1rem;
+    }
   }
+
 }

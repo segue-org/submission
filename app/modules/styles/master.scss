@@ -1,6 +1,17 @@
 body {
   &>header {
     border-bottom: 1px solid black;
+
+    h1 {
+      margin: 0;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &>main {
+    clear: both;
   }
 
   &>footer {
@@ -17,4 +28,8 @@ body {
     }
   }
 
+}
+
+.centered {
+  text-align: center;
 }

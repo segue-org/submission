@@ -1,79 +1,89 @@
-'use strict';
+(function() {
+  'use strict';
 
-var gulp = require('gulp');
-var all = require('./support').streams;
-var paths = require('./support').paths;
+  var gulp = require('gulp');
+  var all = require('./support').streams;
+  var paths = require('./support').paths;
 
-function fdInject(stream, ext, namespace) {
-  function debugInject(file) {
-    console.log(namespace, ext, file.path);
-  };
-  var inject = require('gulp-inject');
-  stream.on('data', debugInject);
-  return inject(stream, {
-    ignorePath: [ '/app/modules', 'app/bower_components', '/dist/public' ],
-    addPrefix: '/public',
-    starttag: '<!-- inject:'+namespace+':'+ext+' -->'
+  function fdInject(stream, ext, namespace) {
+    function debugInject(file) {
+      console.log(namespace, ext, file.path);
+    }
+    var inject = require('gulp-inject');
+    stream.on('data', debugInject);
+    return inject(stream, {
+      ignorePath: [ '/app/modules', 'app/bower_components', '/dist/public' ],
+      addPrefix: '/public',
+      starttag: '<!-- inject:'+namespace+':'+ext+' -->'
+    });
+  }
+
+  // Stylesheets =================================================================
+
+  gulp.task('build:stylesheets', function () {
+    return all.stylesheets.all().pipe(gulp.dest(paths.dist + '/public'));
   });
-}
 
-// Stylesheets =================================================================
+  // Javascripts =================================================================
 
-gulp.task('build:stylesheets', function () {
-  return all.stylesheets.all().pipe(gulp.dest(paths.dist + '/public'));
-});
+  gulp.task('build:javascripts', ['build:javascripts:templates'], function () {
+    return all.javascripts.all().pipe(gulp.dest(paths.dist + '/public'));
+  });
 
-// Javascripts =================================================================
+  // Templates ===================================================================
 
-gulp.task('build:javascripts', ['build:javascripts:templates'], function () {
-  return all.javascripts.all().pipe(gulp.dest(paths.dist + '/public'));
-});
+  gulp.task('build:javascripts:templates', function () {
+    return all.templates().pipe(gulp.dest(paths.dist + '/public'));
+  });
 
-// Templates ===================================================================
+  // Index =======================================================================
 
-gulp.task('build:javascripts:templates', function () {
-  return all.templates().pipe(gulp.dest(paths.dist + '/public'));
-});
+  gulp.task('build:inject:index', function () {
+    return gulp.src(paths.index)
+      .pipe(fdInject(all.stylesheets.custom(), 'css', 'custom'))
+      .pipe(fdInject(all.stylesheets.vendor(), 'css', 'vendor'))
+      .pipe(fdInject(all.javascripts.vendor(), 'js', 'vendor'))
+      .pipe(fdInject(all.javascripts.custom(), 'js', 'custom'))
+      .pipe(fdInject(all.templates(), 'js', 'templates'))
+      .pipe(gulp.dest(paths.dist));
+  });
 
-// Index =======================================================================
+  // Statics =====================================================================
 
-gulp.task('build:inject:index', function () {
-  return gulp.src(paths.index)
-    .pipe(fdInject(all.stylesheets.custom(), 'css', 'custom'))
-    .pipe(fdInject(all.stylesheets.vendor(), 'css', 'vendor'))
-    .pipe(fdInject(all.javascripts.vendor(), 'js', 'vendor'))
-    .pipe(fdInject(all.javascripts.custom(), 'js', 'custom'))
-    .pipe(fdInject(all.templates(), 'js', 'templates'))
-    .pipe(gulp.dest(paths.dist));
-});
+  gulp.task('build:statics', function () {
+    return gulp.src([ paths.statics, '!'+paths.index ])
+      .pipe(gulp.dest(paths.dist));
+  });
 
-// Statics =====================================================================
+  gulp.task('icons', function() {
+    return gulp.src(paths.fonts)
+               .pipe(gulp.dest(paths.dist + '/public/font-awesome/fonts'));
+  });
 
-gulp.task('build:statics', function () {
-  return gulp.src([ paths.statics, '!'+paths.index ])
-    .pipe(gulp.dest(paths.dist));
-});
+  // Clean =======================================================================
 
-// Clean =======================================================================
+  gulp.task('clean', function () {
+    var clean = require('gulp-rimraf');
+    return gulp.src(paths.dist, { read: false }).pipe(clean({ force: true }));
+  });
 
-gulp.task('clean', function () {
-  var clean = require('gulp-rimraf');
-  return gulp.src(paths.dist, { read: false }).pipe(clean({ force: true }));
-});
+  // Build =======================================================================
 
-// Build =======================================================================
+  gulp.task('build', function (done) {
+    return require('run-sequence')(
+      'clean',
+      'icons',
+      'translations',
+      'build:statics',
+      'build:inject:index',
+      'build:javascripts',
+      'build:stylesheets',
+      done
+    );
+  });
 
-gulp.task('build', function (done) {
-  return require('run-sequence')(
-    'clean',
-    'build:statics',
-    'build:inject:index',
-    'build:javascripts',
-    'build:stylesheets',
-    done
-  );
-});
+  gulp.on('err', function(e) {
+    console.log(e.err.stack);
+  });
 
-gulp.on('err', function(e) {
-  console.log(e.err.stack);
-});
+})();

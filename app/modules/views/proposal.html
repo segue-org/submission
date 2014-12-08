@@ -1,9 +1,15 @@
-<h1 translate>criar proposta de palestra</h1>
+<h3 class="centered" translate>criar proposta de palestra</h3>
 
-<form action="">
+<form novalidate name="proposal_form" action="">
   <p>
-    <label translate>título da palestra</label>
-    <input type="text" id="proposal_title" ng-model="proposal.title" />
+    <label>
+      <span translate>título da palestra</span>
+      <small>(de 5 até 80 caracteres)</small>
+    </label>
+    <input type="text" required
+           minlength="5" maxlength="80"
+           ng-model="proposal.title"/>
+    <i class="fa fa-check"></i>
   </p>
 
   <p>
@@ -11,7 +17,9 @@
       <span translate>resumo da proposta</span>
       <small translate>(até 200 caracteres)</small>
     </label>
-    <textarea ng-model="proposal.summary"></textarea>
+    <textarea required minlength="5" maxlength="200"
+              ng-model="proposal.summary"></textarea>
+    <i class="fa fa-check"></i>
   </p>
 
   <p>
@@ -19,7 +27,9 @@
       <span translate>proposta completa</span>
       <small translate>(até 2000 caracteres)</small>
     </label>
-    <textarea ng-model="proposal.full" class="large"></textarea>
+    <textarea required minlength="5" maxlength="200"
+              ng-model="proposal.full" class="large"></textarea>
+    <i class="fa fa-check"></i>
   </p>
 
   <p>
@@ -27,7 +37,16 @@
       <span translate>e-mail</span>
       <small translate>(somente o do autor principal)</small>
     </label>
-    <input ng-model="proposal.email" class="large"/>
+    <input type="email" required maxlength="80"
+           ng-model="proposal.email"/>
+    <i class="fa fa-check"></i>
+  </p>
+
+
+  <p class="centered">
+    <button ng-click="submit()" translate>
+      criar proposta
+    </button>
   </p>
 
 </form>
