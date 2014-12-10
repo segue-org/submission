@@ -8,6 +8,18 @@ body {
     h2 {
       margin: 0;
     }
+    #language {
+      float: right;
+      margin-top: -0.5rem;
+      margin-right: 1rem;
+
+      label {
+        background: white;
+        border: 1px solid gray;
+        padding: 0.5rem;
+        input { display: none }
+      }
+    }
   }
 
   &>main {

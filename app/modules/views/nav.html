@@ -1,2 +1,8 @@
 <h1>fisl16</h1>
 <h2 translate>envio de propostas de palestra</h2>
+<div id="language">
+  <label ng-repeat="lang in languages">
+    <input type="radio" name="language" ng-click="switchLanguage(lang.abbr)"/>
+    {{ lang.full }}
+  </label>
+</div>
