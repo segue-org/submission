@@ -7,27 +7,9 @@
     "gulp": "^3.8.9"
   },
   "devDependencies": {
-    "require-dir": "^0.1.0",
-    "jshint-stylish": "^1.0.0",
-    "q": "^1.0.1",
-    "event-stream": "^3.1.7",
-    "gulp-load-plugins": "^0.7.1",
-    "gulp-util": "^3.0.1",
-    "gulp-run-sequence": "^0.3.2",
-    "run-sequence": "^1.0.1",
-    "gulp-rimraf": "^0.1.1",
-    "main-bower-files": "^2.1.0",
-    "gulp-ignore": "^1.2.1",
-    "gulp-sass": "^1.2.2",
-    "gulp-inject": "^1.0.2",
-    "gulp-angular-templatecache": "^1.4.2",
-    "gulp-connect": "^2.0.6",
-    "gulp-watch": "^1.1.0",
-    "gulp-jshint": "^1.9.0",
-    "gulp-debug": "^1.0.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "rimraf": "latest",
+    "jshint": "latest",
+    "node-sass": "latest"
   },
   "repository": {
     "type": "git",
@@ -38,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/segue-org/submission/issues"
   },
-  "homepage": "https://github.com/segue-org/submission"
+  "homepage": "https://github.com/segue-org/submission",
+  "scripts": {
+    "clean": "rimraf dist/ && mkdir dist/",
+    "build": "npm run clean && npm run build:js && npm run build:css && npm run inject",
+    "build:js": "bash ./tasks/build_js.sh",
+    "build:css": "bash ./tasks/build_css.sh",
+    "inject": "bash ./tasks/inject.sh"
+
+  }
 }
