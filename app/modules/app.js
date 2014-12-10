@@ -20,7 +20,7 @@
         $scope.state    = newState;
       });
       $scope.languages = Locale.languages();
-      $scope.switchLanguage = Locale.switchTo;
+      $scope.selectLanguage = Locale.selectLanguage;
     })
 
     .config(function($urlRouterProvider) {
