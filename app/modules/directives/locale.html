@@ -1,0 +1,9 @@
+<div id="language">
+  <label ng-class="{ selected: Locale.currentLanguage == lang.abbr }"
+         ng-repeat="lang in Locale.languages">
+    <input type="radio" name="language"
+           ng-click="Locale.selectLanguage(lang.abbr)"
+           ng-selected="lang.abbr == Locale.currentLanguage"/>
+    {{ lang.full }}
+  </label>
+</div>

@@ -14,13 +14,11 @@
       'segue.submission.proposal'
     ])
 
-    .controller('SubmissionCtrl', function($scope, Locale) {
+    .controller('SubmissionCtrl', function($scope) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
       });
-
-      $scope.Locale = Locale;
     })
 
     .config(function($urlRouterProvider) {

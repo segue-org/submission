@@ -8,24 +8,6 @@ body {
     h2 {
       margin: 0;
     }
-    #language {
-      float: right;
-      margin-top: -0.5rem;
-      margin-right: 1rem;
-
-      label {
-        background: white;
-        border: 1px solid lightgray;
-        padding: 0.5rem;
-
-        &.selected {
-          background: lightgray;
-          box-shadow: inset 0 0 8px white;
-        }
-
-        input { display: none }
-      }
-    }
   }
 
   &>main {

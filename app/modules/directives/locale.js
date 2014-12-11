@@ -40,6 +40,15 @@
       useLanguage(detectLanguage());
 
       return self;
+    })
+    .directive('localeSelector', function(Locale) {
+      return {
+        scope: {},
+        controller: function($scope) {
+          $scope.Locale = Locale;
+        },
+        templateUrl: 'modules/directives/locale.html'
+      };
     });
 
 })();
