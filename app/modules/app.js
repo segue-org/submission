@@ -19,8 +19,8 @@
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
       });
-      $scope.languages = Locale.languages();
-      $scope.selectLanguage = Locale.selectLanguage;
+
+      $scope.Locale = Locale;
     })
 
     .config(function($urlRouterProvider) {

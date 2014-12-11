@@ -3,23 +3,28 @@
 
   angular
     .module('segue.submission.locale', [
-      'gettext'
+      'gettext',
+      'ngStorage',
     ])
-    .service('Locale', function(gettextCatalog, $window) {
+    .service('Locale', function(gettextCatalog, $window, $localStorage) {
       var self = {};
 
       function useLanguage(lang) {
         gettextCatalog.setCurrentLanguage(lang);
         gettextCatalog.loadRemote('/public/translations/messages.'+lang+'.json');
+        self.currentLanguage = lang;
       }
       function saveLanguage(lang) {
+        $localStorage.savedLanguage = lang;
       }
 
       function detectLanguage() {
-        var browser = ($window.navigator.userLanguage || $window.navigator.language).substring(0,2);
-        var saved = null;
-        var fallback = 'en';
-        return browser;
+        var browser   = ($window.navigator.userLanguage || $window.navigator.language).substring(0,2);
+        var saved     = $localStorage.savedLanguage;
+        var candidate = saved || browser;
+        var fallback  = 'pt';
+        var valid     = _(self.languages).where({ abbr: candidate }).length;
+        return valid? candidate : fallback;
       }
 
       self.selectLanguage = function(lang) {
@@ -27,12 +32,10 @@
         saveLanguage(lang);
       };
 
-      self.languages = function() {
-        return [
-          { abbr: 'pt', full: 'português' },
-          { abbr: 'en', full: 'english' },
-        ];
-      };
+      self.languages = [
+        { abbr: 'pt', full: 'português' },
+        { abbr: 'en', full: 'english' },
+      ];
 
       useLanguage(detectLanguage());
 
