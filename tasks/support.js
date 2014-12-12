@@ -15,6 +15,7 @@
     statics       : 'app/*.*',
     fonts         : 'app/bower_components/font-awesome/fonts/*.*',
     dist          : 'dist',
+    test          : ['spec/helpers/*.js','spec/**/*.spec.js','app/config.js']
   };
 
   function streamStylesheets() {
@@ -51,6 +52,10 @@
 
     self.custom = function() {
       return gulp.src(paths.javascripts);
+    };
+
+    self.tests = function() {
+      return gulp.src(paths.test);
     };
 
     self.all = function() {
