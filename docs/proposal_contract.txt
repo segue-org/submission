@@ -1,0 +1,89 @@
+
+1) creating a talk proposal
+
+<---- POST http://server/api/proposal
+      {
+        "title": "a talk proposal",
+        "summary": "a summary",
+        "description": "long description",
+        "language": "es|en|pt",
+        "owner": "owner@email.com"
+      }
+
+----> 201 OK Created (Location: http://server/api/proposal/<newId>)
+----> confirmation message is sent to owner's e-mail
+
+
+2) reading a talk proposal
+<---- GET http://server/api/proposal/<id>
+----> {
+        "title": "a talk proposal",
+        "summary": "a summary",
+        "description": "long description",
+        "owner": "owner@email.com"
+        "status": "pending confirmation"
+      }
+
+3) confirming a talk proposal thru e-mail
+<---- POST http://server/api/proposal/<id>/confirm/<long-ass-hash>
+----> 200 OK Confirmed
+
+4) creating author personal data/biography
+<---- POST http://server/api/bio/
+      {
+        "name": "Felipe Mobus",
+        "email": "any@fmobus.email",
+        "country": "Brazil",
+        "document": "123.456.789-02",
+        "city": "Porto Alegre",
+      }
+----> 201 OK Created (Location: http://server/api/bio/<newId>)
+
+5) reading a personal data/biography
+<---- GET http://server/api/bio/<id>
+----> {
+        "name": "Felipe Mobus",
+        "email": "any@fmobus.email",
+        "country": "Brazil",
+        "document": "123.456.789-02",
+        "city": "Porto Alegre",
+      }
+
+6) inviting another author to the proposal
+<---- POST http://server/api/proposal/<id>/invite
+      {
+        "name": "Daniel Wolff",
+        "email": "some@email.com"
+      }
+-----> 201 OK Created (Location: http://server/api/proposal/<id>/invite/<newId>)
+-----> Invitation e-mail is sent
+
+7) accepting invitation as co-author
+<----- POST http://server/api/propostal/<id>/invite/<newId>/confirm/<long-ass-hash>
+-----> 200 OK Confirmed.
+
+8) listing all invites of a proposal
+<----- GET http://server/api/proposal/<id>/invite
+-----> {
+         items: [
+           { "name": "Daniel Wolff",  "email": "some@email.com,  "status": "accepted" },
+           { "name": "Dilma Rouseff", "email": "dilma@email.com, "status": "pending" },
+         ]
+       }
+
+9) how a full proposal object could look like
+<----- GET http://server/api/proposal/<id>
+----->
+
+{
+  "id": 123,
+  "title": "a talk proposal",
+  "summary": "a summary",
+  "description": "long description",
+  "language": "es|en|pt",
+  "owner": "owner@email.com"
+  "_links": [
+    { "rel": "authors", "href": "/api/proposal/123/authors" }
+    { "rel": "invites", "href": "/api/proposal/123/invites" }
+  ]
+}
