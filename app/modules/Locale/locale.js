@@ -47,7 +47,7 @@
         controller: function($scope) {
           $scope.Locale = Locale;
         },
-        templateUrl: 'modules/directives/locale.html'
+        templateUrl: 'modules/Locale/locale.html'
       };
     });
 

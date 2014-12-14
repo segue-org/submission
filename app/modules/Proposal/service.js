@@ -2,10 +2,8 @@
   "use strict";
 
   angular
-    .module('segue.submission.proposals',[
+    .module('segue.submission.proposal.service',[
       'restangular',
-
-      'segue.submission'
     ])
     .factory('Proposals', function(Restangular) {
       return Restangular.service('proposals');
