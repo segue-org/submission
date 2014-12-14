@@ -23,7 +23,8 @@
     "angular-gettext": "~1.1.4",
     "font-awesome": "~4.2.0",
     "ngstorage": "~0.3.0",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "restangular": "~1.4.0"
   },
   "devDependencies": {}
 }

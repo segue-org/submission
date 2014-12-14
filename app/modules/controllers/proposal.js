@@ -3,12 +3,14 @@
 
   angular
     .module('segue.submission.proposal',[
-      'segue.submission'
+      'segue.submission',
+      'segue.submission.proposals'
     ])
-    .controller('ProposalCtrl', function($scope) {
-      $scope.proposal = {};
+    .controller('ProposalCtrl', function($scope, Proposals, ProposalBuilder) {
+      $scope.proposal = ProposalBuilder.faked();
 
       $scope.submit = function() {
+        Proposals.post($scope.proposal);
       };
     })
     .config(function($stateProvider) {
