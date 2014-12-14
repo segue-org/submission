@@ -23,7 +23,7 @@
         var saved     = $localStorage.savedLanguage;
         var candidate = saved || browser;
         var fallback  = 'pt';
-        var valid     = _(self.languages).where({ abbr: candidate }).length;
+        var valid     = _(self.languages).where({ abbr: candidate }).size();
         return valid? candidate : fallback;
       }
 
