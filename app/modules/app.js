@@ -14,7 +14,7 @@
       'segue.submission.proposal'
     ])
 
-    .controller('SubmissionCtrl', function($scope) {
+    .controller('SubmissionController', function($scope) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
