@@ -16,7 +16,8 @@
           "title": "one talk",
           "summary": "one summary",
           "full": "one full",
-          "email": "one@email.com"
+          "email": "one@email.com",
+          "name": "One Name"
         };
       };
     });

@@ -10,7 +10,7 @@
     .config(function($stateProvider) {
       $stateProvider
         .state('proposal', {
-          url: '^/',
+          url: '^/proposal',
           views: {
             header: {                                   templateUrl: 'modules/common/nav.html'    },
             main:   { controller: 'ProposalController', templateUrl: 'modules/Proposal/form.html' }

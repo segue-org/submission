@@ -11,7 +11,8 @@
       'ui.router.compat',
 
       'segue.submission.locale',
-      'segue.submission.proposal'
+      'segue.submission.proposal',
+      'segue.submission.splash'
     ])
 
     .controller('SubmissionController', function($scope) {

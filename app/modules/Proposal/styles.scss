@@ -3,6 +3,22 @@ main.proposal {
   width: 45rem;
 
   form {
+    fieldset {
+      border: 0px;
+      border-top: 1px solid gray;
+      margin-bottom: 1em;
+      padding: 0;
+
+      legend {
+        background: white;
+        padding: 0 1em;
+        font-variant: small-caps;
+        border-radius: 5px;
+        border-right: 1px solid gray;
+        border-left: 1px solid gray;
+        text-align: center;
+      }
+    }
 
     label {
       display: block;
