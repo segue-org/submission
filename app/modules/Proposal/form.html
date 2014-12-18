@@ -1,56 +1,47 @@
 <h3 class="centered" translate>criar proposta de palestra</h3>
 
+<div ui-view="modal"></div>
 <form novalidate name="proposal_form">
-  <fieldset>
-    <legend translate>dados da proposta</legend>
-    <p>
-      <label>
-        <span translate>título da palestra</span>
-        <small translate>(de 5 até 80 caracteres)</small>
-      </label>
-      <input type="text" required
-            minlength="5" maxlength="80"
-            ng-model="proposal.title"/>
-      <i class="fa fa-check"></i>
-    </p>
+  <p>
+    <label>
+      <span translate>título da palestra</span>
+      <small translate>(de 5 até 80 caracteres)</small>
+    </label>
+    <input type="text" required
+          minlength="5" maxlength="80"
+          ng-model="proposal.title"/>
+    <i class="fa fa-check"></i>
+  </p>
 
-    <p>
-      <label>
-        <span translate>resumo da proposta</span>
-        <small translate>(até 200 caracteres)</small>
-      </label>
-      <textarea required minlength="5" maxlength="200"
-                ng-model="proposal.summary"></textarea>
-      <i class="fa fa-check"></i>
-    </p>
+  <p>
+    <label>
+      <span translate>resumo da proposta</span>
+      <small translate>(até 200 caracteres)</small>
+    </label>
+    <textarea required minlength="5" maxlength="200"
+              ng-model="proposal.summary"></textarea>
+    <i class="fa fa-check"></i>
+  </p>
 
-    <p>
-      <label>
-        <span translate>proposta completa</span>
-        <small translate>(até 2000 caracteres)</small>
-      </label>
-      <textarea required minlength="5" maxlength="200"
-                ng-model="proposal.full" class="large"></textarea>
-      <i class="fa fa-check"></i>
-    </p>
-  </fieldset>
+  <p>
+    <label>
+      <span translate>proposta completa</span>
+      <small translate>(até 2000 caracteres)</small>
+    </label>
+    <textarea required minlength="5" maxlength="200"
+              ng-model="proposal.full" class="large"></textarea>
+    <i class="fa fa-check"></i>
+  </p>
 
-  <fieldset>
-    <legend translate>dados do autor principal</legend>
-    <p>
-      <label translate>e-mail</label>
-      <input type="email" required maxlength="80"
-            ng-model="proposal.email"/>
-      <i class="fa fa-check"></i>
-    </p>
-
-    <p>
-      <label translate>nome</label>
-      <input type="text" maxlength="80" required
-            ng-model="proposal.name"/>
-      <i class="fa fa-check"></i>
-    </p>
-  </fieldset>
+  <p>
+    <label>
+      <span translate>e-mail</span>
+      <small>somente autor principal</small>
+    </label>
+    <input type="email" required maxlength="80"
+          ng-model="proposal.email"/>
+    <i class="fa fa-check"></i>
+  </p>
 
   <p class="centered">
     <button ng-click="submit()" translate>

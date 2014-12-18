@@ -3,8 +3,7 @@
 
   angular
     .module('segue.submission.splash', [
-      'segue.submission',
-      'segue.submission.proposal'
+      'segue.submission.splash.controller'
     ])
     .config(function($stateProvider) {
       $stateProvider
@@ -16,7 +15,9 @@
           }
         });
 
-    })
+    });
+  angular
+    .module('segue.submission.splash.controller', [])
     .controller('SplashController', function($scope, $state) {
       $scope.propose = function() {
         $state.go('proposal');
