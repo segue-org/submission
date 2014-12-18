@@ -21,5 +21,8 @@
       $scope.propose = function() {
         $state.go('proposal');
       };
+      $scope.login = function() {
+        $state.go('login');
+      };
     });
 })();

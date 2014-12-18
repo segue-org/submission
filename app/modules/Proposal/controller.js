@@ -16,7 +16,6 @@
             main:   { controller: 'ProposalController', templateUrl: 'modules/Proposal/form.html' }
           }
         });
-
     });
 
 

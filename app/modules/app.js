@@ -11,15 +11,20 @@
       'ui.router.compat',
 
       'segue.submission.locale',
+      'segue.submission.splash',
+      'segue.submission.login',
       'segue.submission.proposal',
-      'segue.submission.splash'
     ])
 
-    .controller('SubmissionController', function($scope) {
+    .controller('SubmissionController', function($scope, $state) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
       });
+
+      $scope.home = function() {
+        $state.go('splash');
+      };
     })
 
     .config(function($urlRouterProvider) {
