@@ -8,7 +8,7 @@
         "description": "long description",
         "language": "es|en|pt",
         "owner": "owner@email.com"
-      }
+    }
 
 ----> 201 OK Created (Location: http://server/api/proposal/<newId>)
 ----> confirmation message is sent to owner's e-mail
@@ -17,11 +17,13 @@
 2) reading a talk proposal
 <---- GET http://server/api/proposal/<id>
 ----> {
-        "title": "a talk proposal",
-        "summary": "a summary",
-        "description": "long description",
-        "owner": "owner@email.com"
-        "status": "pending confirmation"
+        "resource": {
+          "title": "a talk proposal",
+          "summary": "a summary",
+          "description": "long description",
+          "owner": "owner@email.com"
+          "status": "pending confirmation"
+        }
       }
 
 3) confirming a talk proposal thru e-mail
@@ -35,18 +37,20 @@
         "email": "any@fmobus.email",
         "country": "Brazil",
         "document": "123.456.789-02",
-        "city": "Porto Alegre",
+        "city": "Porto Alegre"
       }
 ----> 201 OK Created (Location: http://server/api/bio/<newId>)
 
 5) reading a personal data/biography
 <---- GET http://server/api/bio/<id>
 ----> {
-        "name": "Felipe Mobus",
-        "email": "any@fmobus.email",
-        "country": "Brazil",
-        "document": "123.456.789-02",
-        "city": "Porto Alegre",
+        "resource": {
+          "name": "Felipe Mobus",
+          "email": "any@fmobus.email",
+          "country": "Brazil",
+          "document": "123.456.789-02",
+          "city": "Porto Alegre"
+        }
       }
 
 6) inviting another author to the proposal
@@ -76,13 +80,15 @@
 ----->
 
 {
-  "id": 123,
-  "title": "a talk proposal",
-  "summary": "a summary",
-  "description": "long description",
-  "language": "es|en|pt",
-  "owner": "owner@email.com"
-  "_links": [
+  "resource": {
+    "id": 123,
+    "title": "a talk proposal",
+    "summary": "a summary",
+    "description": "long description",
+    "language": "es|en|pt",
+    "owner": "owner@email.com"
+  }
+  "links": [
     { "rel": "authors", "href": "/api/proposal/123/authors" }
     { "rel": "invites", "href": "/api/proposal/123/invites" }
   ]
