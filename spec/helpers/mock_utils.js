@@ -10,3 +10,11 @@ function mockDep(depName, modName) {
     }
   };
 }
+
+function noopMock() {
+  var self = {};
+  for (var i = 0; i < arguments.length; i++) {
+    self[arguments[i]] = angular.noop;
+  }
+  return self;
+}

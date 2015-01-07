@@ -1,5 +1,7 @@
 <h3 class="centered" translate>criar proposta de palestra</h3>
 
+{{ errors }}
+
 <div ui-view="modal"></div>
 <form novalidate name="proposal_form">
   <p>
@@ -35,12 +37,28 @@
 
   <p>
     <label>
-      <span translate>e-mail</span>
-      <small>somente autor principal</small>
+      <span translate>língua</span>
     </label>
-    <input type="email" required maxlength="80"
-          ng-model="proposal.email"/>
-    <i class="fa fa-check"></i>
+    <div>
+      <input type="radio" ng-model="proposal.language" value="pt" />
+      <span translate>português</span>
+      <input type="radio" ng-model="proposal.language" value="en" />
+      <span translate>espanhol</span>
+      <input type="radio" ng-model="proposal.language" value="es" />
+      <span translate>inglês</span>
+    </div>
+  </p>
+
+  <p>
+    <label>
+      <span translate>nível da palestra</span>
+    </label>
+    <div>
+      <input type="radio" ng-model="proposal.level" value="beginner" />
+      <span translate>iniciante</span>
+      <input type="radio" ng-model="proposal.level" value="advanced" />
+      <span translate>avançado</span>
+    </div>
   </p>
 
   <p class="centered">

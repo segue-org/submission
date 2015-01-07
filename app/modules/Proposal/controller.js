@@ -3,6 +3,7 @@
 
   angular
     .module('segue.submission.proposal',[
+      'segue.submission.libs',
       'segue.submission.proposal.controller',
       'segue.submission.proposal.service'
     ])
@@ -31,14 +32,18 @@
         });
     });
 
-
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('ProposalController', function($scope, $state, Proposals, ProposalBuilder) {
+    .controller('ProposalController', function($scope, $state, Proposals, ProposalBuilder, Validator) {
       $scope.proposal = ProposalBuilder.faked();
 
+      function setErrors(errors) {
+        $scope.errors = errors;
+      }
+
       $scope.submit = function() {
-        $state.go('proposal.wait');
+        Validator.validate($scope.proposal, 'new_proposal')
+                 .then(Proposals.post, setErrors);
       };
 
       $scope.confirm = function() {

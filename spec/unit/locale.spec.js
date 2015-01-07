@@ -9,9 +9,7 @@
   beforeEach(mockDep('$localStorage','ngStorage').toBe(mockStorage));
   beforeEach(mockDep('gettextCatalog','gettext').toBe(mockGettext));
 
-  beforeEach(function() {
-    module('segue.submission.locale');
-  });
+  beforeEach(module('segue.submission.locale'));
 
 
   describe('locale', function() {
