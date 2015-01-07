@@ -19,7 +19,7 @@
       }
 
       function detectLanguage() {
-        var browser   = ($window.navigator.userLanguage || $window.navigator.language).substring(0,2);
+        var browser   = ($window.navigator.userLanguage || $window.navigator.language || '').substring(0,2);
         var saved     = $localStorage.savedLanguage;
         var candidate = saved || browser;
         var fallback  = 'pt';

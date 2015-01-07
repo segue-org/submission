@@ -1,7 +1,7 @@
 (function() {
   var gulp = require('gulp');
   var gutil = require('gulp-util');
-  var merge = require('event-stream').merge;
+  var series = require('stream-series');
   var karma = require('gulp-karma');
 
   var streams = require('./support').streams;
@@ -24,13 +24,16 @@
   }
 
   module.exports = function () {
-    // Note:  These must be in order:  Bower, project, test
-    var a = streams.javascripts.vendor();
-    var b = streams.javascripts.custom();
-    var c = streams.javascripts.tests();
+    // Note:  These must be in order:  Bower, project, mocks, test
+    var vendor = streams.javascripts.vendor();
+    var custom = streams.javascripts.custom();
+    var mocks  = gulp.src(['app/bower_components/angular-mocks/angular-mocks.js']);
+    var tests  = streams.javascripts.tests();
 
-    return merge(a,b,c)
+    return series(vendor, custom, mocks, tests)
             .pipe(karma(config))
             .on('error', errorHandler);
   };
+
+  function xlog() { console.log(arguments); }
 })();
