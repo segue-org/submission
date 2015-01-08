@@ -13,14 +13,7 @@
           url: '^/proposal',
           views: {
             header: {                                   templateUrl: 'modules/common/nav.html'    },
-            main:   { controller: 'ProposalController', templateUrl: 'modules/Proposal/form.html' }
-          }
-        })
-        .state('proposal.confirmed', {
-          url: '^/proposal/confirm',
-          views: {
-            'header@': {                                   templateUrl: 'modules/common/nav.html'    },
-            'main@':   { controller: 'ProposalController', templateUrl: 'modules/Proposal/wait.html' }
+            main:   { controller: 'NewProposalController', templateUrl: 'modules/Proposal/form.html' }
           }
         });
     });
@@ -35,7 +28,7 @@
       }
 
       $scope.submit = function() {
-        Validator.validate($scope.proposal, 'new_proposal')
+        Validator.validate($scope.proposal, 'proposal/new_proposal')
                  .then(Proposals.post, setErrors);
       };
 
