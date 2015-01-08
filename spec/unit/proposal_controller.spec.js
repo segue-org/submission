@@ -5,7 +5,9 @@
   var $httpBackend;
 
   var mockValidator = noopMock('validate');
-  var mockProposals = noopMock('post');
+  var mockService   = noopMock('post');
+  var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
+  var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
 
   beforeEach(module('ui.router'));
 
@@ -16,29 +18,37 @@
     $scope = $rootScope.$new();
   }));
 
-  beforeEach(function() {
-    inject(function($controller, _$httpBackend_, $state) {
-      $controller('ProposalController', {
-        $scope: $scope, $state: $state,
-        Proposals: mockProposals,
-        Validator: mockValidator
+  describe("submitting a new proposal", function() {
+    beforeEach(function() {
+      inject(function($controller, _$httpBackend_, $state) {
+        $controller('NewProposalController', {
+          $scope: $scope, $state: $state,
+          Proposals: mockService,
+          Validator: mockValidator
+        });
+        $scope.proposal = mockProposal;
       });
     });
-  });
 
+    it("valid proposals are posted to the service", inject(function(ProposalBuilder) {
+      spyOn(mockValidator,'validate').and.callFake(pipeArg().toPromise);
+      spyOn(mockService,'post');
 
-  describe("submitting a new proposal", function() {
-    it("tilts", inject(function(ProposalBuilder, $q) {
-      spyOn(mockValidator,'validate').and.callFake(function(data,schema) {
-        return { then: function(success, fail) { success(data); } }
-      });
-      spyOn(mockProposals,'post');
-
-      $scope.proposal = ProposalBuilder.faked();
       $scope.submit();
 
-      expect(mockValidator.validate).toHaveBeenCalledWith($scope.proposal, 'new_proposal');
-      expect(mockProposals.post).toHaveBeenCalledWith($scope.proposal);
+      expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'new_proposal');
+      expect(mockService.post).toHaveBeenCalledWith(mockProposal);
+    }));
+
+    it("invalid proposals do not get posted to the service, and errors get in the scope", inject(function(ProposalBuilder) {
+      spyOn(mockValidator,'validate').and.callFake(pipe(mockErrors).toFailure);
+      spyOn(mockService,'post');
+
+      $scope.submit();
+
+      expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'new_proposal');
+      expect($scope.errors).toBe(mockErrors);
+      expect(mockService.post).not.toHaveBeenCalled();
     }));
   });
 

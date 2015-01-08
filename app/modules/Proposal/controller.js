@@ -16,13 +16,6 @@
             main:   { controller: 'ProposalController', templateUrl: 'modules/Proposal/form.html' }
           }
         })
-        .state('proposal.wait', {
-          url: '^/proposal/wait',
-          views: {
-            'header@': {                                   templateUrl: 'modules/common/nav.html'    },
-            'main@':   { controller: 'ProposalController', templateUrl: 'modules/Proposal/wait.html' }
-          }
-        })
         .state('proposal.confirmed', {
           url: '^/proposal/confirm',
           views: {
@@ -34,7 +27,7 @@
 
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('ProposalController', function($scope, $state, Proposals, ProposalBuilder, Validator) {
+    .controller('NewProposalController', function($scope, $state, Proposals, ProposalBuilder, Validator) {
       $scope.proposal = ProposalBuilder.faked();
 
       function setErrors(errors) {
@@ -46,8 +39,5 @@
                  .then(Proposals.post, setErrors);
       };
 
-      $scope.confirm = function() {
-        $state.go('proposal.confirmed');
-      };
     });
 })();
