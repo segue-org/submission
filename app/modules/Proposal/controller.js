@@ -25,6 +25,10 @@
     .controller('NewProposalController', function($scope, $state, $localStorage, Proposals, ProposalBuilder, Validator) {
       $scope.proposal = $localStorage.savedProposal || ProposalBuilder.faked();
 
+      $scope.$watch('proposal', function(newValue) {
+        $localStorage.savedProposal = newValue;
+      });
+
       function setErrors(errors) {
         $scope.errors = errors;
       }

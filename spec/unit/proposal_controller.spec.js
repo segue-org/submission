@@ -37,8 +37,15 @@
         mockStorage.savedProposal = mockProposal;
       });
       beforeEach(loadController);
+
       it("loads the saved proposal into the scope", function() {
         expect($scope.proposal).toBe(mockProposal);
+      });
+      it("saved proposal gets updated automatically", function() {
+        $scope.proposal.title = "modified";
+        $scope.$digest();
+
+        expect(mockStorage.savedProposal.title).toBe("modified");
       });
     });
 
