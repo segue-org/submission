@@ -3,17 +3,21 @@ locale-selector {
   margin-top: -0.5rem;
   margin-right: 1rem;
 
-  label {
-    background: white;
-    border: 1px solid lightgray;
-    padding: 0.5rem;
+  div {
+    float: left;
 
-    &.selected {
+    input[type=radio] {
+      display: none;
+    }
+    input[type=radio] + label {
+      background: white;
+      border: 1px solid lightgray;
+      padding: 0.5rem;
+    }
+    input[type=radio]:checked + label {
       background: lightgray;
       box-shadow: inset 0 0 8px white;
     }
-
-    input { display: none }
   }
 }
 
