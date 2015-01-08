@@ -23,7 +23,6 @@
   describe("new proposal controller", function() {
     beforeEach(mockDep('$localStorage','ngStorage').toBe(mockStorage));
     beforeEach(module('ui.router'));
-
     beforeEach(module('segue.submission.proposal.controller'));
     beforeEach(module('segue.submission.proposal.service'));
 

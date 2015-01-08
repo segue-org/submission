@@ -5,14 +5,13 @@
   var mockStorage = {};
   var mockGettext = jasmine.createSpyObj('gettext', ['setCurrentLanguage','loadRemote']);
 
-  beforeEach(mockDep('$window').toBe(mockWindow));
-  beforeEach(mockDep('$localStorage','ngStorage').toBe(mockStorage));
-  beforeEach(mockDep('gettextCatalog','gettext').toBe(mockGettext));
-
-  beforeEach(module('segue.submission.locale'));
-
-
   describe('locale', function() {
+    beforeEach(mockDep('$window').toBe(mockWindow));
+    beforeEach(mockDep('$localStorage','ngStorage').toBe(mockStorage));
+    beforeEach(mockDep('gettextCatalog','gettext').toBe(mockGettext));
+
+    beforeEach(module('segue.submission.locale'));
+
     describe('there is a valid saved language', function() {
       beforeEach(function() {
         mockStorage.savedLanguage = 'en';

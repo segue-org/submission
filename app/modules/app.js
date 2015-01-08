@@ -9,6 +9,7 @@
       'templates',
       'ui.router',
       'ui.router.compat',
+      'restangular',
 
       'segue.submission.locale',
       'segue.submission.splash',
@@ -27,7 +28,11 @@
       };
     })
 
+    .config(function(RestangularProvider) {
+      RestangularProvider.setBaseUrl("http://localhost:5000/api/");
+    })
     .config(function($urlRouterProvider) {
       $urlRouterProvider.otherwise('/');
     });
+
 })();

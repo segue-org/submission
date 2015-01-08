@@ -3,10 +3,11 @@
 
   angular
     .module('segue.submission.proposal.service',[
+      'segue.submission',
       'restangular',
     ])
     .factory('Proposals', function(Restangular) {
-      return Restangular.service('//localhost:5000/api/proposal');
+      return Restangular.service('proposal');
     })
     .service('ProposalBuilder', function() {
       this.empty = function() { return {}; };

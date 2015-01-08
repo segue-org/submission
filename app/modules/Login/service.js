@@ -3,7 +3,10 @@
 
   angular
     .module("segue.submission.login.service", [
-      'http-auth-interceptor'
+      'segue.submission',
+      'http-auth-interceptor',
+      'ngStorage',
+      'restangular'
     ])
     .factory('authTokenInterceptor', function($window, Session) {
       return {
@@ -17,25 +20,33 @@
     .config(function ($httpProvider) {
       $httpProvider.interceptors.push('authTokenInterceptor');
     })
-    .service("Session", function() {
+    .service("Session", function($localStorage) {
       var self = {};
-      self.setCurrentSession = function(token, account) {
+
+      self.current = function(data) {
+        if (data === undefined) {
+          return $localStorage.auth || {};
+        }
+        $localStorage.auth = { token: data.token, account: data.account };
       };
-      self.current = function() {
-      };
+
       self.destroy = function() {
       };
 
       return self;
     })
-    .service("Auth", function() {
+    .service("Auth", function(Session, Restangular) {
       var self = {};
+      var resource = Restangular.service('account');
 
       self.signUp = function(email, password) {
+        resource.post({ email: email, password: password })
+                .then(Session.current);
       };
       self.login = function(email, password) {
       };
       self.isLogged = function() {
+        return Session.current().token !== undefined;
       };
       self.logout = function() {
       };
