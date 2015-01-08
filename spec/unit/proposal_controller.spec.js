@@ -8,48 +8,65 @@
   var mockService   = noopMock('post');
   var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
+  var mockStorage   = {};
 
-  beforeEach(module('ui.router'));
+  function loadController() {
+    inject(function($controller, _$httpBackend_, $state) {
+      $controller('NewProposalController', {
+        $scope: $scope, $state: $state,
+        Proposals: mockService,
+        Validator: mockValidator
+      });
+    });
+  }
 
-  beforeEach(module('segue.submission.proposal.controller'));
-  beforeEach(module('segue.submission.proposal.service'));
+  describe("new proposal controller", function() {
+    beforeEach(mockDep('$localStorage','ngStorage').toBe(mockStorage));
+    beforeEach(module('ui.router'));
 
-  beforeEach(inject(function($rootScope) {
-    $scope = $rootScope.$new();
-  }));
+    beforeEach(module('segue.submission.proposal.controller'));
+    beforeEach(module('segue.submission.proposal.service'));
 
-  describe("submitting a new proposal", function() {
-    beforeEach(function() {
-      inject(function($controller, _$httpBackend_, $state) {
-        $controller('NewProposalController', {
-          $scope: $scope, $state: $state,
-          Proposals: mockService,
-          Validator: mockValidator
-        });
-        $scope.proposal = mockProposal;
+    beforeEach(inject(function($rootScope) {
+      $scope = $rootScope.$new();
+    }));
+
+
+    describe("there is a saved pending proposal", function() {
+      beforeEach(function() {
+        mockStorage.savedProposal = mockProposal;
+      });
+      beforeEach(loadController);
+      it("loads the saved proposal into the scope", function() {
+        expect($scope.proposal).toBe(mockProposal);
       });
     });
 
-    it("valid proposals are posted to the service", inject(function(ProposalBuilder) {
-      spyOn(mockValidator,'validate').and.callFake(pipeArg().toPromise);
-      spyOn(mockService,'post');
+    describe("submitting a new proposal", function() {
+      beforeEach(loadController);
 
-      $scope.submit();
+      it("valid proposals are posted to the service", inject(function(ProposalBuilder) {
+        spyOn(mockValidator,'validate').and.callFake(pipeArg().toPromise);
+        spyOn(mockService,'post');
 
-      expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'new_proposal');
-      expect(mockService.post).toHaveBeenCalledWith(mockProposal);
-    }));
+        $scope.proposal = mockProposal;
+        $scope.submit();
 
-    it("invalid proposals do not get posted to the service, and errors get in the scope", inject(function(ProposalBuilder) {
-      spyOn(mockValidator,'validate').and.callFake(pipe(mockErrors).toFailure);
-      spyOn(mockService,'post');
+        expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
+        expect(mockService.post).toHaveBeenCalledWith(mockProposal);
+      }));
 
-      $scope.submit();
+      it("invalid proposals do not get posted to the service, and errors get in the scope", inject(function(ProposalBuilder) {
+        spyOn(mockValidator,'validate').and.callFake(pipe(mockErrors).toFailure);
+        spyOn(mockService,'post');
 
-      expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'new_proposal');
-      expect($scope.errors).toBe(mockErrors);
-      expect(mockService.post).not.toHaveBeenCalled();
-    }));
+        $scope.proposal = mockProposal;
+        $scope.submit();
+
+        expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
+        expect($scope.errors).toBe(mockErrors);
+        expect(mockService.post).not.toHaveBeenCalled();
+      }));
+    });
   });
-
 })();

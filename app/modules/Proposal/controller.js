@@ -3,6 +3,8 @@
 
   angular
     .module('segue.submission.proposal',[
+      'ngStorage',
+
       'segue.submission.libs',
       'segue.submission.proposal.controller',
       'segue.submission.proposal.service'
@@ -20,8 +22,8 @@
 
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('NewProposalController', function($scope, $state, Proposals, ProposalBuilder, Validator) {
-      $scope.proposal = ProposalBuilder.faked();
+    .controller('NewProposalController', function($scope, $state, $localStorage, Proposals, ProposalBuilder, Validator) {
+      $scope.proposal = $localStorage.savedProposal || ProposalBuilder.faked();
 
       function setErrors(errors) {
         $scope.errors = errors;
