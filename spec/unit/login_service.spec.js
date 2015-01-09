@@ -2,14 +2,30 @@
   "use strict";
 
   var auth, session, http;
+  var mockStorage = {};
 
   describe("login services", function() {
     beforeEach(module("segue.submission.login.service"));
+    beforeEach(mockDep('$localStorage', 'ngStorage').toBe(mockStorage));
+    beforeEach(function() { delete mockStorage.auth; });
     beforeEach(inject(function(_$httpBackend_, Auth, Session) {
       auth = Auth;
       session = Session;
       http = _$httpBackend_;
     }));
+
+    describe("user already has auth token & account saved", function() {
+      var token = "old-token";
+      var account = "old-account";
+      beforeEach(function() {
+        mockStorage.auth = { token: token, account: account };
+      });
+
+      it("saved account is used for login", function() {
+        expect(auth.isLogged()).toBe(true);
+        expect(session.current()).toBe(mockStorage.auth);
+      });
+    });
 
     describe("sign up", function() {
       var token = "le-token";
