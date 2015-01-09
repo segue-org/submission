@@ -15,11 +15,12 @@
     }));
 
     describe("loading & saving from storage", function() {
-      beforeEach(function() {
-        mockStorage.auth = { token: 'token', account: 'account' };
+      it("there is nothing in storage", function() {
+        expect(auth.isLogged()).toBe(false);
       });
 
       it("loads logged account from storage", function() {
+        mockStorage.auth = { token: 'token', account: 'account' };
         expect(auth.isLogged()).toBe(true);
         expect(session.current()).toBe(mockStorage.auth);
       });
