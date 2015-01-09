@@ -8,11 +8,11 @@
       'ngStorage',
       'restangular'
     ])
-    .factory('authTokenInterceptor', function($window, Session) {
+    .factory('authTokenInterceptor', function($window, LocalSession) {
       return {
         request: function (config) {
           config.headers = config.headers || {};
-          config.headers.Authorization = 'Bearer '+ Session.current().token;
+          config.headers.Authorization = 'Bearer '+ LocalSession.current().token;
           return config;
         }
       };
@@ -20,35 +20,35 @@
     .config(function ($httpProvider) {
       $httpProvider.interceptors.push('authTokenInterceptor');
     })
-    .service("Session", function($localStorage) {
+    .service("LocalSession", function($localStorage) {
       var self = {};
 
-      self.current = function(data) {
-        if (data === undefined) {
-          return $localStorage.auth || {};
-        }
-        $localStorage.auth = { token: data.token, account: data.account };
-      };
+      self.create = function(data) {
+        $localStorage.session = { token: data.token, account: data.account };
+      }
 
-      self.destroy = function() {
+      self.current = function(data) {
+        return $localStorage.session || {};
       };
 
       return self;
     })
-    .service("Auth", function(Session, Restangular) {
-      var self = {};
-      var resource = Restangular.service('account');
+    .service("Auth", function(Restangular, LocalSession) {
+      var session = Restangular.service('session');
+      var account = Restangular.service('account');
 
-      self.signUp = function(email, password) {
-        resource.post({ email: email, password: password })
-                .then(Session.current);
-      };
-      self.login = function(email, password) {
-      };
-      self.isLogged = function() {
-        return Session.current().token !== undefined;
-      };
       self.logout = function() {
+        LocalSession.destroy();
+      };
+
+      self.login = function(email, password) {
+        session.post({ email: email, password: password })
+               .then(LocalSession.create)
+      };
+
+      self.account = function() {
+        console.log(LocalSession.current());
+        LocalSession.current().account;
       };
 
       return self;

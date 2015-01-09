@@ -1,70 +1,36 @@
 (function() {
   "use strict";
 
-  var auth, session, http;
+  var auth, http;
   var mockStorage = {};
 
-  describe("login services", function() {
+  describe("authentication services", function() {
     beforeEach(module("segue.submission.login.service"));
     beforeEach(mockDep('$localStorage', 'ngStorage').toBe(mockStorage));
-    beforeEach(function() { delete mockStorage.auth; });
-    beforeEach(inject(function(_$httpBackend_, Auth, Session) {
+    beforeEach(function() { delete mockStorage.session; });
+    beforeEach(inject(function(_$httpBackend_, Auth) {
       auth = Auth;
-      session = Session;
       http = _$httpBackend_;
     }));
 
-    describe("loading & saving from storage", function() {
-      it("there is nothing in storage", function() {
-        expect(auth.isLogged()).toBe(false);
-      });
-
-      it("loads logged account from storage", function() {
-        mockStorage.auth = { token: 'token', account: 'account' };
-        expect(auth.isLogged()).toBe(true);
-        expect(session.current()).toBe(mockStorage.auth);
-      });
-
-      it("saves logged account to storage", function() {
-        session.current({ token: 'another token', account: 'another account' });
-        expect(mockStorage.auth.token).toBe('another token');
-        expect(mockStorage.auth.account).toBe('another account');
-      });
-    });
-
-    describe("sign up", function() {
-      var token = "le-token";
-      var account = "le-account";
+    describe("login", function() {
       var email = "email@example.com";
-      var password = "le-passsword";
+      var password = "password";
+      var role = "user";
+      var id = 123;
+      var token = "a token";
+      var account = { email: email, id: id, role: role };
+      var payload = { email: email, password: password };
+      var response = { token: token, account: account }
 
-      it("if account is successfully created, log the user", function() {
-        var payload = { email: email, password: password };
-        var response = { token: token, account: account };
-
-        http.expectPOST('http://localhost:5000/api/account', payload)
+      it("correct login, creates session", function() {
+        http.expectPOST('http://localhost:5000/api/session', payload)
             .respond(201, response);
 
-        auth.signUp(email, password);
+        auth.login(email, password);
         http.flush();
 
-        expect(auth.isLogged()).toBe(true);
-        expect(session.current().token).toBe(token);
-        expect(session.current().account).toBe(account);
-      });
-
-      it("if creation fails, do not log user", function() {
-        var payload = { email: email, password: password };
-        var response = { token: token, account: account };
-
-        http.expectPOST('http://localhost:5000/api/account', payload)
-            .respond(400, response);
-
-        auth.signUp(email, password);
-        http.flush();
-
-        expect(auth.isLogged()).toBe(false);
-        expect(session.current()).toEqual({})
+        expect(auth.account()).toEqual(account);
       });
     });
   });
