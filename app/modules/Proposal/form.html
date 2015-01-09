@@ -39,26 +39,22 @@
     <label>
       <span translate>língua</span>
     </label>
-    <div>
-      <input type="radio" ng-model="proposal.language" value="pt" />
-      <span translate>português</span>
-      <input type="radio" ng-model="proposal.language" value="en" />
-      <span translate>espanhol</span>
-      <input type="radio" ng-model="proposal.language" value="es" />
-      <span translate>inglês</span>
-    </div>
+    <span ng-repeat="lang in languages">
+      <input type="radio" id="lang_{{lang.abbr}}" value="{{ lang.abbr }}"
+             ng-model="proposal.language" />
+      <label for="lang_{{lang.abbr}}">{{ lang.name }}</label>
+    </span>
   </p>
 
   <p>
     <label>
       <span translate>nível da palestra</span>
     </label>
-    <div>
-      <input type="radio" ng-model="proposal.level" value="beginner" />
-      <span translate>iniciante</span>
-      <input type="radio" ng-model="proposal.level" value="advanced" />
-      <span translate>avançado</span>
-    </div>
+    <span ng-repeat="level in levels">
+      <input type="radio" id="level_{{level}}" value="{{ level }}"
+             ng-model="proposal.leveluage" />
+      <label for="level_{{level}}">{{ level }}</label>
+    </span>
   </p>
 
   <p class="centered">

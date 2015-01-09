@@ -22,8 +22,11 @@
 
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('NewProposalController', function($scope, $state, $localStorage, Proposals, ProposalBuilder, Validator) {
-      $scope.proposal = $localStorage.savedProposal || ProposalBuilder.faked();
+    .controller('NewProposalController', function($scope, $state, $localStorage, Proposals, ProposalBuilder, Validator, Config) {
+      $scope.languages = Config.PROPOSAL_LANGUAGES;
+      $scope.levels    = Config.PROPOSAL_LEVELS;
+
+      $scope.proposal  = $localStorage.savedProposal || ProposalBuilder.faked();
 
       $scope.$watch('proposal', function(newValue) {
         $localStorage.savedProposal = newValue;
