@@ -14,16 +14,20 @@
       http = _$httpBackend_;
     }));
 
-    describe("user already has auth token & account saved", function() {
-      var token = "old-token";
-      var account = "old-account";
+    describe("loading & saving from storage", function() {
       beforeEach(function() {
-        mockStorage.auth = { token: token, account: account };
+        mockStorage.auth = { token: 'token', account: 'account' };
       });
 
-      it("saved account is used for login", function() {
+      it("loads logged account from storage", function() {
         expect(auth.isLogged()).toBe(true);
         expect(session.current()).toBe(mockStorage.auth);
+      });
+
+      it("saves logged account to storage", function() {
+        session.current({ token: 'another token', account: 'another account' });
+        expect(mockStorage.auth.token).toBe('another token');
+        expect(mockStorage.auth.account).toBe('another account');
       });
     });
 
