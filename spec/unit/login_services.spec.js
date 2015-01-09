@@ -31,6 +31,20 @@
         expect(session.current().token).toBe(token);
         expect(session.current().account).toBe(account);
       });
+
+      it("if creation fails, do not log user", function() {
+        var payload = { email: email, password: password };
+        var response = { token: token, account: account };
+
+        http.expectPOST('http://localhost:5000/api/account', payload)
+            .respond(400, response);
+
+        auth.signUp(email, password);
+        http.flush();
+
+        expect(auth.isLogged()).toBe(false);
+        expect(session.current()).toEqual({})
+      });
     });
   });
 })();
