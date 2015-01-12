@@ -47,8 +47,10 @@
       };
 
       self.account = function() {
-        console.log(LocalSession.current());
-        LocalSession.current().account;
+        return LocalSession.current().account;
+      };
+      self.token = function() {
+        return LocalSession.current().token;
       };
 
       return self;

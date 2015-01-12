@@ -21,7 +21,7 @@
       var token = "a token";
       var account = { email: email, id: id, role: role };
       var payload = { email: email, password: password };
-      var response = { token: token, account: account }
+      var response = { token: token, account: account };
 
       it("correct login, creates session", function() {
         http.expectPOST('http://localhost:5000/api/session', payload)
@@ -30,7 +30,17 @@
         auth.login(email, password);
         http.flush();
 
+        expect(auth.token()).toEqual(token);
         expect(auth.account()).toEqual(account);
+      });
+      it("wrong login, no session", function() {
+        http.expectPOST('http://localhost:5000/api/session', payload)
+            .respond(403, {});
+
+        auth.login(email, password);
+        http.flush();
+
+        expect(auth.account()).toBe(undefined);
       });
     });
   });
