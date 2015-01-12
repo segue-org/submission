@@ -1,0 +1,28 @@
+1) creating an account / signing up
+
+<---- POST http://server/api/account
+      {
+        "email": "email@example.com",
+        "name": "Felipe Mobus",
+        "password": "hunter2",
+      }
+
+----> 201 OK Created (Location: http://server/api/account/<newId>)
+
+2) creating a session / logging in
+<----- POST http://server/api/session
+       {
+         "email": "email@example.com",
+         "password": "hunter2"
+       }
+
+-----> 200 OK Created
+       {
+         token: "a-long-ass-token",
+         account: {
+           "email": "email@example.com",
+           "name": "Felipe Mobus",
+           "password": "hunter2",
+         }
+       }
+
