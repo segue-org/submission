@@ -39,7 +39,6 @@
     })
     .service("Auth", function(Restangular, LocalSession) {
       var session = Restangular.service('session');
-      var account = Restangular.service('account');
 
       self.logout = function() {
         LocalSession.destroy();

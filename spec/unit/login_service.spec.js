@@ -56,7 +56,7 @@
       });
       it("wrong login, no session", function() {
         http.expectPOST('http://localhost:5000/api/session', payload)
-            .respond(403, {});
+            .respond(401, {});
 
         auth.login(email, password);
         http.flush();
