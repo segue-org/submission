@@ -25,10 +25,14 @@
 
       self.create = function(data) {
         $localStorage.session = { token: data.token, account: data.account };
-      }
+      };
 
       self.current = function(data) {
         return $localStorage.session || {};
+      };
+
+      self.destroy = function() {
+        delete $localStorage.session;
       };
 
       return self;
@@ -42,8 +46,8 @@
       };
 
       self.login = function(email, password) {
-        session.post({ email: email, password: password })
-               .then(LocalSession.create)
+        return session.post({ email: email, password: password })
+                      .then(LocalSession.create);
       };
 
       self.account = function() {
