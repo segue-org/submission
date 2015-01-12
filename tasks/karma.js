@@ -24,13 +24,14 @@
   }
 
   module.exports = function () {
-    // Note:  These must be in order:  Bower, project, mocks, test
-    var vendor = streams.javascripts.vendor();
-    var custom = streams.javascripts.custom();
-    var mocks  = gulp.src(['app/bower_components/angular-mocks/angular-mocks.js']);
-    var tests  = streams.javascripts.tests();
+    var vendor    = streams.javascripts.vendor();
+    var custom    = streams.javascripts.custom();
+    var mocks     = gulp.src(['app/bower_components/angular-mocks/angular-mocks.js']);
+    var templates = gulp.src(['dist/public/templates.js']);
+    var tests     = streams.javascripts.tests();
 
-    return series(vendor, custom, mocks, tests)
+    // Note:  These must be in order:  Bower, project, mocks, templates, test
+    return series(vendor, custom, mocks, templates, tests)
             .pipe(karma(config))
             .on('error', errorHandler);
   };

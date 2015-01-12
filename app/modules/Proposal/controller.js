@@ -7,14 +7,15 @@
 
       'segue.submission.libs',
       'segue.submission.proposal.controller',
-      'segue.submission.proposal.service'
+      'segue.submission.proposal.service',
+      'segue.submission.authenticate.service'
     ])
     .config(function($stateProvider) {
       $stateProvider
         .state('proposal', {
           url: '^/proposal',
           views: {
-            header: {                                   templateUrl: 'modules/common/nav.html'    },
+            header: {                                      templateUrl: 'modules/common/nav.html'    },
             main:   { controller: 'NewProposalController', templateUrl: 'modules/Proposal/form.html' }
           }
         });
@@ -22,7 +23,7 @@
 
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('NewProposalController', function($scope, $state, $localStorage, Proposals, ProposalBuilder, Validator, Config) {
+    .controller('NewProposalController', function($scope, $state, $localStorage, Auth, Proposals, ProposalBuilder, Validator, Config) {
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
 
@@ -38,7 +39,8 @@
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposal/new_proposal')
-                 .then(Proposals.post, setErrors);
+                 .then(Proposals.post)
+                 .catch(setErrors);
       };
 
     });

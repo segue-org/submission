@@ -15,7 +15,7 @@
 
 
   describe("authentication services", function() {
-    beforeEach(module("segue.submission.login.service"));
+    beforeEach(module("segue.submission.authenticate.service"));
     beforeEach(mockDep('$localStorage', 'ngStorage').toBe(mockStorage));
     beforeEach(function() { delete mockStorage.session; });
     beforeEach(inject(function(_$httpBackend_, Auth) {

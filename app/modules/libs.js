@@ -11,6 +11,7 @@
           $http.get('//localhost:5000/api/'+path+'.schema').then(function(response) {
             var validation = tv4.validateMultiple(data, response.data);
             if (validation.errors.length) {
+              console.log("rejecting");
               deferred.reject(validation.errors);
             }
             else {

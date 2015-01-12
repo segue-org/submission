@@ -1,0 +1,20 @@
+<h3 class="centered" translate>criar uma conta</h3>
+<form novalidate name="signup_form">
+  <input type="text" maxlength=30
+         placeholder="{{ 'e-mail' | translate }}"
+         required ng-model="email" />
+  <br/>
+  <input type="text" maxlength=30
+         placeholder="{{ 'nome' | translate }}"
+         required ng-model="name" />
+  <br/>
+  <input type="password"
+         placeholder="{{ 'senha' | translate }}"
+         ng-model="password" />
+
+  <br/>
+  <button ng-click="tryLogin()" translate>
+    criar!
+  </button>
+
+</form>

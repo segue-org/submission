@@ -2,7 +2,6 @@
   "use strict";
 
   var $scope;
-  var $httpBackend;
 
   var mockValidator = noopMock('validate');
   var mockService   = noopMock('post');
@@ -11,7 +10,7 @@
   var mockStorage   = {};
 
   function loadController() {
-    inject(function($controller, _$httpBackend_, $state) {
+    inject(function($controller, $state) {
       $controller('NewProposalController', {
         $scope: $scope, $state: $state,
         Proposals: mockService,
@@ -25,10 +24,12 @@
     beforeEach(module('ui.router'));
     beforeEach(module('segue.submission.proposal.controller'));
     beforeEach(module('segue.submission.proposal.service'));
+    beforeEach(loadQ);
 
     beforeEach(inject(function($rootScope) {
       $scope = $rootScope.$new();
     }));
+
 
 
     describe("there is a saved pending proposal", function() {
@@ -52,22 +53,24 @@
       beforeEach(loadController);
 
       it("valid proposals are posted to the service", inject(function(ProposalBuilder) {
-        spyOn(mockValidator,'validate').and.callFake(pipeArg().toPromise);
+        spyOn(mockValidator,'validate').and.returnValue(when(mockProposal));
         spyOn(mockService,'post');
 
         $scope.proposal = mockProposal;
         $scope.submit();
+        $scope.$apply();
 
         expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
         expect(mockService.post).toHaveBeenCalledWith(mockProposal);
       }));
 
       it("invalid proposals do not get posted to the service, and errors get in the scope", inject(function(ProposalBuilder) {
-        spyOn(mockValidator,'validate').and.callFake(pipe(mockErrors).toFailure);
+        spyOn(mockValidator,'validate').and.returnValue(fail(mockErrors));
         spyOn(mockService,'post');
 
         $scope.proposal = mockProposal;
         $scope.submit();
+        $scope.$apply();
 
         expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
         expect($scope.errors).toBe(mockErrors);

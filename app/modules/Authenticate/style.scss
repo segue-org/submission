@@ -1,0 +1,20 @@
+main.authenticate {
+  padding: 5rem;
+  section {
+    padding: 1rem;
+    width: 25rem;
+    float: left;
+    text-align: center;
+
+    &:nth-child(1) {
+      border-right: 1px solid black;
+    }
+
+    input, button {
+      font-size: x-large;
+      border: 1px solid gray;
+      margin: 1rem;
+      padding: 0.5rem;
+    }
+  }
+}

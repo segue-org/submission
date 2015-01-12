@@ -13,7 +13,7 @@
 
       'segue.submission.locale',
       'segue.submission.splash',
-      'segue.submission.login',
+      'segue.submission.authenticate',
       'segue.submission.proposal',
     ])
 

@@ -1,5 +1,12 @@
 var Q;
 
+function loadQ() {
+  // NOTE: this can only be run after all module() calls
+  return inject(function($q) {
+    Q = $q;
+  });
+}
+
 function mockDep(depName, modName) {
   return {
     toBe: function(mock) {
@@ -22,28 +29,12 @@ function noopMock() {
 }
 
 function when(v) {
-  return {
-    then: function(success, fail) {
-      success(v);
-    }
-  };
+  var deferred = Q.defer();
+  deferred.resolve(v);
+  return deferred.promise;
 }
 function fail(v) {
-  return {
-    then: function(success, fail) {
-      fail(v);
-    }
-  };
-}
-function pipe(value) {
-  return {
-    toPromise: function() { return when(value); },
-    toFailure: function() { return fail(value); }
-  };
-}
-function pipeArg() {
-  return {
-    toPromise: function(arg) { return when(arg); },
-    toFailure: function(arg) { return fail(arg); }
-  };
+  var deferred = Q.defer();
+  deferred.reject(v);
+  return deferred.promise;
 }

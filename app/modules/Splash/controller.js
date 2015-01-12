@@ -23,7 +23,7 @@
         $state.go('proposal');
       };
       $scope.login = function() {
-        $state.go('login');
+        $state.go('authenticate');
       };
     });
 })();

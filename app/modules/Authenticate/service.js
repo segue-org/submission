@@ -2,7 +2,7 @@
   "use strict";
 
   angular
-    .module("segue.submission.login.service", [
+    .module("segue.submission.authenticate.service", [
       'segue.submission',
       'http-auth-interceptor',
       'ngStorage',
