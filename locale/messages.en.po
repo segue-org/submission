@@ -12,46 +12,90 @@ msgstr ""
 "X-Generator: Poedit 1.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "(até 200 caracteres)"
 msgstr "(up to 200 characters)"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "(até 2000 caracteres)"
 msgstr "(up to 2000 characters)"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "(de 5 até 80 caracteres)"
 msgstr "(from 5 up to 80 characters)"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
-msgid "(somente o do autor principal)"
-msgstr "(main author's only)"
-
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "criar proposta"
 msgstr "create proposal"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "criar proposta de palestra"
 msgstr "create talk proposal"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "criar uma conta"
+msgstr "create an account"
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "criar!"
+msgstr "create!"
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "e-mail"
 msgstr "e-mail"
 
-#: /Users/fmobus/segue/submission/app/modules/views/nav.html
-msgid "envio de propostas de palestra"
-msgstr "talk proposal submission"
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "entrar na minha conta"
+msgstr "sign in to my account"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "entrar!"
+msgstr "sign in!"
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "esqueci minha senha!"
+msgstr "forgot my password!"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid "língua"
+msgstr "language"
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "nome"
+msgstr "name"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid "nível da palestra"
+msgstr "technical level"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "proposta completa"
 msgstr "complete proposal"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "repita a senha"
+msgstr "repeat password"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "resumo da proposta"
 msgstr "proposal summary"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "senha"
+msgstr "password"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "título da palestra"
 msgstr "title for this talk"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/wait.html
+msgid "verifique sua caixa de e-mail"
+msgstr "please verify your e-mail inbox"
+
+#~ msgid "(somente o do autor principal)"
+#~ msgstr "(main author's only)"
+
+#~ msgid "envio de propostas de palestra"
+#~ msgstr "talk proposal submission"

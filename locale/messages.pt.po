@@ -12,38 +12,84 @@ msgstr ""
 "X-Generator: Poedit 1.7\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "(até 200 caracteres)"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "(até 2000 caracteres)"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
-msgid "(somente o do autor principal)"
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid "(de 5 até 80 caracteres)"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid "criar proposta"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "criar proposta de palestra"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "criar uma conta"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "criar!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "e-mail"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/nav.html
-msgid "envio de propostas de palestra"
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "entrar na minha conta"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "entrar!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "esqueci minha senha!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid "língua"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "nome"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid "nível da palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "proposta completa"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "repita a senha"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "resumo da proposta"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/views/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+msgid "senha"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "título da palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/wait.html
+msgid "verifique sua caixa de e-mail"
 msgstr ""
