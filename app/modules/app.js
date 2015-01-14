@@ -11,6 +11,7 @@
       'ui.router.compat',
       'restangular',
 
+      'segue.submission.libs',
       'segue.submission.locale',
       'segue.submission.splash',
       'segue.submission.authenticate',
@@ -28,8 +29,8 @@
       };
     })
 
-    .config(function(RestangularProvider) {
-      RestangularProvider.setBaseUrl("http://localhost:5000/api/");
+    .config(function(RestangularProvider, Config) {
+      RestangularProvider.setBaseUrl(Config.API_HOST + Config.API_PATH);
     })
     .config(function($urlRouterProvider) {
       $urlRouterProvider.otherwise('/');
