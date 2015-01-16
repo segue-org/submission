@@ -1,20 +1,55 @@
 main.authenticate {
-  padding: 5rem;
-  section {
-    padding: 1rem;
-    width: 25rem;
-    float: left;
-    text-align: center;
+  position: relative;
+  max-width: 988px;
+  margin: 10px auto 0;
 
-    &:nth-child(1) {
-      border-right: 1px solid black;
+  fieldset {
+    position: absolute;
+    top: 36px;
+    color: #163f5e;
+    z-index: 2;
+    text-align: center;
+    padding: 0px;
+
+    border-radius: 20px;
+    background: white;
+
+    &:nth-child(1)  { left: 0; }
+    &:nth-child(2) { right: 0; }
+
+    legend {
+      font-size: large;
+      padding: 0.9rem;
+      border-radius: 20px;
     }
 
+    form {
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &.collapsed { height: 140px; width: 350px; }
+      &.normal    { height: 180px; width: 460px; }
+      &.expanded  { height: 280px; width: 590px; }
+
+      &.collapsed     .only-expanded { display: none;         opacity: 0; }
+      &.normal        .only-expanded { display: none;         opacity: 0; }
+      &.expanded      .only-expanded { display: inline-block; opacity: 0; }
+      &.expanded.done .only-expanded { display: inline-block; opacity: 1; }
+    }
     input, button {
+      width: 80%;
       font-size: x-large;
       border: 1px solid gray;
-      margin: 1rem;
+      margin: 0.6rem auto;
       padding: 0.5rem;
+
+      &.half { width: 38%; }
+    }
+    input + .forgot {
+      position: absolute;
+      font-size: small;
+      margin-top: 25px;
+      right: 70px;
     }
   }
 }
