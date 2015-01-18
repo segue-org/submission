@@ -1,8 +1,70 @@
+aside.proposal {
+  position: absolute;
+  float: left;
+  left: 0;
+  width: 20%;
+  height: 100%;
+
+  ul {
+    list-style: none;
+    padding: 0 0 0 1rem;
+  }
+
+  li.proposal {
+    position: relative;
+    margin: 1rem 0;
+
+    background: white;
+    color: gray;
+    border-bottom: 1px dashed gray;
+
+    &.current {
+      background: lightgray;
+      color: black;
+    }
+    &>* {
+      margin: 0rem;
+    }
+
+    h4 {
+      font-size: 80%;
+      font-weight: bold;
+    }
+    h5 {
+      font-size: 70%;
+      font-weight: normal;
+      color: gray;
+    }
+    h6 {
+      font-size: 60%;
+      font-weight: normal;
+      color: gray;
+    }
+    small {
+      display: block;
+      text-align: right;
+      font-size: 40%;
+      font-style: italic;
+      color: green;
+    }
+  }
+}
+
 main.proposal {
   margin: 0 auto;
   width: 45rem;
 
   form {
+    fieldset {
+      border: 0px;
+
+      legend {
+        padding-bottom: 5px;
+        border-bottom: 10px solid gray;
+        font-size: x-large;
+        text-align: left;
+      }
+    }
     p {
       margin-top: 1.5rem;
     }

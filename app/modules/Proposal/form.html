@@ -1,9 +1,7 @@
-<h3 class="centered" translate>criar proposta de palestra</h3>
-
-{{ errors }}
-
 <div ui-view="modal"></div>
 <form novalidate name="proposal_form">
+  <fieldset>
+    <legend>o que você está propondo?</legend>
   <p>
     <label>
       <span translate>título da palestra</span>
@@ -56,6 +54,19 @@
       <label for="level_{{level}}">{{ level }}</label>
     </span>
   </p>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>quem é você?</legend>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>quem mais vai ajudar?</legend>
+  </fieldset>
+
+
 
   <p class="centered">
     <button ng-click="submit()" translate>
