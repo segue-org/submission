@@ -3,7 +3,7 @@ main.authenticate {
   max-width: 988px;
   margin: 10px auto 0;
 
-  fieldset {
+  section {
     position: absolute;
     top: 36px;
     color: #163f5e;
@@ -17,7 +17,7 @@ main.authenticate {
     &:nth-child(1)  { left: 0; }
     &:nth-child(2) { right: 0; }
 
-    legend {
+    header {
       font-size: large;
       padding: 0.9rem;
       border-radius: 20px;

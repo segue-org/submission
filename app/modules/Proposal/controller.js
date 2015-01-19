@@ -8,7 +8,7 @@
       'segue.submission.libs',
       'segue.submission.proposal.controller',
       'segue.submission.proposal.service',
-      'segue.submission.authenticate.service'
+      'segue.submission.authenticate'
     ])
     .config(function($stateProvider) {
       $stateProvider
@@ -23,7 +23,8 @@
 
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('NewProposalController', function($scope, $state, $localStorage, Auth, Proposals, ProposalBuilder, Validator, Config) {
+    .controller('NewProposalController', function($scope, $state, $localStorage, LoginModal,
+                                                  Proposals, ProposalBuilder, Validator, Config) {
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
 
@@ -32,6 +33,8 @@
       $scope.$watch('proposal', function(newValue) {
         $localStorage.savedProposal = newValue;
       });
+
+      $scope.openLoginModal = LoginModal.open;
 
       function setErrors(errors) {
         $scope.errors = errors;

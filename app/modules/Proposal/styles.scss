@@ -1,55 +1,3 @@
-aside.proposal {
-  position: absolute;
-  float: left;
-  left: 0;
-  width: 20%;
-  height: 100%;
-
-  ul {
-    list-style: none;
-    padding: 0 0 0 1rem;
-  }
-
-  li.proposal {
-    position: relative;
-    margin: 1rem 0;
-
-    background: white;
-    color: gray;
-    border-bottom: 1px dashed gray;
-
-    &.current {
-      background: lightgray;
-      color: black;
-    }
-    &>* {
-      margin: 0rem;
-    }
-
-    h4 {
-      font-size: 80%;
-      font-weight: bold;
-    }
-    h5 {
-      font-size: 70%;
-      font-weight: normal;
-      color: gray;
-    }
-    h6 {
-      font-size: 60%;
-      font-weight: normal;
-      color: gray;
-    }
-    small {
-      display: block;
-      text-align: right;
-      font-size: 40%;
-      font-style: italic;
-      color: green;
-    }
-  }
-}
-
 main.proposal {
   margin: 0 auto;
   width: 45rem;
@@ -65,25 +13,39 @@ main.proposal {
         text-align: left;
       }
     }
+
+    fieldset.proposal {
+      p>label {
+        width: 10rem;
+      }
+      input[type=text], textarea {
+        width: 30rem;
+      }
+    }
+
     p {
       margin-top: 1.5rem;
-    }
-    p > label {
-      display: block;
-      float: left;
-      text-align: right;
-      margin-top: 0.3rem;
-      width: 10rem;
-      margin-right: 1em;
 
-      small {
+      &.info {
+        background: #5bc0de;
+        border: 1px solid #46b8da;
+        padding: 0.5rem;
+      }
+
+      &>label {
         display: block;
-        font-size: small;
-        color: gray;
+        float: left;
+        text-align: right;
+        margin-right: 1em;
+
+        small {
+          display: block;
+          font-size: small;
+          color: gray;
+        }
       }
     }
     input[type=text], textarea {
-      width: 30rem;
       border: 3px solid lightgray;
       border-radius: 5px;
       padding-right: 0.2rem;
@@ -132,5 +94,4 @@ main.proposal {
       padding: 1rem;
     }
   }
-
 }

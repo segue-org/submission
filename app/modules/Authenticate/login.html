@@ -1,14 +1,17 @@
-<legend translate>entrar na minha conta</legend>
-<form novalidate name="login_form" grab-focus style="max-height: 210px;">
-  <input type="text" maxlength=30
-         placeholder="{{ 'e-mail' | translate }}"
-         required ng-model="email" />
-  <input type="password"
-        placeholder="{{ 'senha' | translate }}"
-        ng-model="password" />
-  <a href="#" ng-click="forgot()" class="forgot" translate>esqueci minha senha!</a>
+<section class="login">
+  <header translate>entrar na minha conta</header>
+  <form novalidate name="login_form" grab-focus style="max-height: 210px;">
+    <input type="text" maxlength=30
+          placeholder="{{ 'e-mail' | translate }}"
+          autofocus
+          required ng-model="email" />
+    <input type="password"
+          placeholder="{{ 'senha' | translate }}"
+          ng-model="password" />
+    <a href="#" ng-click="forgot()" class="forgot" translate>esqueci minha senha!</a>
 
-  <button ng-click="tryLogin()" class="only-expanded" translate>
-    entrar!
-  </button>
-</form>
+    <button ng-click="tryLogin()" class="only-expanded" translate>
+      entrar!
+    </button>
+  </form>
+</section>

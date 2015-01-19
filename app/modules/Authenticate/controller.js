@@ -3,6 +3,8 @@
 
   angular
     .module("segue.submission.authenticate",[
+      "ngDialog",
+
       "segue.submission",
       "segue.submission.authenticate.controller"
     ])
@@ -49,5 +51,11 @@
 
     })
     .controller("SignUpController", function($scope) {
+    })
+    .factory('LoginModal', function (ngDialog) {
+      var config = { template: 'modules/Authenticate/login.html' };
+      return {
+        open: function() { ngDialog.open(config); }
+      };
     });
 })();

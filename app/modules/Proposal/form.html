@@ -1,6 +1,6 @@
 <div ui-view="modal"></div>
 <form novalidate name="proposal_form">
-  <fieldset>
+  <fieldset class="proposal">
     <legend>o que você está propondo?</legend>
   <p>
     <label>
@@ -59,16 +59,43 @@
 
   <fieldset>
     <legend>quem é você?</legend>
+    <p class="info">
+      não conseguimos detectar sua sessão neste computador...
+    </p>
+    <p>
+      <label translate>você já tem conta no sistema?</label>
+      <span>
+        <input type="radio" id="account_use_old" value="use_old"
+               ng-model="accountOption"
+               ng-click="openLoginModal()"/>
+        <label for="account_use_old">sim, já tenho conta</label>
+      </span>
+      <span>
+        <input type="radio" id="account_create_new" value="create_new" ng-model="accountOption" />
+        <label for="account_create_new">não, quero criar uma conta</label>
+      </span>
+    </p>
 
   </fieldset>
 
   <fieldset>
     <legend>quem mais vai ajudar?</legend>
+    <p>
+      <label translate>pretendo apresentar essa palestra...</label>
+      <span>
+        <input type="radio" id="authors_single" value="single" ng-model="authorsOption" />
+        <label for="authors_single">sozinho</label>
+      </span>
+      <span>
+        <input type="radio" id="authors_many" value="many" ng-model="authorsOption" />
+        <label for="authors_many">com ajuda de outras pessoas</label>
+      </span>
+    </p>
+
+
   </fieldset>
 
-
-
-  <p class="centered">
+  <p class="centered" ng-show="proposalIsSubmittable()">
     <button ng-click="submit()" translate>
       criar proposta
     </button>

@@ -1,20 +1,22 @@
-<legend translate>criar uma conta</legend>
-<form novalidate name="signup_form" grab-focus>
-  <input type="text" maxlength=30
-         placeholder="{{ 'nome' | translate }}"
-         required ng-model="name" />
-  <input type="text" maxlength=30
-         placeholder="{{ 'e-mail' | translate }}"
-         required ng-model="email" />
-  <input type="password" class="half only-expanded"
-         placeholder="{{ 'senha' | translate }}"
-         ng-model="password" />
+<section class="signup">
+  <header translate>criar uma conta</header>
+  <form novalidate name="signup_form" grab-focus>
+    <input type="text" maxlength=30
+          placeholder="{{ 'nome' | translate }}"
+          required ng-model="name" />
+    <input type="text" maxlength=30
+          placeholder="{{ 'e-mail' | translate }}"
+          required ng-model="email" />
+    <input type="password" class="half only-expanded"
+          placeholder="{{ 'senha' | translate }}"
+          ng-model="password" />
 
-  <input type="password" class="half only-expanded"
-         placeholder="{{ 'repita a senha' | translate }}"
-         ng-model="password_repeat" />
-  <button ng-click="tryLogin()" class="only-expanded" translate>
-    criar!
-  </button>
+    <input type="password" class="half only-expanded"
+          placeholder="{{ 'repita a senha' | translate }}"
+          ng-model="password_repeat" />
+    <button ng-click="tryLogin()" class="only-expanded" translate>
+      criar!
+    </button>
 
-</form>
+  </form>
+</section>
