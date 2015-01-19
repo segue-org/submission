@@ -52,10 +52,12 @@
     })
     .controller("SignUpController", function($scope) {
     })
-    .factory('LoginModal', function (ngDialog) {
-      var config = { template: 'modules/Authenticate/login.html' };
+    .factory('AuthModal', function (ngDialog) {
+      var loginConfig  = { controller: "LoginController",  template: 'modules/Authenticate/login.html' };
+      var signupConfig = { controller: "SignUpController", template: 'modules/Authenticate/signup.html' };
       return {
-        open: function() { ngDialog.open(config); }
+        login:  function() { ngDialog.open(loginConfig); },
+        signup: function() { ngDialog.open(signupConfig); }
       };
     });
 })();

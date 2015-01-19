@@ -23,7 +23,7 @@
 
   angular
     .module('segue.submission.proposal.controller', [])
-    .controller('NewProposalController', function($scope, $state, $localStorage, LoginModal,
+    .controller('NewProposalController', function($scope, $state, $localStorage, AuthModal,
                                                   Proposals, ProposalBuilder, Validator, Config) {
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
@@ -34,7 +34,8 @@
         $localStorage.savedProposal = newValue;
       });
 
-      $scope.openLoginModal = LoginModal.open;
+      $scope.openLoginModal  = AuthModal.login;
+      $scope.openSignUpModal = AuthModal.signup
 
       function setErrors(errors) {
         $scope.errors = errors;

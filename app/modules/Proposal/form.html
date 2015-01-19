@@ -71,7 +71,9 @@
         <label for="account_use_old">sim, já tenho conta</label>
       </span>
       <span>
-        <input type="radio" id="account_create_new" value="create_new" ng-model="accountOption" />
+        <input type="radio" id="account_create_new" value="create_new"
+               ng-model="accountOption"
+               ng-click="openSignUpModal()"/>
         <label for="account_create_new">não, quero criar uma conta</label>
       </span>
     </p>

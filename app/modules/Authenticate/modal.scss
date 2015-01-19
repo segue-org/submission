@@ -1,25 +1,27 @@
-.ngdialog-content .login {
-  section {
-    font-size: large;
-    padding: 0.9rem;
-    border-radius: 20px;
-  }
+.ngdialog-content {
+  .login, .signup {
+    section {
+      font-size: large;
+      padding: 0.9rem;
+      border-radius: 20px;
+    }
 
-  input, button {
-    width: 90%;
-    font-size: x-large;
-    border: 1px solid gray;
-    margin: 0.6rem auto;
-    padding: 0.5rem;
-  }
+    input, button {
+      width: 90%;
+      font-size: x-large;
+      border: 1px solid gray;
+      margin: 0.6rem auto;
+      padding: 0.5rem;
+    }
 
-  input + .forgot {
-    position: absolute;
-    font-size: small;
-    margin-top: 1.5em;
-    text-decoration: none;
-    right: 70px;
-  }
+    input + .forgot {
+      position: absolute;
+      font-size: small;
+      margin-top: 1.5em;
+      text-decoration: none;
+      right: 70px;
+    }
 
-  &.half { width: 38%; }
+    &.half { width: 38%; }
+  }
 }
