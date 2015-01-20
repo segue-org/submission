@@ -20,11 +20,13 @@
     .config(function ($httpProvider) {
       $httpProvider.interceptors.push('authTokenInterceptor');
     })
-    .service("LocalSession", function($localStorage) {
+    .service("LocalSession", function($localStorage, $rootScope) {
       var self = {};
 
       self.create = function(data) {
         $localStorage.session = { token: data.token, account: data.account };
+        $rootScope.$broadcast('auth:login');
+        return data.account;
       };
 
       self.current = function(data) {
@@ -33,6 +35,7 @@
 
       self.destroy = function() {
         delete $localStorage.session;
+        $rootScope.$broadcast('auth:logout');
       };
 
       return self;
@@ -45,6 +48,7 @@
       };
 
       self.login = function(email, password) {
+        LocalSession.destroy();
         return session.post({ email: email, password: password })
                       .then(LocalSession.create);
       };

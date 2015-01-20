@@ -44,9 +44,18 @@
         });
       };
     })
-    .controller("LoginController", function($scope, Auth) {
+    .controller("LoginController", function($scope, $state, Auth) {
+      function succeed(account) {
+        if ($scope.closeThisDialog) {
+          $scope.closeThisDialog();
+        }
+        else {
+          $state.go('splash');
+        }
+      }
       $scope.tryLogin = function() {
-        Auth.login($scope.email, $scope.password);
+        Auth.login($scope.email, $scope.password)
+            .then(succeed);
       };
 
     })

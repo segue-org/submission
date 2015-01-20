@@ -8,7 +8,8 @@
     <input type="password"
           placeholder="{{ 'senha' | translate }}"
           ng-model="password" />
-    <a href="#" ng-click="forgot()" class="forgot" translate>esqueci minha senha!</a>
+    <a href="#" class="forgot" translate
+       ng-click="forgot()" ng-hide="password">esqueci minha senha!</a>
 
     <button ng-click="tryLogin()" class="only-expanded" translate>
       entrar!
