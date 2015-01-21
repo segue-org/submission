@@ -9,6 +9,7 @@
       'templates',
       'ui.router',
       'ui.router.compat',
+      'ui.gravatar',
       'restangular',
 
       'segue.submission.libs',
@@ -34,6 +35,12 @@
     })
     .config(function($urlRouterProvider) {
       $urlRouterProvider.otherwise('/');
+    })
+    .config(function(gravatarServiceProvider) {
+      gravatarServiceProvider.defaults = {
+        'default': 'identicon',
+        'rating': 'pg'
+      };
     });
 
 })();

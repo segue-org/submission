@@ -1,0 +1,28 @@
+<fieldset>
+  <legend>quem é você?</legend>
+  <p class="info" ng-hide="account">
+    não conseguimos detectar sua sessão neste computador...
+  </p>
+  <p ng-hide="account">
+    <label translate>você já tem conta no sistema?</label>
+    <span>
+      <input type="radio" id="account_use_old" value="use_old"
+              ng-model="accountOption"
+              ng-click="openLoginModal()"/>
+      <label for="account_use_old">sim, já tenho conta</label>
+    </span>
+    <span>
+      <input type="radio" id="account_create_new" value="create_new"
+              ng-model="accountOption"
+              ng-click="openSignUpModal()"/>
+      <label for="account_create_new">não, quero criar uma conta</label>
+    </span>
+  </p>
+  <p class="success" ng-show="account">
+    você está logado como
+    <b>{{ account.name }}</b>
+    <img gravatar-src="account.email" gravatar-size="100">
+    ({{ account.email }})
+  </p>
+
+</fieldset>

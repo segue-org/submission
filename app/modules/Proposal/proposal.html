@@ -1,0 +1,57 @@
+<fieldset class="proposal">
+  <legend>o que você está propondo?</legend>
+<p>
+  <label>
+    <span translate>título da palestra</span>
+    <small translate>(de 5 até 80 caracteres)</small>
+  </label>
+  <input type="text" required
+        minlength="5" maxlength="80"
+        ng-model="proposal.title"/>
+  <i class="fa fa-check"></i>
+</p>
+
+<p>
+  <label>
+    <span translate>resumo da proposta</span>
+    <small translate>(até 200 caracteres)</small>
+  </label>
+  <textarea required minlength="5" maxlength="200"
+            ng-model="proposal.summary"></textarea>
+  <i class="fa fa-check"></i>
+</p>
+
+<p>
+  <label>
+    <span translate>proposta completa</span>
+    <small translate>(até 2000 caracteres)</small>
+  </label>
+  <textarea required minlength="5" maxlength="2000"
+            ng-model="proposal.full" class="large"></textarea>
+  <i class="fa fa-check"></i>
+</p>
+
+<p>
+  <label>
+    <span translate>língua</span>
+  </label>
+  <span ng-repeat="lang in languages">
+    <input type="radio" id="lang_{{lang.abbr}}" value="{{ lang.abbr }}"
+            ng-model="proposal.language" />
+    <label for="lang_{{lang.abbr}}">{{ lang.name }}</label>
+  </span>
+</p>
+
+<p>
+  <label>
+    <span translate>nível da palestra</span>
+  </label>
+  <span ng-repeat="level in levels">
+    <input type="radio" id="level_{{level}}" value="{{ level }}"
+            ng-model="proposal.level" />
+    <label for="level_{{level}}">{{ level }}</label>
+  </span>
+</p>
+
+</fieldset>
+
