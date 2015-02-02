@@ -55,6 +55,11 @@
       .pipe(gulp.dest(paths.dist));
   });
 
+  gulp.task('build:statics:img', function() {
+    return gulp.src(paths.images)
+               .pipe(gulp.dest(paths.dist + '/images/'));
+  });
+
   gulp.task('icons', function() {
     return gulp.src(paths.fonts)
                .pipe(gulp.dest(paths.dist + '/public/font-awesome/fonts'));
@@ -75,6 +80,7 @@
       'icons',
       'translations',
       'build:statics',
+      'build:statics:img',
       'build:inject:index',
       'build:javascripts',
       'build:stylesheets',

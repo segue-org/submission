@@ -1,0 +1,32 @@
+main .logged-as {
+  border: 1px solid green;
+  background-color: lightgreen;
+  width: 100%;
+  max-width: 25rem;
+  margin: 0;
+  padding: 0;
+  height: 70px;
+  img { float: left; margin-right: 10px;}
+  .email::before { content: '<'; }
+  .email::after  { content: '>'; }
+  .logout-icon { display: none; }
+}
+
+aside .logged-as {
+  margin: 0;
+  padding: 0;
+  border-radius: 30px;
+  .you-are, .name { display: none; }
+  .logout-text { display: none; }
+  .logout-icon { float: right; cursor: pointer;}
+  .email {
+    float: left;
+  }
+  img {
+    float: left;
+    border-radius: 30px;
+    width: 30px;
+    margin-top: 8px;
+    margin-right: 3px;
+  }
+}

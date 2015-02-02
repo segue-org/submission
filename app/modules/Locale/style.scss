@@ -1,7 +1,7 @@
 locale-selector {
-  float: right;
-  margin-top: -0.5rem;
-  margin-right: 1rem;
+  position: absolute;
+  top: 5px;
+  left: 50rem;
 
   div {
     float: left;
@@ -10,13 +10,13 @@ locale-selector {
       display: none;
     }
     input[type=radio] + label {
-      background: white;
-      border: 1px solid lightgray;
-      padding: 0.5rem;
+      img { width: 32px; }
+      span { display: none; }
     }
     input[type=radio]:checked + label {
-      background: lightgray;
-      box-shadow: inset 0 0 8px white;
+      img {
+        border-bottom: 1px solid gray;
+      }
     }
   }
 }

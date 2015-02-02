@@ -34,6 +34,7 @@
         $localStorage.savedProposal = newValue;
       });
 
+      $scope.authorsOption = '';
       $scope.openLoginModal  = AuthModal.login;
       $scope.openSignUpModal = AuthModal.signup;
 
@@ -41,9 +42,7 @@
         $scope.errors = errors;
       }
 
-      $scope.account = Auth.account();
-      $scope.$on('auth:login',  function() { $scope.account = Auth.account(); });
-      $scope.$on('auth:logout', function() { $scope.account = Auth.account(); });
+      $scope.account = Auth.glue($scope, 'account');
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposal/new_proposal')

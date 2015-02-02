@@ -3,6 +3,7 @@
          ng-click="Locale.selectLanguage(lang.abbr)"
          ng-checked="lang.abbr == Locale.currentLanguage"/>
   <label for="locale.language.{{lang.abbr}}">
-    {{ lang.full }}
+    <img ng-src="/images/{{lang.abbr}}.png"/>
+    <span>{{ lang.full }}</span>
   </label>
 </div>

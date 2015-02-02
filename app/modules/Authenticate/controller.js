@@ -23,28 +23,10 @@
 
   angular
     .module("segue.submission.authenticate.controller", [
+      "segue.submission.authenticate.directive",
       "segue.submission.authenticate.service",
     ])
-    .directive("grabFocus", function($rootScope) {
-      return function(scope, element, attrs) {
-        element.addClass("normal");
-        element.find("*").on("focus", function() {
-          element.removeClass("normal");
-          element.removeClass("collapsed");
-          element.addClass("expanded");
-          $rootScope.$broadcast("collapse-others", scope.$id);
-          element.one("transitionend", function() { element.addClass("done"); });
-        });
-        scope.$on("collapse-others", function(event, expandedId) {
-          if (expandedId == scope.$id) { return; }
-          element.removeClass("normal");
-          element.removeClass("expanded");
-          element.removeClass("done");
-          element.addClass("collapsed");
-        });
-      };
-    })
-    .controller("LoginController", function($scope, $state, Auth) {
+   .controller("LoginController", function($scope, $state, Auth) {
       function succeed(account) {
         if ($scope.closeThisDialog) {
           $scope.closeThisDialog();
@@ -65,8 +47,8 @@
       var loginConfig  = { controller: "LoginController",  template: 'modules/Authenticate/login.html' };
       var signupConfig = { controller: "SignUpController", template: 'modules/Authenticate/signup.html' };
       return {
-        login:  function() { ngDialog.open(loginConfig); },
-        signup: function() { ngDialog.open(signupConfig); }
+        login:  function() { ngDialog.open(loginConfig);  return true; },
+        signup: function() { ngDialog.open(signupConfig); return true; }
       };
     });
 })();

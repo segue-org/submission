@@ -25,7 +25,7 @@
 
       self.create = function(data) {
         $localStorage.session = { token: data.token, account: data.account };
-        $rootScope.$broadcast('auth:login');
+        $rootScope.$broadcast('auth:changed', data.account);
         return data.account;
       };
 
@@ -35,12 +35,12 @@
 
       self.destroy = function() {
         delete $localStorage.session;
-        $rootScope.$broadcast('auth:logout');
+        $rootScope.$broadcast('auth:changed', null);
       };
 
       return self;
     })
-    .service("Auth", function(Restangular, LocalSession) {
+    .service("Auth", function(Restangular, LocalSession, $rootScope) {
       var session = Restangular.service('session');
 
       self.logout = function() {
@@ -58,6 +58,11 @@
       };
       self.token = function() {
         return LocalSession.current().token;
+      };
+
+      self.glue = function(target, name) {
+        $rootScope.$on('auth:changed', function(_,d) { target[name] = d; });
+        return self.account();
       };
 
       return self;
