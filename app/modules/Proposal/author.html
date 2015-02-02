@@ -1,6 +1,6 @@
-<fieldset class="author">
+<fieldset class="author" ng-controller="NewProposalAuthorController">
   <legend translate>quem é você?</legend>
-  <p class="not-logged info" ng-hide="account" translate>
+  <p class="not-logged info" ng-hide="account || accountOption" translate>
     não conseguimos detectar sua sessão neste computador...
   </p>
   <p ng-hide="account">
@@ -12,7 +12,7 @@
     </span>
     <span>
       <input type="radio" id="account_create_new" value="create"
-             ng-model="accountOption" ng-click="enablePersonForm()"/>
+             ng-model="accountOption" ng-click="focusName()"/>
       <label for="account_create_new">não, quero criar uma conta</label>
     </span>
   </p>
@@ -24,7 +24,7 @@
         <span translate>nome</span>
         <small translate>(de 5 até 80 caracteres)</small>
       </label>
-      <input type="text" required autofocus
+      <input type="text" required focusable
             minlength="5" maxlength="80"
             ng-model="author.name"/>
       <i class="fa fa-check"></i>

@@ -3,6 +3,7 @@
 
   angular
     .module('segue.submission.proposal',[
+      'segue.submission.directives',
       'segue.submission.libs',
       'segue.submission.proposal.controller',
       'segue.submission.proposal.service',
@@ -24,10 +25,12 @@
     });
 
   angular
-    .module('segue.submission.proposal.controller', [])
-    .controller('NewProposalController', function($scope, $state, AuthModal, Auth,
-                                                  Proposals, Validator, Config,
+    .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
+    .controller('NewProposalController', function($scope, $state, Config,
+                                                  Proposals, Validator, Auth, focusOn,
                                                   currentProposal, userLocation) {
+      focusOn('proposal.title');
+
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
 
@@ -37,8 +40,6 @@
       $scope.userLocation = userLocation;
 
       $scope.authorsOption = '';
-      $scope.openLoginModal  = AuthModal.login;
-      $scope.openSignUpModal = AuthModal.signup;
 
       function setErrors(errors) {
         $scope.errors = errors;
@@ -51,6 +52,14 @@
                  .then(Proposals.post)
                  .catch(setErrors);
       };
+
+    })
+    .controller('NewProposalAuthorController', function($scope, AuthModal, focusOn) {
+      $scope.author = {};
+
+      $scope.openLoginModal = AuthModal.login;
+
+      $scope.focusName = _.partial(focusOn, 'author.name');
 
     });
 })();

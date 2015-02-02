@@ -3,11 +3,10 @@
   <form novalidate name="login_form" autofocus grab-focus style="max-height: 210px;">
     <input type="text" maxlength=30
           placeholder="{{ 'e-mail' | translate }}"
-          autofocus
-          required ng-model="email" />
+          focusable required ng-model="login.email" />
     <input type="password"
           placeholder="{{ 'senha' | translate }}"
-          ng-model="password" />
+          ng-model="login.password" />
     <a href="#" class="forgot" translate
        ng-click="forgot()" ng-hide="password">esqueci minha senha!</a>
 

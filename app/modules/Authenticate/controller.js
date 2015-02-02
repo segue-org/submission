@@ -23,10 +23,13 @@
 
   angular
     .module("segue.submission.authenticate.controller", [
+      "segue.submission.directives",
       "segue.submission.authenticate.directive",
       "segue.submission.authenticate.service",
     ])
-   .controller("LoginController", function($scope, $state, Auth) {
+    .controller("LoginController", function($scope, $state, Auth, focusOn) {
+      $scope.login = {};
+
       function succeed(account) {
         if ($scope.closeThisDialog) {
           $scope.closeThisDialog();
@@ -36,10 +39,10 @@
         }
       }
       $scope.tryLogin = function() {
-        Auth.login($scope.email, $scope.password)
+        Auth.login($scope.login.email, $scope.login.password)
             .then(succeed);
       };
-
+      focusOn('login.email', 400);
     })
     .controller("SignUpController", function($scope) {
     })
