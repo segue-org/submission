@@ -5,21 +5,19 @@
     .module('segue.submission.proposal.service',[
       'segue.submission',
       'restangular',
+      'ngStorage'
     ])
-    .factory('Proposals', function(Restangular) {
-      return Restangular.service('proposal');
-    })
-    .service('ProposalBuilder', function() {
-      this.empty = function() { return {}; };
-
-      this.faked = function() {
-        return {
-          "title": "one talk",
-          "summary": "one summary",
-          "full": "one full",
-          "level": "beginner",
-          "language": "pt"
-        };
+    .factory('Proposals', function(Restangular, $localStorage) {
+      var extensions = {};
+      extensions.current = function() {
+        return $localStorage.savedProposal;
       };
+      extensions.localSave = function(value) {
+        $localStorage.savedProposal = value;
+      };
+
+      var service = Restangular.service('proposal');
+
+      return _.extend(service, extensions);
     });
 })();

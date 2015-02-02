@@ -5,6 +5,7 @@
 
   var mockValidator = noopMock('validate');
   var mockService   = noopMock('post');
+  var mockUserLocation = { city: 'Porto Alegre' };
   var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
   var mockStorage   = {};
@@ -14,7 +15,9 @@
       $controller('NewProposalController', {
         $scope: $scope, $state: $state,
         Proposals: mockService,
-        Validator: mockValidator
+        Validator: mockValidator,
+        currentProposal: mockProposal,
+        userLocation: mockUserLocation,
       });
     });
   }
@@ -29,7 +32,6 @@
     beforeEach(inject(function($rootScope) {
       $scope = $rootScope.$new();
     }));
-
 
 
     describe("there is a saved pending proposal", function() {
@@ -52,7 +54,7 @@
     describe("submitting a new proposal", function() {
       beforeEach(loadController);
 
-      it("valid proposals are posted to the service", inject(function(ProposalBuilder) {
+      it("valid proposals are posted to the service", function() {
         spyOn(mockValidator,'validate').and.returnValue(when(mockProposal));
         spyOn(mockService,'post');
 
@@ -62,9 +64,9 @@
 
         expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
         expect(mockService.post).toHaveBeenCalledWith(mockProposal);
-      }));
+      });
 
-      it("invalid proposals do not get posted to the service, and errors get in the scope", inject(function(ProposalBuilder) {
+      it("invalid proposals do not get posted to the service, and errors get in the scope", function() {
         spyOn(mockValidator,'validate').and.returnValue(fail(mockErrors));
         spyOn(mockService,'post');
 
@@ -75,7 +77,7 @@
         expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
         expect($scope.errors).toBe(mockErrors);
         expect(mockService.post).not.toHaveBeenCalled();
-      }));
+      });
     });
   });
 })();
