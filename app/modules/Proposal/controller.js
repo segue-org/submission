@@ -17,6 +17,11 @@
           views: {
             header: {                                      templateUrl: 'modules/common/nav.html'    },
             main:   { controller: 'NewProposalController', templateUrl: 'modules/Proposal/form.html' }
+          },
+          resolve: {
+            userLocation: function(UserLocation) {
+              return UserLocation.get();
+            }
           }
         });
     });
@@ -24,7 +29,8 @@
   angular
     .module('segue.submission.proposal.controller', [])
     .controller('NewProposalController', function($scope, $state, $localStorage, AuthModal, Auth,
-                                                  Proposals, ProposalBuilder, Validator, Config) {
+                                                  Proposals, ProposalBuilder, Validator, Config,
+                                                  userLocation) {
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
 
@@ -33,6 +39,7 @@
       $scope.$watch('proposal', function(newValue) {
         $localStorage.savedProposal = newValue;
       });
+      $scope.userLocation = userLocation;
 
       $scope.authorsOption = '';
       $scope.openLoginModal  = AuthModal.login;

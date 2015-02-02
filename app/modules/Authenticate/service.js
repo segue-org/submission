@@ -8,9 +8,10 @@
       'ngStorage',
       'restangular'
     ])
-    .factory('authTokenInterceptor', function($window, LocalSession) {
+    .factory('authTokenInterceptor', function($window, Config, LocalSession) {
       return {
         request: function (config) {
+          if (!config.url.match(Config.API_HOST)) { return config; }
           config.headers = config.headers || {};
           config.headers.Authorization = 'Bearer '+ LocalSession.current().token;
           return config;

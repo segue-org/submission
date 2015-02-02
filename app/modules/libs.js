@@ -21,6 +21,18 @@
           return deferred.promise;
         }
       };
+    })
+    .service('UserLocation', function(Config, $http, $q) {
+      return {
+        get: function(ip) {
+          var deferred = $q.defer();
+          var url = Config.GEOIP_API + "/" + (ip || '');
+          $http.get(url).then(function(response) {
+            deferred.resolve(response.data);
+          });
+          return deferred.promise;
+        }
+      };
     });
 
 })();
