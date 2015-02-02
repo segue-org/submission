@@ -4,24 +4,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "(até 200 caracteres)"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "(até 2000 caracteres)"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "(de 5 até 80 caracteres)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "(inclua código de área)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "(ou qualquer outra instituição)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "(será necessário para login)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "cidade"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
+msgid "com ajuda de outras pessoas"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "criar proposta"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
-msgid "criar proposta de palestra"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
@@ -37,6 +54,14 @@ msgstr ""
 msgid "e-mail"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "email"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "empresa / universidade"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "entrar na minha conta"
 msgstr ""
@@ -49,28 +74,57 @@ msgstr ""
 msgid "esqueci minha senha!"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "língua"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "mini-currículo"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
 msgid "nome"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "não conseguimos detectar sua sessão neste computador..."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "nível da palestra"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "país"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
+msgid "pretendo apresentar essa palestra..."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "proposta completa"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
+msgid "quem mais vai ajudar?"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "quem é você?"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "repita a senha"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "resumo da proposta"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/logged-as.html
+msgid "sair"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
@@ -78,10 +132,26 @@ msgstr ""
 msgid "senha"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
+msgid "sozinho"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "telefone"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "título da palestra"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/wait.html
 msgid "verifique sua caixa de e-mail"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/logged-as.html
+msgid "você está logado como"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "você já tem conta no sistema?"
 msgstr ""
