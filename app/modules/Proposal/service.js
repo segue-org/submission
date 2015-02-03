@@ -15,6 +15,9 @@
       extensions.localSave = function(value) {
         $localStorage.savedProposal = value;
       };
+      extensions.localForget = function() {
+        $localStorage.savedProposal = {};
+      };
 
       var service = Restangular.service('proposal');
 

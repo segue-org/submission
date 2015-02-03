@@ -14,19 +14,25 @@
 
       'segue.submission.libs',
       'segue.submission.locale',
+      'segue.submission.home',
       'segue.submission.splash',
       'segue.submission.authenticate',
       'segue.submission.proposal',
     ])
 
-    .controller('SubmissionController', function($scope, $state) {
+    .controller('SubmissionController', function($scope, $state, Auth) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
       });
 
       $scope.home = function() {
-        $state.go('splash');
+        if (Auth.account()) {
+          $state.go('home');
+        }
+        else {
+          $state.go('splash');
+        }
       };
     })
 

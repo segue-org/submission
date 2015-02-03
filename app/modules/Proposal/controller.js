@@ -50,6 +50,8 @@
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposal/new_proposal')
                  .then(Proposals.post)
+                 .then(Proposals.localForget)
+                 .then(_.partial($state.go, 'home'))
                  .catch(setErrors);
       };
 
