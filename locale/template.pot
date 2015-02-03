@@ -91,8 +91,16 @@ msgstr ""
 msgid "não conseguimos detectar sua sessão neste computador..."
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "não, quero criar uma conta"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "nível da palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "o que você está propondo?"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
@@ -130,6 +138,10 @@ msgstr ""
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "senha"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "sim, já tenho conta"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html

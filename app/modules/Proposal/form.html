@@ -4,7 +4,7 @@
   <ng-include src="'modules/Proposal/author.html'"></ng-include>
   <ng-include src="'modules/Proposal/coauthors.html'"></ng-include>
 
-  <p class="centered action">
+  <p class="centered action" ng-show="account">
     <button ng-click="submit()" translate>
       criar proposta
     </button>

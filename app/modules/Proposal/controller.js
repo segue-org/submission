@@ -39,7 +39,7 @@
 
       $scope.userLocation = userLocation;
 
-      $scope.authorsOption = '';
+      $scope.authorsOption = null;
 
       function setErrors(errors) {
         $scope.errors = errors;

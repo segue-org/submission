@@ -99,9 +99,17 @@ msgstr "name"
 msgid "não conseguimos detectar sua sessão neste computador..."
 msgstr "we could not detect a session on your computer..."
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "não, quero criar uma conta"
+msgstr "no, I want to create an account"
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "nível da palestra"
 msgstr "technical level"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "o que você está propondo?"
+msgstr "what do you want to talk about?"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
 msgid "país"
@@ -139,6 +147,10 @@ msgstr "log out"
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "senha"
 msgstr "password"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+msgid "sim, já tenho conta"
+msgstr "yes, I already have an account"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "sozinho"
