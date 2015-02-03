@@ -35,7 +35,7 @@
           $scope.closeThisDialog();
         }
         else {
-          $state.go('splash');
+          $scope.home();
         }
       }
       $scope.tryLogin = function() {
