@@ -62,7 +62,7 @@
         $scope.submit();
         $scope.$apply();
 
-        expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
+        expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposals/new_proposal');
         expect(mockService.post).toHaveBeenCalledWith(mockProposal);
       });
 
@@ -74,7 +74,7 @@
         $scope.submit();
         $scope.$apply();
 
-        expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposal/new_proposal');
+        expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposals/new_proposal');
         expect($scope.errors).toBe(mockErrors);
         expect(mockService.post).not.toHaveBeenCalled();
       });

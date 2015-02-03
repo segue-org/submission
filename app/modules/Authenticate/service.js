@@ -42,7 +42,7 @@
       return self;
     })
     .service("Auth", function(Restangular, LocalSession, $rootScope) {
-      var session = Restangular.service('session');
+      var session = Restangular.service('sessions');
 
       self.logout = function() {
         LocalSession.destroy();

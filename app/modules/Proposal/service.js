@@ -19,7 +19,7 @@
         $localStorage.savedProposal = {};
       };
 
-      var service = Restangular.service('proposal');
+      var service = Restangular.service('proposals');
 
       return _.extend(service, extensions);
     });

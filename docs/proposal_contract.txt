@@ -1,7 +1,7 @@
 
 1) creating a talk proposal
 
-<---- POST http://server/api/proposal
+<---- POST http://server/api/proposals
       {
         "title": "a talk proposal",
         "summary": "a summary",
@@ -10,12 +10,12 @@
         "owner": "owner@email.com"
     }
 
-----> 201 OK Created (Location: http://server/api/proposal/<newId>)
+----> 201 OK Created (Location: http://server/api/proposals/<newId>)
 ----> confirmation message is sent to owner's e-mail
 
 
 2) reading a talk proposal
-<---- GET http://server/api/proposal/<id>
+<---- GET http://server/api/proposals/<id>
 ----> {
         "resource": {
           "title": "a talk proposal",
@@ -27,7 +27,7 @@
       }
 
 3) confirming a talk proposal thru e-mail
-<---- POST http://server/api/proposal/<id>/confirm/<long-ass-hash>
+<---- POST http://server/api/proposals/<id>/confirm/<long-ass-hash>
 ----> 200 OK Confirmed
 
 4) creating author personal data/biography
@@ -54,12 +54,12 @@
       }
 
 6) inviting another author to the proposal
-<---- POST http://server/api/proposal/<id>/invite
+<---- POST http://server/api/proposals/<id>/invite
       {
         "name": "Daniel Wolff",
         "email": "some@email.com"
       }
------> 201 OK Created (Location: http://server/api/proposal/<id>/invite/<newId>)
+-----> 201 OK Created (Location: http://server/api/proposals/<id>/invite/<newId>)
 -----> Invitation e-mail is sent
 
 7) accepting invitation as co-author
@@ -67,7 +67,7 @@
 -----> 200 OK Confirmed.
 
 8) listing all invites of a proposal
-<----- GET http://server/api/proposal/<id>/invite
+<----- GET http://server/api/proposals/<id>/invite
 -----> {
          items: [
            { "name": "Daniel Wolff",  "email": "some@email.com,  "status": "accepted" },
@@ -76,7 +76,7 @@
        }
 
 9) how a full proposal object could look like
-<----- GET http://server/api/proposal/<id>
+<----- GET http://server/api/proposals/<id>
 ----->
 
 {
@@ -89,7 +89,7 @@
     "owner": "owner@email.com"
   }
   "links": [
-    { "rel": "authors", "href": "/api/proposal/123/authors" }
-    { "rel": "invites", "href": "/api/proposal/123/invites" }
+    { "rel": "authors", "href": "/api/proposals/123/authors" }
+    { "rel": "invites", "href": "/api/proposals/123/invites" }
   ]
 }
