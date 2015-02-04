@@ -12,7 +12,7 @@
       var extensions = {};
 
       extensions.current = function() {
-        return $localStorage.savedProposal;
+        return $localStorage.savedProposal || {};
       };
       extensions.localSave = function(value) {
         $localStorage.savedProposal = value;

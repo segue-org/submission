@@ -26,9 +26,9 @@
   angular
     .module('segue.submission.home.controller', [])
     .controller('HomeController', function($scope, $state, myProposals, currentProposal, account) {
-      $scope.myProposals     = myProposals;
-      $scope.currentProposal = currentProposal;
       $scope.account         = account;
+      $scope.myProposals     = myProposals;
+      $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
 
       $scope.$on('auth:changed', function(newAccount) {
         $scope.home();

@@ -35,7 +35,7 @@
       $scope.levels    = Config.PROPOSAL_LEVELS;
 
       $scope.proposal  = currentProposal;
-      $scope.$watch('proposal', Proposals.localSave);
+      $scope.$watchCollection('proposal', Proposals.localSave);
 
       $scope.userLocation = userLocation;
 
