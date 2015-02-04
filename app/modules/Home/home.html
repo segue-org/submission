@@ -1,12 +1,19 @@
-<fieldset ng-show="proposals" class="proposals">
+<fieldset class="proposals">
   <legend>
     minhas propostas de palestra
   </legend>
   <ul>
-    <li ng-repeat="proposal in proposals">
-      <div class="icons">
-        <button>editar</button>
-      </div>
+   <li class="new" ng-hide="currentProposal" ui-sref="new-proposal">
+      <i class="fa fa-plus"></i>
+      <span translate>criar nova proposta de palestra</span>
+    </li>
+    <li class="unsaved" ng-show="currentProposal" ui-sref="new-proposal">
+      <span class="title">{{ currentProposal.title }}</span>
+      <span class="authors"><b>{{ account.name }}</b>{{ currentProposal.coauthors }}</span>
+      <span class="track">Desenvolvimento de Jogos</span>
+      <span class="when" translate>proposta ainda não enviada!</span>
+    </li>
+    <li ng-repeat="proposal in myProposals">
       <span class="title">{{ proposal.title }}</span>
       <span class="authors"><b>{{ proposal.owner.name }}</b>{{ proposal.coauthors }}</span>
       <span class="track">Desenvolvimento de Jogos</span>

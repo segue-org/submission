@@ -3,6 +3,7 @@
 
   angular
     .module('segue.submission.home', [
+      'segue.submission.authenticate.service',
       'segue.submission.proposal.service',
       'segue.submission.home.controller'
     ])
@@ -15,14 +16,19 @@
             main:   { controller: 'HomeController', templateUrl: 'modules/Home/home.html'  }
           },
           resolve: {
-            proposals: function(Proposals) { return Proposals.getOwnedByAccount(); }
+            myProposals:     function(Proposals) { return Proposals.getOwnedByAccount(); },
+            currentProposal: function(Proposals) { return Proposals.current(); },
+            account:         function(Auth)      { return Auth.account(); }
+
           }
         });
 
     });
   angular
     .module('segue.submission.home.controller', [])
-    .controller('HomeController', function($scope, $state, proposals) {
-      $scope.proposals = proposals;
+    .controller('HomeController', function($scope, $state, myProposals, currentProposal, account) {
+      $scope.myProposals     = myProposals;
+      $scope.currentProposal = currentProposal;
+      $scope.account         = account;
     });
 })();

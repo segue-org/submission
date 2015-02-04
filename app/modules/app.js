@@ -34,6 +34,8 @@
           $state.go('splash');
         }
       };
+
+      $scope.home();
     })
 
     .config(function(RestangularProvider, Config) {

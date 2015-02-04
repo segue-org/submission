@@ -18,13 +18,10 @@ main.home {
       &:nth-child(even) { background: #DDD; }
 
       >* { display: block; padding: 3px;}
-
-      .icons {
-        position: absolute;
-        right: 0.1rem;
-        top: 10px;
-        font-size: large;
+      &:hover {
+        outline: 3px solid lightblue;
       }
+
       .title {
         font-size: x-large;
         width: 90%;
@@ -40,6 +37,11 @@ main.home {
         width: 40%;
         float: left;
         font-size: 70%;
+      }
+      &.unsaved .when {
+        color: orchid;
+        &::before { content: '****'; }
+        &::after  { content: '****'; }
       }
       .track {
         color: green;

@@ -16,14 +16,9 @@
         });
 
     });
+
   angular
     .module('segue.submission.splash.controller', [])
     .controller('SplashController', function($scope, $state) {
-      $scope.propose = function() {
-        $state.go('proposal');
-      };
-      $scope.login = function() {
-        $state.go('authenticate');
-      };
     });
 })();
