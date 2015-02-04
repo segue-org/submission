@@ -4,7 +4,7 @@
   var series = require('stream-series');
   var karma = require('gulp-karma');
 
-  var streams = require('./support').streams;
+  var streams = require('./streams');
 
   var karmaPort = 9876;
 

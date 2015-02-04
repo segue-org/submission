@@ -2,8 +2,10 @@
   'use strict';
 
   var gulp = require('gulp');
-  var all = require('./support').streams;
-  var paths = require('./support').paths;
+  var streams = require('./streams');
+  var paths = require('./paths');
+  var plugins = require('gulp-load-plugins')();
+  var env = plugins.util.env;
 
   function fdInject(stream, ext, namespace) {
     function debugInject(file) {
@@ -21,30 +23,30 @@
   // Stylesheets =================================================================
 
   gulp.task('build:stylesheets', function () {
-    return all.stylesheets.all().pipe(gulp.dest(paths.dist + '/public'));
+    return streams.stylesheets.all().pipe(gulp.dest(paths.dist + '/public'));
   });
 
   // Javascripts =================================================================
 
   gulp.task('build:javascripts', ['build:javascripts:templates'], function () {
-    return all.javascripts.all().pipe(gulp.dest(paths.dist + '/public'));
+    return streams.javascripts.all().pipe(gulp.dest(paths.dist + '/public'));
   });
 
   // Templates ===================================================================
 
   gulp.task('build:javascripts:templates', function () {
-    return all.templates().pipe(gulp.dest(paths.dist + '/public'));
+    return streams.templates().pipe(gulp.dest(paths.dist + '/public'));
   });
 
   // Index =======================================================================
 
   gulp.task('build:inject:index', function () {
     return gulp.src(paths.index)
-      .pipe(fdInject(all.stylesheets.custom(), 'css', 'custom'))
-      .pipe(fdInject(all.stylesheets.vendor(), 'css', 'vendor'))
-      .pipe(fdInject(all.javascripts.vendor(), 'js', 'vendor'))
-      .pipe(fdInject(all.javascripts.custom(), 'js', 'custom'))
-      .pipe(fdInject(all.templates(), 'js', 'templates'))
+      .pipe(fdInject(streams.stylesheets.custom(), 'css', 'custom'))
+      .pipe(fdInject(streams.stylesheets.vendor(), 'css', 'vendor'))
+      .pipe(fdInject(streams.javascripts.vendor(), 'js', 'vendor'))
+      .pipe(fdInject(streams.javascripts.custom(), 'js', 'custom'))
+      .pipe(fdInject(streams.templates(), 'js', 'templates'))
       .pipe(gulp.dest(paths.dist));
   });
 
@@ -61,15 +63,17 @@
   });
 
   gulp.task('icons', function() {
+    var suffix = (env.production)? '/fonts':'/public/font-awesome/fonts';
     return gulp.src(paths.fonts)
-               .pipe(gulp.dest(paths.dist + '/public/font-awesome/fonts'));
+               .pipe(gulp.dest(paths.dist + suffix));
   });
 
   // Clean =======================================================================
 
   gulp.task('clean', function () {
     var clean = require('gulp-rimraf');
-    return gulp.src(paths.dist, { read: false }).pipe(clean({ force: true }));
+    return gulp.src(paths.dist, { read: false })
+               .pipe(clean({ force: true }));
   });
 
   // Build =======================================================================

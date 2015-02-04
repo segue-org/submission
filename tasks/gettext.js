@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var gettext = require('gulp-angular-gettext');
-var paths = require('./support').paths;
+var paths = require('./paths');
 
 gulp.task('pot', function () {
   return gulp.src(['app/modules/**/*.html', 'app/modules/**/*.js'])

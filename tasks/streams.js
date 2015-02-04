@@ -2,24 +2,14 @@
   'use strict';
 
   var gulp = require('gulp');
-  var merge = require('event-stream').merge;
+  var es = require('event-stream');
   var plugins = require('gulp-load-plugins')();
   var mainBowerFiles = require('main-bower-files');
   var debug = require('gulp-debug');
 
-  var paths = exports.paths = {
-    stylesheets   : ['app/modules/**/*.scss'],
-    javascripts   : 'app/modules/**/*.js',
-    templates     : 'app/modules/**/*.html',
-    index         : 'app/index.html',
-    statics       : 'app/*.*',
-    images        : 'app/images/*.*',
-    fonts         : 'app/bower_components/font-awesome/fonts/*.*',
-    dist          : 'dist',
-    test          : ['spec/helpers/*.js','spec/**/*.spec.js','app/config.js']
-  };
+  var paths = require('./paths');
 
-  function streamStylesheets() {
+ function streamStylesheets() {
     var self = {};
 
     var sassParms = {
@@ -29,16 +19,22 @@
 
     self.vendor = function() {
       return gulp.src(mainBowerFiles(), { base: 'app/bower_components' })
-                .pipe(plugins.ignore.include('**/*.css'))
-                .pipe(plugins.sass(sassParms));
+                 .pipe(plugins.ignore.include('**/*.css'))
+                 .pipe(plugins.sass(sassParms));
     };
     self.custom = function() {
       return gulp.src(paths.stylesheets)
-                .pipe(plugins.sass(sassParms));
+                 .pipe(plugins.sass(sassParms));
+
     };
     self.all = function() {
-      return merge(self.vendor(), self.custom());
+      return es.merge(self.vendor(), self.custom());
     };
+
+    if (plugins.util.env.production) {
+      self.vendor = minifyCss(self.vendor, 'segue-v.css');
+      self.custom = minifyCss(self.custom, 'segue-c.css');
+    }
 
     return self;
   }
@@ -60,10 +56,29 @@
     };
 
     self.all = function() {
-      return merge(self.vendor(), self.custom());
+      return es.merge(self.vendor(), self.custom());
     };
 
+    if (plugins.util.env.production) {
+      self.custom = uglify(self.custom, 'segue-c.js');
+      self.vendor = uglify(self.vendor, 'segue-v.js');
+    }
+
     return self;
+  }
+
+  function uglify(fn, filename) {
+    return function() {
+      return fn().pipe(plugins.concat(filename, { sourceContent: true }))
+                 .pipe(plugins.uglify({ mangle: false }));
+    };
+  }
+
+  function minifyCss(fn, filename) {
+    return function() {
+      return fn().pipe(plugins.concat(filename, { sourceContent: true }))
+                 .pipe(plugins.minifyCss());
+    }
   }
 
   function streamTemplates () {
@@ -71,7 +86,7 @@
                .pipe(plugins.angularTemplatecache({ root: 'modules', module: 'templates' }));
   }
 
-  exports.streams = {
+  module.exports = {
     stylesheets : streamStylesheets(),
     javascripts : streamJavascripts(),
     templates   : streamTemplates,

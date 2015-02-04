@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var config = require('./config');
-var paths = require('./support').paths;
-var all = require('./support').streams;
+var paths = require('./paths');
 var gutil = require('gulp-util');
 
 // Serve =======================================================================
