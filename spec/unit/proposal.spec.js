@@ -79,23 +79,31 @@
   describe("proposal service", function() {
     var mockStorage = {};
     var mockAuth = noopMock('account');
+    var http, service;
 
     beforeEach(mockDep('$localStorage', 'ngStorage').toBe(mockStorage));
     beforeEach(mockDep('Auth', 'segue.submission.authenticate.service').toBe(mockAuth));
     beforeEach(module('segue.submission.proposal.service'));
 
-    beforeEach(function() {
-      spyOn(mockAuth, 'account').and.returnValue({ id: 123 });
-    });
-
-    it("gets list of proposals owned by the currently logged account", inject(function(Proposals) {
-      spyOn(Proposals, 'getList').and.returnValue([1,2,3]);
-
-      var result = Proposals.getOwnedByAccount();
-
-      expect(Proposals.getList).toHaveBeenCalledWith({ owner_id: 123 });
-      expect(result).toEqual([1,2,3]);
+    beforeEach(inject(function(_$httpBackend_, Proposals) {
+      service = Proposals;
+      http = _$httpBackend_;
     }));
+
+    it("gets list of proposals owned by the currently logged account", function(done) {
+      spyOn(mockAuth, 'account').and.returnValue({ id: 123 });
+      var response = { items: [ 1,2,3 ] };
+      http.expectGET('http://192.168.33.91:5000/api/proposals?owner_id=123').respond(200, response);
+
+      var promise = service.getOwnedByAccount();
+
+      promise.then(function(value) {
+        expect(value).toEqual([1,2,3]);
+        done();
+      });
+
+      http.flush();
+    });
 
   });
 
