@@ -1,9 +1,54 @@
-main.splash {
+main.home {
+  .proposals {
+    width: 50%;
+    padding: 0;
+    ul {
+      padding: 0;
+      margin: 0;
+    }
 
-  h3 {
-    font-size: 600%;
-    margin: 0;
-    text-align: center;
-    padding: 3rem;
+    li {
+      list-style-type: none;
+      margin: 1rem 0;
+      padding: 0.2rem;
+      position: relative;
+      height: 4rem;
+
+      &:nth-child(odd)  { background: #BBB; }
+      &:nth-child(even) { background: #DDD; }
+
+      >* { display: block; padding: 3px;}
+
+      .icons {
+        position: absolute;
+        right: 0.1rem;
+        top: 10px;
+        font-size: large;
+      }
+      .title {
+        font-size: x-large;
+        width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .authors {
+        font-style: oblique;
+        font-size: 80%;
+      }
+      .when {
+        width: 40%;
+        float: left;
+        font-size: 70%;
+      }
+      .track {
+        color: green;
+        font-size: 70%;
+        float: right;
+        width: 50%;
+        text-align: right;
+      }
+    }
   }
 }
+

@@ -4,11 +4,10 @@
   var $scope;
 
   var mockValidator = noopMock('validate');
-  var mockService   = noopMock('post');
+  var mockService   = noopMock('post', 'localSave');
   var mockUserLocation = { city: 'Porto Alegre' };
   var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
-  var mockStorage   = {};
 
   function loadController() {
     inject(function($controller, $state) {
@@ -23,7 +22,6 @@
   }
 
   describe("new proposal controller", function() {
-    beforeEach(mockDep('$localStorage','ngStorage').toBe(mockStorage));
     beforeEach(module('ui.router'));
     beforeEach(module('segue.submission.proposal.controller'));
     beforeEach(module('segue.submission.proposal.service'));
@@ -36,18 +34,15 @@
 
     describe("there is a saved pending proposal", function() {
       beforeEach(function() {
-        mockStorage.savedProposal = mockProposal;
+        spyOn(mockService, 'localSave');
       });
       beforeEach(loadController);
 
-      it("loads the saved proposal into the scope", function() {
-        expect($scope.proposal).toBe(mockProposal);
-      });
       it("saved proposal gets updated automatically", function() {
         $scope.proposal.title = "modified";
         $scope.$digest();
 
-        expect(mockStorage.savedProposal.title).toBe("modified");
+        expect(mockService.localSave).toHaveBeenCalledWith($scope.proposal, jasmine.any(Object), jasmine.any(Object));
       });
     });
 
@@ -80,4 +75,29 @@
       });
     });
   });
+
+  describe("proposal service", function() {
+    var mockStorage = {};
+    var mockAuth = noopMock('account');
+
+    beforeEach(mockDep('$localStorage', 'ngStorage').toBe(mockStorage));
+    beforeEach(mockDep('Auth', 'segue.submission.authenticate.service').toBe(mockAuth));
+    beforeEach(module('segue.submission.proposal.service'));
+
+    beforeEach(function() {
+      spyOn(mockAuth, 'account').and.returnValue({ id: 123 });
+    });
+
+    it("gets list of proposals owned by the currently logged account", inject(function(Proposals) {
+      spyOn(Proposals, 'getList').and.returnValue([1,2,3]);
+
+      var result = Proposals.getOwnedByAccount();
+
+      expect(Proposals.getList).toHaveBeenCalledWith({ owner_id: 123 });
+      expect(result).toEqual([1,2,3]);
+    }));
+
+  });
+
+
 })();

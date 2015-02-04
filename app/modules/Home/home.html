@@ -1,3 +1,16 @@
-<h3>
-  home
-</h3>
+<fieldset ng-show="proposals" class="proposals">
+  <legend>
+    minhas propostas de palestra
+  </legend>
+  <ul>
+    <li ng-repeat="proposal in proposals">
+      <div class="icons">
+        <button>editar</button>
+      </div>
+      <span class="title">{{ proposal.title }}</span>
+      <span class="authors"><b>{{ proposal.owner.name }}</b>{{ proposal.coauthors }}</span>
+      <span class="track">Desenvolvimento de Jogos</span>
+      <span class="when"><translate>enviada às</translate> <i>17/03/2015 23:59</i></span>
+    </li>
+  </ul>
+</fieldset>

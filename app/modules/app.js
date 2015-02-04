@@ -38,6 +38,11 @@
 
     .config(function(RestangularProvider, Config) {
       RestangularProvider.setBaseUrl(Config.API_HOST + Config.API_PATH);
+      RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+        if (operation == "getList") { return data.items; }
+        if (data.resource) { return data.resource; }
+        return data;
+      });
     })
     .config(function($urlRouterProvider) {
       $urlRouterProvider.otherwise('/');
