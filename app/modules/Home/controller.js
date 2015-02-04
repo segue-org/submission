@@ -19,7 +19,6 @@
             myProposals:     function(Proposals) { return Proposals.getOwnedByAccount(); },
             currentProposal: function(Proposals) { return Proposals.current(); },
             account:         function(Auth)      { return Auth.account(); }
-
           }
         });
 
@@ -30,5 +29,9 @@
       $scope.myProposals     = myProposals;
       $scope.currentProposal = currentProposal;
       $scope.account         = account;
+
+      $scope.$on('auth:changed', function(newAccount) {
+        $scope.home();
+      });
     });
 })();
