@@ -46,12 +46,11 @@
 
   angular
     .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
-    .service('FormError', function() {
+    .service('FormErrors', function() {
       var self = this;
       var errors = {};
 
       self.set = function(errors) {
-        console.log(errors);
         errors = errors;
       };
       return self;
@@ -64,18 +63,18 @@
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
     })
-    .controller('EditProposalController', function($scope, FormError, Validator, Proposals, currentProposal) {
+    .controller('EditProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal) {
       $scope.proposal = currentProposal;
       $scope.$on('auth:changed', $scope.home);
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/edit_proposal')
-                 .then(function() { return $scope.proposal.save(); })
+                 .then(Proposals.saveIt)
                  .then($scope.home)
-                 .catch(FormError.set);
+                 .catch(FormErrors.set);
       };
     })
-    .controller('NewProposalController', function($scope, FormError, Validator, Proposals, currentProposal) {
+    .controller('NewProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal) {
       $scope.proposal = currentProposal;
       $scope.$watch('proposal', Proposals.localSave);
 
@@ -86,7 +85,7 @@
                  .then(Proposals.post)
                  .then(Proposals.localForget)
                  .then($scope.home)
-                 .catch(FormError.set);
+                 .catch(FormErrors.set);
       };
 
     })

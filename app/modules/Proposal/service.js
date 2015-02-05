@@ -24,6 +24,9 @@
         var accountId = Auth.account().id;
         return service.getList({ owner_id: accountId });
       };
+      extensions.saveIt = function(object) {
+        return object.save();
+      };
 
       return _.extend(service, extensions);
     });
