@@ -1,7 +1,7 @@
 main.home {
   .proposals {
-    width: 50%;
     padding: 0;
+
     ul {
       padding: 0;
       margin: 0;
@@ -18,6 +18,7 @@ main.home {
     }
 
     li {
+      width: 25rem;
       list-style-type: none;
       margin: 1rem 0;
       padding: 0.2rem;
@@ -49,9 +50,10 @@ main.home {
         font-size: 70%;
       }
       &.unsaved .when {
+        float: right;
         color: orchid;
-        &::before { content: '****'; }
-        &::after  { content: '****'; }
+        &::before { content: '**'; }
+        &::after  { content: '**'; }
       }
       .track {
         color: green;

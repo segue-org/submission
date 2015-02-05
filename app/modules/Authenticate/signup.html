@@ -1,22 +1,80 @@
 <section class="signup">
   <header translate>criar uma conta</header>
-  <form novalidate name="signup_form" grab-focus>
-    <input type="text" maxlength=30
-          placeholder="{{ 'nome' | translate }}"
-          required ng-model="name" />
-    <input type="text" maxlength=30
-          placeholder="{{ 'e-mail' | translate }}"
-          required ng-model="email" />
-    <input type="password" class="half only-expanded"
-          placeholder="{{ 'senha' | translate }}"
-          ng-model="password" />
+  <form novalidate name="signup_form" class="lines" grab-focus>
+    <p>
+      <label class="only-expanded">
+        <span translate>nome</span>
+        <small translate>(de 5 até 80 caracteres)</small>
+      </label>
+      <input type="text" required focusable
+            placeholder="{{ 'nome' || translate }}"
+            minlength="5" maxlength="80"
+            ng-model="author.name"/>
+      <i class="fa fa-check"></i>
+    </p>
 
-    <input type="password" class="half only-expanded"
-          placeholder="{{ 'repita a senha' | translate }}"
-          ng-model="password_repeat" />
-    <button ng-click="tryLogin()" class="only-expanded" translate>
-      criar!
-    </button>
+    <p>
+      <label class="only-expanded">
+        <span translate>email</span>
+        <small translate>(será necessário para login)</small>
+      </label>
+      <input type="email" required
+            placeholder="{{ 'e-mail' || translate }}"
+            minlength="5" maxlength="80"
+            ng-model="author.email"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded">
+      <label class="notip">
+        <span translate>país</span>
+      </label>
+      <input type="email" required
+            minlength="5" maxlength="80"
+            ng-model="author.country"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded">
+      <label class="notip">
+        <span translate>cidade</span>
+      </label>
+      <input type="email" required
+            minlength="5" maxlength="80"
+            ng-model="author.country"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded">
+      <label>
+        <span translate>telefone</span>
+        <small translate>(inclua código de área)</small>
+      </label>
+      <input type="text" required
+            minlength="10" maxlength="30"
+            ng-model="author.phone"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded">
+      <label>
+        <span translate>empresa / universidade</span>
+        <small translate>(ou qualquer outra instituição)</small>
+      </label>
+      <input type="text" required
+            minlength="5" maxlength="80"
+            ng-model="author.organization"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded">
+      <label>
+        <span translate>mini-currículo</span>
+      </label>
+      <textarea required minlength="5" maxlength="80"
+                ng-model="author.resume"/>
+      <i class="fa fa-check"></i>
+    </p>
 
   </form>
 </section>

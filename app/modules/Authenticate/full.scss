@@ -1,3 +1,5 @@
+@import 'modules/common/mixins.scss';
+
 main.authenticate {
   position: relative;
   max-width: 988px;
@@ -24,32 +26,18 @@ main.authenticate {
     }
 
     form {
-      text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
 
-      &.collapsed { height: 140px; width: 350px; }
-      &.normal    { height: 180px; width: 460px; }
-      &.expanded  { height: 280px; width: 590px; }
+      &.collapsed { max-height: 140px; width: 350px; opacity: .2; }
+      &.normal    { min-height: 180px; width: 460px; }
+      &.expanded  { min-height: 220px; width: 590px; }
 
-      &.collapsed     .only-expanded { display: none;         opacity: 0; }
-      &.normal        .only-expanded { display: none;         opacity: 0; }
-      &.expanded      .only-expanded { display: inline-block; opacity: 0; }
-      &.expanded.done .only-expanded { display: inline-block; opacity: 1; }
-    }
-    input, button {
-      width: 80%;
-      font-size: x-large;
-      border: 1px solid gray;
-      margin: 0.6rem auto;
-      padding: 0.5rem;
+      &.collapsed     .only-expanded { transition: all 0.2s ease; display: none;  opacity: 0; }
+      &.normal        .only-expanded { transition: all 0.2s ease; display: none;  opacity: 0; }
+      &.expanded      .only-expanded { transition: all 0.2s ease; display: inherit; opacity: 0; }
+      &.expanded.done .only-expanded { transition: all 0.2s ease; display: inherit; opacity: 1; }
 
-      &.half { width: 38%; }
-    }
-    input + .forgot {
-      position: absolute;
-      font-size: small;
-      margin-top: 25px;
-      right: 70px;
+      &.lines.expanded input { @include hide-placeholder; }
     }
   }
 }
