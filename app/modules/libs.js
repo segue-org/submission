@@ -2,7 +2,10 @@
   "use strict";
 
   angular
-    .module('segue.submission.libs', [ 'segue.submission' ])
+    .module('segue.submission.libs', [
+      'segue.submission',
+      'ngStorage'
+    ])
     .service('tv4', function() { return tv4; })
     .service('Validator', function($http, $q, tv4, Config) {
       return {
@@ -22,14 +25,23 @@
         }
       };
     })
-    .service('UserLocation', function(Config, $http, $q) {
+    .service('UserLocation', function(Config, $http, $q, $localStorage) {
       return {
+        set: function(data) {
+          $localStorage.userLocation = data;
+        },
         get: function(ip) {
           var deferred = $q.defer();
           var url = Config.GEOIP_API + "/" + (ip || '');
-          $http.get(url).then(function(response) {
-            deferred.resolve(response.data);
-          });
+          if ($localStorage.userLocation) {
+            deferred.resolve($localStorage.userLocation);
+          }
+          else {
+            $http.get(url).then(function(response) {
+              deferred.resolve(response.data);
+              $localStorage.userLocation = response.data;
+            });
+          }
           return deferred.promise;
         }
       };
