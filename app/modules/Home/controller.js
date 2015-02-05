@@ -10,7 +10,7 @@
     .config(function($stateProvider) {
       $stateProvider
         .state('home', {
-          url: '^/',
+          url: '^/home',
           views: {
             header: {                               templateUrl: 'modules/common/nav.html' },
             main:   { controller: 'HomeController', templateUrl: 'modules/Home/home.html'  }

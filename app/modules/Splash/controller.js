@@ -3,6 +3,7 @@
 
   angular
     .module('segue.submission.splash', [
+      'segue.submission.authenticate.service',
       'segue.submission.splash.controller'
     ])
     .config(function($stateProvider) {
@@ -19,6 +20,7 @@
 
   angular
     .module('segue.submission.splash.controller', [])
-    .controller('SplashController', function($scope, $state) {
+    .controller('SplashController', function($scope, $state, Auth) {
+      if (Auth.account()) { $state.go('home'); }
     });
 })();

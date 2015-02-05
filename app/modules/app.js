@@ -11,6 +11,7 @@
       'ui.router.compat',
       'ui.gravatar',
       'restangular',
+      'angular-loading-bar',
 
       'segue.submission.libs',
       'segue.submission.locale',
@@ -19,11 +20,16 @@
       'segue.submission.authenticate',
       'segue.submission.proposal',
     ])
-
     .controller('SubmissionController', function($scope, $state, Auth) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
+      });
+      $scope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+        console.log('error moving from', fromState, 'to', toState);
+        console.log('toParams:', toParams);
+        console.log('fromParams:', fromParams);
+        console.log(error);
       });
 
       $scope.home = function() {
@@ -34,8 +40,6 @@
           $state.go('splash');
         }
       };
-
-      $scope.home();
     })
 
     .config(function(RestangularProvider, Config) {
