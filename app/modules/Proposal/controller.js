@@ -11,11 +11,17 @@
     ])
     .config(function($stateProvider) {
       $stateProvider
-        .state('new-proposal', {
+        .state('proposal', {
+          views: {
+            header: { templateUrl: 'modules/common/nav.html' },
+            main: { template: "<div ui-view='form'></div>" }
+          }
+        })
+        .state('proposal.new', {
+          parent: 'proposal',
           url: '^/new-proposal',
           views: {
-            header: {                                      templateUrl: 'modules/common/nav.html'    },
-            main:   { controller: 'NewProposalController', templateUrl: 'modules/Proposal/form.html' }
+            form: { controller: 'NewProposalController', templateUrl: 'modules/Proposal/form.html' }
           },
           resolve: {
             userLocation: function(UserLocation) { return UserLocation.get(); },

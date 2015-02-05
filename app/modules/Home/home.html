@@ -3,11 +3,11 @@
     minhas propostas de palestra
   </legend>
   <ul>
-   <li class="new" ng-hide="currentProposal" ui-sref="new-proposal">
+   <li class="new" ng-hide="currentProposal" ui-sref="proposal.new">
       <i class="fa fa-plus"></i>
       <span translate>criar nova proposta de palestra</span>
     </li>
-    <li class="unsaved" ng-show="currentProposal" ui-sref="new-proposal">
+    <li class="unsaved" ng-show="currentProposal" ui-sref="proposal.new">
       <span class="title">{{ currentProposal.title }}</span>
       <span class="authors"><b>{{ account.name }}</b>{{ currentProposal.coauthors }}</span>
       <span class="track">Desenvolvimento de Jogos</span>
