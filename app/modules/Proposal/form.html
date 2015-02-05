@@ -5,8 +5,11 @@
   <ng-include src="'modules/Proposal/coauthors.html'"></ng-include>
 
   <p class="centered action" ng-show="account">
-    <button ng-click="submit()" translate>
+    <button ng-hide="proposal.id" ng-click="submit()" translate>
       criar proposta
+    </button>
+    <button ng-show="proposal.id" ng-click="submit()" translate>
+      salvar alterações
     </button>
   </p>
 

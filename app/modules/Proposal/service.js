@@ -15,7 +15,7 @@
         return $localStorage.savedProposal || {};
       };
       extensions.localSave = function(value) {
-        $localStorage.savedProposal = value;
+        $localStorage.savedProposal = value || {};
       };
       extensions.localForget = function() {
         $localStorage.savedProposal = {};

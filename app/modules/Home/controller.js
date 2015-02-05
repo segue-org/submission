@@ -30,8 +30,6 @@
       $scope.myProposals     = myProposals;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
 
-      $scope.$on('auth:changed', function(newAccount) {
-        $scope.home();
-      });
+      $scope.$on('auth:changed', $scope.home);
     });
 })();

@@ -14,51 +14,79 @@
         .state('proposal', {
           views: {
             header: { templateUrl: 'modules/common/nav.html' },
-            main: { template: "<div ui-view='form'></div>" }
+            main:   { template:    "<div ui-view='form'></div>", controller: 'ProposalController' }
+          },
+          resolve: {
+            userLocation: function(UserLocation) { return UserLocation.get(); },
           }
         })
         .state('proposal.new', {
           parent: 'proposal',
-          url: '^/new-proposal',
+          url: '^/proposal/new',
           views: {
             form: { controller: 'NewProposalController', templateUrl: 'modules/Proposal/form.html' }
           },
           resolve: {
-            userLocation: function(UserLocation) { return UserLocation.get(); },
             currentProposal: function(Proposals) { return Proposals.current(); }
+          }
+        })
+        .state('proposal.edit', {
+          parent: 'proposal',
+          url: '^/proposal/:id',
+          views: {
+            form: { controller: 'EditProposalController', templateUrl: 'modules/Proposal/form.html' }
+          },
+          resolve: {
+            currentProposal: function(Proposals, $stateParams) {
+              return Proposals.one($stateParams.id).get();
+            }
           }
         });
     });
 
   angular
     .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
-    .controller('NewProposalController', function($scope, $state, Config,
-                                                  Proposals, Validator, Auth, focusOn,
-                                                  currentProposal, userLocation) {
+    .service('FormError', function() {
+      var self = this;
+      var errors = {};
+
+      self.set = function(errors) {
+        console.log(errors);
+        errors = errors;
+      };
+      return self;
+    })
+    .controller('ProposalController', function($scope, Config, Auth, userLocation, focusOn) {
       focusOn('proposal.title');
+      $scope.userLocation = userLocation;
+      $scope.account = Auth.glue($scope, 'account');
 
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
+    })
+    .controller('EditProposalController', function($scope, FormError, Validator, Proposals, currentProposal) {
+      $scope.proposal = currentProposal;
+      $scope.$on('auth:changed', $scope.home);
 
-      $scope.proposal  = currentProposal;
-      $scope.$watchCollection('proposal', Proposals.localSave);
-
-      $scope.userLocation = userLocation;
+      $scope.submit = function() {
+        Validator.validate($scope.proposal, 'proposals/edit_proposal')
+                 .then(function() { return $scope.proposal.save(); })
+                 .then($scope.home)
+                 .catch(FormError.set);
+      };
+    })
+    .controller('NewProposalController', function($scope, FormError, Validator, Proposals, currentProposal) {
+      $scope.proposal = currentProposal;
+      $scope.$watch('proposal', Proposals.localSave);
 
       $scope.authorsOption = null;
-
-      function setErrors(errors) {
-        $scope.errors = errors;
-      }
-
-      $scope.account = Auth.glue($scope, 'account');
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/new_proposal')
                  .then(Proposals.post)
                  .then(Proposals.localForget)
                  .then($scope.home)
-                 .catch(setErrors);
+                 .catch(FormError.set);
       };
 
     })
@@ -68,6 +96,5 @@
       $scope.openLoginModal = AuthModal.login;
 
       $scope.focusName = _.partial(focusOn, 'author.name');
-
     });
 })();

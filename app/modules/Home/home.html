@@ -13,7 +13,7 @@
       <span class="track">Desenvolvimento de Jogos</span>
       <span class="when" translate>proposta ainda não enviada!</span>
     </li>
-    <li ng-repeat="proposal in myProposals">
+    <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
       <span class="title">{{ proposal.title }}</span>
       <span class="authors"><b>{{ proposal.owner.name }}</b>{{ proposal.coauthors }}</span>
       <span class="track">Desenvolvimento de Jogos</span>
