@@ -1,4 +1,3 @@
-<div ui-view="modal"></div>
 <form novalidate name="proposal_form" class="lines">
   <ng-include src="'modules/Proposal/proposal.html'"></ng-include>
   <ng-include src="'modules/Proposal/author.html'"></ng-include>
@@ -6,8 +5,7 @@
 
   <aside class="centered action" ng-show="account">
     <div form-error-any translate>
-      ocorreram erros no formulário, por favor verifique
-      as mensagens em vermelho acima e tente novamente
+      <span translate>por favor verifique as mensagens acima e tente novamente</span>
     </div>
     <button ng-hide="proposal.id" ng-click="submit()" translate>
       criar proposta

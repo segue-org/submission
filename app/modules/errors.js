@@ -22,23 +22,26 @@
       };
       return self;
     })
-    .directive('formErrorAny', function() {
+    .directive('formErrorAny', function($timeout) {
       return function(scope, elem, attr) {
         elem.addClass("ng-hide");
         elem.addClass("error");
+        var icon = angular.element(document.createElement('i')).addClass("fa").addClass("fa-exclamation-circle");
+        $timeout(function() { elem.prepend(icon) },1000);
+
         scope.$on('errors:clear', function(e) { elem.addClass('ng-hide'); });
         scope.$on('errors:set',   function(e) { elem.removeClass('ng-hide'); });
       };
     })
-    .directive('formError', function() {
+    .directive('formError', function($timeout) {
       return function(scope, elem, attr) {
         elem.addClass("ng-hide");
         elem.addClass("error");
+        var icon = angular.element(document.createElement('i')).addClass("fa").addClass("fa-exclamation-circle");
+        $timeout(function() { elem.prepend(icon) },1000);
         var myError = attr.formError;
 
-        scope.$on('errors:clear', function(e, name) {
-          elem.addClass("ng-hide");
-        });
+        scope.$on('errors:clear', function(e, name) { elem.addClass("ng-hide"); });
         scope.$on('errors:set', function(e, name) {
           if (myError == name) {
             elem.removeClass("ng-hide");

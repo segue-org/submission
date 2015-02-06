@@ -8,7 +8,7 @@ main.proposal {
     position: fixed;
     bottom: 0;
     right: 15%;
-    width: 12rem;
+    width: 15rem;
     background: rgba(128,128,128,0.3);
     border-top-left-radius:  20px;
     border-top-right-radius: 20px;
@@ -20,6 +20,7 @@ main.proposal {
     }
 
     .error {
+      font-size: 80%;
       width: 10rem;
     }
 

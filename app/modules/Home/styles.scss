@@ -21,9 +21,8 @@ main.home {
       width: 25rem;
       list-style-type: none;
       margin: 1rem 0;
-      padding: 0.2rem;
       position: relative;
-      height: 4rem;
+      height: 5rem;
 
       &:nth-child(odd)  { background: #BBB; }
       &:nth-child(even) { background: #DDD; }
