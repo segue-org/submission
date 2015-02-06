@@ -13,8 +13,9 @@
 
       self.set = function(errors) {
         _.each(errors, function(error) {
-          var field = error.params.key || error.dataPath.replace('/','');
-          var path = field + '.' + codes[error.code].toLowerCase();
+          var field = error.field || error.params.key || error.dataPath.replace('/','');
+          var label = error.label || codes[error.code].toLowerCase();
+          var path = field + "." + label;
           $rootScope.$broadcast('errors:set', path);
           console.log(path);
         });
