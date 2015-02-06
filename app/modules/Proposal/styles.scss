@@ -2,4 +2,23 @@
 
 main.proposal {
   input { @include hide-placeholder; }
+
+  aside.action {
+    transition: all 1s ease;
+    position: fixed;
+    bottom: 0;
+    right: 15%;
+    background: rgba(128,128,128,0.3);
+    border-top-left-radius:  20px;
+    border-top-right-radius: 20px;
+    box-shadow: 3px 3px 3px gray;
+
+    button {
+      font-size: large;
+      margin: 1rem;
+    }
+
+  }
+  form.ng-pristine aside.action { opacity: 0; }
+  form.ng-dirty    aside.action { opacity: 1; }
 }

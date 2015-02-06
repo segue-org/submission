@@ -24,6 +24,8 @@
   angular
     .module("segue.submission.authenticate.controller", [
       "segue.submission.directives",
+
+      "segue.submission.libs",
       "segue.submission.authenticate.directive",
       "segue.submission.authenticate.service",
     ])
@@ -42,9 +44,18 @@
         Auth.login($scope.login.email, $scope.login.password)
             .then(succeed);
       };
-      focusOn('login.email', 400);
     })
-    .controller("SignUpController", function($scope) {
+    .controller("SignUpController", function($scope, Account, Validator, FormErrors, focusOn) {
+      $scope.signup = Account.localLoad();
+      $scope.$watch('signup', Account.localSave);
+      $scope.submit = function() {
+        console.log($scope.signup);
+        Validator.validate($scope.signup, 'accounts/signup')
+                 .then(Account.post)
+                 .then($scope.home)
+                 .catch(FormErrors.set);
+      };
+      focusOn("signup.name");
     })
     .factory('AuthModal', function (ngDialog) {
       var loginConfig  = { controller: "LoginController",  template: 'modules/Authenticate/login.html' };

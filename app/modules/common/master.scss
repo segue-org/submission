@@ -37,7 +37,7 @@ body {
     z-index: 150;
     border-bottom-left-radius:  20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 3px 3px 3px #666;
+    box-shadow: inset -3px -3px 3px #666;
   }
   &>main {
     top: 3rem;

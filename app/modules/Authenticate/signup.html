@@ -1,6 +1,8 @@
 <section class="signup">
   <header translate>criar uma conta</header>
-  <form novalidate name="signup_form" class="lines" grab-focus>
+  <form novalidate id="signup_form" name="signup_form" class="lines" grab-focus>
+
+
     <p>
       <label class="only-expanded">
         <span translate>nome</span>
@@ -8,9 +10,9 @@
       </label>
       <input type="text" required focusable
             placeholder="{{ 'nome' || translate }}"
-            minlength="5" maxlength="80"
-            ng-model="author.name"/>
-      <i class="fa fa-check"></i>
+            minlength="5" maxsize="80"
+            ng-model="signup.name"/>
+      <i class="fa fa-check only-expanded"></i>
     </p>
 
     <p>
@@ -20,18 +22,62 @@
       </label>
       <input type="email" required
             placeholder="{{ 'e-mail' || translate }}"
-            minlength="5" maxlength="80"
-            ng-model="author.email"/>
-      <i class="fa fa-check"></i>
+            minlength="5" maxsize="80"
+            ng-model="signup.email"/>
+      <i class="fa fa-check only-expanded"></i>
+    </p>
+
+    <p>
+      <label class="only-expanded">
+        <span translate>senha</span>
+        <small translate>(mínimo 8 caracteres)</small>
+      </label>
+      <input type="password" required
+            placeholder="{{ 'e-mail' || translate }}"
+            minlength="8" maxsize="80"
+            ng-model="signup.password"/>
+      <i class="fa fa-check only-expanded"></i>
+    </p>
+
+    <p>
+      <label class="only-expanded notip">
+        <span translate>repita a senha</span>
+      </label>
+      <input type="password" required
+            minlength="5" maxsize="80"
+            ng-model="signup.repeat_password"/>
+      <i ng-show="signup.password == signup.repeat_password" class="fa fa-check only-expanded"></i>
     </p>
 
     <p class="only-expanded">
       <label class="notip">
         <span translate>país</span>
       </label>
-      <input type="email" required
-            minlength="5" maxlength="80"
-            ng-model="author.country"/>
+      <input type="text" required
+            minlength="5" maxsize="80"
+            ng-model="signup.country"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded" ng-hide="usePassport">
+      <label>
+        <span translate>número do CPF</span>
+        <small translate>(somente residentes no Brasil)</small>
+      </label>
+      <input type="text" required
+            minlength="11" maxsize="15"
+            ng-model="signup.cpf"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded" ng-show="usePassport">
+      <label>
+        <span translate>Passaporte</span>
+        <small translate>(Mercosul: use identidade nacional)</small>
+      </label>
+      <input type="text" required
+            minlength="8" maxsize="15"
+            ng-model="signup.passaport"/>
       <i class="fa fa-check"></i>
     </p>
 
@@ -39,9 +85,9 @@
       <label class="notip">
         <span translate>cidade</span>
       </label>
-      <input type="email" required
-            minlength="5" maxlength="80"
-            ng-model="author.country"/>
+      <input type="text" required
+            minlength="5" maxsize="80"
+            ng-model="signup.city"/>
       <i class="fa fa-check"></i>
     </p>
 
@@ -51,8 +97,8 @@
         <small translate>(inclua código de área)</small>
       </label>
       <input type="text" required
-            minlength="10" maxlength="30"
-            ng-model="author.phone"/>
+            minlength="10" maxsize="30"
+            ng-model="signup.phone"/>
       <i class="fa fa-check"></i>
     </p>
 
@@ -61,9 +107,7 @@
         <span translate>empresa / universidade</span>
         <small translate>(ou qualquer outra instituição)</small>
       </label>
-      <input type="text" required
-            minlength="5" maxlength="80"
-            ng-model="author.organization"/>
+      <input type="text" required minlength="5" maxlength="80" ng-model="signup.organization"/>
       <i class="fa fa-check"></i>
     </p>
 
@@ -71,9 +115,14 @@
       <label>
         <span translate>mini-currículo</span>
       </label>
-      <textarea required minlength="5" maxlength="80"
-                ng-model="author.resume"/>
+      <textarea required minlength="5" maxlength="80" ng-model="signup.resume"></textarea>
       <i class="fa fa-check"></i>
+    </p>
+
+    <p class="centered action only-expanded">
+      <button ng-click="submit()" translate>
+        criar conta
+      </button>
     </p>
 
   </form>

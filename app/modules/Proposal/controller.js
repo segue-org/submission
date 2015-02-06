@@ -46,15 +46,6 @@
 
   angular
     .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
-    .service('FormErrors', function() {
-      var self = this;
-      var errors = {};
-
-      self.set = function(errors) {
-        errors = errors;
-      };
-      return self;
-    })
     .controller('ProposalController', function($scope, Config, Auth, userLocation, focusOn) {
       focusOn('proposal.title');
       $scope.userLocation = userLocation;
@@ -90,10 +81,9 @@
 
     })
     .controller('NewProposalAuthorController', function($scope, AuthModal, focusOn) {
-      $scope.author = {};
+      $scope.signup = {};
 
       $scope.openLoginModal = AuthModal.login;
-
-      $scope.focusName = _.partial(focusOn, 'author.name');
+      $scope.focusName = _.partial(focusOn, 'person.name');
     });
 })();

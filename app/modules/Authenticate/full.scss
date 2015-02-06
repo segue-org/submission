@@ -28,14 +28,15 @@ main.authenticate {
     form {
       transition: all 0.2s ease;
 
-      &.collapsed { max-height: 140px; width: 350px; opacity: .2; }
+      &.collapsed { max-height: 140px; width: 280px; opacity: .2; }
       &.normal    { min-height: 180px; width: 460px; }
-      &.expanded  { min-height: 220px; width: 590px; }
+      &.expanded  { min-height: 220px; width: 700px; }
 
+      &.collapsed     .hide-collapsed { display: none; }
       &.collapsed     .only-expanded { transition: all 0.2s ease; display: none;  opacity: 0; }
       &.normal        .only-expanded { transition: all 0.2s ease; display: none;  opacity: 0; }
-      &.expanded      .only-expanded { transition: all 0.2s ease; display: inherit; opacity: 0; }
-      &.expanded.done .only-expanded { transition: all 0.2s ease; display: inherit; opacity: 1; }
+      &.expanded      .only-expanded { transition: all 0.2s ease; display: normal; opacity: 0; }
+      &.expanded.done .only-expanded { transition: all 0.2s ease; display: normal; opacity: 1; }
 
       &.lines.expanded input { @include hide-placeholder; }
     }

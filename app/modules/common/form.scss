@@ -25,7 +25,7 @@ form.inside, form.lines.collapsed, form.lines.normal {
 
 form.lines {
   p {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 
     &.info {
       background: #5bc0de;
@@ -56,7 +56,7 @@ form.lines {
     }
   }
   input, textarea {
-    width: 65%;
+    width: 70%;
     border: 3px solid lightgray;
     border-radius: 5px;
     padding-right: 0.2rem;
