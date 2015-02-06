@@ -29,7 +29,6 @@
       var self = this;
       var errors = {};
 
-      console.log(123);
       self.set = function(errors) {
         console.log(errors);
         errors = errors;

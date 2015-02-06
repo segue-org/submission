@@ -45,13 +45,14 @@
             .then(succeed);
       };
     })
-    .controller("SignUpController", function($scope, Account, Validator, FormErrors, focusOn) {
+    .controller("SignUpController", function($scope, Account, Auth, Validator, FormErrors, focusOn) {
       $scope.signup = Account.localLoad();
       $scope.$watch('signup', Account.localSave);
       $scope.submit = function() {
-        console.log($scope.signup);
         Validator.validate($scope.signup, 'accounts/signup')
                  .then(Account.post)
+                 .then(Account.localForget)
+                 .then(_.partial(Auth.login, $scope.signup.email, $scope.signup.password))
                  .then($scope.home)
                  .catch(FormErrors.set);
       };
