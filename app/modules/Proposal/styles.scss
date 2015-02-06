@@ -8,6 +8,7 @@ main.proposal {
     position: fixed;
     bottom: 0;
     right: 15%;
+    width: 12rem;
     background: rgba(128,128,128,0.3);
     border-top-left-radius:  20px;
     border-top-right-radius: 20px;
@@ -16,6 +17,10 @@ main.proposal {
     button {
       font-size: large;
       margin: 1rem;
+    }
+
+    .error {
+      width: 10rem;
     }
 
   }

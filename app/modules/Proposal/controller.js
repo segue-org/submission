@@ -5,6 +5,7 @@
     .module('segue.submission.proposal',[
       'segue.submission.directives',
       'segue.submission.libs',
+      'segue.submission.errors',
       'segue.submission.proposal.controller',
       'segue.submission.proposal.service',
       'segue.submission.authenticate'

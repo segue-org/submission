@@ -112,4 +112,14 @@ form.lines {
     font-size: x-large;
     padding: 1rem;
   }
+
+  .error {
+    width: 50%;
+    margin: 0.2rem auto;
+    display: block;
+    border: 1px solid lightpink;
+    border-radius: 10px;
+    padding: 0.2rem;
+    background: pink;
+  }
 }

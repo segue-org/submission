@@ -25,7 +25,7 @@
     .module("segue.submission.authenticate.controller", [
       "segue.submission.directives",
 
-      "segue.submission.libs",
+      "segue.submission.errors",
       "segue.submission.authenticate.directive",
       "segue.submission.authenticate.service",
     ])

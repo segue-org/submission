@@ -9,6 +9,9 @@
         minlength="5" maxlength="80"
         ng-model="proposal.title"/>
   <i class="fa fa-check"></i>
+  <span form-error="title.object_required"     translate>o título da palestra é obrigatório</span>
+  <span form-error="title.string_length_short" translate>o título deve ter no mínimo 5 caracteres</span>
+  <span form-error="title.string_length_long"  translate>o título deve ter no máximo 80 caracteres</span>
 </p>
 
 <p>
@@ -19,6 +22,9 @@
   <textarea required minlength="5" maxlength="200"
             ng-model="proposal.summary"></textarea>
   <i class="fa fa-check"></i>
+  <span form-error="summary.object_required"     translate>o resumo da palestra é obrigatório</span>
+  <span form-error="summary.string_length_short" translate>o resumo deve ter no mínimo 5 caracteres</span>
+  <span form-error="summary.string_length_long"  translate>o resumo deve ter no máximo 200 caracteres</span>
 </p>
 
 <p>
@@ -29,6 +35,9 @@
   <textarea required minlength="5" maxlength="2000"
             ng-model="proposal.full" class="large"></textarea>
   <i class="fa fa-check"></i>
+  <span form-error="full.object_required"     translate>a proposta completa da palestra é obrigatória</span>
+  <span form-error="full.string_length_short" translate>a proposta completa deve ter no mínimo 5 caracteres</span>
+  <span form-error="full.string_length_long"  translate>a proposta completa deve ter no máximo 2000 caracteres</span>
 </p>
 
 <p>
@@ -36,10 +45,10 @@
     <span translate>língua</span>
   </label>
   <span ng-repeat="lang in languages">
-    <input type="radio" id="lang_{{lang.abbr}}" value="{{ lang.abbr }}"
-            ng-model="proposal.language" />
+    <input type="radio" id="lang_{{lang.abbr}}" value="{{ lang.abbr }}" ng-model="proposal.language" />
     <label for="lang_{{lang.abbr}}">{{ lang.name | translate }}</label>
   </span>
+  <span form-error="language.object_required" translate>a língua da palestra é obrigatória</span>
 </p>
 
 <p>
@@ -51,6 +60,7 @@
            ng-model="proposal.level" />
     <label for="level_{{level}}">{{ level | translate }}</label>
   </span>
+  <span form-error="level.object_required" translate>o nível técnico da palestra é obrigatório</span>
 </p>
 
 </fieldset>

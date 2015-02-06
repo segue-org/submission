@@ -5,6 +5,10 @@
   <ng-include src="'modules/Proposal/coauthors.html'"></ng-include>
 
   <aside class="centered action" ng-show="account">
+    <div form-error-any translate>
+      ocorreram erros no formulário, por favor verifique
+      as mensagens em vermelho acima e tente novamente
+    </div>
     <button ng-hide="proposal.id" ng-click="submit()" translate>
       criar proposta
     </button>

@@ -25,16 +25,6 @@
         }
       };
     })
-    .service('FormErrors', function() {
-      var self = this;
-      var errors = {};
-
-      self.set = function(errors) {
-        console.log(errors);
-        errors = errors;
-      };
-      return self;
-    })
     .service('UserLocation', function(Config, $http, $q, $localStorage) {
       return {
         set: function(data) {

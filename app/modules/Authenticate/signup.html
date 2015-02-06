@@ -13,6 +13,7 @@
             minlength="5" maxsize="80"
             ng-model="signup.name"/>
       <i class="fa fa-check only-expanded"></i>
+      <span form-error="name.object_required" translate>o nome é obrigatório</span>
     </p>
 
     <p>
@@ -25,6 +26,7 @@
             minlength="5" maxsize="80"
             ng-model="signup.email"/>
       <i class="fa fa-check only-expanded"></i>
+      <span form-error="email.object_required" translate>o endereço de e-mail é obrigatório</span>
     </p>
 
     <p>
@@ -37,6 +39,7 @@
             minlength="8" maxsize="80"
             ng-model="signup.password"/>
       <i class="fa fa-check only-expanded"></i>
+      <span form-error="password.object_required" translate>a senha é obrigatória</span>
     </p>
 
     <p>
@@ -57,6 +60,7 @@
             minlength="5" maxsize="80"
             ng-model="signup.country"/>
       <i class="fa fa-check"></i>
+      <span form-error="country.object_required" translate>o país é obrigatório</span>
     </p>
 
     <p class="only-expanded" ng-hide="usePassport">
@@ -68,6 +72,7 @@
             minlength="11" maxsize="15"
             ng-model="signup.cpf"/>
       <i class="fa fa-check"></i>
+      <span form-error="cpf.object_required" translate>residentes no Brasil precisam informar o CPF</span>
     </p>
 
     <p class="only-expanded" ng-show="usePassport">
@@ -79,6 +84,7 @@
             minlength="8" maxsize="15"
             ng-model="signup.passaport"/>
       <i class="fa fa-check"></i>
+      <span form-error="passaporte.object_required" translate>estrangeiros não-residentes devem informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
     </p>
 
     <p class="only-expanded">
@@ -89,6 +95,7 @@
             minlength="5" maxsize="80"
             ng-model="signup.city"/>
       <i class="fa fa-check"></i>
+      <span form-error="city.object_required" translate>é obrigatório informar a cidade</span>
     </p>
 
     <p class="only-expanded">
@@ -100,6 +107,7 @@
             minlength="10" maxsize="30"
             ng-model="signup.phone"/>
       <i class="fa fa-check"></i>
+      <span form-error="phone.object_required" translate>é obrigatório informar o telefone</span>
     </p>
 
     <p class="only-expanded">
