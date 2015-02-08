@@ -9,15 +9,15 @@
     </li>
     <li class="unsaved" ng-show="currentProposal" ui-sref="proposal.new">
       <span class="title">{{ currentProposal.title }}</span>
-      <span class="authors"><b>{{ account.name }}</b>{{ currentProposal.coauthors }}</span>
       <span class="track">Desenvolvimento de Jogos</span>
+      <span class="authors"><b>{{ account.name }}</b>{{ currentProposal.coauthors }}</span>
       <span class="when" translate>proposta ainda não enviada!</span>
     </li>
     <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
       <span class="title">{{ proposal.title }}</span>
       <span class="authors"><b>{{ proposal.owner.name }}</b>{{ proposal.coauthors }}</span>
       <span class="track">Desenvolvimento de Jogos</span>
-      <span class="when"><translate>enviada às</translate> <i>17/03/2015 23:59</i></span>
+      <span class="when"><translate>modificada em</translate> <i>{{ proposal.last_updated }}</i></span>
     </li>
   </ul>
 </fieldset>

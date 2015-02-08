@@ -40,7 +40,7 @@
           resolve: {
             currentProposal: function(Proposals, $stateParams) {
               return Proposals.one($stateParams.id).get();
-            }
+            },
           }
         });
     });
@@ -58,6 +58,7 @@
     .controller('EditProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal) {
       $scope.proposal = currentProposal;
       $scope.$on('auth:changed', $scope.home);
+      $scope.invites = currentProposal.getList('invites').$object;
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/edit_proposal')
@@ -70,7 +71,7 @@
       $scope.proposal = currentProposal;
       $scope.$watch('proposal', Proposals.localSave);
 
-      $scope.authorsOption = null;
+      $scope.invites = [];
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/new_proposal')
@@ -79,7 +80,9 @@
                  .then($scope.home)
                  .catch(FormErrors.set);
       };
-
+    })
+    .controller('ProposalCoAuthorsController', function($scope) {
+      $scope.openInviteModal = function() {};
     })
     .controller('NewProposalAuthorController', function($scope, AuthModal, focusOn) {
       $scope.signup = {};

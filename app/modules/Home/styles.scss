@@ -22,7 +22,7 @@ main.home {
       list-style-type: none;
       margin: 1rem 0;
       position: relative;
-      height: 5rem;
+      height: 4rem;
 
       &:nth-child(odd)  { background: #BBB; }
       &:nth-child(even) { background: #DDD; }
@@ -44,7 +44,7 @@ main.home {
         font-size: 80%;
       }
       .when {
-        width: 40%;
+        width: 60%;
         float: left;
         font-size: 70%;
       }
@@ -58,7 +58,7 @@ main.home {
         color: green;
         font-size: 70%;
         float: right;
-        width: 50%;
+        width: 37%;
         text-align: right;
       }
     }

@@ -1,14 +1,23 @@
-<fieldset class="coauthors">
+<fieldset class="coauthors" ng-controller="ProposalCoAuthorsController">
   <legend translate>quem mais vai ajudar?</legend>
-  <p>
-  <label class="long" translate>pretendo apresentar essa palestra...</label>
-  <span>
-    <input type="radio" id="authors_single" value="single" ng-model="authorsOption" />
-    <label for="authors_single" translate>sozinho</label>
-  </span>
-  <span>
-    <input type="radio" id="authors_many" value="many" ng-model="authorsOption" />
-    <label for="authors_many" translate>com ajuda de outras pessoas</label>
-  </span>
+  <p ng-hide="invites.length + coauthors.length">
+    <label class="long" translate>pretendo apresentar essa palestra...</label>
+    <span>
+      <input type="radio" id="authors_single" value="single" ng-model="authorsOption" />
+      <label for="authors_single" translate>sozinho</label>
+    </span>
+    <span>
+      <input type="radio" id="authors_many" value="many" ng-model="authorsOption" />
+      <label for="authors_many" translate>com ajuda de outras pessoas...</label>
+    </span>
+  </p>
+
+  <p ng-repeat="invite in invites">
+    {{ invite.name }} ({{ invite.recipient }}) [{{ invite.status }}]
+  </p>
+  <p ng-show="invites.length">
+    <button ng-click="openInviteModal()" translate>
+      convidar outro co-autor...
+    </button>
   </p>
 </fieldset>
