@@ -35,7 +35,7 @@ main.home {
       &:nth-child(odd)  { background: #BBB; }
       &:nth-child(even) { background: #DDD; }
 
-      >* { display: block; padding: 3px;}
+      >* { display: block; padding: 2px;}
       &:hover {
         outline: 3px solid lightblue;
       }
@@ -46,6 +46,10 @@ main.home {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        &.empty {
+          color: violet;
+          font-style: italic;
+        }
       }
       .authors {
         font-style: oblique;
@@ -57,10 +61,9 @@ main.home {
         font-size: 70%;
       }
       &.unsaved .when {
-        float: right;
+        float: left;
         color: orchid;
-        &::before { content: '**'; }
-        &::after  { content: '**'; }
+
       }
       .track {
         color: green;
@@ -68,6 +71,10 @@ main.home {
         float: right;
         width: 37%;
         text-align: right;
+      }
+      .delete {
+        float: right;
+        font-size: 70%;
       }
     }
   }

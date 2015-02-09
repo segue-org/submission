@@ -25,10 +25,16 @@
     });
   angular
     .module('segue.submission.home.controller', [])
-    .controller('HomeController', function($scope, $state, myProposals, currentProposal, account) {
+    .controller('HomeController', function($scope, $state, Proposals, myProposals, currentProposal, account) {
       $scope.account         = account;
       $scope.myProposals     = myProposals;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
+
+      $scope.removeCurrent = function(ev) {
+        $scope.currentProposal = null;
+        Proposals.localForget();
+        ev.stopPropagation();
+      };
 
       $scope.$on('auth:changed', $scope.home);
     });

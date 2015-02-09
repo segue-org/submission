@@ -3,21 +3,23 @@
     minhas propostas de palestra
   </legend>
   <ul>
-    <li class="new" ng-hide="currentProposal" ui-sref="proposal.new">
-      <i class="fa fa-plus"></i>
-      <span translate>criar nova proposta de palestra</span>
-    </li>
     <li class="unsaved" ng-show="currentProposal" ui-sref="proposal.new">
       <span class="title">{{ currentProposal.title }}</span>
+      <span class="title empty" ng-hide="currentProposal.title" translate> sem título</span>
       <span class="track">Desenvolvimento de Jogos</span>
       <span class="authors"><b>{{ account.name }}</b>{{ currentProposal.coauthors }}</span>
       <span class="when" translate>proposta ainda não enviada!</span>
+      <span class="delete" ng-click="removeCurrent($event)" translate>remover</span>
     </li>
     <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
       <span class="title">{{ proposal.title }}</span>
       <span class="authors"><b>{{ proposal.owner.name }}</b>{{ proposal.coauthors }}</span>
       <span class="track">Desenvolvimento de Jogos</span>
       <span class="when"><translate>modificada em</translate> <i>{{ proposal.last_updated }}</i></span>
+    </li>
+    <li class="new" ng-hide="currentProposal" ui-sref="proposal.new">
+      <i class="fa fa-plus"></i>
+      <span translate>criar nova proposta de palestra</span>
     </li>
   </ul>
 </fieldset>
