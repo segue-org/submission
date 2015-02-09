@@ -1,4 +1,4 @@
-<fieldset class="coauthors" ng-controller="ProposalCoAuthorsController">
+<fieldset class="coauthors">
   <legend translate>quem vai apresentar?</legend>
 
   <div ng-hide="account" translate>
@@ -20,7 +20,7 @@
       <div class="recipient">{{ invite.recipient }}</div>
       <div class="status {{invite.status}}">{{ invite.status }}</div>
     </li>
-    <li class="coauthor invite-new" ng-hide="currentProposal">
+    <li class="coauthor invite-new" ng-click="openInviteModal()" ng-hide="currentProposal">
       <i class="fa fa-plus"></i>
       <span ng-show="invites" translate>convidar outro co-autor...</span>
       <span ng-hide="invites" translate>convidar co-autor...</span>

@@ -8,7 +8,8 @@
       'segue.submission.errors',
       'segue.submission.proposal.controller',
       'segue.submission.proposal.service',
-      'segue.submission.authenticate'
+      'segue.submission.authenticate',
+      'ngDialog'
     ])
     .config(function($stateProvider) {
       $stateProvider
@@ -58,11 +59,13 @@
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
     })
-    .controller('EditProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal, invites) {
+    .controller('EditProposalController', function($scope, ngDialog,
+                                                   FormErrors, Validator, Proposals,
+                                                   currentProposal, invites) {
       $scope.proposal = currentProposal;
       $scope.$on('auth:changed', $scope.home);
       $scope.invites = invites;
-      $scope.newInvites = [ ];
+      $scope.newInvites = [];
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/edit_proposal')
@@ -71,6 +74,15 @@
                  .then($scope.home)
                  .catch(FormErrors.set);
       };
+
+      $scope.openInviteModal = function() {
+        var inviteConfig = { controller: "NewInviteController", template: 'modules/Proposal/invite.html' };
+        var dialog = ngDialog.open(inviteConfig);
+        return dialog.closePromise.then(function(data) {
+          $scope.newInvites.push(data.value);
+        });
+      };
+
     })
     .controller('NewProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal) {
       $scope.proposal = currentProposal;
@@ -86,13 +98,17 @@
                  .catch(FormErrors.set);
       };
     })
-    .controller('ProposalCoAuthorsController', function($scope) {
-      $scope.openInviteModal = function() {};
-    })
     .controller('NewProposalAuthorController', function($scope, AuthModal, focusOn) {
       $scope.signup = {};
 
       $scope.openLoginModal = AuthModal.login;
       $scope.focusName = _.partial(focusOn, 'person.name');
+    })
+    .controller('NewInviteController', function($scope, focusOn) {
+      $scope.invite = {};
+      $scope.submitInvite = function() {
+        $scope.closeThisDialog($scope.invite);
+      };
+      focusOn('invite.email');
     });
 })();

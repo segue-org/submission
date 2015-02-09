@@ -5,6 +5,7 @@
 
   var mockValidator = noopMock('validate');
   var mockService   = noopMock('post', 'saveIt', 'localSave', 'createInvites');
+  var mockDialog    = noopMock('open');
   var mockUserLocation = { city: 'Porto Alegre' };
   var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
@@ -17,6 +18,7 @@
       inject(function($controller, $state) {
         $controller(controllerName, {
           $scope: $scope,
+          ngDialog: mockDialog,
           FormErrors: mockFormErrors,
           Validator: mockValidator,
           Proposals: mockService,
@@ -26,6 +28,26 @@
       });
     };
   }
+  describe("invite to proposal dialog controller", function() {
+    beforeEach(module('ui.router'));
+    beforeEach(module('segue.submission.proposal.controller'));
+    beforeEach(inject(function($rootScope) {
+      $scope = $rootScope.$new();
+      $scope.closeThisDialog = jasmine.createSpy();
+    }));
+
+    beforeEach(loadController('NewInviteController'));
+
+    it("delivers the invited person data to the upstream controller's promise", function() {
+      $scope.invite.recipient = 'b@b.com';
+      $scope.invite.name      = 'le baba';
+
+      $scope.submitInvite();
+
+      expect($scope.closeThisDialog).toHaveBeenCalledWith($scope.invite);
+    });
+  });
+
   describe("edit proposal controller", function() {
     beforeEach(module('ui.router'));
     beforeEach(module('segue.submission.proposal.controller'));
@@ -33,16 +55,16 @@
     beforeEach(loadQ);
     beforeEach(inject(function($rootScope) {
       $scope = $rootScope.$new();
-      $scope.home = jasmine.createSpy()
+      $scope.home = jasmine.createSpy();
+      spyOn(mockFormErrors,'set');
+      spyOn(mockService,'saveIt');
     }));
 
-    describe("editing a proposal", function() {
-      beforeEach(loadController('EditProposalController'));
+    beforeEach(loadController('EditProposalController'));
 
+    describe("editing a proposal", function() {
       it("valid proposals are put to the service", function() {
         spyOn(mockValidator,'validate').and.returnValue(when(mockProposal));
-        spyOn(mockFormErrors,'set');
-        spyOn(mockService,'saveIt');
 
         $scope.proposal = mockProposal;
         $scope.submit();
@@ -55,8 +77,6 @@
 
       it("invalid proposals set FormErrors", function() {
         spyOn(mockValidator,'validate').and.returnValue(fail(mockErrors));
-        spyOn(mockFormErrors,'set');
-        spyOn(mockService,'saveIt');
 
         $scope.proposal = mockProposal;
         $scope.submit();
@@ -65,6 +85,24 @@
         expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposals/edit_proposal');
         expect(mockService.saveIt).not.toHaveBeenCalled();
         expect(mockFormErrors.set).toHaveBeenCalledWith(mockErrors);
+      });
+    });
+
+    describe("inviting a new coauthor", function() {
+      it("opens a dialog for recipient's data input", function(done) {
+        $scope.newInvites = [ { recipient: 'a@a.com', name: 'alala' } ];
+        var invite = { recipient: 'b@b.com', name: 'bababa' };
+        spyOn(mockDialog,'open').and.returnValue({ closePromise: when({ value: invite }) });
+
+        var promise = $scope.openInviteModal();
+
+        promise.then(function() {
+          expect($scope.newInvites.length).toBe(2);
+          expect($scope.newInvites[1]).toEqual(invite);
+          done();
+        });
+
+        $scope.$apply();
       });
     });
   });

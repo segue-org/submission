@@ -56,7 +56,6 @@
                  .then($scope.home)
                  .catch(FormErrors.set);
       };
-      focusOn("signup.name");
     })
     .factory('AuthModal', function (ngDialog) {
       var loginConfig  = { controller: "LoginController",  template: 'modules/Authenticate/login.html' };
