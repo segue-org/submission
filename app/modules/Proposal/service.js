@@ -5,9 +5,9 @@
     .module('segue.submission.proposal.service',[
       'segue.submission',
       'restangular',
-      'ngStorage'
+      'ngStorage',
     ])
-    .factory('Proposals', function(Restangular, Auth, $localStorage) {
+    .factory('Proposals', function(Restangular, Auth, Validator, FormErrors, $localStorage, $q) {
       var service = Restangular.service('proposals');
       var extensions = {};
 
@@ -26,6 +26,15 @@
       };
       extensions.saveIt = function(object) {
         return object.save();
+      };
+      extensions.createInvites = function(newInvites) {
+        return function(proposals) {
+          return $q.all(newInvites.map(function(invite) {
+            return Validator.validate(invite, 'proposals/new_invite')
+                            .then(function() { proposals.post('invites', invite); })
+                            .catch(FormErrors.set);
+          }));
+        };
       };
 
       return _.extend(service, extensions);

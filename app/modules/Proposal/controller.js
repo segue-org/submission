@@ -41,6 +41,9 @@
             currentProposal: function(Proposals, $stateParams) {
               return Proposals.one($stateParams.id).get();
             },
+            invites: function(Proposals, $stateParams) {
+              return Proposals.one($stateParams.id).getList('invites');
+            }
           }
         });
     });
@@ -55,14 +58,16 @@
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
     })
-    .controller('EditProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal) {
+    .controller('EditProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal, invites) {
       $scope.proposal = currentProposal;
       $scope.$on('auth:changed', $scope.home);
-      $scope.invites = currentProposal.getList('invites').$object;
+      $scope.invites = invites;
+      $scope.newInvites = [ ];
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/edit_proposal')
                  .then(Proposals.saveIt)
+                 .then(Proposals.createInvites($scope.newInvites))
                  .then($scope.home)
                  .catch(FormErrors.set);
       };

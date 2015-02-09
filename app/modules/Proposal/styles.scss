@@ -27,4 +27,57 @@ main.proposal {
   }
   form.ng-pristine aside.action { opacity: 0; }
   form.ng-dirty    aside.action { opacity: 1; }
+
+  ul.coauthor_list {
+    padding: 0;
+    margin: 1em 0;
+  }
+  .coauthor {
+    list-style-type: none;
+    float: left;
+    background: #ddd;
+    width: 16rem;
+    margin: 0 15px 15px 0;
+    height: 50px;
+
+    img { float: left; margin-right: 5px; }
+    .name      {
+      font-weight: bold;
+    }
+    .recipient {
+      font-style: oblique;
+    }
+    .status {
+      float: right;
+      font-size: 80%;
+      &.pending { color: deeppink; }
+      &.declined { color: violet; }
+      &.accepted { color: green; }
+      &.you { color: green; }
+    }
+
+    .name, .recipient {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  .coauthor.invite-new {
+    text-align: center;
+    position: relative;
+
+    .fa-plus {
+      position: absolute;
+      top: 20%;
+      left: 5%;
+      font-size: xx-large;
+    }
+    span {
+      position: absolute;
+      top: 28%;
+      right: 5%;
+      left: 10%;
+      font-size: large;
+    }
+  }
 }

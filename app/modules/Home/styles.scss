@@ -8,11 +8,19 @@ main.home {
     }
 
     li.new {
+      position: relative;
       text-align: center;
       .fa-plus {
+        position: absolute;
+        top: 20%;
+        left: 5%;
         font-size: xx-large;
       }
       span {
+        position: absolute;
+        top: 25%;
+        left: 7%;
+        right: 2%;
         font-size: x-large;
       }
     }

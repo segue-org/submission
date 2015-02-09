@@ -4,10 +4,11 @@
   var $scope;
 
   var mockValidator = noopMock('validate');
-  var mockService   = noopMock('post', 'saveIt', 'localSave');
+  var mockService   = noopMock('post', 'saveIt', 'localSave', 'createInvites');
   var mockUserLocation = { city: 'Porto Alegre' };
   var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
+  var mockInvites = [ ];
 
   var mockFormErrors = noopMock('set');
 
@@ -19,6 +20,7 @@
           FormErrors: mockFormErrors,
           Validator: mockValidator,
           Proposals: mockService,
+          invites: mockInvites,
           currentProposal: mockProposal
         });
       });

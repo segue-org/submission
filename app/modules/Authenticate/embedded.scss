@@ -5,11 +5,13 @@ main .logged-as {
   max-width: 25rem;
   margin: 0;
   padding: 0;
-  height: 70px;
+  height: 50px;
   img { float: left; margin-right: 10px;}
-  .email::before { content: '<'; }
-  .email::after  { content: '>'; }
-  .logout-icon { display: none; }
+  span { display: block; margin: 0; width: 15rem; float: left; }
+  .name { font-weight: bold; }
+  .email { font-style: oblique; }
+  .logout-text { display: block; width: 2rem; float: right; }
+  .logout-icon { display: block; float: right; }
 }
 
 aside .logged-as {
