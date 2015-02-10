@@ -25,14 +25,13 @@ main.proposal {
     }
 
   }
-  form.ng-pristine aside.action { opacity: 0; }
-  form.ng-dirty    aside.action { opacity: 1; }
 
   ul.coauthor_list {
     padding: 0;
     margin: 1em 0;
   }
   .coauthor {
+    cursor: pointer;
     list-style-type: none;
     float: left;
     background: #ddd;
@@ -79,5 +78,33 @@ main.proposal {
       left: 10%;
       font-size: large;
     }
+  }
+}
+
+.ngdialog-content {
+  .invite {
+    section {
+      font-size: large;
+      padding: 0.9rem;
+      border-radius: 20px;
+    }
+
+    input, button {
+      width: 90%;
+      font-size: x-large;
+      border: 1px solid gray;
+      margin: 0.6rem auto;
+      padding: 0.5rem;
+    }
+
+    input + .forgot {
+      position: absolute;
+      font-size: small;
+      margin-top: 1.5em;
+      text-decoration: none;
+      right: 70px;
+    }
+
+    &.half { width: 38%; }
   }
 }

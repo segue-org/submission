@@ -1,13 +1,15 @@
-<section class="login">
+<section class="invite">
   <header translate>convidar co-autor</header>
   <form novalidate>
     <input type="text" maxlength=30
-          placeholder="{{ 'e-mail' | translate }}"
-          focusable required ng-model="invite.email" />
-    <input type="password"
-          placeholder="{{ 'nome' | translate }}"
-          ng-model="invite.password" />
-    <button ng-click="tryLogin()" class="only-expanded" translate>
+          placeholder="{{ 'e-mail do convidado' | translate }}"
+          focusable required ng-model="invite.recipient" />
+    <div form-error="recipient.*" translate>por favor, informe o e-mail do convidado</div>
+    <input type="text" maxlength=80
+          placeholder="{{ 'nome do convidado' | translate }}"
+          ng-model="invite.name" />
+    <div form-error="name.*" translate>por favor, informe o nome do convidado</div>
+    <button ng-click="submitInvite()" class="only-expanded" translate>
       convidar!
     </button>
   </form>

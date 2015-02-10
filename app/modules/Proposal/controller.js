@@ -63,9 +63,17 @@
                                                    FormErrors, Validator, Proposals,
                                                    currentProposal, invites) {
       $scope.proposal = currentProposal;
-      $scope.$on('auth:changed', $scope.home);
       $scope.invites = invites;
       $scope.newInvites = [];
+
+      $scope.$on('auth:changed', $scope.home);
+
+      $scope.isDirty = function() {
+        return account && (($scope.proposal_form.$dirty) || ($scope.newInvites.length > 0));
+      };
+      $scope.canInviteMore = function() {
+        return (1 + $scope.invites.length + $scope.newInvites.length) < 5;
+      };
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/edit_proposal')
@@ -88,7 +96,7 @@
       $scope.proposal = currentProposal;
       $scope.$watch('proposal', Proposals.localSave);
 
-      $scope.invites = [];
+      $scope.newInvites = [];
 
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/new_proposal')
@@ -104,10 +112,12 @@
       $scope.openLoginModal = AuthModal.login;
       $scope.focusName = _.partial(focusOn, 'person.name');
     })
-    .controller('NewInviteController', function($scope, focusOn) {
+    .controller('NewInviteController', function($scope, FormErrors, Validator, focusOn) {
       $scope.invite = {};
       $scope.submitInvite = function() {
-        $scope.closeThisDialog($scope.invite);
+        return Validator.validate($scope.invite, 'proposals/new_invite')
+                        .then($scope.closeThisDialog)
+                        .catch(FormErrors.set);
       };
       focusOn('invite.email');
     });

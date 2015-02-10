@@ -20,7 +20,13 @@
       <div class="recipient">{{ invite.recipient }}</div>
       <div class="status {{invite.status}}">{{ invite.status }}</div>
     </li>
-    <li class="coauthor invite-new" ng-click="openInviteModal()" ng-hide="currentProposal">
+    <li class="coauthor in-progress" ng-repeat="invite in newInvites">
+      <img gravatar-src="invite.recipient" gravatar-size="50">
+      <div class="name">{{ invite.name }}</div>
+      <div class="recipient">{{ invite.recipient }}</div>
+      <div class="status {{invite.status}}" translate>será convidado ao salvar</div>
+    </li>
+    <li class="coauthor invite-new" ng-click="openInviteModal()" ng-show="canInviteMore()">
       <i class="fa fa-plus"></i>
       <span ng-show="invites" translate>convidar outro co-autor...</span>
       <span ng-hide="invites" translate>convidar co-autor...</span>

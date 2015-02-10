@@ -3,7 +3,7 @@
   <ng-include src="'modules/Proposal/author.html'"></ng-include>
   <ng-include src="'modules/Proposal/coauthors.html'"></ng-include>
 
-  <aside class="centered action" ng-show="account">
+  <aside class="centered action" ng-show="isDirty()">
     <div form-error-any>
       <span translate>por favor verifique as mensagens acima e tente novamente</span>
     </div>

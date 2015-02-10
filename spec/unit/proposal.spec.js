@@ -31,6 +31,7 @@
   describe("invite to proposal dialog controller", function() {
     beforeEach(module('ui.router'));
     beforeEach(module('segue.submission.proposal.controller'));
+    beforeEach(loadQ);
     beforeEach(inject(function($rootScope) {
       $scope = $rootScope.$new();
       $scope.closeThisDialog = jasmine.createSpy();
@@ -38,13 +39,19 @@
 
     beforeEach(loadController('NewInviteController'));
 
-    it("delivers the invited person data to the upstream controller's promise", function() {
+    it("delivers the invited person data to the upstream controller's promise", function(done) {
       $scope.invite.recipient = 'b@b.com';
       $scope.invite.name      = 'le baba';
+      spyOn(mockValidator,'validate').and.returnValue(when($scope.invite));
 
-      $scope.submitInvite();
+      var promise = $scope.submitInvite();
 
-      expect($scope.closeThisDialog).toHaveBeenCalledWith($scope.invite);
+      promise.then(function() {
+        expect(mockValidator.validate).toHaveBeenCalledWith($scope.invite, 'proposals/new_invite');
+        expect($scope.closeThisDialog).toHaveBeenCalledWith($scope.invite);
+        done();
+      });
+      $scope.$apply();
     });
   });
 
@@ -72,6 +79,7 @@
 
         expect(mockValidator.validate).toHaveBeenCalledWith(mockProposal, 'proposals/edit_proposal');
         expect(mockService.saveIt).toHaveBeenCalledWith(mockProposal);
+        // TODO: check that invites have been dispatched
         expect(mockFormErrors.set).not.toHaveBeenCalled();
       });
 
@@ -210,6 +218,8 @@
 
       http.flush();
     });
+
+    // TODO: write a test for sending invites
 
   });
 

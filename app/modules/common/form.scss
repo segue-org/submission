@@ -112,25 +112,33 @@ form.lines {
     font-size: x-large;
     padding: 1rem;
   }
+}
 
+form {
   .error {
-    position: relative;
-    max-width: 30%;
-    margin-left: 12rem;
     display: block;
     border: 1px solid lightpink;
     border-radius: 10px;
     padding: 0.2rem;
     background: pink;
     span {
-      margin-left: 1rem;
+      margin-left: 2rem;
     }
     .fa {
       position: absolute;
       top: 20%;
       left: 2%;
       float: left;
-      margin-right: 10px;
     }
+  }
+
+  aside .error {
+    text-align: left;
+  }
+
+  p .error {
+    position: relative;
+    max-width: 50%;
+    margin-left: 12rem;
   }
 }
