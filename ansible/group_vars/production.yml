@@ -1,0 +1,6 @@
+webhost: fisl16.softwarelivre.org
+webport: 80
+sitename: submission
+master_host: fisl16.softwarelivre.org
+api_host: http://192.168.33.91:5000
+api_path: /api

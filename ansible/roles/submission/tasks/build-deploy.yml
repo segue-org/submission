@@ -1,0 +1,14 @@
+
+- name: local -  cleans up dist folder
+  local_action: command gulp clean
+
+- name: local - performs a production-like gulp build
+  local_action: command gulp build --production=1
+
+- name: copies files in dist to production dir
+  synchronize: src=../dist/
+               dest={{ app_path }}
+
+- name: configure the gateway host
+  template: src=config.js.j2
+            dest={{ app_path }}/config.js

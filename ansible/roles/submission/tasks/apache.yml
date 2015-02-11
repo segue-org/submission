@@ -1,0 +1,21 @@
+---
+
+- apt: update_cache=yes
+       cache_valid_time=3600
+
+- name: Install apache
+  apt: pkg=apache2
+       state=installed
+
+- name: Create an apache site named afterconf
+  tags: config
+  template: src=apache_site_afterconf.j2
+            dest=/etc/apache2/sites-available/afterconf
+  notify: restart apache2
+
+- name: Disable apache site default
+  command: a2dissite default
+
+- name: Enable apache site afterconf
+  command: a2ensite afterconf
+  notify: restart apache2
