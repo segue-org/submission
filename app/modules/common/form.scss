@@ -79,7 +79,7 @@ form.lines {
   input[type=radio] + label {
     background: white;
     border: 1px solid lightgray;
-    padding: 0.5rem;
+    padding: 5px 10px;
     width: 10rem;
   }
   input[type=radio]:checked + label {
@@ -119,11 +119,11 @@ form {
     display: block;
     border: 1px solid lightpink;
     border-radius: 10px;
-    padding: 0.2rem;
+    padding: 5px 10px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
     background: pink;
-    span {
-      margin-left: 2rem;
-    }
     .fa {
       position: absolute;
       top: 20%;
@@ -133,12 +133,12 @@ form {
   }
 
   aside .error {
+    margin-top: 10px;
     text-align: left;
   }
 
   p .error {
     position: relative;
     max-width: 50%;
-    margin-left: 12rem;
   }
 }
