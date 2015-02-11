@@ -35,24 +35,35 @@
     beforeEach(inject(function($rootScope) {
       $scope = $rootScope.$new();
       $scope.closeThisDialog = jasmine.createSpy();
+      $scope.invite = { recipient: 'b@b.com', name: 'le baba' };
     }));
 
     beforeEach(loadController('NewInviteController'));
 
     it("delivers the invited person data to the upstream controller's promise", function(done) {
-      $scope.invite.recipient = 'b@b.com';
-      $scope.invite.name      = 'le baba';
       spyOn(mockValidator,'validate').and.returnValue(when($scope.invite));
 
       var promise = $scope.submitInvite();
 
       promise.then(function() {
-        expect(mockValidator.validate).toHaveBeenCalledWith($scope.invite, 'proposals/new_invite');
         expect($scope.closeThisDialog).toHaveBeenCalledWith($scope.invite);
         done();
       });
       $scope.$apply();
     });
+
+    it("if the invite is invalid, do not close, do not pass value upstream", function(done) {
+      spyOn(mockValidator,'validate').and.returnValue(fail(mockErrors));
+
+      var promise = $scope.submitInvite();
+
+      promise.then(function() {
+        expect($scope.closeThisDialog).not.toHaveBeenCalled();
+        done();
+      });
+      $scope.$apply();
+    });
+
   });
 
   describe("edit proposal controller", function() {
@@ -97,8 +108,10 @@
     });
 
     describe("inviting a new coauthor", function() {
-      it("opens a dialog for recipient's data input", function(done) {
+      beforeEach(function() {
         $scope.newInvites = [ { recipient: 'a@a.com', name: 'alala' } ];
+      });
+      it("opens a dialog for recipient's data input", function(done) {
         var invite = { recipient: 'b@b.com', name: 'bababa' };
         spyOn(mockDialog,'open').and.returnValue({ closePromise: when({ value: invite }) });
 
@@ -107,6 +120,18 @@
         promise.then(function() {
           expect($scope.newInvites.length).toBe(2);
           expect($scope.newInvites[1]).toEqual(invite);
+          done();
+        });
+
+        $scope.$apply();
+      });
+      it("if dialog is closed with no input, do not add anything to invites", function(done) {
+        spyOn(mockDialog,'open').and.returnValue({ closePromise: when({ value: '$closeButton' }) });
+
+        var promise = $scope.openInviteModal();
+
+        promise.then(function() {
+          expect($scope.newInvites.length).toBe(1);
           done();
         });
 

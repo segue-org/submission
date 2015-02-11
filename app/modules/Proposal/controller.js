@@ -87,6 +87,8 @@
         var inviteConfig = { controller: "NewInviteController", template: 'modules/Proposal/invite.html' };
         var dialog = ngDialog.open(inviteConfig);
         return dialog.closePromise.then(function(data) {
+          if (_(data.value).isString()) { return; }
+          if (_(data.value).isEmpty()) { return; }
           $scope.newInvites.push(data.value);
         });
       };
