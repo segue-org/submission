@@ -61,12 +61,20 @@ msgstr ""
 msgid "cidade"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
+msgid "convidar co-autor"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "convidar co-autor..."
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "convidar outro co-autor..."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
+msgid "convidar!"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
@@ -87,6 +95,10 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "e-mail"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
+msgid "e-mail do convidado"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
@@ -121,12 +133,20 @@ msgstr ""
 msgid "língua"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "minhas propostas de palestra"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "mini-currículo"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "nome"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
+msgid "nome do convidado"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
@@ -181,6 +201,14 @@ msgstr ""
 msgid "por favor, infome o seu número de telefone"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
+msgid "por favor, informe o e-mail do convidado"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
+msgid "por favor, informe o nome do convidado"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "por favor, informe seu endereço de e-mail"
 msgstr ""
@@ -197,12 +225,12 @@ msgstr ""
 msgid "por favor, informe sua cidade"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Home/home.html
-msgid "proposta ainda não enviada!"
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "proposta"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "proposta completa"
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "proposta ainda não enviada!"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
@@ -225,10 +253,6 @@ msgstr ""
 msgid "residentes no Brasil, favor informar o CPF"
 msgstr ""
 
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "resumo da proposta"
-msgstr ""
-
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/logged-as.html
 msgid "sair"
 msgstr ""
@@ -244,6 +268,10 @@ msgstr ""
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "senha"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
+msgid "será convidado ao salvar"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
