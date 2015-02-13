@@ -4,7 +4,6 @@
 <---- POST http://server/api/proposals
       {
         "title": "a talk proposal",
-        "summary": "a summary",
         "description": "long description",
         "language": "es|en|pt",
         "owner": "owner@email.com"
@@ -19,7 +18,6 @@
 ----> {
         "resource": {
           "title": "a talk proposal",
-          "summary": "a summary",
           "description": "long description",
           "owner": "owner@email.com"
           "status": "pending confirmation"
@@ -83,7 +81,6 @@
   "resource": {
     "id": 123,
     "title": "a talk proposal",
-    "summary": "a summary",
     "description": "long description",
     "language": "es|en|pt",
     "owner": "owner@email.com"

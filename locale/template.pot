@@ -9,10 +9,6 @@ msgid "(Mercosul: use identidade nacional)"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "(até 200 caracteres)"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "(até 2000 caracteres)"
 msgstr ""
 
@@ -155,18 +151,6 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "o que você está propondo?"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "o resumo da palestra é obrigatório"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "o resumo deve ter no máximo 200 caracteres"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "o resumo deve ter no mínimo 5 caracteres"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html

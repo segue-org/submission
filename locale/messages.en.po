@@ -17,10 +17,6 @@ msgid "(Mercosul: use identidade nacional)"
 msgstr "(Mercosur: use national id)"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "(até 200 caracteres)"
-msgstr "(up to 200 characters)"
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "(até 2000 caracteres)"
 msgstr "(up to 2000 characters)"
 
@@ -170,18 +166,6 @@ msgid "o que você está propondo?"
 msgstr "what do you want to talk about?"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "o resumo da palestra é obrigatório"
-msgstr "please write a summary of your talk"
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "o resumo deve ter no máximo 200 caracteres"
-msgstr "the summary must have 200 characters at most"
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "o resumo deve ter no mínimo 5 caracteres"
-msgstr "the summary must have at least 5 characters"
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "o título da palestra é obrigatório"
 msgstr "please give a title to your talk"
 
@@ -225,13 +209,13 @@ msgstr "please, inform your country"
 msgid "por favor, informe sua cidade"
 msgstr "please, tell us which city you come from"
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "proposta"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
 msgid "proposta ainda não enviada!"
 msgstr "proposal not yet sent!"
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "proposta completa"
-msgstr "complete proposal"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "quem vai apresentar?"
@@ -252,10 +236,6 @@ msgstr "repeat password"
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "residentes no Brasil, favor informar o CPF"
 msgstr "Brazilian residents, please inform your CPF"
-
-#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
-msgid "resumo da proposta"
-msgstr "proposal summary"
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/logged-as.html
 msgid "sair"
@@ -304,6 +284,24 @@ msgid ""
 "    ajudar na apresentação dessa palestra"
 msgstr ""
 "you can invite up to three people to help you in presenting this talk"
+
+#~ msgid "(até 200 caracteres)"
+#~ msgstr "(up to 200 characters)"
+
+#~ msgid "o resumo da palestra é obrigatório"
+#~ msgstr "please write a summary of your talk"
+
+#~ msgid "o resumo deve ter no máximo 200 caracteres"
+#~ msgstr "the summary must have 200 characters at most"
+
+#~ msgid "o resumo deve ter no mínimo 5 caracteres"
+#~ msgstr "the summary must have at least 5 characters"
+
+#~ msgid "proposta completa"
+#~ msgstr "complete proposal"
+
+#~ msgid "resumo da proposta"
+#~ msgstr "proposal summary"
 
 #~ msgid "com ajuda de outras pessoas"
 #~ msgstr "along with other people"
