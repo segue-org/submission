@@ -6,13 +6,14 @@
       'gettext',
       'ngStorage',
     ])
-    .service('Locale', function(gettextCatalog, $window, $localStorage) {
+    .service('Locale', function(gettextCatalog, $window, $localStorage, $rootScope) {
       var self = {};
 
       function useLanguage(lang) {
         gettextCatalog.setCurrentLanguage(lang);
         gettextCatalog.loadRemote('/public/translations/messages.'+lang+'.json');
         self.currentLanguage = lang;
+        $rootScope.$broadcast('locale:changed', lang);
       }
       function saveLanguage(lang) {
         $localStorage.savedLanguage = lang;
@@ -40,6 +41,18 @@
       useLanguage(detectLanguage());
 
       return self;
+    })
+    .directive('ifLocale', function(Locale) {
+      return function(scope, elem, attr) {
+        function hideOrShow(newLocale) {
+          if (myLocale == newLocale) { elem.removeClass('ng-hide'); }
+          else { elem.addClass('ng-hide'); }
+        }
+
+        var myLocale = attr.ifLocale;
+        scope.$on('locale:changed', function(_,newLocale) { hideOrShow(newLocale); });
+        hideOrShow(Locale.currentLanguage);
+      };
     })
     .directive('localeSelector', function(Locale) {
       return {
