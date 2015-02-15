@@ -54,7 +54,7 @@
     .controller('ProposalController', function($scope, Config, Auth, userLocation, focusOn) {
       focusOn('proposal.title');
       $scope.userLocation = userLocation;
-      $scope.account = Auth.glue($scope, 'account');
+      $scope.credentials = Auth.glue($scope, 'credentials');
 
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
@@ -69,7 +69,7 @@
       $scope.$on('auth:changed', $scope.home);
 
       $scope.isDirty = function() {
-        return account && (($scope.proposal_form.$dirty) || ($scope.newInvites.length > 0));
+        return $scope.credentials && (($scope.proposal_form.$dirty) || ($scope.newInvites.length > 0));
       };
       $scope.canInviteMore = function() {
         return (1 + $scope.invites.length + $scope.newInvites.length) < 5;
@@ -87,6 +87,7 @@
         var inviteConfig = { controller: "NewInviteController", template: 'modules/Proposal/invite.html' };
         var dialog = ngDialog.open(inviteConfig);
         return dialog.closePromise.then(function(data) {
+          FormErrors.clear();
           if (_(data.value).isString()) { return; }
           if (_(data.value).isEmpty()) { return; }
           $scope.newInvites.push(data.value);
@@ -94,18 +95,40 @@
       };
 
     })
-    .controller('NewProposalController', function($scope, FormErrors, Validator, Proposals, currentProposal) {
+    .controller('NewProposalController', function($scope, ngDialog,
+                                                  FormErrors, Validator, Proposals,
+                                                  currentProposal) {
       $scope.proposal = currentProposal;
       $scope.$watch('proposal', Proposals.localSave);
 
       $scope.newInvites = [];
 
+      $scope.isDirty = function() {
+        return $scope.credentials && (($scope.proposal_form.$dirty) || ($scope.newInvites.length > 0));
+      };
+
+      $scope.canInviteMore = function() {
+        return (1 + $scope.newInvites.length) < 5;
+      };
+
       $scope.submit = function() {
         Validator.validate($scope.proposal, 'proposals/new_proposal')
                  .then(Proposals.post)
+                 .then(Proposals.createInvites($scope.newInvites))
                  .then(Proposals.localForget)
                  .then($scope.home)
                  .catch(FormErrors.set);
+      };
+
+      $scope.openInviteModal = function() {
+        var inviteConfig = { controller: "NewInviteController", template: 'modules/Proposal/invite.html' };
+        var dialog = ngDialog.open(inviteConfig);
+        return dialog.closePromise.then(function(data) {
+          FormErrors.clear();
+          if (_(data.value).isString()) { return; }
+          if (_(data.value).isEmpty()) { return; }
+          $scope.newInvites.push(data.value);
+        });
       };
     })
     .controller('NewProposalAuthorController', function($scope, AuthModal, focusOn) {
@@ -121,6 +144,6 @@
                         .then($scope.closeThisDialog)
                         .catch(FormErrors.set);
       };
-      focusOn('invite.email');
+      focusOn('invite.recipient');
     });
 })();

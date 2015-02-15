@@ -1,13 +1,13 @@
-<p class="logged-as success" ng-show="account">
-  <img gravatar-src="account.email" gravatar-size="50">
+<p class="logged-as success" ng-show="credentials">
+  <img gravatar-src="credentials.email" gravatar-size="50">
   <span class="you-are" translate>
     você está logado como
   </span><br/>
   <span class="name">
-    {{ account.name }}
+    {{ credentials.name }}
   </span>
   <span class="email">
-    {{ account.email }}
+    {{ credentials.email }}
   </span>
   <i class="logout-icon fa fa-sign-out" ng-click="logout()"></i>
   <a class="logout-text" href="" ng-click="logout()" translate>sair</a>

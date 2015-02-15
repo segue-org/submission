@@ -1,7 +1,5 @@
 main.home {
   .proposals {
-    padding: 0;
-
     ul {
       padding: 0;
       margin: 0;
@@ -26,10 +24,11 @@ main.home {
     }
 
     li {
-      cursor: pointer;
+      float: left;
+      margin: 10px 10px;
       width: 25rem;
+      cursor: pointer;
       list-style-type: none;
-      margin: 1rem 0;
       position: relative;
       height: 4rem;
 

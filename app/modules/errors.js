@@ -12,6 +12,7 @@
       };
 
       self.set = function(errors) {
+        $rootScope.$broadcast('errors:clear');
         _.each(errors, function(error) {
           var field = error.field || error.params.key || error.dataPath.replace('/','');
           var label = error.label || codes[error.code].toLowerCase();

@@ -11,7 +11,7 @@
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
   var mockInvites = [ ];
 
-  var mockFormErrors = noopMock('set');
+  var mockFormErrors = noopMock('set','clear');
 
   function loadController(controllerName) {
     return function() {
@@ -201,7 +201,7 @@
 
   describe("proposal service", function() {
     var mockStorage = {};
-    var mockAuth = noopMock('account');
+    var mockAuth = noopMock('credentials');
     var http, service;
 
     beforeEach(mockDep('$localStorage', 'ngStorage').toBe(mockStorage));
@@ -231,12 +231,12 @@
       http.flush();
     });
 
-    it("gets list of proposals owned by the currently logged account", function(done) {
-      spyOn(mockAuth, 'account').and.returnValue({ id: 123 });
+    it("gets list of proposals owned by the currently logged credentials", function(done) {
+      spyOn(mockAuth, 'credentials').and.returnValue({ id: 123 });
       var response = { items: [ 1,2,3 ] };
       http.expectGET('http://192.168.33.91:5000/api/proposals?owner_id=123').respond(200, response);
 
-      service.getOwnedByAccount().then(function(value) {
+      service.getOwnedByCredentials().then(function(value) {
         expect(value).toEqual([1,2,3]);
         done();
       });

@@ -1,17 +1,17 @@
 <fieldset class="coauthors">
   <legend translate>quem vai apresentar?</legend>
 
-  <div ng-hide="account" translate>
+  <div ng-hide="credentials" translate>
     você pode convidar até três pessoas para
     ajudar na apresentação dessa palestra
 
   </div>
 
-  <ul ng-show="account" class="coauthor_list">
+  <ul ng-show="credentials" class="coauthor_list">
     <li class="coauthor main">
-      <img gravatar-src="account.email" gravatar-size="50">
-      <div class="name">{{ account.name }}</div>
-      <div class="recipient">{{ account.email }}</div>
+      <img gravatar-src="credentials.email" gravatar-size="50">
+      <div class="name">{{ credentials.name }}</div>
+      <div class="recipient">{{ credentials.email }}</div>
       <div class="status you" translate>este é você!</div>
     </li>
     <li class="coauthor" ng-repeat="invite in invites">

@@ -1,9 +1,9 @@
 <fieldset class="author" ng-controller="NewProposalAuthorController" ng-hide="proposal.id">
   <legend translate>quem é você?</legend>
-  <p class="not-logged info" ng-hide="account || accountOption" translate>
+  <p class="not-logged info" ng-hide="credentials || accountOption" translate>
     não conseguimos detectar sua sessão neste computador...
   </p>
-  <p ng-hide="account">
+  <p ng-hide="credentials">
     <label class="long" translate>você já tem conta no sistema?</label>
     <span>
       <input type="radio" id="account_use_old" value="existing"
@@ -18,6 +18,10 @@
   </p>
   <logged-as></logged-as>
 
-  <ng-include src="'modules/Authenticate/signup.html'" ng-controller="SignUpController" ng-show="accountOption == 'create'">
+  <div ng-hide="credentials">
+    <ng-include src="'modules/Account/signup.html'"
+              ng-controller="SignUpController"
+              ng-show="accountOption == 'create'">
+  </div>
 
 </fieldset>

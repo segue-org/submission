@@ -25,9 +25,9 @@
       var self = {};
 
       self.create = function(data) {
-        $localStorage.session = { token: data.token, account: data.account };
-        $rootScope.$broadcast('auth:changed', data.account);
-        return data.account;
+        $localStorage.session = { token: data.token, credentials: data.credentials };
+        $rootScope.$broadcast('auth:changed', data.credentials);
+        return data.credentials;
       };
 
       self.current = function(data) {
@@ -54,8 +54,8 @@
                       .then(LocalSession.create);
       };
 
-      self.account = function() {
-        return LocalSession.current().account;
+      self.credentials = function() {
+        return LocalSession.current().credentials;
       };
       self.token = function() {
         return LocalSession.current().token;
@@ -63,25 +63,10 @@
 
       self.glue = function(target, name) {
         $rootScope.$on('auth:changed', function(_,d) { target[name] = d; });
-        return self.account();
+        return self.credentials();
       };
 
       return self;
     })
-    .service("Account", function(Restangular, $localStorage) {
-      var service = Restangular.service('accounts');
-      var extensions = {};
 
-      extensions.localLoad = function() {
-        return $localStorage.savedAccount || {};
-      };
-      extensions.localSave = function(value) {
-        $localStorage.savedAccount = value || {};
-      };
-      extensions.localForget = function() {
-        $localStorage.savedAccount = {};
-      };
-
-      return _.extend(service, extensions);
-    });
 })();

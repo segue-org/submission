@@ -28,7 +28,7 @@
       return {
         templateUrl: 'modules/Authenticate/logged-as.html',
         controller: function($scope) {
-          $scope.account = Auth.glue($scope,'account');
+          $scope.credentials = Auth.glue($scope,'credentials');
           $scope.logout  = Auth.logout;
         }
       };

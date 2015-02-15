@@ -9,10 +9,9 @@
   var role = "user";
   var id = 123;
   var token = "a token";
-  var account = { email: email, id: id, role: role };
+  var credentials = { email: email, id: id, role: role };
   var payload = { email: email, password: password };
-  var response = { token: token, account: account };
-
+  var response = { token: token, credentials: credentials };
 
   describe("authentication services", function() {
     beforeEach(module("segue.submission.authenticate.service"));
@@ -30,10 +29,10 @@
         auth.login(email, password);
         http.flush();
       });
-      it("account is cleared",function() {
+      it("credentials is cleared",function() {
         auth.logout();
 
-        expect(auth.account()).toBe(undefined);
+        expect(auth.credentials()).toBe(undefined);
       });
       it("token is cleared",function() {
         auth.logout();
@@ -52,7 +51,7 @@
         http.flush();
 
         expect(auth.token()).toEqual(token);
-        expect(auth.account()).toEqual(account);
+        expect(auth.credentials()).toEqual(credentials);
       });
       it("wrong login, no session", function() {
         http.expectPOST('http://192.168.33.91:5000/api/sessions', payload)
@@ -61,7 +60,7 @@
         auth.login(email, password);
         http.flush();
 
-        expect(auth.account()).toBe(undefined);
+        expect(auth.credentials()).toBe(undefined);
       });
     });
   });

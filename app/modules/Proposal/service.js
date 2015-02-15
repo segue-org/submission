@@ -20,19 +20,19 @@
       extensions.localForget = function() {
         $localStorage.savedProposal = {};
       };
-      extensions.getOwnedByAccount = function() {
-        var accountId = Auth.account().id;
-        return service.getList({ owner_id: accountId });
+      extensions.getOwnedByCredentials = function() {
+        var id = Auth.credentials().id;
+        return service.getList({ owner_id: id });
       };
       extensions.saveIt = function(object) {
         return object.save();
       };
       extensions.createInvites = function(newInvites) {
-        return function(proposals) {
+        return function(proposal) {
           return $q.all(newInvites.map(function(invite) {
             return Validator.validate(invite, 'proposals/new_invite')
-                            .then(function() { proposals.post('invites', invite); })
-                            .catch(FormErrors.set);
+                            .then(function() { proposal.post('invites', invite); })
+                            .catch(function() { console.log(arguments); });
           }));
         };
       };

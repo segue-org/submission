@@ -21,6 +21,6 @@
   angular
     .module('segue.submission.splash.controller', [])
     .controller('SplashController', function($scope, $state, Auth) {
-      if (Auth.account()) { $state.go('home'); }
+      if (Auth.credentials()) { $state.go('home'); }
     });
 })();

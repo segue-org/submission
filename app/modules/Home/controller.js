@@ -16,17 +16,15 @@
             main:   { controller: 'HomeController', templateUrl: 'modules/Home/home.html'  }
           },
           resolve: {
-            myProposals:     function(Proposals) { return Proposals.getOwnedByAccount(); },
+            myProposals:     function(Proposals) { return Proposals.getOwnedByCredentials(); },
             currentProposal: function(Proposals) { return Proposals.current(); },
-            account:         function(Auth)      { return Auth.account(); }
           }
         });
 
     });
   angular
     .module('segue.submission.home.controller', [])
-    .controller('HomeController', function($scope, $state, Proposals, myProposals, currentProposal, account) {
-      $scope.account         = account;
+    .controller('HomeController', function($scope, $state, Proposals, myProposals, currentProposal) {
       $scope.myProposals     = myProposals;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
 

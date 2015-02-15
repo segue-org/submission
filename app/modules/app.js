@@ -17,6 +17,7 @@
       'segue.submission.locale',
       'segue.submission.home',
       'segue.submission.splash',
+      'segue.submission.account',
       'segue.submission.authenticate',
       'segue.submission.proposal',
     ])
@@ -33,7 +34,7 @@
       });
 
       $scope.home = function() {
-        if (Auth.account()) {
+        if (Auth.credentials()) {
           $state.go('home');
         }
         else {
