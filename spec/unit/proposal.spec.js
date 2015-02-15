@@ -15,7 +15,7 @@
 
   function loadController(controllerName) {
     return function() {
-      inject(function($controller, $state) {
+      inject(function($controller) {
         $controller(controllerName, {
           $scope: $scope,
           ngDialog: mockDialog,

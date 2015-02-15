@@ -5,7 +5,7 @@
     .module("segue.submission.account",[
       "ngDialog",
 
-      "segue.submission",
+      "segue.submission.directives",
       "segue.submission.account.controller"
     ]);
 
@@ -18,6 +18,7 @@
       $scope.$watch('signup', Account.localSave);
 
       function finishedSignUp() {
+        Auth.login($scope.signup.email, $scope.signup.password);
         $scope.signup = null;
         // HACK: ugly hack to ensure we are not inside the proposal creation form before home()ing
         if ($scope.$parent.accountOption === undefined) {
@@ -29,7 +30,6 @@
         Validator.validate($scope.signup, 'accounts/signup')
                  .then(Account.post)
                  .then(Account.localForget)
-                 .then(_.partial(Auth.login, $scope.signup.email, $scope.signup.password))
                  .then(finishedSignUp)
                  .catch(FormErrors.set);
       };
