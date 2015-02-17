@@ -3,3 +3,4 @@ app/bower_components
 dist
 .*.sw?
 locale/*.mo
+.DS_Store

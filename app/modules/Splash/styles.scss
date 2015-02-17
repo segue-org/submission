@@ -1,10 +1,56 @@
-main.splash {
+body.splash {
+  background: url(/images/top-bg.png);
 
-  h3 {
+}
+
+header.splash {
+  h1 {
+    background: none;
+  }
+  z-index: -50;
+}
+main.splash {
+  background: transparent;
+  position: fixed;
+  left: 10%;
+  top: 0px;
+
+  img {
+    z-index: 150;
+  }
+
+  div.subtitle {
     font-family: Orbitron;
-    font-size: 600%;
-    margin: 0;
+    position: fixed;
+    font-size: 20px;
+    color: #666;
+    top: 70px;
+    left: 50%;
     text-align: center;
-    padding: 3rem;
+  }
+
+  div.buttons {
+    background: url(/images/bg_fisl.png) no-repeat;
+    background-size: 100% auto;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    top: 180px;
+    bottom: 0px;
+    position: fixed;
+    z-index: -100;
+
+    button {
+      display: inline-block;
+      cursor: pointer;
+      width: 25%;
+      background: gray;
+      box-shadow: 3px 3px 3px lightgray;
+      color: white;
+      height: 3em;
+      margin: 1em;
+      border: 0;
+      font-size: xx-large;
+    }
   }
 }
