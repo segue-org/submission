@@ -133,6 +133,12 @@ msgstr "choose a track"
 msgid "esqueci minha senha!"
 msgstr "forgot my password!"
 
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+msgid ""
+"este endereço de e-mail já está registrado\n"
+"        no sistema, por favor escolha outro"
+msgstr "this e-mail address is already in use, please fill in another one"
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "este é você!"
 msgstr "this is you!"
@@ -274,10 +280,6 @@ msgid "remover"
 msgstr "remove"
 
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
-msgid "repita a senha"
-msgstr "repeat password"
-
-#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "residentes no Brasil, favor informar o CPF"
 msgstr "Brazilian residents, please inform your CPF"
 
@@ -335,6 +337,9 @@ msgid ""
 "você pode convidar até três pessoas para\n"
 "    ajudar na apresentação dessa palestra"
 msgstr "you can invite up to three people to help you in presenting this talk"
+
+#~ msgid "repita a senha"
+#~ msgstr "repeat password"
 
 #~ msgid "modificada em <i>{{ proposal.last_updated }}</i>"
 #~ msgstr "last modification <i>{{ proposal.last_updated }}</i>"

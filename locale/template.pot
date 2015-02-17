@@ -125,6 +125,12 @@ msgstr ""
 msgid "esqueci minha senha!"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+msgid ""
+"este endereço de e-mail já está registrado\n"
+"        no sistema, por favor escolha outro"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "este é você!"
 msgstr ""
@@ -259,10 +265,6 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
 msgid "remover"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
-msgid "repita a senha"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
