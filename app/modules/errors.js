@@ -11,10 +11,13 @@
         $rootScope.$broadcast('errors:clear');
       };
 
-      self.set = function(errors) {
+      self.set = function(raw) {
         $rootScope.$broadcast('errors:clear');
+        var errors = (raw.data)? raw.data.errors:raw;
         _.each(errors, function(error) {
-          var field = error.field || error.params.key || error.dataPath.replace('/','');
+          var paramKey = (error.params)?   error.params.key               : null;
+          var dataPath = (error.dataPath)? error.dataPath.replace('/','') : null;
+          var field = error.field || paramKey || dataPath;
           var label = error.label || codes[error.code].toLowerCase();
           var path = field + "." + label;
           $rootScope.$broadcast('errors:set', path);

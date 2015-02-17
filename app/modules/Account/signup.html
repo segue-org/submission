@@ -26,6 +26,10 @@
             ng-model="signup.email"/>
       <i class="fa fa-check only-expanded"></i>
       <span form-error="email.object_required" translate>por favor, informe seu endereço de e-mail</span>
+      <span form-error="email.already_in_use" translate>
+        este endereço de e-mail já está registrado
+        no sistema, por favor escolha outro
+      </span>
     </p>
 
     <p class="only-expanded">
@@ -39,16 +43,6 @@
             ng-model="signup.password"/>
       <i class="fa fa-check only-expanded"></i>
       <span form-error="password.object_required" translate>por favor, defina uma senha com no mínimo 8 caracteres</span>
-    </p>
-
-    <p class="only-expanded">
-      <label class="notip">
-        <span translate>repita a senha</span>
-      </label>
-      <input type="password" required
-            minlength="5" maxsize="80"
-            ng-model="signup.repeat_password"/>
-      <i ng-show="signup.password == signup.repeat_password" class="fa fa-check only-expanded"></i>
     </p>
 
     <p class="only-expanded">
@@ -72,6 +66,7 @@
             ng-model="signup.cpf"/>
       <i class="fa fa-check"></i>
       <span form-error="cpf.object_required" translate>residentes no Brasil, favor informar o CPF</span>
+      <span form-error="cpf.invalid_type"    translate>residentes no Brasil, favor informar o CPF</span>
     </p>
 
     <p class="only-expanded" ng-show="usePassport">
