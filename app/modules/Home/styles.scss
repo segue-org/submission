@@ -47,7 +47,7 @@ main.home {
         overflow: hidden;
         text-overflow: ellipsis;
         &.empty {
-          color: violet;
+          color: maroon;
           font-style: italic;
         }
       }
@@ -62,7 +62,7 @@ main.home {
       }
       &.unsaved .when {
         float: left;
-        color: orchid;
+        color: maroon;
 
       }
       .track {
