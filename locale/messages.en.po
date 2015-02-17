@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: Poedit 1.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(Mercosul: use identidade nacional)"
 msgstr "(Mercosur: use national id)"
 
@@ -20,32 +20,32 @@ msgstr "(Mercosur: use national id)"
 msgid "(até 2000 caracteres)"
 msgstr "(up to 2000 characters)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "(de 5 até 80 caracteres)"
 msgstr "(from 5 up to 80 characters)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(inclua código de área)"
 msgstr "(please include area code)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(mínimo 8 caracteres)"
 msgstr "(at least 8 characters)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(ou qualquer outra instituição)"
 msgstr "(or any other institution)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(será necessário para login)"
 msgstr "(will be used for login)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(somente residentes no Brasil)"
 msgstr "(only Brazilian residents)"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "Passaporte"
 msgstr "Passport"
 
@@ -65,7 +65,7 @@ msgstr "the full proposal must have 2000 characters at most"
 msgid "a proposta completa deve ter no mínimo 5 caracteres"
 msgstr "the full proposal must have at least 5 characters"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "cidade"
 msgstr "city"
 
@@ -85,7 +85,7 @@ msgstr "invite another coauthor"
 msgid "convidar!"
 msgstr "invite!"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "criar conta"
 msgstr "create account"
 
@@ -97,7 +97,7 @@ msgstr "create new talk proposal"
 msgid "criar proposta"
 msgstr "create proposal"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "criar uma conta"
 msgstr "create an account"
 
@@ -109,11 +109,11 @@ msgstr "e-mail"
 msgid "e-mail do convidado"
 msgstr "invitee's email"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "email"
 msgstr "e-mail"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "empresa / universidade"
 msgstr "company / university"
 
@@ -125,6 +125,10 @@ msgstr "sign in to my account"
 msgid "entrar!"
 msgstr "sign in!"
 
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "escolha uma trilha"
+msgstr "choose a track"
+
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "esqueci minha senha!"
 msgstr "forgot my password!"
@@ -133,7 +137,7 @@ msgstr "forgot my password!"
 msgid "este é você!"
 msgstr "this is you!"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid ""
 "estrangeiros não-residentes, favor informar o passaporte; cidadãos do "
 "Mercosul podem informar documento de identidade nacional"
@@ -146,14 +150,22 @@ msgid "língua"
 msgstr "language"
 
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "meus dados pessoais"
+msgstr "my personal data"
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
 msgid "minhas propostas de palestra"
 msgstr "my talk proposals"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "mini-currículo"
 msgstr "mini-résumé"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "modificada em {{ proposal.last_updated }}"
+msgstr "last modification: {{ proposal.last_updated }}"
+
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "nome"
 msgstr "name"
 
@@ -173,7 +185,7 @@ msgstr "no, I want to create an account"
 msgid "nível da palestra"
 msgstr "technical level"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "número do CPF"
 msgstr "CPF number"
 
@@ -197,7 +209,7 @@ msgstr "title must have 80 characters at most"
 msgid "o título deve ter no mínimo 5 caracteres"
 msgstr "title must have at least 5 characters"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "país"
 msgstr "country"
 
@@ -205,11 +217,11 @@ msgstr "country"
 msgid "por favor verifique as mensagens acima e tente novamente"
 msgstr "please, verify the messages above and try again"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, defina uma senha com no mínimo 8 caracteres"
 msgstr "please, define a password with at least 8 characters"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, infome o seu número de telefone"
 msgstr "please, inform your phone number"
 
@@ -221,21 +233,25 @@ msgstr "please, fill out the invitee's email address"
 msgid "por favor, informe o nome do convidado"
 msgstr "please, fill out the invitee's name"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, informe seu endereço de e-mail"
 msgstr "please, fill out your e-mail address"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, informe seu nome completo"
 msgstr "please, fill out your full name"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, informe seu país"
 msgstr "please, inform your country"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, informe sua cidade"
 msgstr "please, tell us which city you come from"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "por favor, informe uma trilha válida"
+msgstr "please select a valid track"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "proposta"
@@ -257,11 +273,11 @@ msgstr "who are you?"
 msgid "remover"
 msgstr "remove"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "repita a senha"
 msgstr "repeat password"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "residentes no Brasil, favor informar o CPF"
 msgstr "Brazilian residents, please inform your CPF"
 
@@ -277,8 +293,8 @@ msgstr "save changes"
 msgid "sem título"
 msgstr "no title"
 
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
 msgid "senha"
 msgstr "password"
 
@@ -290,9 +306,13 @@ msgstr "invite will be sent upon saving"
 msgid "sim, já tenho conta"
 msgstr "yes, I already have an account"
 
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "telefone"
 msgstr "phone"
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+msgid "trilha"
+msgstr "track"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "título da palestra"
@@ -315,6 +335,9 @@ msgid ""
 "você pode convidar até três pessoas para\n"
 "    ajudar na apresentação dessa palestra"
 msgstr "you can invite up to three people to help you in presenting this talk"
+
+#~ msgid "modificada em <i>{{ proposal.last_updated }}</i>"
+#~ msgstr "last modification <i>{{ proposal.last_updated }}</i>"
 
 #~ msgid "(até 200 caracteres)"
 #~ msgstr "(up to 200 characters)"
