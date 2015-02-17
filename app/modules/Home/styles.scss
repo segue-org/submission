@@ -54,6 +54,10 @@ main.home {
       .authors {
         font-style: oblique;
         font-size: 80%;
+        &>span::before { content: ','; }
+        .pending  { color: maroon; }
+        .accepted { color: green; }
+        .declined { color: white;  background: tomato; }
       }
       .when {
         width: 60%;
