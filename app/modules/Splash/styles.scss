@@ -4,8 +4,9 @@ body.splash {
 }
 
 header.splash {
-  img { display: none; }
-  z-index: -50;
+  z-index: 0;
+  img.logo { display: none; }
+  h1, label { z-index: 200; }
 }
 main.splash {
   background: transparent;
@@ -14,6 +15,7 @@ main.splash {
   top: 0px;
 
   img {
+    position: relative;
     z-index: 150;
   }
 
