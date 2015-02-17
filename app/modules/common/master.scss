@@ -15,7 +15,6 @@ body {
     height: 35px;
 
     h1 {
-      cursor: pointer;
       background: url(/images/logo-fisl-small.png) no-repeat;
       position: relative;
       margin: 0 10%;
@@ -23,7 +22,10 @@ body {
       padding-top: 10px;
       font-family: Orbitron;
       font-size: 16px;
+      height: 35px;
       color: white;
+
+      span { cursor: pointer; }
     }
   }
 
