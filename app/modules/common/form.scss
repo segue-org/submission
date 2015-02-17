@@ -55,7 +55,7 @@ form.lines {
       }
     }
   }
-  input, textarea {
+  input, textarea, select {
     width: 70%;
     border: 3px solid lightgray;
     border-radius: 5px;
@@ -70,6 +70,9 @@ form.lines {
     &.ng-valid + .fa-check {
       color: green;
     }
+  }
+  select {
+    font-size: large;
   }
 
   input[type=radio] {

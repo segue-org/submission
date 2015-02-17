@@ -14,7 +14,8 @@
     <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
       <span class="title">{{ proposal.title }}</span>
       <span class="authors"><b>{{ proposal.owner.name }}</b>{{ proposal.coauthors }}</span>
-      <span class="track">Desenvolvimento de Jogos</span>
+      <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
+      <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
       <span class="when"><translate>modificada em</translate> <i>{{ proposal.last_updated }}</i></span>
     </li>
     <li class="new" ng-hide="currentProposal" ui-sref="proposal.new">

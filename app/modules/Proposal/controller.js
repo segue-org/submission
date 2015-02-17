@@ -20,6 +20,7 @@
           },
           resolve: {
             userLocation: function(UserLocation) { return UserLocation.get(); },
+            tracks: function(Tracks) { return Tracks.getList(); }
           }
         })
         .state('proposal.new', {
@@ -51,18 +52,20 @@
 
   angular
     .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
-    .controller('ProposalController', function($scope, Config, Auth, userLocation, focusOn) {
+    .controller('ProposalController', function($scope, Config, Auth, tracks, userLocation, focusOn) {
       focusOn('proposal.title');
       $scope.userLocation = userLocation;
       $scope.credentials = Auth.glue($scope, 'credentials');
 
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
+      $scope.tracks    = tracks;
     })
     .controller('EditProposalController', function($scope, ngDialog,
                                                    FormErrors, Validator, Proposals,
                                                    currentProposal, invites) {
       $scope.proposal = currentProposal;
+      $scope.proposal.track_id = (currentProposal.track)? currentProposal.track.id : null;
       $scope.invites = invites;
       $scope.newInvites = [];
 

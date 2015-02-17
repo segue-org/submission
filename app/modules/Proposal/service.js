@@ -7,6 +7,11 @@
       'restangular',
       'ngStorage',
     ])
+    .factory('Tracks', function(Restangular) {
+      var service = Restangular.service('proposals/tracks');
+      var extensions = {};
+      return _.extend(service, extensions);
+    })
     .factory('Proposals', function(Restangular, Auth, Validator, FormErrors, $localStorage, $q) {
       var service = Restangular.service('proposals');
       var extensions = {};
