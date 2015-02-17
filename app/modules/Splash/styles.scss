@@ -4,9 +4,7 @@ body.splash {
 }
 
 header.splash {
-  h1 {
-    background: none;
-  }
+  img { display: none; }
   z-index: -50;
 }
 main.splash {
