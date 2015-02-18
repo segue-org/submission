@@ -4,7 +4,7 @@
   angular
     .module('segue.submission')
     .constant('Config', {
-      API_HOST: 'http://192.168.33.91:5000',
+      API_HOST: 'http://192.168.33.91',
       API_PATH: '/api',
       GEOIP_API: 'http://ip-api.com/json',
       PROPOSAL_LANGUAGES: [
