@@ -23,6 +23,7 @@
     };
   }
   describe("signup controller", function() {
+    var signup = { email: 'xoxanga@xinga.com', password: 'xingalinga' };
     beforeEach(module('ui.router'));
     beforeEach(module('segue.submission.account.controller'));
     beforeEach(loadQ);
