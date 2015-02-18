@@ -21,5 +21,5 @@
           $rootScope.$broadcast('focus-on', name);
         }, timeout || 100);
       };
-    })
+    });
 })();

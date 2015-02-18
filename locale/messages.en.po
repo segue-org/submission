@@ -118,6 +118,7 @@ msgid "empresa / universidade"
 msgstr "company / university"
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
 msgid "entrar na minha conta"
 msgstr "sign in to my account"
 
@@ -258,6 +259,10 @@ msgstr "please, tell us which city you come from"
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "por favor, informe uma trilha válida"
 msgstr "please select a valid track"
+
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "propor nova palestra"
+msgstr "propose a talk"
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "proposta"
