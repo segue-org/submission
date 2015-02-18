@@ -217,8 +217,8 @@
       var proposal;
       var firstResponse  = { resource: { 'id': 456, 'title': 'xitle' } };
       var secondResponse = { resource: { 'id': 456, 'title': 'mitle' } };
-      http.expectGET('http://192.168.33.91:5000/api/proposals/456').respond(200, firstResponse);
-      http.expectPUT('http://192.168.33.91:5000/api/proposals/456').respond(200, secondResponse);
+      http.expectGET('http://192.168.33.91/api/proposals/456').respond(200, firstResponse);
+      http.expectPUT('http://192.168.33.91/api/proposals/456').respond(200, secondResponse);
 
       service.one(456).get().then(function(existing) {
         expect(existing.title).toEqual('xitle');
@@ -234,7 +234,7 @@
     it("gets list of proposals owned by the currently logged credentials", function(done) {
       spyOn(mockAuth, 'credentials').and.returnValue({ id: 123 });
       var response = { items: [ 1,2,3 ] };
-      http.expectGET('http://192.168.33.91:5000/api/proposals?owner_id=123').respond(200, response);
+      http.expectGET('http://192.168.33.91/api/proposals?owner_id=123').respond(200, response);
 
       service.getOwnedByCredentials().then(function(value) {
         expect(value).toEqual([1,2,3]);

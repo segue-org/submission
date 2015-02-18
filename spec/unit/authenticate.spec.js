@@ -24,7 +24,7 @@
 
     describe("logout", function() {
       beforeEach(function() {
-        http.expectPOST('http://192.168.33.91:5000/api/sessions', payload)
+        http.expectPOST('http://192.168.33.91/api/sessions', payload)
             .respond(201, response);
         auth.login(email, password);
         http.flush();
@@ -44,7 +44,7 @@
     describe("login", function() {
 
       it("correct login, creates session", function() {
-        http.expectPOST('http://192.168.33.91:5000/api/sessions', payload)
+        http.expectPOST('http://192.168.33.91/api/sessions', payload)
             .respond(201, response);
 
         auth.login(email, password);
@@ -54,7 +54,7 @@
         expect(auth.credentials()).toEqual(credentials);
       });
       it("wrong login, no session", function() {
-        http.expectPOST('http://192.168.33.91:5000/api/sessions', payload)
+        http.expectPOST('http://192.168.33.91/api/sessions', payload)
             .respond(401, {});
 
         auth.login(email, password);
