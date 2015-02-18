@@ -3,7 +3,6 @@
 
   var $scope;
 
-  var signup = { 'email': 'xaranga@xuminga.com', 'password': 'arirang' };
   var mockAuth = noopMock('login');
   var mockService = noopMock('post','localLoad','localForget');
   var mockValidator = noopMock('validate');
@@ -37,7 +36,7 @@
 
     it("loads signup data from users machine", function() {
       expect(mockService.localLoad).toHaveBeenCalled();
-      expect($scope.signup).toEqual(signup)
+      expect($scope.signup).toEqual(signup);
     });
 
 

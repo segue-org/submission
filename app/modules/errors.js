@@ -11,6 +11,12 @@
         $rootScope.$broadcast('errors:clear');
       };
 
+      self.setOne = function(field, label) {
+        var path = field + "." + label;
+        $rootScope.$broadcast('errors:set', path);
+        console.log(path);
+      };
+
       self.set = function(raw) {
         $rootScope.$broadcast('errors:clear');
         var errors = (raw.data)? raw.data.errors:raw;
@@ -19,9 +25,7 @@
           var dataPath = (error.dataPath)? error.dataPath.replace('/','') : null;
           var field = error.field || paramKey || dataPath;
           var label = error.label || codes[error.code].toLowerCase();
-          var path = field + "." + label;
-          $rootScope.$broadcast('errors:set', path);
-          console.log(path);
+          self.setOne(field, label);
         });
       };
       return self;
