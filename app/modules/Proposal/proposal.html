@@ -35,7 +35,7 @@
   <select if-locale="en" ng-model="proposal.track_id" ng-options="t.id as t.name_en for t in tracks">
     <option class="empty" value="" ng-hide="proposal.track_id" translate>escolha uma trilha</option>
   </select>
-  <span form-error="track.invalid_type" translate>por favor, informe uma trilha válida</span>
+  <span form-error="track_id.invalid_type" translate>por favor, informe uma trilha válida</span>
 </p>
 
 <p>
