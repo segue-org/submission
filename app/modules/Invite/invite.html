@@ -1,0 +1,20 @@
+<fieldset class="invite">
+  <legend translate>convite para co-autor</legend>
+
+  <div class="intro" translate>
+    Você está sendo convidado por <b>{{ invite.proposal.owner.name }}</b> para
+    participar do <b>FISL 16</b> na condição de co-autor da proposta de palestra
+    descrita abaixo:
+  </div>
+
+  <ul>
+    <li><span translate>título</span> {{ invite.proposal.title }}</li>
+    <li><span translate>trilha</span> {{ invite.proposal.track.name }}</li>
+    <li><span translate>língua</span> {{ invite.proposal.language }}</li>
+  </ul>
+
+  <div class="actions">
+    <button ng-click="accept()"  translate>aceito este convite</button>
+    <button ng-click="decline()" translate>rejeito este convite</button>
+  </div>
+</fieldset>
