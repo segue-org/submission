@@ -1,0 +1,3 @@
+---
+
+project_dir: "{{ inventory_dir }}/../"

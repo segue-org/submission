@@ -7,15 +7,17 @@
   apt: pkg=apache2
        state=installed
 
-- name: Create an apache site named afterconf
+- name: Create an apache site named {{ sitename }}
   tags: config
-  template: src=apache_site_afterconf.j2
-            dest=/etc/apache2/sites-available/afterconf
+  template: src=apache_site_{{ sitename }}.j2
+            dest=/etc/apache2/sites-available/{{ sitename }}.conf
+            owner=root
+            mode=0644
   notify: restart apache2
 
 - name: Disable apache site default
-  command: a2dissite default
+  command: a2dissite 000-default
 
-- name: Enable apache site afterconf
-  command: a2ensite afterconf
+- name: Enable apache site {{ sitename }}
+  command: a2ensite {{ sitename }}
   notify: restart apache2

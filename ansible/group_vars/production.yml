@@ -1,6 +1,7 @@
-webhost: fisl16.softwarelivre.org
+webhost: segue.fisl16.softwarelivre.org
 webport: 80
-sitename: submission
+sitename: segue
 master_host: fisl16.softwarelivre.org
-api_host: http://api.fisl16.softwarelivre.org
+api_host: http://segue-api.fisl16.softwarelivre.org
 api_path: /api
+app_path: /var/www/segue.{{ master_host }}

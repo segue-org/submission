@@ -1,4 +1,6 @@
 ---
 
 - include: apache.yml
+  sudo: yes
+
 - include: build-deploy.yml

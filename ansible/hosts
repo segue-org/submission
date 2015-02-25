@@ -1,2 +1,2 @@
 [production]
-submission.fisl16.softwarelivre.org ansible_ssh_user=root
+segue.fisl16.softwarelivre.org ansible_ssh_user=segue

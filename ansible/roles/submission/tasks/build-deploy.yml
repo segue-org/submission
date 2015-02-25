@@ -1,14 +1,34 @@
 
 - name: local -  cleans up dist folder
-  local_action: command gulp clean
+  local_action: command pwd chdir={{ project_dir }}
+  tags:
+    - update
+    - build
 
 - name: local - performs a production-like gulp build
-  local_action: command gulp build --production=1
+  local_action: command gulp build --production=1 chdir={{ project_dir }}
+  tags:
+    - update
+    - build
 
-- name: copies files in dist to production dir
-  synchronize: src=../dist/
+- name: ensure production dir exists
+  file: path={{ app_path }}
+        state=directory
+  sudo: yes
+  tags: update
+
+- name: synchronizes files in dist to production dir
+  synchronize: src={{ project_dir }}/dist/
                dest={{ app_path }}
+               rsync_opts=-O
+               owner=no
+               group=no
+               mode=no
+  sudo: yes
+  tags: update
 
 - name: configure the gateway host
   template: src=config.js.j2
             dest={{ app_path }}/config.js
+  sudo: yes
+  tags: update
