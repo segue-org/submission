@@ -9,10 +9,16 @@
     .config(function($stateProvider) {
       $stateProvider
         .state('invite', {
-          url: '^/proposal/:proposal_id/invite/:hash',
+          abstract: true,
           views: {
-            "header": { templateUrl: 'modules/common/nav.html'                                    },
-            "main":   { templateUrl: 'modules/Invite/invite.html', controller: 'InviteController' }
+            header: { templateUrl: 'modules/common/nav.html' },
+          },
+        })
+        .state('invite.answer', {
+          parent: 'invite',
+          url: '^/proposal/:proposal_id/invite/:hash/answer',
+          views: {
+            "main@": { templateUrl: 'modules/Invite/invite.html', controller: 'InviteController' }
           },
           resolve: {
             invite: function(Invites, $stateParams) {
