@@ -38,6 +38,7 @@ main.proposal {
     width: 16rem;
     margin: 0 15px 15px 0;
     height: 50px;
+    padding:10px;
 
     img { float: left; margin-right: 5px; }
     .name      {
@@ -67,13 +68,13 @@ main.proposal {
 
     .fa-plus {
       position: absolute;
-      top: 20%;
-      left: 5%;
+      top: 25%;
+      left: 7%;
       font-size: xx-large;
     }
     span {
       position: absolute;
-      top: 28%;
+      top: 30%;
       right: 5%;
       left: 10%;
       font-size: large;

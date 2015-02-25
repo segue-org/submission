@@ -50,7 +50,12 @@ main.splash {
       height: 3em;
       margin: 1em;
       border: 0;
-      font-size: xx-large;
+      font-size: x-large;
+    }
+    
+    button:hover {
+      background:white;
+      color:black;
     }
   }
 }

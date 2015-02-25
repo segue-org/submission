@@ -6,17 +6,18 @@ main.home {
     }
 
     li.new {
+      padding:10px;
       position: relative;
       text-align: center;
       .fa-plus {
         position: absolute;
-        top: 20%;
-        left: 5%;
+        top: 30%;
+        left: 7%;
         font-size: xx-large;
       }
       span {
         position: absolute;
-        top: 25%;
+        top: 30%;
         left: 7%;
         right: 2%;
         font-size: x-large;
@@ -24,6 +25,7 @@ main.home {
     }
 
     li {
+      padding:10px;
       float: left;
       margin: 10px 10px;
       width: 25rem;
