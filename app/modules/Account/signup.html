@@ -1,7 +1,6 @@
 <section class="signup">
   <header translate>criar uma conta</header>
   <form novalidate id="signup_form" name="signup_form" class="lines" grab-focus>
-
     <p>
       <label class="only-expanded">
         <span translate>nome</span>
@@ -38,7 +37,7 @@
         <small translate>(mínimo 8 caracteres)</small>
       </label>
       <input type="password" required
-            placeholder="{{ 'e-mail' || translate }}"
+            placeholder="{{ 'password' || translate }}"
             minlength="8" maxsize="80"
             ng-model="signup.password"/>
       <i class="fa fa-check only-expanded"></i>

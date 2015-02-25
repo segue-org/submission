@@ -15,7 +15,7 @@
           url: '^/authenticate',
           views: {
             "header": { templateUrl: 'modules/common/nav.html' },
-            "main":   { template: '<fieldset ui-view="left"></fieldset><fieldset ui-view="right"></fieldset>' },
+            "main":   { templateUrl: 'modules/Authenticate/master.html' },
             "left@authenticate":  { controller: 'LoginController',  templateUrl: 'modules/Authenticate/login.html' },
             "right@authenticate": { controller: 'SignUpController', templateUrl: 'modules/Account/signup.html' }
           }
@@ -35,7 +35,7 @@
 
       function succeed(credentials) {
         if ($scope.closeThisDialog) {
-          $scope.closeThisDialog();
+          $scope.closeThisDialog(credentials);
         }
         else {
           $scope.home();
@@ -50,7 +50,7 @@
     .factory('AuthModal', function (ngDialog) {
       var loginConfig  = { controller: "LoginController",  template: 'modules/Authenticate/login.html' };
       return {
-        login:  function() { ngDialog.open(loginConfig);  return true; },
+        login:  function() { return ngDialog.open(loginConfig); }
       };
     });
 })();

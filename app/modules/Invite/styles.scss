@@ -1,3 +1,5 @@
+@import 'modules/common/mixins.scss';
+
 main.invite {
 
   .intro {
@@ -16,4 +18,11 @@ main.invite {
     padding: 1rem;
   }
 
+  input {
+    @include hide-placeholder;
+  }
+
+  section.signup header {
+    display: none;
+  }
 }
