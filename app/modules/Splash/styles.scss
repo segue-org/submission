@@ -38,7 +38,6 @@ main.splash {
     top: 180px;
     bottom: 0px;
     position: fixed;
-    z-index: -100;
 
     button {
       display: inline-block;
@@ -51,11 +50,10 @@ main.splash {
       margin: 1em;
       border: 0;
       font-size: x-large;
-    }
-    
-    button:hover {
-      background:white;
-      color:black;
+      &:hover {
+        background:white;
+        color:black;
+      }
     }
   }
 }
