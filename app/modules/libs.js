@@ -24,27 +24,5 @@
           return deferred.promise;
         }
       };
-    })
-    .service('UserLocation', function(Config, $http, $q, $localStorage) {
-      return {
-        set: function(data) {
-          $localStorage.userLocation = data;
-        },
-        get: function(ip) {
-          var deferred = $q.defer();
-          var url = Config.GEOIP_API + "/" + (ip || '');
-          if ($localStorage.userLocation) {
-            deferred.resolve($localStorage.userLocation);
-          }
-          else {
-            $http.get(url).then(function(response) {
-              deferred.resolve(response.data);
-              $localStorage.userLocation = response.data;
-            });
-          }
-          return deferred.promise;
-        }
-      };
     });
-
 })();

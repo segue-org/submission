@@ -6,7 +6,6 @@
   var mockValidator = noopMock('validate');
   var mockService   = noopMock('post', 'saveIt', 'localSave', 'createInvites');
   var mockDialog    = noopMock('open');
-  var mockUserLocation = { city: 'Porto Alegre' };
   var mockProposal  = { fake: 'fields', everywhere: 'because it is a mock' };
   var mockErrors    = { errors: [ { complex: 'object' }, { but: 'is mocked' } ] };
   var mockInvites = [ ];

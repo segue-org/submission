@@ -7,6 +7,7 @@
   var mockService = noopMock('post','localLoad','localForget');
   var mockValidator = noopMock('validate');
   var mockFormErrors = noopMock('set','clear');
+  var mockUserLocation = noopMock('autobind');
 
   function loadController(controllerName) {
     return function() {
@@ -17,7 +18,8 @@
           Validator: mockValidator,
           Auth: mockAuth,
           Account: mockService,
-          focusOn: jasmine.createSpy()
+          UserLocation: mockUserLocation,
+          focusOn: jasmine.createSpy(),
         });
       });
     };

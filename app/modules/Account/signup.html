@@ -46,14 +46,31 @@
     </p>
 
     <p class="only-expanded">
+      <span class="info" ng-show="guessedLocation" translate>
+        Detectamos sua cidade e país usando um <a href="http://ip-api.com/">serviço GeoIP</a>.
+        Caso os dados estejam incorretos, sinta-se a vontade para corrigir.
+      </span>
       <label class="notip">
         <span translate>país</span>
       </label>
       <input type="text" required
             minlength="5" maxsize="80"
+            ng-change="unguessLocation()"
             ng-model="signup.country"/>
       <i class="fa fa-check"></i>
       <span form-error="country.object_required" translate>por favor, informe seu país</span>
+    </p>
+
+    <p class="only-expanded">
+      <label class="notip">
+        <span translate>cidade</span>
+      </label>
+      <input type="text" required
+            minlength="5" maxsize="80"
+            ng-change="unguessLocation()"
+            ng-model="signup.city"/>
+      <i class="fa fa-check"></i>
+      <span form-error="city.object_required" translate>por favor, informe sua cidade</span>
     </p>
 
     <p class="only-expanded" ng-hide="usePassport">
@@ -79,17 +96,6 @@
             ng-model="signup.passaport"/>
       <i class="fa fa-check"></i>
       <span form-error="passaporte.object_required" translate>estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
-    </p>
-
-    <p class="only-expanded">
-      <label class="notip">
-        <span translate>cidade</span>
-      </label>
-      <input type="text" required
-            minlength="5" maxsize="80"
-            ng-model="signup.city"/>
-      <i class="fa fa-check"></i>
-      <span form-error="city.object_required" translate>por favor, informe sua cidade</span>
     </p>
 
     <p class="only-expanded">

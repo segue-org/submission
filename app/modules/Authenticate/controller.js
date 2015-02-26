@@ -18,7 +18,7 @@
             "main":   { templateUrl: 'modules/Authenticate/master.html' },
             "left@authenticate":  { controller: 'LoginController',  templateUrl: 'modules/Authenticate/login.html' },
             "right@authenticate": { controller: 'SignUpController', templateUrl: 'modules/Account/signup.html' }
-          }
+          },
         });
     });
 

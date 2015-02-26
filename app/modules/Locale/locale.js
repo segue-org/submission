@@ -42,6 +42,42 @@
 
       return self;
     })
+    .service('UserLocation', function(Config, $http, $q, $localStorage) {
+      var service = {
+        set: function(data) {
+          $localStorage.userLocation = data;
+        },
+        get: function(ip) {
+          var deferred = $q.defer();
+          var url = Config.GEOIP_API + "/" + (ip || '');
+          if ($localStorage.userLocation) {
+            deferred.resolve($localStorage.userLocation);
+          }
+          else {
+            $http.get(url).then(function(response) {
+              deferred.resolve(response.data);
+              service.set(response.data);
+            });
+          }
+          return deferred.promise;
+        },
+        autobind: function(scope, propname) {
+          // TODO: this is a very dirty hack
+          service.get().then(function(value) {
+            var bound = scope[propname];
+            if (bound.city || bound.country) { return; }
+            bound.city    = value.city;
+            bound.country = value.country;
+            scope.guessedLocation = true;
+          });
+
+          scope.unguessLocation = function() {
+            scope.guessedLocation = false;
+          };
+        }
+      };
+      return service;
+    })
     .directive('ifLocale', function(Locale) {
       return function(scope, elem, attr) {
         function hideOrShow(newLocale) {

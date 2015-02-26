@@ -19,7 +19,6 @@
             main:   { template:    "<div ui-view='form'></div>", controller: 'ProposalController' }
           },
           resolve: {
-            userLocation: function(UserLocation) { return UserLocation.get(); },
             tracks: function(Tracks) { return Tracks.getList(); }
           }
         })
@@ -52,9 +51,8 @@
 
   angular
     .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
-    .controller('ProposalController', function($scope, Config, Auth, tracks, userLocation, focusOn) {
+    .controller('ProposalController', function($scope, Config, Auth, tracks, focusOn) {
       focusOn('proposal.title');
-      $scope.userLocation = userLocation;
       $scope.credentials = Auth.glue($scope, 'credentials');
 
       $scope.languages = Config.PROPOSAL_LANGUAGES;

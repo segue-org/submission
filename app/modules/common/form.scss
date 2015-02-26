@@ -118,6 +118,18 @@ form.lines {
 }
 
 form {
+  .info {
+    display: block;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 50%;
+    margin: 1em auto;
+    background: lavender;
+    font-size: small;
+  }
+
   .error {
     display: block;
     border: 1px solid lightpink;

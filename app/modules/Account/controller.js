@@ -11,11 +11,16 @@
 
   angular
     .module("segue.submission.account.controller",[
-      "segue.submission.account.service"
+      "segue.submission.account.service",
+      "segue.submission.locale"
     ])
-    .controller("SignUpController", function($scope, Account, Auth, Validator, FormErrors, focusOn) {
+    .controller("SignUpController", function($scope,
+                                             Account, Auth, Validator, FormErrors, UserLocation,
+                                             focusOn) {
       $scope.signup = Account.localLoad();
       $scope.$watch('signup', Account.localSave);
+
+      UserLocation.autobind($scope, 'signup');
 
       function finishedSignUp() {
         Auth.login($scope.signup.email, $scope.signup.password);
@@ -25,6 +30,7 @@
           $scope.home();
         }
       }
+
 
       $scope.submit = function() {
         Validator.validate($scope.signup, 'accounts/signup')
