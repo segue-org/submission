@@ -22,6 +22,7 @@
       <input type="email" required
             placeholder="{{ 'e-mail' || translate }}"
             minlength="5" maxsize="80"
+            ng-readonly="lockEmail"
             ng-model="signup.email"/>
       <i class="fa fa-check only-expanded"></i>
       <span form-error="email.object_required" translate>por favor, informe seu endereço de e-mail</span>

@@ -46,9 +46,12 @@
       "segue.submission.invite.service",
       "segue.submission.authenticate.controller"
     ])
-    .controller("RegisterInviteController", function($scope, Validator, Auth, Account, FormErrors, invite, focusOn) {
+    .controller("RegisterInviteController", function($scope,
+                                                     Validator, Auth, Account, FormErrors, Invites,
+                                                     invite, focusOn) {
       Auth.logout();
       $scope.signup = { name: invite.name, email: invite.recipient };
+      $scope.lockEmail = true;
 
       focusOn('signup.name', 100);
 
@@ -60,8 +63,7 @@
 
       $scope.submit = function() {
         Validator.validate($scope.signup, 'accounts/signup')
-                 .then(Account.post)
-                 .then(Account.localForget)
+                 .then(Invites.registerInvitee(invite))
                  .then(finishedSignUp)
                  .catch(FormErrors.set);
       };
