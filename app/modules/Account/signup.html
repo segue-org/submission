@@ -55,7 +55,7 @@
       </label>
       <input type="text" required
             minlength="5" maxsize="80"
-            ng-change="unguessLocation()"
+            change-signal="country:changed"
             ng-model="signup.country"/>
       <i class="fa fa-check"></i>
       <span form-error="country.object_required" translate>por favor, informe seu país</span>
@@ -73,7 +73,7 @@
       <span form-error="city.object_required" translate>por favor, informe sua cidade</span>
     </p>
 
-    <p class="only-expanded" ng-hide="usePassport">
+    <p class="only-expanded cpf" if-use-passport="hide">
       <label>
         <span translate>número do CPF</span>
         <small translate>(somente residentes no Brasil)</small>
@@ -86,7 +86,7 @@
       <span form-error="cpf.invalid_type"    translate>residentes no Brasil, favor informar o CPF</span>
     </p>
 
-    <p class="only-expanded" ng-show="usePassport">
+    <p class="only-expanded passport" if-use-passport="show">
       <label>
         <span translate>Passaporte</span>
         <small translate>(Mercosul: use identidade nacional)</small>

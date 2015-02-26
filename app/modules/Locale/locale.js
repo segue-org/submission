@@ -70,13 +70,38 @@
             bound.country = value.country;
             scope.guessedLocation = true;
           });
-
-          scope.unguessLocation = function() {
-            scope.guessedLocation = false;
-          };
+          scope.$on('country:changed', function(_, newCountry) { scope.guessedLocation = false; });
         }
       };
       return service;
+    })
+    .directive('changeSignal', function() {
+      return function(scope, elem, attr) {
+        elem.on('change', function(ev) {
+          scope.$broadcast(attr.changeSignal, elem.val());
+        });
+      };
+    })
+    .directive('ifUsePassport', function() {
+      function _isBrazil(country) {
+        // TODO: this is a very dirty hack
+        return _(['brazil', 'brasil', 'brésil', 'brasiu', 'br', 'gibemoney']).contains(country.toLowerCase());
+      }
+
+      return function(scope, elem, attr) {
+        var action = attr.ifUsePassport;
+        var initialCountry = scope.signup.country;
+
+        function hideOrShow(country) {
+          var isBrazil = _isBrazil(country);
+          var show = (isBrazil && (action == 'hide')) ||
+                     (!isBrazil && (action == 'show'));
+          if (show) { elem.removeClass('ng-hide'); }
+          else { elem.addClass('ng-hide'); }
+        }
+        scope.$on('country:changed', function(_, newCountry) { hideOrShow(newCountry); });
+        hideOrShow(initialCountry);
+      };
     })
     .directive('ifLocale', function(Locale) {
       return function(scope, elem, attr) {
