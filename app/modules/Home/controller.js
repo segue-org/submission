@@ -24,7 +24,10 @@
     });
   angular
     .module('segue.submission.home.controller', [])
-    .controller('HomeController', function($scope, $state, Proposals, myProposals, currentProposal) {
+    .controller('HomeController', function($scope, $state,
+                                           Auth, Proposals, myProposals, currentProposal) {
+      if (!Auth.credentials()) { $state.go('splash'); }
+
       $scope.myProposals     = myProposals;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
 

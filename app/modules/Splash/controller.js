@@ -22,5 +22,7 @@
     .module('segue.submission.splash.controller', [])
     .controller('SplashController', function($scope, $state, Auth) {
       if (Auth.credentials()) { $state.go('home'); }
+
+      $scope.$on('auth:changed', $scope.home);
     });
 })();

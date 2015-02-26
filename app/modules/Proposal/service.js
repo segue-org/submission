@@ -26,8 +26,9 @@
         $localStorage.savedProposal = {};
       };
       extensions.getOwnedByCredentials = function() {
-        var id = Auth.credentials().id;
-        return service.getList({ owner_id: id });
+        var credentials = Auth.credentials();
+        if (!credentials) { return; }
+        return service.getList({ owner_id: credentials.id });
       };
       extensions.saveIt = function(object) {
         return object.save();
