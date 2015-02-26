@@ -1,0 +1,130 @@
+<fieldset class="signup">
+  <legend translate>meus dados pessoais</legend>
+  <form novalidate id="account_form" name="account_form" class="lines" grab-focus>
+    <p>
+      <label class="only-expanded">
+        <span translate>nome</span>
+        <small translate>(de 5 até 80 caracteres)</small>
+      </label>
+      <input type="text" required focusable
+            placeholder="{{ 'nome' || translate }}"
+            minlength="5" maxsize="80"
+            ng-model="signup.name"/>
+      <i class="fa fa-check only-expanded"></i>
+      <span form-error="name.object_required" translate>por favor, informe seu nome completo</span>
+    </p>
+
+    <p>
+      <label class="only-expanded">
+        <span translate>email</span>
+        <small translate>(será necessário para login)</small>
+      </label>
+      <input type="email" required
+            placeholder="{{ 'e-mail' || translate }}"
+            minlength="5" maxsize="80"
+            ng-readonly="lockEmail"
+            ng-model="signup.email"/>
+      <i class="fa fa-check only-expanded"></i>
+      <span form-error="email.object_required" translate>por favor, informe seu endereço de e-mail</span>
+      <span form-error="email.already_in_use" translate>
+        este endereço de e-mail já está registrado
+        no sistema, por favor escolha outro
+      </span>
+    </p>
+
+    <p class="only-expanded">
+      <label class="">
+        <span translate>senha</span>
+        <small translate>(mínimo 8 caracteres)</small>
+      </label>
+      <input type="password" required
+            placeholder="{{ 'password' || translate }}"
+            minlength="8" maxsize="80"
+            ng-model="signup.password"/>
+      <i class="fa fa-check only-expanded"></i>
+      <span form-error="password.object_required" translate>por favor, defina uma senha com no mínimo 8 caracteres</span>
+    </p>
+
+    <p class="only-expanded">
+      <label class="notip">
+        <span translate>país</span>
+      </label>
+      <input type="text" required
+            minlength="5" maxsize="80"
+            ng-model="signup.country"/>
+      <i class="fa fa-check"></i>
+      <span form-error="country.object_required" translate>por favor, informe seu país</span>
+    </p>
+
+    <p class="only-expanded cpf" if-use-passport="hide">
+      <label>
+        <span translate>número do CPF</span>
+        <small translate>(somente residentes no Brasil)</small>
+      </label>
+      <input type="text" required
+            minlength="11" maxsize="15"
+            ng-model="signup.cpf"/>
+      <i class="fa fa-check"></i>
+      <span form-error="cpf.object_required" translate>residentes no Brasil, favor informar o CPF</span>
+      <span form-error="cpf.invalid_type"    translate>residentes no Brasil, favor informar o CPF</span>
+    </p>
+
+    <p class="only-expanded passport" if-use-passport="show">
+      <label>
+        <span translate>Passaporte</span>
+        <small translate>(Mercosul: use identidade nacional)</small>
+      </label>
+      <input type="text" required
+            minlength="8" maxsize="15"
+            ng-model="signup.passaport"/>
+      <i class="fa fa-check"></i>
+      <span form-error="passaporte.object_required" translate>estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
+    </p>
+
+    <p class="only-expanded">
+      <label class="notip">
+        <span translate>cidade</span>
+      </label>
+      <input type="text" required
+            minlength="5" maxsize="80"
+            ng-model="signup.city"/>
+      <i class="fa fa-check"></i>
+      <span form-error="city.object_required" translate>por favor, informe sua cidade</span>
+    </p>
+
+    <p class="only-expanded">
+      <label>
+        <span translate>telefone</span>
+        <small translate>(inclua código de área)</small>
+      </label>
+      <input type="text" required
+            minlength="10" maxsize="30"
+            ng-model="signup.phone"/>
+      <i class="fa fa-check"></i>
+      <span form-error="phone.object_required" translate>por favor, infome o seu número de telefone</span>
+    </p>
+
+    <p class="only-expanded">
+      <label>
+        <span translate>empresa / universidade</span>
+        <small translate>(ou qualquer outra instituição)</small>
+      </label>
+      <input type="text" required minlength="5" maxlength="80" ng-model="signup.organization"/>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="only-expanded">
+      <label>
+        <span translate>mini-currículo</span>
+      </label>
+      <textarea required minlength="5" maxlength="80" ng-model="signup.resume"></textarea>
+      <i class="fa fa-check"></i>
+    </p>
+
+    <p class="centered action only-expanded">
+      <button ng-click="submit()" translate>
+        salvar alterações
+      </button>
+    </p>
+  </form>
+</fieldset>
