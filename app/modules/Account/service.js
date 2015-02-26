@@ -6,10 +6,16 @@
       'restangular',
       'ngStorage'
     ])
-    .service("Account", function(Restangular, $localStorage) {
+    .service("Account", function(Restangular, Auth, $localStorage) {
       var service = Restangular.service('accounts');
       var extensions = {};
 
+      extensions.get = function() {
+        var credentials = Auth.credentials();
+        if (!credentials) { return; }
+        var ret = null;
+        return service.one(credentials.id).get();
+      };
       extensions.localLoad = function() {
         return $localStorage.savedAccount || {};
       };
@@ -18,6 +24,9 @@
       };
       extensions.localForget = function() {
         $localStorage.savedAccount = {};
+      };
+      extensions.saveIt = function(object) {
+        return object.save();
       };
 
       return _.extend(service, extensions);
