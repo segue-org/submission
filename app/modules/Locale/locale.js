@@ -85,6 +85,7 @@
     .directive('ifUsePassport', function() {
       function _isBrazil(country) {
         // TODO: this is a very dirty hack
+        var contry = country || '';
         return _(['brazil', 'brasil', 'brésil', 'brasiu', 'br', 'gibemoney']).contains(country.toLowerCase());
       }
 
