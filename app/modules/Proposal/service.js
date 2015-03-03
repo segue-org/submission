@@ -30,6 +30,11 @@
         if (!credentials) { return; }
         return service.getList({ owner_id: credentials.id });
       };
+      extensions.getByCoAuthors = function() {
+        var credentials = Auth.credentials();
+        if (!credentials) { return; }
+        return service.getList({ coauthor_id: credentials.email });
+      };
       extensions.saveIt = function(object) {
         return object.save();
       };

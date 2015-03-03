@@ -29,6 +29,23 @@
     </li>
   </ul>
 </fieldset>
-
+<fieldset class="proposals">
+  <legend translate>
+    como co-autor
+  </legend>
+  <ul>
+    <li ng-repeat="proposal in myInvites">
+      <span class="title">{{ proposal.title }}</span>
+      <span class="authors">
+        <b>{{ proposal.owner.name }}</b><!--
+          --><span ng-repeat="invitee in proposal.invites" class="{{ invitee.status }}">
+          {{ invitee.name }}
+        </span>
+      </span>
+      <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
+      <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
+      <span class="when" translate>modificada em {{ proposal.last_updated }} </span>
+    </li>
+  </ul>
+</fieldset>
 <ng-include src="'modules/Account/form.html'">
-

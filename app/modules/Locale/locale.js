@@ -75,6 +75,14 @@
       };
       return service;
     })
+    .service('isBrazil', function() {
+      return function(country) {
+        if (country) {
+          // TODO: this is a very dirty hack
+          return _(['brazil', 'brasil', 'brésil', 'brasiu', 'br', 'gibemoney']).contains(country.toLowerCase());
+        } else return true;
+      };
+    })
     .directive('changeSignal', function() {
       return function(scope, elem, attr) {
         elem.on('change', function(ev) {
@@ -82,21 +90,14 @@
         });
       };
     })
-    .directive('ifUsePassport', function() {
-      function _isBrazil(country) {
-        // TODO: this is a very dirty hack
-        var contry = country || '';
-        return _(['brazil', 'brasil', 'brésil', 'brasiu', 'br', 'gibemoney']).contains(country.toLowerCase());
-      }
-
+    .directive('ifUsePassport', function(isBrazil) {
       return function(scope, elem, attr) {
         var action = attr.ifUsePassport;
         var initialCountry = scope.signup.country;
 
         function hideOrShow(country) {
-          var isBrazil = _isBrazil(country);
-          var show = (isBrazil && (action == 'hide')) ||
-                     (!isBrazil && (action == 'show'));
+          var show = (isBrazil(country) && (action == 'hide')) ||
+                     (!isBrazil(country) && (action == 'show'));
           if (show) { elem.removeClass('ng-hide'); }
           else { elem.addClass('ng-hide'); }
         }

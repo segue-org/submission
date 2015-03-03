@@ -6,7 +6,7 @@
       'restangular',
       'ngStorage'
     ])
-    .service("Account", function(Restangular, Auth, $localStorage) {
+    .service("Account", function(Restangular, Auth, $localStorage, isBrazil) {
       var service = Restangular.service('accounts');
       var extensions = {};
 
@@ -15,6 +15,13 @@
         if (!credentials) { return; }
         var ret = null;
         return service.one(credentials.id).get();
+      };
+      extensions.getDocumentField = function(country) {
+        if (isBrazil(country)) {
+          return 'cpf';
+        } else {
+          return 'passport';
+        }
       };
       extensions.localLoad = function() {
         return $localStorage.savedAccount || {};

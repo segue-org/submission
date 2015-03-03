@@ -80,7 +80,8 @@
       </label>
       <input type="text" required
             minlength="11" maxsize="15"
-            ng-model="signup.cpf"/>
+            ng-model="signup.cpf"
+            ui-br-cpf-mask/>
       <i class="fa fa-check"></i>
       <span form-error="cpf.object_required" translate>residentes no Brasil, favor informar o CPF</span>
       <span form-error="cpf.invalid_type"    translate>residentes no Brasil, favor informar o CPF</span>
@@ -93,9 +94,9 @@
       </label>
       <input type="text" required
             minlength="8" maxsize="15"
-            ng-model="signup.passaport"/>
+            ng-model="signup.passport"/>
       <i class="fa fa-check"></i>
-      <span form-error="passaporte.object_required" translate>estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
+      <span form-error="passport.object_required" translate>estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
     </p>
 
     <p class="only-expanded">

@@ -17,6 +17,7 @@
           },
           resolve: {
             myProposals:     function(Proposals) { return Proposals.getOwnedByCredentials(); },
+            myInvites:       function(Proposals) { return Proposals.getByCoAuthors(); },
             currentProposal: function(Proposals) { return Proposals.current(); },
             signup:          function(Account)   { return Account.get(); }
           }
@@ -26,13 +27,16 @@
   angular
     .module('segue.submission.home.controller', [])
     .controller('HomeController', function($scope, $state,
-                                           Auth, Proposals, myProposals, currentProposal, signup, Account, Validator, FormErrors) {
+                                           Auth, Proposals, myProposals, myInvites, currentProposal, signup, Account, Validator, FormErrors, ngToast) {
       if (!Auth.credentials()) { $state.go('splash'); }
 
       $scope.myProposals     = myProposals;
+      $scope.myInvites       = myInvites;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
       $scope.lockEmail = true;
       $scope.signup = signup;
+      
+      $scope.signup[Account.getDocumentField($scope.signup['country'])] = $scope.signup['document'];
 
       $scope.removeCurrent = function(ev) {
         $scope.currentProposal = null;
