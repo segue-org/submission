@@ -44,6 +44,7 @@
         Validator.validate($scope.signup, 'accounts/edit_account')
                  .then(Account.saveIt)
                  .then($scope.home)
+                 .then(ngToast.create('alterações salvas com sucesso.'))
                  .catch(FormErrors.set);
       };
 

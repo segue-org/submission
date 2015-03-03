@@ -41,8 +41,20 @@
 
       return self;
     })
-    .service("Auth", function(Restangular, LocalSession, $rootScope) {
+    .service("Auth", function(Restangular, LocalSession, $rootScope, ngToast) {
       var session = Restangular.service('sessions');
+      
+      Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
+        if (response.status === 400) {
+          ngToast.create({
+            content: 'email ou senha incorretos. verifique.',
+            className: 'danger'
+          });
+          return false;
+        }
+        
+        return true;
+      });
 
       self.logout = function() {
         LocalSession.destroy();

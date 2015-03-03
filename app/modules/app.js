@@ -12,7 +12,9 @@
       'ui.gravatar',
       'restangular',
       'angular-loading-bar',
-
+      'ngToast',
+      'ui.utils.masks',
+      
       'segue.submission.libs',
       'segue.submission.locale',
       'segue.submission.home',
