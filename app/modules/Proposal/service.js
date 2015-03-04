@@ -33,7 +33,7 @@
       extensions.getByCoAuthors = function() {
         var credentials = Auth.credentials();
         if (!credentials) { return; }
-        return service.getList({ coauthor_id: credentials.email });
+        return service.getList({ coauthor_id: credentials.id });
       };
       extensions.saveIt = function(object) {
         return object.save();
