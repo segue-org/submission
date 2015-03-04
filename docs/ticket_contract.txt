@@ -1,0 +1,38 @@
+1) listing possible tickets
+<---- GET http://server/api/products
+----> [
+        { id: 1, kind: "ticket", category: "student", available-until: "2015-03-31", price:  60 },
+        { id: 2, kind: "ticket", category: "person",  available-until: "2015-03-31", price: 120 },
+        { id: 3, kind: "ticket", category: "corp",    available-until: "2015-03-31", price: 120 },
+
+        { id: 4, kind: "ticket", category: "student", available-until: "2015-04-15", price:  80 },
+        { id: 5, kind: "ticket", category: "person",  available-until: "2015-04-15", price: 160 },
+        { id: 5, kind: "ticket", category: "corp",    available-until: "2015-04-15", price: 160 },
+      ]
+
+2) selecting a ticket/product for purchase
+<---- POST http://server/api/products/1/purchase
+----> { buyerType: 'student', buyerName: 'Fulano da Silva Jr.', buyerDocument: '123.456.789-12' }
+----> { buyerType: 'person',  buyerName: 'Fulano da Silva',     buyerDocument: '123.456.789-12' }
+----> { buyerType: 'corp',    buyerName: 'Empresa do Fulano',   buyerDocument: '890.789.77/0001-23' }
+----> 201 OK Created (Location: http://server/api/purchase/<newId>)
+
+3) querying purchases by user
+<----- GET http://server/api/accounts/123/purchases
+<----- GET http://server/api/purchases?customer_id=123
+-----> [
+         { id: 789, product_id: 1, inventory: "ticket-student-march", status: "pending" }
+       ]
+
+4) pay for a certain purchase
+<---- POST http://server/api/purchases/789/pay
+<---- { method: 'pagseguro' }
+##### ( por baixo dos panos, criou uma transaction com o pagseguro)
+----> {
+        redirectTo: 'http://blabla'
+      }
+
+5) pagseguro hits the confirmation URL
+<---- POST http://server/api/purchases/confirm?transaction_id=123
+###### (por baixo dos panos, grava a confirmação)
+----> redireciona pra interface (html)
