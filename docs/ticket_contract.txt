@@ -14,7 +14,7 @@
 <---- POST http://server/api/products/1/purchase
 ----> { buyerType: 'student', buyerName: 'Fulano da Silva Jr.', buyerDocument: '123.456.789-12' }
 ----> { buyerType: 'person',  buyerName: 'Fulano da Silva',     buyerDocument: '123.456.789-12' }
-----> { buyerType: 'corp',    buyerName: 'Empresa do Fulano',   buyerDocument: '890.789.77/0001-23' }
+----> { buyerType: 'company', buyerName: 'Empresa do Fulano',   buyerDocument: '890.789.77/0001-23' }
 ----> 201 OK Created (Location: http://server/api/purchase/<newId>)
 
 3) querying purchases by user
