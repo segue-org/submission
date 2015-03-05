@@ -70,7 +70,9 @@
             bound.country = value.country;
             scope.guessedLocation = true;
           });
-          scope.$on('country:changed', function(_, newCountry) { scope.guessedLocation = false; });
+          scope.$on('country:changed', function(_, newCountry) {
+            scope.guessedLocation = false;
+          });
         }
       };
       return service;
@@ -101,7 +103,14 @@
           if (show) { elem.removeClass('ng-hide'); }
           else { elem.addClass('ng-hide'); }
         }
-        scope.$on('country:changed', function(_, newCountry) { hideOrShow(newCountry); });
+        scope.$on('country:changed', function(_, newCountry) {
+          if (isBrazil(newCountry)) {
+            delete scope.signup.passport;
+          } else {
+            delete scope.signup.cpf;
+          }
+          hideOrShow(newCountry);
+        });
         hideOrShow(initialCountry);
       };
     })
