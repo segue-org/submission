@@ -1,2 +1,2 @@
 [production]
-segue.fisl16.softwarelivre.org ansible_ssh_user=segue
+segue.fisl16.softwarelivre.org ansible_ssh_port=2222 ansible_ssh_user=segue
