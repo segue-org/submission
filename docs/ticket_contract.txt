@@ -15,7 +15,7 @@
 ----> { buyerType: 'student', buyerName: 'Fulano da Silva Jr.', buyerDocument: '123.456.789-12' }
 ----> { buyerType: 'person',  buyerName: 'Fulano da Silva',     buyerDocument: '123.456.789-12' }
 ----> { buyerType: 'company', buyerName: 'Empresa do Fulano',   buyerDocument: '890.789.77/0001-23' }
-----> 201 OK Created (Location: http://server/api/purchase/<newId>)
+----> 201 OK Created (Location: http://server/api/purchases/<newId>)
 
 3) querying purchases by user
 <----- GET http://server/api/accounts/123/purchases
@@ -27,12 +27,16 @@
 4) pay for a certain purchase
 <---- POST http://server/api/purchases/789/pay
 <---- { method: 'pagseguro' }
-##### ( por baixo dos panos, criou uma transaction com o pagseguro)
+##### (under the hood, creates a transaction with pagseguro and saves it to the DB)
 ----> {
-        redirectTo: 'http://blabla'
+        redirectTo: 'http://pagseguro.com/etc...'
       }
 
-5) pagseguro hits the confirmation URL
-<---- POST http://server/api/purchases/confirm?transaction_id=123
-###### (por baixo dos panos, grava a confirmação)
+5) pagseguro hits the notification URL
+<---- POST http://server/api/purchases/789/payment/777/notify?notificationCode=ABC-123-789&notificationType=transaction
+###### (under the hood, fetches the notification and records it)
+----> 200 OK
+
+6) pagseguro returns the user to the end-of-payment URL
+<---- POST http://server/api/purchases/789/payment/777/conclude
 ----> redireciona pra interface (html)
