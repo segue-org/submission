@@ -12,9 +12,15 @@
 
 2) selecting a ticket/product for purchase
 <---- POST http://server/api/products/1/purchase
-----> { buyerType: 'student', buyerName: 'Fulano da Silva Jr.', buyerDocument: '123.456.789-12' }
-----> { buyerType: 'person',  buyerName: 'Fulano da Silva',     buyerDocument: '123.456.789-12' }
-----> { buyerType: 'company', buyerName: 'Empresa do Fulano',   buyerDocument: '890.789.77/0001-23' }
+----> {
+        kind: 'person',
+        contact: 'Fulano da Silva Jr.',
+        document: '123.456.789-12'
+        address_street: 'Rua dos Bobos',
+        address_number: '30',
+        address_city: 'Bobopolis',
+        address_country: 'Bobolandia'
+      }
 ----> 201 OK Created (Location: http://server/api/purchases/<newId>)
 
 3) querying purchases by user
@@ -25,8 +31,8 @@
        ]
 
 4) pay for a certain purchase
-<---- POST http://server/api/purchases/789/pay
-<---- { method: 'pagseguro' }
+<---- POST http://server/api/purchases/789/pay/pagseguro
+<---- { ...(payment-specific payload)... }
 ##### (under the hood, creates a transaction with pagseguro and saves it to the DB)
 ----> {
         redirectTo: 'http://pagseguro.com/etc...'
@@ -34,6 +40,7 @@
 
 5) pagseguro hits the notification URL
 <---- POST http://server/api/purchases/789/payment/777/notify?notificationCode=ABC-123-789&notificationType=transaction
+<---- POST http://server/api/payments/notify?notificationCode=ABC-123-789&notificationType=transaction
 ###### (under the hood, fetches the notification and records it)
 ----> 200 OK
 
