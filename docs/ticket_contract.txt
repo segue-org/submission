@@ -18,8 +18,10 @@
         document: '123.456.789-12'
         address_street: 'Rua dos Bobos',
         address_number: '30',
+        address_extra: 'apto 20',
         address_city: 'Bobopolis',
-        address_country: 'Bobolandia'
+        address_country: 'Bobolandia',
+        address_zipcode: '99999123'
       }
 ----> 201 OK Created (Location: http://server/api/purchases/<newId>)
 
@@ -27,7 +29,7 @@
 <----- GET http://server/api/accounts/123/purchases
 <----- GET http://server/api/purchases?customer_id=123
 -----> [
-         { id: 789, product_id: 1, inventory: "ticket-student-march", status: "pending" }
+         { id: 789, product_id: 1, status: "pending" }
        ]
 
 4) pay for a certain purchase
@@ -35,7 +37,7 @@
 <---- { ...(payment-specific payload)... }
 ##### (under the hood, creates a transaction with pagseguro and saves it to the DB)
 ----> {
-        redirectTo: 'http://pagseguro.com/etc...'
+        redirectUserTo: 'http://pagseguro.com/etc...'
       }
 
 5) pagseguro hits the notification URL
