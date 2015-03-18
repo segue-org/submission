@@ -23,6 +23,7 @@
       'segue.submission.authenticate',
       'segue.submission.proposal',
       'segue.submission.invite',
+      'segue.submission.purchase',
     ])
     .controller('SubmissionController', function($scope, $state, Auth) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
