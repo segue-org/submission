@@ -81,6 +81,7 @@ form.lines {
   }
 
   input[type=radio] {
+    display:none;
     position: absolute;
     z-index: -1;
   }
