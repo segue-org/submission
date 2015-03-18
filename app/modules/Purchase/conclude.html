@@ -1,0 +1,34 @@
+<fieldset class="conclude">
+  <legend translate>
+    Conclusão do pagamento
+  </legend>
+  
+  <p ng-show="status == 'pending'">
+    <strong>Inscrição aguardando pagamento.</strong> Sua inscrição será confirmada tão logo
+    seu pagamento seja processado. Caso você tenha optado por meios de pagamento
+    off-line (por exemplo, boleto bancário), fique atento à data de vencimento
+    impressa no mesmo.
+  </p>
+  
+  <p ng-show="status == 'paid'">
+    <strong>Ingresso confirmado!</strong>
+
+    Seu pagamento foi recebido e processado com sucesso. Em breve você receberá uma
+    mensagem por e-mail confirmando todos os dados de seu ingresso.
+    
+  </p>
+  
+  <p>
+    Tipo de ingresso: <strong>{{ purchase.product.description }}</strong>
+    
+    <br />
+    
+    Valor: <strong>{{ purchase.product.price | realbrasileiro }}</strong>
+
+    <br />
+    <br />
+    
+    Obrigado!
+    
+  </p>
+</fieldset>
