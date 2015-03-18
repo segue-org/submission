@@ -1,5 +1,5 @@
 main.home {
-  .proposals {
+  .proposals, .purchases, .coauthors {
     ul {
       padding: 0;
       margin: 0;
@@ -81,6 +81,46 @@ main.home {
       .delete {
         float: right;
         font-size: 70%;
+      }
+    }
+  }
+  
+  .purchases {
+    li:not(.new) {
+      cursor:inherit;
+
+      &:hover {
+        outline: inherit;
+      }
+    }
+    
+    .status {
+      float:right;
+      font-size: 70%;
+    }
+    
+    .pending {
+      color:red;
+    }
+    
+    .paid {
+      color:green;
+    }
+    
+    button {
+      display: inline-block;
+      cursor: pointer;
+      background: gray;
+      box-shadow: 3px 3px 3px lightgray;
+      color: white;
+      height: 2em;
+      border: 0;
+      padding:0 1em;
+      margin-top:-20px;
+      font-size: x-large;
+      &:hover {
+        background:white;
+        color:black;
       }
     }
   }
