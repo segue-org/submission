@@ -27,6 +27,24 @@ main.splash {
     top: 70px;
     left: 50%;
     text-align: center;
+
+    button {
+      display: inline-block;
+      cursor: pointer;
+      width: 50%;
+      background: gray;
+      box-shadow: 3px 3px 3px lightgray;
+      color: white;
+      height: 2em;
+      margin: 1em;
+      border: 0;
+      font-size: x-large;
+      &:hover {
+        background:white;
+        color:black;
+      }
+    }
+
   }
 
   div.buttons {
@@ -54,6 +72,18 @@ main.splash {
         background:white;
         color:black;
       }
+    }
+    
+    .divisor {
+      font-family: Orbitron;
+      display:block;
+      font-size:x-large;
+      text-align: center;
+      margin:0.5em auto;
+      padding:0.5em;
+      width:90%;
+      background: lightgray;
+      box-shadow: 3px 3px 3px white;
     }
   }
 }
