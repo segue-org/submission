@@ -3,14 +3,14 @@
     Conclusão do pagamento
   </legend>
   
-  <p ng-show="status == 'pending'">
-    <strong>Inscrição aguardando pagamento.</strong> Sua inscrição será confirmada tão logo
+  <p ng-hide="purchase.status == 'paid'">
+    <strong>In  scrição aguardando pagamento.</strong> Sua inscrição será confirmada tão logo
     seu pagamento seja processado. Caso você tenha optado por meios de pagamento
     off-line (por exemplo, boleto bancário), fique atento à data de vencimento
     impressa no mesmo.
   </p>
   
-  <p ng-show="status == 'paid'">
+  <p ng-show="purchase.status == 'paid'">
     <strong>Ingresso confirmado!</strong>
 
     Seu pagamento foi recebido e processado com sucesso. Em breve você receberá uma
@@ -26,9 +26,8 @@
     Valor: <strong>{{ purchase.product.price | realbrasileiro }}</strong>
 
     <br />
-    <br />
     
-    Obrigado!
+    Status: <strong>{{ purchase.status }}</strong>
     
   </p>
 </fieldset>

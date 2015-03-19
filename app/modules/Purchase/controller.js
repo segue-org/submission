@@ -59,16 +59,6 @@
       $scope.credentials = Auth.glue($scope, 'credentials');
       $scope.$on('auth:changed', $scope.home);
 
-      var objPayment = _.select(purchase.payments, function (payment) {
-        return payment.id == payment_id;
-      });
-      
-      objPayment = objPayment[0];
-      
-      if (objPayment !== undefined) {
-        $scope.status = objPayment.status;
-      }
-      
       $scope.purchase = purchase;
     })
     .controller('NewPurchaseController', function($scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account) {
