@@ -4,14 +4,13 @@
   <p>
     <div class="product_list">
     <span ng-repeat="product in products">
-      <input data-category="{{product.category}}"
-             type="radio"
+      <input type="radio"
              name="product_id"
              id="product_{{product.id}}"
-             value="{{ product.id }}"
-             watch="product:changed"
-             ng-model="selectedProduct" />
-      <label for="product_{{product.id}}">{{ product.short_description }} ({{product.price | realbrasileiro }})</label>
+             ng-value="product.id"
+             ng-model="productId"
+             ng-change="updateSelectedProduct(product.id)"/>
+      <label for="product_{{product.id}}">{{ product.description }} ({{product.price | realbrasileiro }})</label>
     </span>
     <span form-error="product_id.object_required" translate>selecione um tipo de ingresso</span>
     </div>

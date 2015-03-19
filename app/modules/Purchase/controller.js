@@ -62,52 +62,33 @@
       $scope.purchase = purchase;
     })
     .controller('NewPurchaseController', function($scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account) {
-      _.each(products, function(k, v) {
-        var added = {
-          short_description: new String(products[v].description).replace("ingresso FISL16 - ", "")
-        }
-        products[v] = _.extend(k, added);
-      });
-      
-      $scope.products = products;
-      
+      $scope.selectedProduct = {};
+
+      $scope.updateSelectedProduct = function(newId) {
+        $scope.selectedProduct = _(products).findWhere({ id: newId });
+        if ($scope.selectedProduct.category == 'student') { $scope.buyer.kind = 'person'; }
+      };
+
+      $scope.$watch('buyer', Purchases.localSave);
       $scope.buyer = currentPurchase;
       delete $scope.buyer.id;
-      
-      $scope.$watch('buyer', Purchases.localSave);
 
-      var updateData = function() {
-        if ($scope.credentials) {
-          Account.get().then(function(account) {
-            $scope.buyer.contact         = account.name;
-            $scope.buyer.address_country = account.country;
-            $scope.buyer.address_city    = account.city;
-            $scope.buyer.document        = account.document;
-          });
-        } else { return; }
-      }
-      
-      $scope.$parent.$on("product:changed", function(ev, el) {
-        var cat = el.attr("data-category");
-        $scope.buyer.kind = cat;
-        $scope.selectedProduct = el.val();
+      $scope.$watch($scope.credentials, function() {
+        Account.get().then(function(account) {
+          $scope.buyer.contact         = account.name;
+          $scope.buyer.address_country = account.country;
+          $scope.buyer.address_city    = account.city;
+          $scope.buyer.document        = account.document;
+        });
       });
-      
-      $scope.$on("auth:changed", function(e, c) {
-        updateData();
-      });
-      
-      updateData();
-      
+
       $scope.isDirty = function() {
-        return $scope.credentials && $scope.buyer.product_id != "" && ( ($scope.purchase_form.$dirty) );
+        return $scope.credentials && $scope.selectedProduct.id && $scope.purchase_form.$dirty;
       };
-      
+
       $scope.submit = function() {
-        if ($scope.buyer.kind == "student") { $scope.buyer.kind = "person"; }
-        $scope.buyer.name = $scope.credentials.name;
         Validator.validate($scope.buyer, 'purchases/buyer')
-                 .then(Product.purchase($scope.selectedProduct))
+                 .then(Product.purchase($scope.selectedProduct.id))
                  .then(Purchases.pay('pagseguro'))
                  .then(Purchases.followPaymentInstructions)
                  .then(Purchases.localForget)

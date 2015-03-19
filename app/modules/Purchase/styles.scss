@@ -1,6 +1,6 @@
 @import 'modules/common/mixins.scss';
 
-main.products {
+main.purchase {
   input { @include hide-placeholder; }
 
   aside.action {
@@ -24,16 +24,16 @@ main.products {
       width: 10rem;
     }
   }
-  
+
 }
 
 .products {
-  
+
   .product_list {
     input[type=radio] {
       display:none;
     }
-    
+
     label {
       width:47% !important;
       float:left;
@@ -71,10 +71,10 @@ main.products {
 }
 
 .conclude {
-  
+
   padding:3rem;
   margin-top:2rem;
-  
+
   p {
     font-size:large;
     font-family:sans-serif;

@@ -1,34 +1,34 @@
 <fieldset class="buyer_data">
   <legend translate>dados do comprador</legend>
-  
-  <p ng-hide="buyer.kind == 'student'">
+
+  <p>
     <label class="long" translate>este ingresso está sendo comprado: </label>
     <span>
       <input type="radio" id="buyer_person" name="buyer_type" value="person"
              ng-model="buyer.kind" />
       <label for="buyer_person" translate>por mim</label>
     </span>
-    <span>
+    <span ng-hide="selectedProduct.category == 'student'">
       <input type="radio" id="buyer_company" name="buyer_type" value="company"
              ng-model="buyer.kind" />
       <label for="buyer_company" translate>por uma empresa</label>
     </span>
+    <span form-error="kind.object_required" translate>por favor, informe o tipo de comprador</span>
   </p>
 
   <p>
-    <label class="only-expanded">
+    <label>
       <span translate>contato</span>
       <small translate>(de 5 até 80 caracteres)</small>
     </label>
     <input type="text" required focusable
-          placeholder="{{ 'contato' || translate }}"
           minlength="5" maxsize="80"
           ng-model="buyer.contact" />
     <i class="fa fa-check only-expanded"></i>
     <span form-error="contact.object_required" translate>por favor, informe o nome do contato</span>
   </p>
-  
-  <p class="only-expanded">
+
+  <p>
     <label class="notip">
       <span translate>país</span>
     </label>
@@ -42,7 +42,7 @@
     <span form-error="address_country.object_required" translate>por favor, informe seu país</span>
   </p>
 
-  <p class="only-expanded cpf" ng-show="buyer.kind == 'person' || buyer.kind == 'student'">
+  <p class="cpf" ng-show="buyer.kind == 'person' || buyer.kind == 'student'">
     <label>
       <span translate>número do CPF</span>
       <small translate>(somente residentes no Brasil)</small>
@@ -55,7 +55,7 @@
     <span form-error="cpf.object_required" translate>residentes no Brasil, favor informar o CPF</span>
   </p>
 
-  <p class="only-expanded cnpj" ng-show="buyer.kind == 'company'">
+  <p class="cnpj" ng-show="buyer.kind == 'company'">
     <label>
       <span translate>CNPJ</span>
       <small translate>(somente empresas brasileiras)</small>
@@ -67,8 +67,8 @@
     <i class="fa fa-check"></i>
     <span form-error="cnpj.object_required" translate>residentes no Brasil, favor informar o CNPJ</span>
   </p>
-  
-  <p class="only-expanded passport" ng-show="isForeignPerson">
+
+  <p class="passport" ng-show="isForeignPerson">
     <label>
       <span translate>passaporte</span>
       <small translate>(Mercosul: use identidade nacional)</small>
@@ -80,7 +80,7 @@
     <span form-error="passport.object_required" translate>estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
   </p>
 
-  <p class="only-expanded">
+  <p>
     <label>
       <span translate>endereço</span>
     </label>
@@ -90,8 +90,8 @@
     <i class="fa fa-check"></i>
     <span form-error="address_street.object_required" translate>favor informar o endereço</span>
   </p>
-  
-  <p class="only-expanded">
+
+  <p>
     <label>
       <span translate>número</span>
     </label>
@@ -99,10 +99,10 @@
           ng-model="buyer.address_number"
           />
     <i class="fa fa-check"></i>
-    <span form-error="address_street.object_required" translate>favor informar o número</span>
+    <span form-error="address_number.object_required" translate>favor informar o número</span>
   </p>
-  
-  <p class="only-expanded">
+
+  <p>
     <label>
       <span translate>complemento</span>
     </label>
@@ -111,8 +111,8 @@
           />
     <i class="fa fa-check"></i>
   </p>
-  
-  <p class="only-expanded cnpj">
+
+  <p>
     <label>
       <span translate>cidade</span>
     </label>
@@ -122,8 +122,8 @@
     <i class="fa fa-check"></i>
     <span form-error="address_city.object_required" translate>residentes no Brasil, favor informar a cidade</span>
   </p>
-  
-  <p class="only-expanded">
+
+  <p>
     <label>
       <span translate>CEP</span>
     </label>
