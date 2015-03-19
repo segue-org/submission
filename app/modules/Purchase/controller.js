@@ -74,12 +74,14 @@
       delete $scope.buyer.id;
 
       $scope.$watch($scope.credentials, function() {
-        Account.get().then(function(account) {
-          $scope.buyer.contact         = account.name;
-          $scope.buyer.address_country = account.country;
-          $scope.buyer.address_city    = account.city;
-          $scope.buyer.document        = account.document;
-        });
+        if ($scope.credentials) {
+          Account.get().then(function(account) {
+            $scope.buyer.contact         = account.name;
+            $scope.buyer.address_country = account.country;
+            $scope.buyer.address_city    = account.city;
+            $scope.buyer.document        = account.document;
+          });
+        }
       });
 
       $scope.isDirty = function() {
