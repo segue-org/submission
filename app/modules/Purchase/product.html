@@ -2,18 +2,24 @@
   <legend translate>qual ingresso você quer comprar?</legend>
 
   <p>
-    <div class="product_list">
-    <span ng-repeat="product in products">
-      <input type="radio"
-             name="product_id"
-             id="product_{{product.id}}"
-             ng-value="product.id"
-             ng-model="productId"
-             ng-change="updateSelectedProduct(product.id)"/>
-      <label for="product_{{product.id}}">{{ product.description }} ({{product.price | realbrasileiro }})</label>
-    </span>
-    <span form-error="product_id.object_required" translate>selecione um tipo de ingresso</span>
-    </div>
+    <table>
+      <tr>
+        <th>disponível até...</th>
+        <th>individual</th>
+        <th>estudante</th>
+      </tr>
+      <tr ng-repeat="period in productsByPeriod">
+        <td>{{ period[0] | dateFromTimestamp }}</td>
+        <td ng-repeat="(category,tickets) in period[1]">
+          <input id="product_{{tickets[0].id}}" type="radio"
+                 ng-value="tickets[0].id"
+                 name="productId"
+                 ng-model="productId">
+          <label ng-click="updateSelectedProduct(tickets[0].id)"
+                 for="product_{{tickets[0].id}}">{{ tickets[0].price | realbrasileiro }}</label>
+        </td>
+      </tr>
+    </table>
   </p>
 
 </fieldset>
