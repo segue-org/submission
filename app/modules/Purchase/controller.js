@@ -64,6 +64,11 @@
     .controller('NewPurchaseController', function($scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account) {
       $scope.selectedProduct = {};
 
+      $scope.productsByPeriod = _(products).groupBy('sold_until')
+                                           .pairs()
+                                           .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
+                                           .value();
+
       $scope.updateSelectedProduct = function(newId) {
         $scope.selectedProduct = _(products).findWhere({ id: newId });
         if ($scope.selectedProduct.category == 'student') { $scope.buyer.kind = 'person'; }

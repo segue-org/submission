@@ -25,6 +25,14 @@
         }
       };
     })
+    .filter('dateFromTimestamp', function() {
+      return function(input) {
+        var year  = input.substring(0,4);
+        var month = input.substring(5,7);
+        var day   = input.substring(8,10);
+        return day + "/" + month + "/" + year;
+      };
+    })
     .filter('realbrasileiro', function() {
       return function(input) {
         function formatCurrency( n ) {
