@@ -90,6 +90,7 @@ form.lines {
     border: 1px solid lightgray;
     padding: 5px 10px;
     width: 10rem;
+    box-shadow: 1px 1px 3px gray;
   }
   input[type=radio]:checked + label {
     background: lightgray;

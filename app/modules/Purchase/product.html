@@ -4,13 +4,13 @@
   <p>
     <table>
       <tr>
-        <th>disponível até...</th>
-        <th>individual</th>
-        <th>estudante</th>
+        <th class="date">disponível até...</th>
+        <th class="category">individual</th>
+        <th class="category">estudante</th>
       </tr>
-      <tr ng-repeat="period in productsByPeriod">
-        <td>{{ period[0] | dateFromTimestamp }}</td>
-        <td ng-repeat="(category,tickets) in period[1]">
+      <tr class="rows" ng-repeat="period in productsByPeriod">
+        <td class="date">{{ period[0] | dateFromTimestamp }}</td>
+        <td class="price" ng-repeat="(category,tickets) in period[1]">
           <input id="product_{{tickets[0].id}}" type="radio"
                  ng-value="tickets[0].id"
                  name="productId"
