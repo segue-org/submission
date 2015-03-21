@@ -6,7 +6,7 @@
     <li ng-repeat="purchase in myPurchases">
       <span class="title">{{ purchase.product.description }}</span>
       <span class="price">{{ purchase.product.price | realbrasileiro}}</span>
-      <span class="when" translate>efetuada em {{ purchase.created | date:'medium' }} </span>
+      <span class="when" translate>compra iniciada {{ purchase.created | date:'medium' }} </span>
       <span class="status" ng-show="purchase.status == 'pending'" translate>
         <button class="button-pay" ng-click="doPayment(purchase)">pagar</button>
       </span>
