@@ -38,20 +38,20 @@
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
       $scope.lockEmail = true;
       $scope.signup = signup;
-      
-      $scope.signup[Account.getDocumentField($scope.signup['country'])] = $scope.signup['document'];
+
+      $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;
 
       $scope.removeCurrent = function(ev) {
         $scope.currentProposal = null;
         Proposals.localForget();
         ev.stopPropagation();
       };
-      
+
       $scope.doPayment = function(purchaseObject) {
         purchaseObject.post('pay/pagseguro')
                       .then(Purchases.followPaymentInstructions);
       };
-      
+
       $scope.submit = function() {
         Validator.validate($scope.signup, 'accounts/edit_account')
                  .then(Account.saveIt)

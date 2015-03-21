@@ -38,7 +38,7 @@
         function formatCurrency( n ) {
           return n.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
         }
-        return 'R$ ' + formatCurrency(new Number(input));
+        return 'R$ ' + formatCurrency(parseFloat(input));
       };
     })
     .directive('watch', function() {
@@ -47,6 +47,6 @@
           scope.$emit(attr.watch, elem);
         });
       };
-    })
+    });
 
 })();

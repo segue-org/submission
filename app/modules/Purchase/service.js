@@ -45,7 +45,7 @@
         return function(purchaseObject) {
           var purchase = service.one(purchaseObject.id);
           return purchase.post('pay/' + method);
-        }
+        };
       };
       extensions.followPaymentInstructions = function(response) {
         $window.location.href = response.redirectUserTo;
@@ -57,5 +57,5 @@
       };
 
       return _.extend(service, extensions);
-    })
+    });
 })();

@@ -43,7 +43,7 @@
     })
     .service("Auth", function(Restangular, LocalSession, $rootScope, ngToast) {
       var session = Restangular.service('sessions');
-      
+
       Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
         if (response.status === 400) {
           ngToast.create({
@@ -52,7 +52,7 @@
           });
           return false;
         }
-        
+
         return true;
       });
 
@@ -79,6 +79,6 @@
       };
 
       return self;
-    })
+    });
 
 })();
