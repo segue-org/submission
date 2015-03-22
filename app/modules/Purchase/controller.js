@@ -61,7 +61,7 @@
 
       $scope.purchase = purchase;
     })
-    .controller('NewPurchaseController', function($scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account) {
+    .controller('NewPurchaseController', function($rootScope, $scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account, ContractModal) {
       $scope.selectedProduct = {};
 
       $scope.productsByPeriod = _(products).groupBy('sold_until')
@@ -71,8 +71,13 @@
 
       $scope.updateSelectedProduct = function(newId) {
         $scope.selectedProduct = _(products).findWhere({ id: newId });
-        if ($scope.selectedProduct.category == 'student') { $scope.buyer.kind = 'person'; }
+        if ($scope.selectedProduct.category == 'student') {
+          $scope.buyer.kind = 'person';
+          $scope.showDialog('student');
+        }
       };
+      
+      $scope.showDialog = ContractModal.show;
 
       $scope.$watch('buyer', Purchases.localSave);
       $scope.buyer = currentPurchase;
@@ -81,7 +86,8 @@
       $scope.$watch($scope.credentials, function() {
         if ($scope.credentials) {
           Account.get().then(function(account) {
-            $scope.buyer.contact         = account.name;
+            $scope.temp_name             = account.name;
+            $scope.buyer.name            = account.name;
             $scope.buyer.address_country = account.country;
             $scope.buyer.address_city    = account.city;
             $scope.buyer.document        = account.document;
