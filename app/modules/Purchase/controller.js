@@ -29,7 +29,14 @@
             form: { controller: 'NewPurchaseController', templateUrl: 'modules/Purchase/form.html' }
           },
           resolve: {
-            currentPurchase: function(Purchases) { return Purchases.current(); }
+            currentPurchase: function(Purchases, $window) { return Purchases.current(); } 
+          },
+          onEnter: function(Purchases, $window) {
+              Purchases.getOwnedByCredentials().then(function(purchases) {
+                if (purchases.length) {
+                  $window.location = "/#/home";
+                }
+              });
           }
         })
         .state('purchase.conclude', {
@@ -63,7 +70,7 @@
     })
     .controller('NewPurchaseController', function($rootScope, $scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account, ContractModal) {
       $scope.selectedProduct = {};
-
+      
       $scope.productsByPeriod = _(products).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
