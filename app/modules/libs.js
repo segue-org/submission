@@ -47,6 +47,37 @@
           scope.$emit(attr.watch, elem);
         });
       };
+    })
+    .controller("ContractController", function($scope, $rootScope, $state, $window) {
+      var contract_type = $scope.ngDialogData.contract_type;
+      $scope.contract_type = "modules/common/contract_" + contract_type + ".html";
+      
+      $scope.acceptContract = function() {
+        if ($rootScope.accepted_contracts === undefined) {
+          $rootScope.accepted_contracts = new Array();
+        }
+        
+        if (!_.include($rootScope.accepted_contracts, contract_type)) {
+          $rootScope.accepted_contracts.push(contract_type);
+        }
+        
+        $scope.closeThisDialog(true);
+      }
+      
+      $scope.rejectContract = function() {
+        $window.location = "/";
+      }
+    })
+    .factory('ContractModal', function (ngDialog, $rootScope) {
+      var contractConfig  = { controller: "ContractController",  template: 'modules/common/contract.html' };
+      return {
+        show:  function(contract_type) {
+          if (!_.include($rootScope.accepted_contracts, contract_type)) {
+            _.extend(contractConfig, { data: { contract_type: contract_type} });
+            return ngDialog.open(contractConfig);
+          } else { return false; }
+        }
+      };
     });
 
 })();

@@ -1,0 +1,17 @@
+<section class="contract">
+  <header translate>leia o texto abaixo:</header>
+  <form novalidate name="contract_form" grab-focus class="inside" style="max-height: 410px;">
+    <div class="contract_text">
+      <ng-include src="contract_type">
+        
+      </ng-include>
+    </div>
+  
+    <button ng-click="acceptContract()" class="only-expanded" translate>
+      concordo
+    </button>
+    <button ng-click="rejectContract()" class="only-expanded" translate>
+      não concordo
+    </button>
+  </form>
+</section>

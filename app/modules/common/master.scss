@@ -183,3 +183,14 @@ fieldset {
   }
 }
 
+.contract_text {
+  background-color:white;
+  padding:10px;
+  border:1px solid #ccc;
+  
+  p {
+    height:150px;
+    overflow-y: auto;
+    font-size:small;
+  }
+}
