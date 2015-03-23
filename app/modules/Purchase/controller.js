@@ -31,12 +31,14 @@
           resolve: {
             currentPurchase: function(Purchases, $window) { return Purchases.current(); } 
           },
-          onEnter: function(Purchases, $window) {
+          onEnter: function(Purchases, $window, Auth) {
+            if (!Auth.credentials) {
               Purchases.getOwnedByCredentials().then(function(purchases) {
                 if (purchases.length) {
                   $window.location = "/#/home";
                 }
               });
+            }
           }
         })
         .state('purchase.conclude', {
