@@ -14,13 +14,13 @@
     <span>
       <input type="radio" id="buyer_person" name="buyer_type" value="person"
              ng-model="buyer.kind"
-             ng-click="buyer.name = temp_name" />
+             ng-click="changeBuyerType()" />
       <label for="buyer_person" translate>por mim</label>
     </span>
     <span ng-hide="selectedProduct.category == 'student'">
       <input type="radio" id="buyer_company" name="buyer_type" value="company"
              ng-model="buyer.kind"
-             ng-click="buyer.name = ''" />
+             ng-click="changeBuyerType()" />
       <label for="buyer_company" translate>por uma empresa</label>
     </span>
     <span form-error="kind.object_required" translate>por favor, informe o tipo de comprador</span>
@@ -60,9 +60,10 @@
       <span translate>contato</span>
       <small translate>(de 5 até 80 caracteres)</small>
     </label>
-    <input type="text" focusable
+    <input type="text" focusable 
           minlength="5" maxsize="100"
-          ng-model="buyer.contact" />
+          ng-model="buyer.contact"
+          ng-required="buyer.kind == 'company'" />
     <i class="fa fa-check only-expanded"></i>
     <span form-error="contact.object_required" translate>por favor, informe o nome do contato</span>
   </p>

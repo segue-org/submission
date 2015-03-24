@@ -92,8 +92,18 @@
       $scope.buyer = currentPurchase;
       $scope.buyer.kind = 'person';
       $scope.payment = { method: 'boleto' };
+      $scope.temp_name = $scope.buyer.name;
       delete $scope.buyer.id;
-
+      
+      $scope.changeBuyerType = function() {
+        if ($scope.buyer.kind == 'company') {
+          $scope.temp_name = $scope.buyer.name;
+          $scope.buyer.name = '';
+        } else {
+          $scope.buyer.name = $scope.temp_name;
+        }
+      }
+      
       $scope.$watch($scope.credentials, function() {
         if ($scope.credentials) {
           Account.get().then(function(account) {
