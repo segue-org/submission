@@ -27,6 +27,21 @@
   </p>
 
   <p>
+    <label translate>forma de pagamento: </label>
+    <span>
+      <input type="radio" id="payment_boleto" name="payment_method" value="boleto"
+             ng-model="payment.method" />
+      <label for="payment_boleto" translate>boleto bancário</label>
+    </span>
+    <span>
+      <input type="radio" id="payment_pagseguro" name="payment_method" value="pagseguro"
+             ng-model="payment.method" />
+      <label for="payment_pagseguro" translate>pagseguro</label>
+    </span>
+    <span form-error="payment-method.object_required" translate>por favor, informe a forma de pagamento</span>
+  </p>
+
+  <p>
     <label>
       <span ng-show="buyer.kind == 'person'" translate>nome do comprador</span>
       <span ng-show="buyer.kind == 'company'" translate>nome da empresa</span>

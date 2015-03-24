@@ -87,9 +87,11 @@
       };
       
       $scope.showDialog = ContractModal.show;
-
+      
       $scope.$watch('buyer', Purchases.localSave);
       $scope.buyer = currentPurchase;
+      $scope.buyer.kind = 'person';
+      $scope.payment = { method: 'boleto' };
       delete $scope.buyer.id;
 
       $scope.$watch($scope.credentials, function() {
@@ -107,11 +109,11 @@
       $scope.isDirty = function() {
         return $scope.credentials && $scope.selectedProduct.id && $scope.purchase_form.$dirty;
       };
-
+      
       $scope.submit = function() {
         Validator.validate($scope.buyer, 'purchases/buyer')
                  .then(Product.purchase($scope.selectedProduct.id))
-                 .then(Purchases.pay('pagseguro'))
+                 .then(Purchases.pay($scope.payment.method))
                  .then(Purchases.followPaymentInstructions)
                  .then(Purchases.localForget)
                  .catch(FormErrors.set);
