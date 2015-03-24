@@ -123,6 +123,27 @@ main.home {
         color:black;
       }
     }
+    
+    .payment_method {
+      padding:5px;
+      float:right;
+      margin-top:-35px;
+      margin-right:-50px;
+      
+      button {
+        font-size:small;
+      }
+      
+      span {
+        text-align:center;
+        background-color:white;
+        padding:5px;
+        display:block;
+        border:1px solid #ccc;
+        margin-top:-5px;
+        margin-bottom:8px;
+      }
+    }
   }
 }
 

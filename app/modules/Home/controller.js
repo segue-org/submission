@@ -46,9 +46,11 @@
         Proposals.localForget();
         ev.stopPropagation();
       };
+      
+      $scope.payment = { method: null };
 
-      $scope.doPayment = function(purchaseObject) {
-        purchaseObject.post('pay/pagseguro')
+      $scope.doPayment = function(purchaseObject, method) {
+        purchaseObject.post('pay/' + method)
                       .then(Purchases.followPaymentInstructions);
       };
 

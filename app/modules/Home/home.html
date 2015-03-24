@@ -7,8 +7,13 @@
       <span class="title">{{ purchase.product.description }}</span>
       <span class="price">{{ purchase.product.price | realbrasileiro}}</span>
       <span class="when" translate>compra iniciada {{ purchase.created | date:'medium' }} </span>
-      <span class="status" ng-show="purchase.status == 'pending'" translate>
-        <button class="button-pay" ng-click="doPayment(purchase)">pagar</button>
+      <span class="status" ng-show="purchase.status == 'pending' && payment.method == null" translate>
+        <button class="button-pay" ng-click="payment.method = 'show'">pagar</button>
+      </span>
+      <span class="payment_method" translate ng-show="payment.method == 'show'">
+        <span>forma de pagamento:</span>
+        <button class="button-pay" ng-click="doPayment(purchase, 'boleto')">boleto bancário</button>
+        <button class="button-pay" ng-click="doPayment(purchase, 'pagseguro')">pagseguro</button>
       </span>
       <span class="status paid" ng-show="purchase.status == 'paid'" translate>pago</span>
     </li>
