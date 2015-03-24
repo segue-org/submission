@@ -99,7 +99,9 @@ form.lines {
   input[type=radio]:focus + label {
     box-shadow: inset 0 0 8px blue;
   }
-
+  input[type=radio] + label:hover {
+    cursor:pointer;
+  }
   input {
     font-size: large;
   }
