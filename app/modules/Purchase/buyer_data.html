@@ -48,7 +48,7 @@
       <small translate>(de 5 até 80 caracteres)</small>
     </label>
     <input type="text" required focusable
-          minlength="5" maxsize="50"
+          minlength="5" maxlength="50"
           ng-model="buyer.name"
           ng-readonly="buyer.kind == 'person'" />
     <i class="fa fa-check only-expanded"></i>
@@ -61,7 +61,7 @@
       <small translate>(de 5 até 80 caracteres)</small>
     </label>
     <input type="text" focusable 
-          minlength="5" maxsize="100"
+          minlength="5" maxlength="100"
           ng-model="buyer.contact"
           ng-required="buyer.kind == 'company'" />
     <i class="fa fa-check only-expanded"></i>
@@ -73,7 +73,7 @@
       <span translate>país</span>
     </label>
     <input type="text" required
-          minlength="2" maxsize="40"
+          minlength="2" maxlength="40"
           watch="country:changed"
           readonly
           ng-model="buyer.address_country"
@@ -88,7 +88,7 @@
       <small translate>(somente residentes no Brasil)</small>
     </label>
     <input type="text" required
-          minlength="11" maxsize="20"
+          minlength="11" maxlength="20"
           ng-model="buyer.document"
           ui-br-cpf-mask/>
     <i class="fa fa-check"></i>
@@ -101,7 +101,7 @@
       <small translate>(somente empresas brasileiras)</small>
     </label>
     <input type="text" required
-          minlength="11" maxsize="15"
+          minlength="11" maxlength="15"
           ng-model="buyer.document"
           ui-br-cnpj-mask/>
     <i class="fa fa-check"></i>
@@ -114,7 +114,7 @@
       <small translate>(Mercosul: use identidade nacional)</small>
     </label>
     <input type="text" required
-          minlength="8" maxsize="15"
+          minlength="8" maxlength="15"
           ng-model="buyer.document"/>
     <i class="fa fa-check"></i>
     <span form-error="passport.object_required" translate>estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional</span>
@@ -125,7 +125,7 @@
       <span translate>endereço</span>
     </label>
     <input type="text" required
-          minlength="5" maxsize="80"
+          minlength="5" maxlength="80"
           ng-model="buyer.address_street"
           />
     <i class="fa fa-check"></i>
@@ -139,7 +139,7 @@
       <span translate>número</span>
     </label>
     <input type="text" required
-          minlength="1" maxsize="20"
+          minlength="1" maxlength="20"
           ng-model="buyer.address_number"
           />
     <i class="fa fa-check"></i>
@@ -151,7 +151,7 @@
       <span translate>complemento</span>
     </label>
     <input type="text"
-          minlength="1" maxsize="40"
+          minlength="1" maxlength="40"
           ng-model="buyer.address_extra"
           />
     <i class="fa fa-check"></i>
@@ -164,7 +164,7 @@
       <span translate>cidade</span>
     </label>
     <input type="text" required
-          minlength="2" maxsize="60"
+          minlength="2" maxlength="60"
           ng-model="buyer.address_city"
           />
     <i class="fa fa-check"></i>
