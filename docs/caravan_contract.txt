@@ -1,0 +1,55 @@
+1) create a caravan (requires auth - can only be done once per account)
+
+<---- POST http://server/api/caravan
+      {
+        name: ...,
+        city: ...
+      }
+###### creates an entry in the Caravan table
+-----> 201
+
+2) see caravan details
+<----- GET http://server/api/accounts/:id/caravan
+-----> {
+         name: ...,
+         city: ...
+         owner: ...
+       }
+
+3) invite people to caravan
+<----- POST http://server/api/caravan/:id/invite
+###### creates an entry in the CaravanInvite table
+-----> {
+         recipient: 'a@a.com',
+         name: ...
+       }
+
+
+4) person receives an e-mail with a link to answer invite
+<----- GET http://server/api/caravan/:id/invite/:hash/ [html]
+-----> 304 http://frontend/caravan/:id/invite/:hash/
+<----- GET http://server/api/caravan/:id/invite/:hash/ [json]
+-----> {
+         name: ...,
+         city: ...,
+         owner: ...
+       }
+
+5) person fills out normal registration/purchase form ***BUT HAS ACCESS TO CARAVAN PRODUCT*** (where should we filter?)
+<----- POST http://server/api/product/xyz/purchase <--- *** xyz would be the id for caravan product
+      {
+        kind: 'person',
+        contact: 'Fulano da Silva Jr.',
+        document: '123.456.789-12'
+        address_street: 'Rua dos Bobos',
+        address_number: '30',
+        address_extra: 'apto 20',
+        address_city: 'Bobopolis',
+        address_country: 'Bobolandia',
+        address_zipcode: '99999123'
+        caravan_invite_hash: 'ABCDC0FFEE' <----- *** this is different ***
+      }
+###### sets the invite as accepted and associates the purchase with the caravan (how?)
+-----> 200
+
+rest of the flow is normal payment flow
