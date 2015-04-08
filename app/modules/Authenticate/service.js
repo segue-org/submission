@@ -41,14 +41,16 @@
 
       return self;
     })
-    .service("Auth", function(Restangular, LocalSession, $rootScope, ngToast) {
+    .service("Auth", function(Restangular, LocalSession, $sce, $rootScope, ngToast) {
       var session = Restangular.service('sessions');
 
       Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
         if (response.status === 400) {
+          var str_error_message = '<span translate>' + response.data.errors.message + '</span>';
           ngToast.create({
-            content: 'email ou senha incorretos. verifique.',
-            className: 'danger'
+            content: $sce.trustAsHtml(str_error_message),
+            className: 'danger',
+            compileContent: true
           });
           return false;
         }
