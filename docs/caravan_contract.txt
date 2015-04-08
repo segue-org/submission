@@ -17,7 +17,7 @@
        }
 
 3) invite people to caravan
-<----- POST http://server/api/caravan/:id/invite
+<----- POST http://server/api/caravan/:id/invites
 ###### creates an entry in the CaravanInvite table
 -----> {
          recipient: 'a@a.com',
@@ -26,9 +26,9 @@
 
 
 4) person receives an e-mail with a link to answer invite
-<----- GET http://server/api/caravan/:id/invite/:hash/ [html]
------> 304 http://frontend/caravan/:id/invite/:hash/
-<----- GET http://server/api/caravan/:id/invite/:hash/ [json]
+<----- GET http://server/api/caravan/:id/invites/:hash/ [html]
+-----> 304 http://frontend/caravan/:id/invites/:hash/
+<----- GET http://server/api/caravan/:id/invites/:hash/ [json]
 -----> {
          name: ...,
          city: ...,
