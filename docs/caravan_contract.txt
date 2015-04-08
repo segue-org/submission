@@ -35,7 +35,13 @@
          owner: ...
        }
 
-5) person fills out normal registration/purchase form ***BUT HAS ACCESS TO CARAVAN PRODUCT*** (where should we filter?)
+5) person fills out normal registration/purchase form ***BUT HAS ACCESS TO CARAVAN PRODUCTS*** because invite_hash was passed along when requesting products
+<----- GET http://server/api/product/caravan/:invite_hash
+-----> [
+          { ...caravan product for period 1... },
+          { ...caravan product for period 2... },
+          { ...caravan product for period 3... },
+       ]
 <----- POST http://server/api/product/xyz/purchase <--- *** xyz would be the id for caravan product
       {
         kind: 'person',
