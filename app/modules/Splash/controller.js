@@ -31,6 +31,9 @@
         if (_.include($rootScope.accepted_contracts, 'initial')) {
           $window.location = "#/purchase/new";
         }
+        if (_.include($rootScope.accepted_contracts, 'caravan')) {
+          $window.location = "#/caravan/new";
+        }
       });
       
       $scope.showInfo = ContractModal.show;

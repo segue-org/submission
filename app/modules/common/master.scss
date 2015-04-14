@@ -183,13 +183,28 @@ fieldset {
   }
 }
 
+.contract {
+  height:30em;
+  
+  .only-expanded {
+    width:100%;
+  }
+}
+
+.contract_large {
+  top:-9em !important;
+  .ngdialog-content {
+    width:80% !important;
+  }
+}
+
 .contract_text {
   background-color:white;
-  padding:10px;
+  padding:15px;
   border:1px solid #ccc;
   
   p {
-    height:150px;
+    height:26em;
     overflow-y: auto;
     font-size:small;
   }

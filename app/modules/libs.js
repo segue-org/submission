@@ -71,9 +71,11 @@
     .factory('ContractModal', function (ngDialog, $rootScope) {
       var contractConfig  = { controller: "ContractController",  template: 'modules/common/contract.html' };
       return {
-        show:  function(contract_type) {
+        show:  function(contract_type, dialog_size) {
           if (!_.include($rootScope.accepted_contracts, contract_type)) {
-            _.extend(contractConfig, { data: { contract_type: contract_type} });
+            var size = 'contract_default';
+            if (!_.isUndefined(dialog_size)) { size = dialog_size; }
+            _.extend(contractConfig, { className: 'ngdialog-theme-default ' + size, data: { contract_type: contract_type} });
             return ngDialog.open(contractConfig);
           } else { return false; }
         }
