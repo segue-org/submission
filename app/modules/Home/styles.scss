@@ -1,5 +1,5 @@
 main.home {
-  .proposals, .purchases, .coauthors {
+  .caravans, .proposals, .purchases, .coauthors {
     ul {
       padding: 0;
       margin: 0;
@@ -25,6 +25,7 @@ main.home {
     }
 
     li {
+      border:1px solid #666;
       padding:10px;
       float: left;
       margin: 10px 10px;
@@ -39,7 +40,7 @@ main.home {
 
       >* { display: block; padding: 2px;}
       &:hover {
-        outline: 3px solid lightblue;
+        outline: 5px solid lightblue;
       }
 
       .title {
@@ -145,5 +146,12 @@ main.home {
       }
     }
   }
+  
 }
 
+.box-icon {
+  position:absolute;
+  top:0.2em;
+  right:0.2em;
+  font-size:1.5em;    
+}

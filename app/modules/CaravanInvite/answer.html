@@ -1,0 +1,20 @@
+<fieldset class="invite">
+  <legend translate>convite para caravana</legend>
+
+  <div class="intro" translate>
+    Você está sendo convidado por <b>{{ invite.caravan.owner.name }}</b> para
+    participar de uma caravana para o <b>FISL 16</b>:
+  </div>
+
+  <ul>
+    <li><span translate>nome:</span> {{ invite.caravan.name }}</li>
+    <li><span translate>cidade:</span> {{ invite.caravan.city }}</li>
+    <li><span translate>descrição:</span> {{ invite.caravan.description }}</li>
+    <li><span translate>chefe da caravana:</span> {{ invite.caravan.owner.name }}</li>
+  </ul>
+
+  <div class="actions">
+    <button ng-click="accept()"  translate>aceito este convite</button>
+    <button ng-click="decline()" translate>rejeito este convite</button>
+  </div>
+</fieldset>

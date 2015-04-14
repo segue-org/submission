@@ -4,6 +4,7 @@
   </legend>
   <ul>
     <li ng-repeat="purchase in myPurchases">
+      <i class="box-icon fa fa-envelope-o"></i>
       <span class="title">{{ purchase.product.description }}</span>
       <span class="price">{{ purchase.product.price | realbrasileiro}}</span>
       <span class="when" translate>compra iniciada {{ purchase.created | date:'medium' }} </span>
@@ -37,6 +38,7 @@
       <span class="delete" ng-click="removeCurrent($event)" translate>remover</span>
     </li>
     <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
+      <i class="box-icon fa fa-newspaper-o"></i>
       <span class="title">{{ proposal.title }}</span>
       <span class="authors">
         <b>{{ proposal.owner.name }}</b><!--
@@ -70,6 +72,22 @@
       <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
       <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
       <span class="when" translate>modificada em {{ proposal.last_updated | date: 'medium' }} </span>
+    </li>
+  </ul>
+</fieldset>
+<fieldset class="caravans" ng-show="isMyCaravan">
+  <legend translate>
+    minha caravana
+  </legend>
+  <ul>
+    <li ng-show="hasCaravan" ui-sref="caravan.edit({ id: myCaravan.id })">
+      <i class="box-icon fa fa-bus"></i>
+      <span class="title">{{ myCaravan.name }}</span>
+      <span class="city">{{ myCaravan.city }}</span>
+    </li>
+    <li class="new" ng-show="!hasCaravan" ui-sref="caravan.new">
+      <i class="fa fa-plus"></i>
+      <span translate>criar uma caravana</span>
     </li>
   </ul>
 </fieldset>

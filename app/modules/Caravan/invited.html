@@ -1,0 +1,28 @@
+<fieldset class="coauthor">
+  <legend translate>quem será convidado?</legend>
+
+  <ul ng-show="credentials" class="invited_list">
+    <li class="invited main">
+      <img gravatar-src="credentials.email" gravatar-size="50">
+      <div class="name">{{ credentials.name }}</div>
+      <div class="recipient">{{ credentials.email }}</div>
+      <div class="status you" translate>este é você!</div>
+    </li>
+    <li class="invited" ng-repeat="invite in invites">
+      <img gravatar-src="invite.recipient" gravatar-size="50">
+      <div class="name">{{ invite.name }}</div>
+      <div class="recipient">{{ invite.recipient }}</div>
+      <div class="status {{invite.status}}">{{ invite.status }}</div>
+    </li>
+    <li class="invited in-progress" ng-repeat="invite in newInvites">
+      <img gravatar-src="invite.recipient" gravatar-size="50">
+      <div class="name">{{ invite.name }}</div>
+      <div class="recipient">{{ invite.recipient }}</div>
+      <div class="status {{invite.status}}" translate>será convidado ao salvar</div>
+    </li>
+    <li class="invited invite-new" ng-click="openInviteModal()">
+      <i class="fa fa-plus"></i>
+      <span translate>convidar para a caravana...</span>
+    </li>
+  </ul>
+</fieldset>
