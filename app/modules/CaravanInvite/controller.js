@@ -69,7 +69,7 @@
                  .catch(FormErrors.set);
       };
     })
-    .controller("AnswerCaravanInviteController", function($scope, $state, Auth, AuthModal, CaravanInvites, invite) {
+    .controller("AnswerCaravanInviteController", function($scope, $state, $stateParams, Auth, AuthModal, CaravanInvites, invite) {
       Auth.logout();
 
       $scope.account = Auth.glue($scope, 'account');
