@@ -46,7 +46,7 @@
       "segue.submission.caravaninvite.service",
       "segue.submission.authenticate.controller"
     ])
-    .controller("RegisterCaravanInviteController", function($scope,
+    .controller("RegisterCaravanInviteController", function($scope, $stateParams, $state,
                                                      Validator, Auth, Account, FormErrors, UserLocation, CaravanInvites,
                                                      invite, focusOn) {
       Auth.logout();
@@ -59,7 +59,7 @@
       function finishedSignUp(signup) {
         Auth.login($scope.signup.email, $scope.signup.password);
         $scope.signup = null;
-        $scope.home();
+        $state.go('home', { caravan_hash: $stateParams.hash });
       }
 
       $scope.submit = function() {
@@ -75,8 +75,6 @@
       $scope.account = Auth.glue($scope, 'account');
       $scope.invite = invite;
       
-      console.log(invite);
-
       function retryWithLogin() {
         AuthModal.login().closePromise.then(function(data) {
           if (_(data.value).isString()) { return; }
@@ -85,7 +83,9 @@
         });
       }
       function moveToNextState(invite) {
-        if ($scope.account) { $scope.home(); }
+        if ($scope.account) {
+          $state.go('home', { caravan_hash: $stateParams.hash });
+        }
         else { $state.go('caravaninvite.register', $state.params); }
       }
 

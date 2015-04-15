@@ -10,6 +10,11 @@
     .factory('Products', function(Restangular) {
       var service = Restangular.service('products');
       var extensions = {};
+      
+      extensions.getCaravanList = function(caravan_hash) {
+        return Restangular.all('products/caravan/' + caravan_hash).getList();
+      };
+      
       return _.extend(service, extensions);
     })
     .factory('Product', function(Restangular) {

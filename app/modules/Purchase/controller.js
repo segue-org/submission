@@ -24,12 +24,13 @@
         })
         .state('purchase.new', {
           parent: 'purchase',
-          url: '^/purchase/new',
+          url: '^/purchase/new?caravan_hash',
           views: {
             form: { controller: 'NewPurchaseController', templateUrl: 'modules/Purchase/form.html' }
           },
           resolve: {
-            currentPurchase: function(Purchases, $window) { return Purchases.current(); } 
+            currentPurchase:  function(Purchases, $window)     { return Purchases.current(); },
+            products_caravan: function(Products, $stateParams) { if ($stateParams.caravan_hash) return Products.getCaravanList($stateParams.caravan_hash); else return []; }
           },
           onEnter: function(Purchases, $window, Auth) {
             if (Auth.credentials()) {
@@ -70,16 +71,26 @@
 
       $scope.purchase = purchase;
     })
-    .controller('NewPurchaseController', function($rootScope, $scope, Config, Auth, focusOn, products, Product, Purchases, currentPurchase, Validator, FormErrors, Account, ContractModal) {
+    .controller('NewPurchaseController', function($rootScope, $scope, $stateParams, Config, Auth, focusOn, products, products_caravan, Product, Purchases, currentPurchase, Validator, FormErrors, Account, ContractModal) {
       $scope.selectedProduct = {};
       
-      $scope.productsByPeriod = _(products).groupBy('sold_until')
+      var products_list = null;
+      
+      if ($stateParams.caravan_hash) {
+        products_list = products_caravan;
+        $scope.isCaravan = true;
+      } else {
+        products_list = products;
+        $scope.isCaravan = false;
+      }
+      
+      $scope.productsByPeriod = _(products_list).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
                                            .value();
 
       $scope.updateSelectedProduct = function(newId) {
-        $scope.selectedProduct = _(products).findWhere({ id: newId });
+        $scope.selectedProduct = _(products_list).findWhere({ id: newId });
         if ($scope.selectedProduct.category == 'student') {
           $scope.buyer.kind = 'person';
           $scope.showDialog('student');
@@ -112,6 +123,9 @@
             $scope.buyer.address_country = account.country;
             $scope.buyer.address_city    = account.city;
             $scope.buyer.document        = account.document;
+            if ($stateParams.caravan_hash) {
+              $scope.buyer.caravan_invite_hash = $stateParams.caravan_hash;
+            }
           });
         }
       });

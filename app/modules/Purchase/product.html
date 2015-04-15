@@ -5,8 +5,9 @@
     <table>
       <tr>
         <th class="date">disponível até...</th>
-        <th class="category">individual</th>
-        <th class="category">estudante</th>
+        <th ng-hide="isCaravan" class="category">individual</th>
+        <th ng-hide="isCaravan" class="category">estudante</th>
+        <th ng-show="isCaravan" class="category">caravana</th>
       </tr>
       <tr class="rows" ng-repeat="period in productsByPeriod">
         <td class="date">{{ period[0] | dateFromTimestamp }}</td>

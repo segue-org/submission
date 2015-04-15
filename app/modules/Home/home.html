@@ -18,7 +18,7 @@
       </span>
       <span class="status paid" ng-show="purchase.status == 'paid'" translate>pago</span>
     </li>
-    <li class="new" ng-show="myPurchases.length == 0" ui-sref="purchase.new">
+    <li class="new" ng-show="myPurchases.length == 0" ui-sref="purchase.new({ caravan_hash: '{{ caravan_hash }}' })">
       <i class="fa fa-plus"></i>
       <span translate>efetuar nova compra</span>
     </li>
@@ -75,7 +75,7 @@
     </li>
   </ul>
 </fieldset>
-<fieldset class="caravans" ng-show="isMyCaravan">
+<fieldset class="caravans" ng-show="!isMyCaravan || !hasCaravan">
   <legend translate>
     minha caravana
   </legend>
@@ -85,7 +85,7 @@
       <span class="title">{{ myCaravan.name }}</span>
       <span class="city">{{ myCaravan.city }}</span>
     </li>
-    <li class="new" ng-show="!hasCaravan" ui-sref="caravan.new">
+    <li ng-hide="hasCaravan" class="new" ui-sref="caravan.new">
       <i class="fa fa-plus"></i>
       <span translate>criar uma caravana</span>
     </li>
