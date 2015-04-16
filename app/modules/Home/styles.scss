@@ -85,48 +85,48 @@ main.home {
       }
     }
   }
-  
+
   .purchases {
     li:not(.new) {
       cursor:inherit;
 
-      &:hover {
-        outline: inherit;
-      }
+      &:hover { outline: inherit; }
     }
-    
-    .status {
-      float:right;
-      font-size: 70%;
-    }
-    
+
+
     .status_expired {
       float:right;
-        margin-top:-10px;
-      
+      margin-top:-10px;
+
       .ticket-expired {
         font-size:100%;
         background-color:darkred;
-        
-        &:hover {
-          background-color:pink;
-        }
+ 
+        &:hover { background-color:pink; }
       }
-      
     }
-    
-    .pending {
-      color:red;
+
+    .status {
+      position: absolute;
+      left: 80%;
+      top: 60%;
+
+      &.pending { color: red; }
+      &.paid    { color: green; }
+      &.expired { color: darkred; }
     }
-    
-    .paid {
-      color:green;
+
+    .number {
+      position: absolute;
+      left: 35%;
+      top: 60%;
+      float: left;
+      margin: 0 1em;
+      color: black;
+      b { font-family: Orbitron; }
     }
-    
-    .expired {
-      color:darkred;
-    }
-    
+
+
     button {
       display: inline-block;
       cursor: pointer;

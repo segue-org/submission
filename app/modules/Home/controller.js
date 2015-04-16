@@ -72,6 +72,21 @@
                       .then(Purchases.followPaymentInstructions);
       };
 
+      $scope.canStartPayment = function(purchaseObject) {
+        return $scope.isPending(purchaseObject) &&
+               $scope.paymentMethodIsBlank() &&
+               $scope.isTimely(purchaseObject);
+      };
+      $scope.isPending = function(purchaseObject) {
+        return purchaseObject.status == 'pending';
+      };
+      $scope.isTimely = function(purchaseObject) {
+        return $scope.to_date(purchaseObject.product.sold_until) <= today;
+      };
+      $scope.paymentMethodIsBlank = function() {
+        return payment.method == null;
+      };
+
       $scope.submit = function() {
         Validator.validate($scope.signup, 'accounts/edit_account')
                  .then(Account.saveIt)
