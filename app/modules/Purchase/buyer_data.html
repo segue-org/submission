@@ -17,12 +17,6 @@
              ng-click="changeBuyerType()" />
       <label for="buyer_person" translate>por mim</label>
     </span>
-    <span ng-hide="selectedProduct.category == 'student'">
-      <input type="radio" id="buyer_company" name="buyer_type" value="company"
-             ng-model="buyer.kind"
-             ng-click="changeBuyerType()" />
-      <label for="buyer_company" translate>por uma empresa</label>
-    </span>
     <span form-error="kind.object_required" translate>por favor, informe o tipo de comprador</span>
   </p>
 
