@@ -33,6 +33,12 @@
         return day + "/" + month + "/" + year;
       };
     })
+    .filter('date_locale', ['$localStorage', function($localStorage) {
+      return function(input) {
+        var d = new Date(input);
+        return d.toLocaleDateString();
+      };
+    }])
     .filter('realbrasileiro', function() {
       return function(input) {
         function formatCurrency( n ) {
