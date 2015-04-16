@@ -35,8 +35,12 @@
     })
     .filter('date_locale', ['$localStorage', function($localStorage) {
       return function(input) {
-        var d = new Date(input);
-        return d.toLocaleDateString();
+        if (input) {
+          var d = new Date(input);
+          return d.toLocaleDateString();
+        } else {
+          return "";
+        }
       };
     }])
     .filter('realbrasileiro', function() {
