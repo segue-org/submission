@@ -30,7 +30,7 @@
     });
   angular
     .module('segue.submission.home.controller', [])
-    .controller('HomeController', function($scope, $state, $stateParams,
+    .controller('HomeController', function($scope, $state, $stateParams, $window,
                                            Auth, Proposals, Purchases, myPurchases, myProposals, myInvites, myCaravan, currentProposal, signup, Account, Validator, FormErrors, ngToast) {
       if (!Auth.credentials()) { $state.go('splash'); }
 
@@ -60,7 +60,7 @@
 
       $scope.clonePayment = function(purchaseObject) {
         purchaseObject.post('clone')
-                      .then($state.reload());
+                      .then($window.location.reload());
       };
       
       $scope.to_date = function(strDate) {
