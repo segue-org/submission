@@ -42,12 +42,12 @@
       $scope.caravan_hash    = $stateParams.caravan_hash;
       $scope.lockEmail = true;
       $scope.signup = signup;
-      
+
       $scope.today = new Date();
-      
+
       $scope.isMyCaravan = myCaravan.owner_id == $scope.signup.id;
       $scope.hasCaravan = _.has(myCaravan, '$type');
-      
+
       $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;
 
       $scope.removeCurrent = function(ev) {
@@ -55,14 +55,14 @@
         Proposals.localForget();
         ev.stopPropagation();
       };
-      
+
       $scope.payment = { method: null };
 
       $scope.clonePayment = function(purchaseObject) {
         purchaseObject.post('clone')
-                      .then($window.location.reload());
+                      .then($state.reload);
       };
-      
+
       $scope.to_date = function(strDate) {
         return new Date(strDate);
       };
