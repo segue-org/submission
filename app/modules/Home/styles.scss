@@ -100,6 +100,21 @@ main.home {
       font-size: 70%;
     }
     
+    .status_expired {
+      float:right;
+        margin-top:-10px;
+      
+      .ticket-expired {
+        font-size:100%;
+        background-color:darkred;
+        
+        &:hover {
+          background-color:pink;
+        }
+      }
+      
+    }
+    
     .pending {
       color:red;
     }

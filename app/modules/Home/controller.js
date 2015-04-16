@@ -43,6 +43,8 @@
       $scope.lockEmail = true;
       $scope.signup = signup;
       
+      $scope.today = new Date();
+      
       $scope.isMyCaravan = myCaravan.owner_id == $scope.signup.id;
       $scope.hasCaravan = _.has(myCaravan, '$type');
       
@@ -55,6 +57,15 @@
       };
       
       $scope.payment = { method: null };
+
+      $scope.clonePayment = function(purchaseObject) {
+        purchaseObject.post('clone')
+                      .then($state.reload());
+      };
+      
+      $scope.to_date = function(strDate) {
+        return new Date(strDate);
+      };
 
       $scope.doPayment = function(purchaseObject, method) {
         purchaseObject.post('pay/' + method)

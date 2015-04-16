@@ -7,11 +7,17 @@
       <i class="box-icon fa fa-envelope-o"></i>
       <span class="title">{{ purchase.product.description }}</span>
       <span class="price">{{ purchase.product.price | realbrasileiro}}</span>
-      <span class="when" translate>compra iniciada {{ purchase.created | date:'medium' }} </span>
-      <span class="status" ng-show="purchase.status == 'pending' && payment.method == null" translate>
-        <button class="button-pay" ng-click="payment.method = 'show'">pagar</button>
+      <span class="when" translate>compra iniciada {{ purchase.created | date_locale }} </span>
+      <span class="status" ng-show="to_date(purchase.product.sold_until) > today && purchase.status == 'pending' && payment.method == null">
+        <button class="button-pay" ng-click="payment.method[purchase.id] = 'show'" translate>pagar</button>
       </span>
-      <span class="payment_method" translate ng-show="payment.method == 'show'">
+      <span class="status_expired" ng-hide="to_date(purchase.product.sold_until) > today ">
+        <button class="ticket-expired" ng-click="payment.method[purchase.id] = 'clone'" translate>expirou em <span class="date_small">{{ purchase.product.sold_until | date_locale }}</span></button>
+      </span>
+      <span class="payment_method" translate ng-show="payment.method[purchase.id] == 'clone'">
+        <button class="button-pay" ng-click="clonePayment(purchase)">comprar o mesmo ingresso no próximo lote</button>
+      </span>
+      <span class="payment_method" translate ng-show="payment.method[purchase.id] == 'show'">
         <span>forma de pagamento:</span>
         <button class="button-pay" ng-click="doPayment(purchase, 'boleto')">boleto bancário</button>
         <button class="button-pay" ng-click="doPayment(purchase, 'pagseguro')">pagseguro</button>
@@ -48,7 +54,7 @@
       </span>
       <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
       <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
-      <span class="when" translate>modificada em {{ proposal.last_updated | date: 'medium' }} </span>
+      <span class="when" translate>modificada em {{ proposal.last_updated | date_locale }} </span>
     </li>
     <li class="new" ng-hide="currentProposal" ui-sref="proposal.new">
       <i class="fa fa-plus"></i>
@@ -71,7 +77,7 @@
       </span>
       <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
       <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
-      <span class="when" translate>modificada em {{ proposal.last_updated | date: 'medium' }} </span>
+      <span class="when" translate>modificada em {{ proposal.last_updated | date_locale }} </span>
     </li>
   </ul>
 </fieldset>
