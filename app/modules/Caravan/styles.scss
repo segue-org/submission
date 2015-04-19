@@ -109,3 +109,35 @@ main.caravan {
     &.half { width: 38%; }
   }
 }
+
+.products_caravan {
+  table {
+    border-collapse: collapse;
+    th {
+      background: lightgray;
+      color: black;
+      padding: 0.5em;
+      &.date  { width: 7em; }
+      &.price { width: 7em; }
+      &.category { }
+    }
+    tr.current {
+      font-weight: bolder;
+    }
+    td {
+      &.date  { width: 7em; }
+      &.price { width: 7em; }
+
+      text-align: center;
+      padding: 0.3rem;
+      label {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding:0.2em;
+        margin: auto;
+        box-shadow: 1px 1px 3px gray;
+      }
+    }
+  }
+}

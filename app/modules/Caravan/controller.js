@@ -8,6 +8,7 @@
       'segue.submission.errors',
       'segue.submission.caravan.controller',
       'segue.submission.caravan.service',
+      'segue.submission.purchase.service',
       'segue.submission.authenticate',
       'ngDialog'
     ])
@@ -29,7 +30,8 @@
             form: { controller: 'NewCaravanController', templateUrl: 'modules/Caravan/form.html' }
           },
           resolve: {
-            currentCaravan: function(Caravans) { return Caravans.current(); }
+            currentCaravan: function(Caravans) { return Caravans.current(); },
+            products_list: function(Products) { return Products.getCaravanList(); }
           }
         })
         .state('caravan.edit', {
@@ -88,13 +90,20 @@
         });
       };
     })
-    .controller('NewCaravanController', function($scope, ngDialog,
+    .controller('NewCaravanController', function($scope, ngDialog, Products,
                                                   FormErrors, Validator, Caravans,
-                                                  currentCaravan) {
+                                                  currentCaravan, products_list) {
       $scope.caravan = currentCaravan;
       $scope.$watch('caravan', Caravans.localSave);
 
       $scope.newInvites = [];
+      
+      $scope.isCaravan = true;
+      $scope.selectable = false;
+      $scope.productsByPeriod = _(products_list).groupBy('sold_until')
+                                           .pairs()
+                                           .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
+                                           .value();
 
       $scope.isDirty = function() {
         return $scope.credentials && (($scope.caravan_form.$dirty) || ($scope.newInvites.length > 0));
