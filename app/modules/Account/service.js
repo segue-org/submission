@@ -37,14 +37,11 @@
       };
 
       extensions.resetPassword = function(accountId) {
-        function toastSuccess() {
-          ngToast.create({ content: 'Sua senha foi resetada com sucesso. Por favor efetue o login novamente' });
-        }
         return function(resetData) {
           return service.one(accountId)
                         .one('reset', resetData.hash_code)
                         .post('',resetData)
-                        .then(toastSuccess);
+                        .then(function(data) { return Auth.login(data.email, resetData.password); });
         };
       };
 

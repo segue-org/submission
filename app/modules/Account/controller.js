@@ -31,8 +31,8 @@
       focusOn('reset.password', 100);
 
       function finishedReset() {
-        $state.go('authenticate');
-        focusOn('login.email', 100);
+        ngToast.create({ content: 'Sua senha foi resetada com sucesso.' });
+        $scope.home();
       }
 
       $scope.submit = function() {
