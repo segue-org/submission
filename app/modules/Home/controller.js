@@ -63,7 +63,7 @@
                       .then($state.reload);
       };
 
-      $scope.to_date = function(strDate) {
+      var to_date = function(strDate) {
         return new Date(strDate);
       };
 
@@ -77,14 +77,24 @@
                $scope.paymentMethodIsBlank() &&
                $scope.isTimely(purchaseObject);
       };
+      
+      $scope.isExpired = function(purchaseObject) {
+        return $scope.isPending(purchaseObject) &&
+               $scope.paymentMethodIsBlank() &&
+               !$scope.isTimely(purchaseObject);
+      }
+
       $scope.isPending = function(purchaseObject) {
         return purchaseObject.status == 'pending';
       };
+
       $scope.isTimely = function(purchaseObject) {
-        return $scope.to_date(purchaseObject.product.sold_until) <= today;
+        var today = new Date();
+        return to_date(purchaseObject.product.sold_until) >= today;
       };
+
       $scope.paymentMethodIsBlank = function() {
-        return payment.method == null;
+        return $scope.payment.method == null;
       };
 
       $scope.submit = function() {

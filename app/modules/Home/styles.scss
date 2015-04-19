@@ -93,29 +93,29 @@ main.home {
       &:hover { outline: inherit; }
     }
 
-
-    .status_expired {
-      float:right;
-      margin-top:-10px;
-
-      .ticket-expired {
-        font-size:100%;
-        background-color:darkred;
- 
-        &:hover { background-color:pink; }
-      }
-    }
-
     .status {
       position: absolute;
-      left: 80%;
-      top: 60%;
+      right: 1%;
+      bottom: -20%;
 
       &.pending { color: red; }
       &.paid    { color: green; }
       &.expired { color: darkred; }
     }
-
+    
+    .button-expired {
+      position:relative;
+      font-size:100%;
+      background-color:darkred;
+ 
+      &:hover { background-color:pink; }
+    }
+    
+    .button-clone-expired {
+      top:1.5em;
+      left:10%;
+    }
+    
     .number {
       position: absolute;
       left: 35%;
@@ -148,7 +148,6 @@ main.home {
       padding:5px;
       float:right;
       margin-top:-35px;
-      margin-right:-50px;
       
       button {
         font-size:small;

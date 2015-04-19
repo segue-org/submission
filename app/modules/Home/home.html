@@ -8,27 +8,25 @@
         <span class="title">{{ purchase.product.description }}</span>
         <span class="price">{{ purchase.product.price | realbrasileiro}}</span>
         <span class="when" translate>compra iniciada {{ purchase.created | date_locale }} </span>
-        <span class="status" ng-show="canStartPayment(purchase)">
-            <button class="button-pay" ng-click="payment.method[purchase.id] = 'show'" translate>
+        <span class="status pending" ng-show="canStartPayment(purchase)">
+            <button ng-click="payment.method[purchase.id] = 'show'" translate>
                 pagar
             </button>
         </span>
-        <span class="status_expired" ng-show="isExpired(purchase)">
-            <button class="ticket-expired" ng-click="payment.method[purchase.id] = 'clone'" translate>
+        <span class="status expired" ng-show="isExpired(purchase)">
+            <button class="button-expired" translate ng-click="payment.method[purchase.id] = 'clone'" translate>
                 expirou em <span class="date_small">{{ purchase.product.sold_until | date_locale }}</span>
             </button>
         </span>
-
         <span class="payment_method" translate ng-show="payment.method[purchase.id] == 'clone'">
-            <button class="button-pay" ng-click="clonePayment(purchase)">comprar o mesmo ingresso no próximo lote</button>
+            <button class="button-expired button-clone-expired" ng-click="clonePayment(purchase)">comprar o mesmo ingresso no próximo lote</button>
         </span>
         <span class="payment_method" translate ng-show="payment.method[purchase.id] == 'show'">
             <span>forma de pagamento:</span>
-            <button class="button-pay" ng-click="doPayment(purchase, 'boleto')">boleto bancário</button>
-            <button class="button-pay" ng-click="doPayment(purchase, 'pagseguro')">pagseguro</button>
+            <button ng-click="doPayment(purchase, 'boleto')">boleto bancário</button>
+            <button ng-click="doPayment(purchase, 'pagseguro')">pagseguro</button>
         </span>
         <span class="status paid" ng-show="purchase.status == 'paid'" translate>pago</span>
-
         <span class="number" ng-show="purchase.status == 'paid'" translate>
             número: <b>{{ purchase.id }}</b>
         </span>
