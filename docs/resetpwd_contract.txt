@@ -1,0 +1,19 @@
+1) user asks for password reset
+
+<---- POST http://server/api/account/reset
+<---- {
+        "email": "bla@example.com"
+      }
+##### creates a password reset entry under the hood
+----> 200 OK
+
+2) e-mail containing a hash is sent to account's email
+<---- GET http://server/api/account/:id/reset/ABCDEF0123456 [html]
+----> 304 http://frontend/account/id/reset/ABCDEF0123456
+
+3) user fills in new password
+<---- PUT http://server/api/account/:id/reset/ABCDEF0123456
+<---- {
+        new_password: "12345"
+      }
+----> 200 OK

@@ -1,0 +1,32 @@
+<fieldset class="reset">
+  <legend translate>recuperação de senha</legend>
+  <form novalidate id="reset_form" name="reset_form" class="lines">
+    <p>
+      <label class="notip">
+        <span translate>código de recuperação</span>
+      </label>
+      <input type="text" readonly
+            minlength="8" maxsize="80"
+            ng-model="reset.hash_code"/>
+    </p>
+
+    <p>
+      <label class="">
+        <span translate>nova senha</span>
+        <small translate>(mínimo 8 caracteres)</small>
+      </label>
+      <input type="password" required
+            placeholder="{{ 'password' || translate }}"
+            minlength="8" maxsize="80" focusable
+            ng-model="reset.password"/>
+      <i class="fa fa-check only-expanded"></i>
+      <span form-error="password.object_required" translate>por favor, defina uma senha com no mínimo 8 caracteres</span>
+    </p>
+
+    <p class="centered action only-expanded">
+      <button ng-click="submit()" translate>
+        recuperar acesso!
+      </button>
+    </p>
+  </form>
+</fieldset>

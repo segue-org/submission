@@ -6,7 +6,7 @@
       'restangular',
       'ngStorage'
     ])
-    .service("Account", function(Restangular, Auth, $localStorage, isBrazil) {
+    .service("Account", function(Restangular, Auth, $localStorage, ngToast, isBrazil) {
       var service = Restangular.service('accounts');
       var extensions = {};
 
@@ -34,6 +34,18 @@
       };
       extensions.saveIt = function(object) {
         return object.save();
+      };
+
+      extensions.resetPassword = function(accountId) {
+        function toastSuccess() {
+          ngToast.create({ content: 'Sua senha foi resetada com sucesso. Por favor efetue o login novamente' });
+        }
+        return function(resetData) {
+          return service.one(accountId)
+                        .one('reset', resetData.hash_code)
+                        .post('',resetData)
+                        .then(toastSuccess);
+        };
       };
 
       return _.extend(service, extensions);

@@ -67,7 +67,6 @@
         return session.post({ email: email, password: password })
                       .then(LocalSession.create);
       };
-
       self.credentials = function() {
         return LocalSession.current().credentials;
       };
