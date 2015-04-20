@@ -1,6 +1,10 @@
 @import 'modules/common/mixins.scss';
 
 main.proposal {
+  fieldset.cfpClosed {
+    width: 50%;
+  }
+
   input { @include hide-placeholder; }
 
   aside.action {

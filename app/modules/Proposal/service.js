@@ -16,6 +16,11 @@
       var service = Restangular.service('proposals');
       var extensions = {};
 
+      extensions.cfpState = function() {
+        return service.one('cfp-state').get().then(function(data) {
+          return data.state;
+        });
+      };
       extensions.current = function() {
         return $localStorage.savedProposal || {};
       };

@@ -19,7 +19,8 @@
             main:   { template:    "<div ui-view='form'></div>", controller: 'ProposalController' }
           },
           resolve: {
-            tracks: function(Tracks) { return Tracks.getList(); }
+            tracks: function(Tracks) { return Tracks.getList(); },
+            cfpState: function(Proposals) { return Proposals.cfpState(); }
           }
         })
         .state('proposal.new', {
@@ -51,13 +52,14 @@
 
   angular
     .module('segue.submission.proposal.controller', ['segue.submission.proposal'])
-    .controller('ProposalController', function($scope, Config, Auth, tracks, focusOn) {
+    .controller('ProposalController', function($scope, Config, Auth, cfpState, tracks, focusOn) {
       focusOn('proposal.title');
       $scope.credentials = Auth.glue($scope, 'credentials');
 
       $scope.languages = Config.PROPOSAL_LANGUAGES;
       $scope.levels    = Config.PROPOSAL_LEVELS;
       $scope.tracks    = tracks;
+      $scope.cfpState  = cfpState;
     })
     .controller('EditProposalController', function($scope, ngDialog,
                                                    FormErrors, Validator, Proposals,

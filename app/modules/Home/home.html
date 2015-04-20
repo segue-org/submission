@@ -51,21 +51,21 @@
         <span class="delete" ng-click="removeCurrent($event)" translate>remover</span>
         </li>
         <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
-        <i class="box-icon fa fa-newspaper-o"></i>
-        <span class="title">{{ proposal.title }}</span>
-        <span class="authors">
-            <b>{{ proposal.owner.name }}</b><!--
-          --><span ng-repeat="invitee in proposal.invites" class="{{ invitee.status }}">
-                {{ invitee.name }}
-            </span>
-        </span>
-        <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
-        <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
-        <span class="when" translate>modificada em {{ proposal.last_updated | date_locale }} </span>
+          <i class="box-icon fa fa-newspaper-o"></i>
+          <span class="title">{{ proposal.title }}</span>
+          <span class="authors">
+              <b>{{ proposal.owner.name }}</b><!--
+            --><span ng-repeat="invitee in proposal.invites" class="{{ invitee.status }}">
+                  {{ invitee.name }}
+              </span>
+          </span>
+          <span class="track" if-locale="pt">{{ proposal.track.name_pt }}</span>
+          <span class="track" if-locale="en">{{ proposal.track.name_en }}</span>
+          <span class="when" translate>modificada em {{ proposal.last_updated | date_locale }} </span>
         </li>
-        <li class="new" ng-hide="currentProposal" ui-sref="proposal.new">
-        <i class="fa fa-plus"></i>
-        <span translate>criar nova proposta de palestra</span>
+        <li class="new" ng-hide="currentProposal || cfpState == 'closed'" ui-sref="proposal.new">
+          <i class="fa fa-plus"></i>
+          <span translate>criar nova proposta de palestra</span>
         </li>
     </ul>
 </fieldset>

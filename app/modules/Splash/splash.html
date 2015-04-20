@@ -7,7 +7,12 @@
 
 <div class="buttons">
   <span class="divisor" translate>Palestrantes</span>
-  <button ui-sref="proposal.new" translate>propor nova palestra</button>
+  <button ui-sref="proposal.new" ng-hide="cfpState == 'open'" translate>
+    submissão de propostas encerrada!
+  </button>
+  <button ui-sref="proposal.new" ng-show="cfpState == 'open'" translate>
+    propor nova palestra
+  </button>
   <br class="clear" />
   <span class="divisor" translate>Participantes</span>
   <button ng-click="showInfo('initial', 'contract_large')" translate>quero comprar um ingresso</button>

@@ -23,7 +23,8 @@
             myInvites:        function(Proposals) { return Proposals.getByCoAuthors(); },
             myPurchases:      function(Purchases) { return Purchases.getOwnedByCredentials(); },
             currentProposal:  function(Proposals) { return Proposals.current(); },
-            signup:           function(Account)   { return Account.get(); }
+            signup:           function(Account)   { return Account.get(); },
+            cfpState:         function(Proposals) { return Proposals.cfpState(); }
           }
         });
 
@@ -31,7 +32,10 @@
   angular
     .module('segue.submission.home.controller', [])
     .controller('HomeController', function($scope, $state, $stateParams, $window,
-                                           Auth, Proposals, Purchases, myPurchases, myProposals, myInvites, myCaravan, currentProposal, signup, Account, Validator, FormErrors, ngToast) {
+                                           Auth, Proposals, Purchases, Account,
+                                           myPurchases, myProposals, myInvites, myCaravan,
+                                           currentProposal, signup, cfpState,
+                                           Validator, FormErrors, ngToast) {
       if (!Auth.credentials()) { $state.go('splash'); }
 
       $scope.myCaravan       = myCaravan;
@@ -40,6 +44,7 @@
       $scope.myInvites       = myInvites;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
       $scope.caravan_hash    = $stateParams.caravan_hash;
+      $scope.cfpState        = cfpState;
       $scope.lockEmail = true;
       $scope.signup = signup;
 
@@ -77,7 +82,7 @@
                $scope.paymentMethodIsBlank() &&
                $scope.isTimely(purchaseObject);
       };
-      
+
       $scope.isExpired = function(purchaseObject) {
         return $scope.isPending(purchaseObject) &&
                $scope.paymentMethodIsBlank() &&

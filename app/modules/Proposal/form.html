@@ -1,4 +1,12 @@
-<form novalidate name="proposal_form" class="lines">
+<fieldset ng-hide="cfpState == 'open'" class="cfpClosed">
+  <legend translate>submissão de propostas encerrada!</legend>
+  <p translate>
+    O período de envio de propostas de palestra encerrou-se no dia 19 de Abril.
+    O procedimento de seleção e avaliação com participação do público começará
+    em breve.
+  </p>
+</fieldset>
+<form novalidate name="proposal_form" class="lines" ng-show="cfpState == 'open'">
   <ng-include src="'modules/Proposal/proposal.html'"></ng-include>
   <ng-include src="'modules/Proposal/author.html'"></ng-include>
   <ng-include src="'modules/Proposal/coauthors.html'"></ng-include>
