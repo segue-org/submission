@@ -55,11 +55,12 @@
       UserLocation.autobind($scope, 'signup');
 
       focusOn('signup.name', 100);
-
+      
       function finishedSignUp(signup) {
-        Auth.login($scope.signup.email, $scope.signup.password);
-        $scope.signup = null;
-        $state.go('home', { caravan_hash: $stateParams.hash });
+        Auth.login($scope.signup.email, $scope.signup.password).then(function() {
+          $scope.signup = null;
+          $state.go('home', { caravan_hash: $stateParams.hash });
+        });
       }
 
       $scope.submit = function() {
