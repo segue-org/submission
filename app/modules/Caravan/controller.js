@@ -46,7 +46,8 @@
             },
             invites: function(Caravans, $stateParams) {
               return Caravans.one($stateParams.id).getList('invites');
-            }
+            },
+            products_list: function(Products) { return Products.getCaravanList(); }
           }
         })
     });
@@ -58,13 +59,20 @@
     })
     .controller('EditCaravanController', function($scope, ngDialog,
                                                   FormErrors, Validator, Caravans,
-                                                  currentCaravan, invites) {
+                                                  currentCaravan, invites, products_list) {
       $scope.caravan = currentCaravan;
       $scope.$watch('caravan', Caravans.localSave);
       $scope.lockCity = true;
       $scope.invites = invites;
 
       $scope.newInvites = [];
+
+      $scope.isCaravan = true;
+      $scope.selectable = false;
+      $scope.productsByPeriod = _(products_list).groupBy('sold_until')
+                                           .pairs()
+                                           .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
+                                           .value();
 
       $scope.isDirty = function() {
         return $scope.credentials && (($scope.caravan_form.$dirty) || ($scope.newInvites.length > 0));
