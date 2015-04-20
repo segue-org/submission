@@ -36,6 +36,10 @@
         return object.save();
       };
 
+      extensions.askReset = function(data) {
+        return service.one('reset').post('', data);
+      };
+
       extensions.resetPassword = function(accountId) {
         return function(resetData) {
           return service.one(accountId)

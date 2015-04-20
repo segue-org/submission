@@ -42,3 +42,12 @@ main.authenticate {
     }
   }
 }
+main.forgot {
+  fieldset {
+    width: 60%;
+
+    input {
+      width: 20rem;
+    }
+  }
+}
