@@ -47,10 +47,9 @@
       $scope.cfpState        = cfpState;
       $scope.lockEmail = true;
       $scope.signup = signup;
-
+      
       $scope.today = new Date();
 
-      $scope.isMyCaravan = myCaravan.owner_id == $scope.signup.id;
       $scope.hasCaravan = _.has(myCaravan, '$type');
 
       $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;

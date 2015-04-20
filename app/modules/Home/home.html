@@ -88,12 +88,12 @@
         </li>
     </ul>
 </fieldset>
-<fieldset class="caravans" ng-show="!isMyCaravan || !hasCaravan">
+<fieldset class="caravans" ng-show="hasCaravan">
     <legend translate>
         minha caravana
     </legend>
     <ul>
-        <li ng-show="hasCaravan" ui-sref="caravan.edit({ id: myCaravan.id })">
+        <li ui-sref="caravan.edit({ id: myCaravan.id })">
         <i class="box-icon fa fa-bus"></i>
         <span class="title">{{ myCaravan.name }}</span>
         <span class="city">{{ myCaravan.city }}</span>
