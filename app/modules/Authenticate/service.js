@@ -41,7 +41,7 @@
 
       return self;
     })
-    .service("Auth", function(Restangular, LocalSession, $sce, $rootScope, ngToast) {
+    .service("Auth", function(Restangular, LocalSession, $sce, $rootScope, $state, ngToast) {
       var session = Restangular.service('sessions');
 
       Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
@@ -60,6 +60,10 @@
 
       self.logout = function() {
         LocalSession.destroy();
+        
+        if (!$state.includes('home')) {
+          $state.go('home');
+        }
       };
 
       self.login = function(email, password) {
