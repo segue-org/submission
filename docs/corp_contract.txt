@@ -1,0 +1,52 @@
+1) create a corporation (requires auth - can only be done once per account)
+
+<---- POST http://server/api/corp
+      {
+        name: ...,
+        city: ...
+      }
+###### creates an entry in the Corporation table
+-----> 201
+
+2) see corporation details
+<----- GET http://server/api/accounts/:id/corp
+-----> {
+         name: ...,
+         city: ...
+         owner: ...
+       }
+
+3) adds people to corporation
+<----- POST http://server/api/corp/:id/people
+###### creates an entry in the Account table (that is linked to the corporation somehow)
+-----> {
+         recipient: 'a@a.com',
+         name: ...
+       }
+
+4) get a list of products for a corporation
+<----- GET http://server/api/corp/:id/products
+-----> [
+          ....
+       ]
+
+5) purchase the corporation ticket
+<----- POST http://server/api/product/xyz/purchase <--- *** cyz would be one of those corporate products
+      {
+        kind: 'corp',
+        contact: 'Empresa Tal.',
+        document: '123.456.23/0001-12'
+        address_street: 'Rua dos Bobos',
+        address_number: '30',
+        address_extra: 'apto 20',
+        address_city: 'Bobopolis',
+        address_country: 'Bobolandia',
+        address_zipcode: '99999123'
+        corporate_id: 123 <----- *** THIS IS DIFFERENT ***
+      }
+###### under the hood:
+###### - creates a corpPurchase
+###### - creates one employeePurchase for each employee (linked to the corpaccount)
+-----> 200
+
+rest of the flow is normal payment flow
