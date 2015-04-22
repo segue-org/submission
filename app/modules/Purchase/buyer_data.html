@@ -9,13 +9,25 @@
     os dados abaixo são necessários para realização do pagamento e posterior emissão de nota fiscal
   </p>
 
+  <p class="alert alert-info" ng-show="buyer.kind == 'company'">
+    número de ingressos adicionados: {{ invites.length + newInvites.length }}
+    <br />
+    valor: {{ selectedProduct.price * (invites.length + newInvites.length) | realbrasileiro }}
+  </p>
+
   <p>
     <label class="long" translate>este ingresso está sendo comprado: </label>
-    <span>
+    <span ng-show="!isCorporate">
       <input type="radio" id="buyer_person" name="buyer_type" value="person"
              ng-model="buyer.kind"
              ng-click="changeBuyerType()" />
       <label for="buyer_person" translate>por mim</label>
+    </span>
+    <span ng-show="isCorporate">
+      <input type="radio" id="buyer_company" name="buyer_type" value="company"
+             ng-model="buyer.kind"
+             ng-click="changeBuyerType()" />
+      <label for="buyer_company" translate>por uma empresa</label>
     </span>
     <span form-error="kind.object_required" translate>por favor, informe o tipo de comprador</span>
   </p>
@@ -69,7 +81,7 @@
     <input type="text" required
           minlength="2" maxlength="40"
           watch="country:changed"
-          readonly
+          ng-readonly="buyer.kind != 'company'"
           ng-model="buyer.address_country"
           value="Brasil"/>
     <i class="fa fa-check"></i>
@@ -95,7 +107,7 @@
       <small translate>(somente empresas brasileiras)</small>
     </label>
     <input type="text" required
-          minlength="11" maxlength="15"
+          minlength="11" maxlength="20"
           ng-model="buyer.document"
           ui-br-cnpj-mask/>
     <i class="fa fa-check"></i>
