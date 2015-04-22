@@ -7,6 +7,7 @@
       'segue.submission.proposal.service',
       'segue.submission.purchase.service',
       'segue.submission.caravan.service',
+      'segue.submission.corporate.service',
       'segue.submission.home.controller'
     ])
     .config(function($stateProvider) {
@@ -18,13 +19,14 @@
             main:   { controller: 'HomeController', templateUrl: 'modules/Home/home.html'  }
           },
           resolve: {
-            myCaravan:        function(Caravans)  { return Caravans.getOwnedByCredentials(); },
-            myProposals:      function(Proposals) { return Proposals.getOwnedByCredentials(); },
-            myInvites:        function(Proposals) { return Proposals.getByCoAuthors(); },
-            myPurchases:      function(Purchases) { return Purchases.getOwnedByCredentials(); },
-            currentProposal:  function(Proposals) { return Proposals.current(); },
-            signup:           function(Account)   { return Account.get(); },
-            cfpState:         function(Proposals) { return Proposals.cfpState(); }
+            myCaravan:        function(Caravans)   { return Caravans.getOwnedByCredentials(); },
+            myCorporate:      function(Corporates) { return Corporates.getOwnedByCredentials(); },
+            myProposals:      function(Proposals)  { return Proposals.getOwnedByCredentials(); },
+            myInvites:        function(Proposals)  { return Proposals.getByCoAuthors(); },
+            myPurchases:      function(Purchases)  { return Purchases.getOwnedByCredentials(); },
+            currentProposal:  function(Proposals)  { return Proposals.current(); },
+            signup:           function(Account)    { return Account.get(); },
+            cfpState:         function(Proposals)  { return Proposals.cfpState(); }
           }
         });
 
@@ -33,12 +35,13 @@
     .module('segue.submission.home.controller', [])
     .controller('HomeController', function($scope, $state, $stateParams, $window,
                                            Auth, Proposals, Purchases, Account,
-                                           myPurchases, myProposals, myInvites, myCaravan,
+                                           myPurchases, myProposals, myInvites, myCaravan, myCorporate,
                                            currentProposal, signup, cfpState,
                                            Validator, FormErrors, ngToast) {
       if (!Auth.credentials()) { $state.go('splash'); }
 
       $scope.myCaravan       = myCaravan;
+      $scope.myCorporate     = myCorporate;
       $scope.myPurchases     = myPurchases;
       $scope.myProposals     = myProposals;
       $scope.myInvites       = myInvites;
@@ -50,9 +53,12 @@
       
       $scope.today = new Date();
 
-      $scope.hasCaravan = _.has(myCaravan, '$type');
+      $scope.hasCaravan   = _.has(myCaravan, '$type');
+      $scope.hasCorporate = _.has(myCorporate, '$type');
 
-      $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;
+      if (_.has($scope.signup, 'country')) {
+        $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;
+      }
 
       $scope.removeCurrent = function(ev) {
         $scope.currentProposal = null;
