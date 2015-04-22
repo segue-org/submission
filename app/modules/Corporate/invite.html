@@ -1,0 +1,26 @@
+<section class="invite">
+  <header translate>adicionar ingresso corporativo</header>
+  <form novalidate>
+    <input type="name" maxlength=80
+          placeholder="{{ 'nome' | translate }}"
+          focusable required
+          ng-model="invite.name" />
+    <div form-error="name.*" translate>por favor, informe o nome</div>
+
+    <input type="email" maxlength=80
+          placeholder="{{ 'e-mail' | translate }}"
+          focusable required ng-model="invite.recipient" />
+    <div form-error="recipient.*" translate>por favor, informe o e-mail</div>
+
+    <input type="text" maxlength=80
+          placeholder="{{ 'cpf' | translate }}"
+          focusable required
+          ui-br-cpf-mask
+          ng-model="invite.document" />
+    <div form-error="document.*" translate>por favor, informe o CPF</div>
+
+    <button ng-click="submitInvite()" class="only-expanded" translate>
+      adicionar
+    </button>
+  </form>
+</section>

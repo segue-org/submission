@@ -1,0 +1,111 @@
+@import 'modules/common/mixins.scss';
+
+main.corporate {
+  input { @include hide-placeholder; }
+
+  aside.action {
+    transition: all 1s ease;
+    position: fixed;
+    bottom: 0;
+    right: 15%;
+    width: 15rem;
+    background: rgba(128,128,128,0.3);
+    border-top-left-radius:  20px;
+    border-top-right-radius: 20px;
+    box-shadow: 3px 3px 3px gray;
+
+    button {
+      font-size: large;
+      margin: 1rem;
+    }
+
+    .error {
+      font-size: 80%;
+      width: 10rem;
+    }
+
+  }
+
+  ul.invited_list {
+    padding: 0;
+    margin: 1em 0;
+  }
+  .invited {
+    cursor: pointer;
+    list-style-type: none;
+    float: left;
+    background: #ddd;
+    width: 16rem;
+    margin: 0 15px 15px 0;
+    height: 50px;
+    padding:10px;
+
+    img { float: left; margin-right: 5px; }
+    .name      {
+      font-weight: bold;
+    }
+    .recipient {
+      font-style: oblique;
+    }
+    .status {
+      float: right;
+      font-size: 80%;
+      &.pending { color: deeppink; }
+      &.declined { color: violet; }
+      &.accepted { color: green; }
+      &.you { color: green; }
+    }
+
+    .name, .recipient {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  .invited.invite-new {
+    text-align: center;
+    position: relative;
+
+    .fa-plus {
+      position: absolute;
+      top: 25%;
+      left: 7%;
+      font-size: xx-large;
+    }
+    span {
+      position: absolute;
+      top: 30%;
+      right: 5%;
+      left: 10%;
+      font-size: large;
+    }
+  }
+}
+
+.ngdialog-content {
+  .invite {
+    section {
+      font-size: large;
+      padding: 0.9rem;
+      border-radius: 20px;
+    }
+
+    input, button {
+      width: 90%;
+      font-size: x-large;
+      border: 1px solid gray;
+      margin: 0.6rem auto;
+      padding: 0.5rem;
+    }
+
+    input + .forgot {
+      position: absolute;
+      font-size: small;
+      margin-top: 1.5em;
+      text-decoration: none;
+      right: 70px;
+    }
+
+    &.half { width: 38%; }
+  }
+}

@@ -25,7 +25,8 @@
       'segue.submission.invite',
       'segue.submission.purchase',
       'segue.submission.caravan',
-      'segue.submission.caravaninvite'
+      'segue.submission.caravaninvite',
+      'segue.submission.corporate',
     ])
     .controller('SubmissionController', function($scope, $state, Auth) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
