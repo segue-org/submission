@@ -95,7 +95,12 @@
     .directive('ifUsePassport', function(isBrazil) {
       return function(scope, elem, attr) {
         var action = attr.ifUsePassport;
-        var initialCountry = scope.signup.country;
+        
+        var initialCountry = 'Brasil';
+        
+        if (_.has(scope, 'signup')) {
+          initialCountry = scope.signup.country;
+        }
 
         function hideOrShow(country) {
           var show = (isBrazil(country) && (action == 'hide')) ||
