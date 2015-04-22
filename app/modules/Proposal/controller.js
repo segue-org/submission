@@ -61,43 +61,6 @@
       $scope.tracks    = tracks;
       $scope.cfpState  = cfpState;
     })
-    .controller('EditProposalController', function($scope, ngDialog,
-                                                   FormErrors, Validator, Proposals,
-                                                   currentProposal, invites) {
-      $scope.proposal = currentProposal;
-      $scope.proposal.track_id = (currentProposal.track)? currentProposal.track.id : null;
-      $scope.invites = invites;
-      $scope.newInvites = [];
-
-      $scope.$on('auth:changed', $scope.home);
-
-      $scope.isDirty = function() {
-        return $scope.credentials && (($scope.proposal_form.$dirty) || ($scope.newInvites.length > 0));
-      };
-      $scope.canInviteMore = function() {
-        return (1 + $scope.invites.length + $scope.newInvites.length) < 5;
-      };
-
-      $scope.submit = function() {
-        Validator.validate($scope.proposal, 'proposals/edit_proposal')
-                 .then(Proposals.saveIt)
-                 .then(Proposals.createInvites($scope.newInvites))
-                 .then($scope.home)
-                 .catch(FormErrors.set);
-      };
-
-      $scope.openInviteModal = function() {
-        var inviteConfig = { controller: "NewInviteController", template: 'modules/Proposal/invite.html' };
-        var dialog = ngDialog.open(inviteConfig);
-        return dialog.closePromise.then(function(data) {
-          FormErrors.clear();
-          if (_(data.value).isString()) { return; }
-          if (_(data.value).isEmpty()) { return; }
-          $scope.newInvites.push(data.value);
-        });
-      };
-
-    })
     .controller('NewProposalController', function($scope, ngDialog,
                                                   FormErrors, Validator, Proposals,
                                                   currentProposal) {
@@ -148,5 +111,42 @@
                         .catch(FormErrors.set);
       };
       focusOn('invite.recipient');
+    })
+    .controller('EditProposalController', function($scope, ngDialog,
+                                                   FormErrors, Validator, Proposals,
+                                                   currentProposal, invites) {
+      $scope.proposal = currentProposal;
+      $scope.proposal.track_id = (currentProposal.track)? currentProposal.track.id : null;
+      $scope.invites = invites;
+      $scope.newInvites = [];
+
+      $scope.$on('auth:changed', $scope.home);
+
+      $scope.isDirty = function() {
+        return $scope.credentials && (($scope.proposal_form.$dirty) || ($scope.newInvites.length > 0));
+      };
+      $scope.canInviteMore = function() {
+        return (1 + $scope.invites.length + $scope.newInvites.length) < 5;
+      };
+
+      $scope.submit = function() {
+        Validator.validate($scope.proposal, 'proposals/edit_proposal')
+                 .then(Proposals.saveIt)
+                 .then(Proposals.createInvites($scope.newInvites))
+                 .then($scope.home)
+                 .catch(FormErrors.set);
+      };
+
+      $scope.openInviteModal = function() {
+        var inviteConfig = { controller: "NewInviteController", template: 'modules/Proposal/invite.html' };
+        var dialog = ngDialog.open(inviteConfig);
+        return dialog.closePromise.then(function(data) {
+          FormErrors.clear();
+          if (_(data.value).isString()) { return; }
+          if (_(data.value).isEmpty()) { return; }
+          $scope.newInvites.push(data.value);
+        });
+      };
+
     });
 })();
