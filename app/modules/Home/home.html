@@ -88,12 +88,12 @@
         </li>
     </ul>
 </fieldset>
-<fieldset class="caravans" ng-show="hasCaravan">
+<fieldset class="caravans">
     <legend translate>
         minha caravana
     </legend>
     <ul>
-        <li ui-sref="caravan.edit({ id: myCaravan.id })">
+        <li ng-show="hasCaravan" ui-sref="caravan.edit({ id: myCaravan.id })">
         <i class="box-icon fa fa-bus"></i>
         <span class="title">{{ myCaravan.name }}</span>
         <span class="city">{{ myCaravan.city }}</span>
@@ -101,6 +101,22 @@
         <li ng-hide="hasCaravan" class="new" ui-sref="caravan.new">
         <i class="fa fa-plus"></i>
         <span translate>criar uma caravana</span>
+        </li>
+    </ul>
+</fieldset>
+<fieldset class="corporates">
+    <legend translate>
+        minha empresa
+    </legend>
+    <ul>
+        <li ng-show="hasCorporate" ui-sref="corporate.edit({ id: myCorporate.id })">
+        <i class="box-icon fa fa-building"></i>
+        <span class="title">{{ myCorporate.name }}</span>
+        <span class="city">{{ myCorporate.city }}</span>
+        </li>
+        <li ng-hide="hasCorporate" class="new" ui-sref="corporate.new">
+        <i class="fa fa-plus"></i>
+        <span translate>registrar uma empresa</span>
         </li>
     </ul>
 </fieldset>
