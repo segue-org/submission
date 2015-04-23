@@ -27,7 +27,7 @@
       'segue.submission.caravan',
       'segue.submission.caravaninvite'
     ])
-    .controller('SubmissionController', function($scope, $state, Auth) {
+    .controller('SubmissionController', function($scope, $state, Auth, $stateParams) {
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;
@@ -41,7 +41,13 @@
 
       $scope.home = function() {
         if (Auth.credentials()) {
-          $state.go('home');
+          var params = {};
+          if (_.has($stateParams, 'caravan_hash')) {
+            params = {
+              caravan_hash: $stateParams.caravan_hash
+            };
+          }
+          $state.go('home', params);
         }
         else {
           $state.go('splash');

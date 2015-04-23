@@ -71,7 +71,7 @@
       };
     })
     .controller("AnswerCaravanInviteController", function($scope, $state, $stateParams, Auth, AuthModal, CaravanInvites, invite) {
-      Auth.logout();
+      //Auth.logout();
 
       $scope.account = Auth.glue($scope, 'account');
       $scope.invite = invite;

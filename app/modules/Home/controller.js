@@ -52,7 +52,9 @@
 
       $scope.hasCaravan = _.has(myCaravan, '$type');
 
-      $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;
+      if (_.has($scope.signup, 'country')) {
+        $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;
+      }
 
       $scope.removeCurrent = function(ev) {
         $scope.currentProposal = null;
