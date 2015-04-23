@@ -31,7 +31,7 @@
             número: <b>{{ purchase.id }}</b>
         </span>
         </li>
-        <li class="new" ng-show="myPurchases.length == 0" ui-sref="purchase.new({ caravan_hash: '{{ caravan_hash }}' })">
+        <li class="new" ng-show="myPurchases.length == 0 || isCaravan" ui-sref="purchase.new({ caravan_hash: '{{ caravan_hash }}' })">
         <i class="fa fa-plus"></i>
         <span translate>efetuar nova compra</span>
         </li>

@@ -31,15 +31,6 @@
           resolve: {
             currentPurchase:  function(Purchases, $window)     { return Purchases.current(); },
             products_caravan: function(Products, $stateParams) { if ($stateParams.caravan_hash) return Products.getCaravanList($stateParams.caravan_hash); else return []; }
-          },
-          onEnter: function(Purchases, $window, Auth) {
-            if (Auth.credentials()) {
-              Purchases.getOwnedByCredentials().then(function(purchases) {
-                if (purchases.length) {
-                  $window.location = "/#/home";
-                }
-              });
-            }
           }
         })
         .state('purchase.conclude', {
