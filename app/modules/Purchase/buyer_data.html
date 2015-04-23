@@ -2,7 +2,7 @@
   <legend translate>dados do comprador</legend>
 
   <p class="alert alert-warning">
-    atenção: não é possível alterar os dados do comprador após a realização da compra    
+    atenção: não é possível alterar os dados do comprador após a realização da compra
   </p>
 
   <p class="alert alert-info">
@@ -43,8 +43,7 @@
     </label>
     <input type="text" required focusable
           minlength="5" maxlength="50"
-          ng-model="buyer.name"
-          ng-readonly="buyer.kind == 'person'" />
+          ng-model="buyer.name" />
     <i class="fa fa-check only-expanded"></i>
     <span form-error="name.object_required" translate>por favor, informe o nome</span>
   </p>
@@ -54,7 +53,7 @@
       <span translate>contato</span>
       <small translate>(de 5 até 80 caracteres)</small>
     </label>
-    <input type="text" focusable 
+    <input type="text" focusable
           minlength="5" maxlength="100"
           ng-model="buyer.contact"
           ng-required="buyer.kind == 'company'" />
@@ -69,9 +68,7 @@
     <input type="text" required
           minlength="2" maxlength="40"
           watch="country:changed"
-          readonly
-          ng-model="buyer.address_country"
-          value="Brasil"/>
+          ng-model="buyer.address_country" />
     <i class="fa fa-check"></i>
     <span form-error="address_country.object_required" translate>por favor, informe seu país</span>
   </p>
@@ -152,7 +149,7 @@
   </p>
 
   </div>
-  
+
   <p>
     <label>
       <span translate>cidade</span>
