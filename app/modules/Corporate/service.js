@@ -20,20 +20,20 @@
       extensions.localForget = function() {
         $localStorage.savedCorporate = {};
       };
-      extensions.saveIt = function(buyer_data, product_id, newInvites) {
+      extensions.saveIt = function(buyer_data, product_id, newEmployees) {
         return function(purchaseObject) {
           var corp_data = {
             name:     buyer_data.name,
             city:     buyer_data.address_city,
             document: buyer_data.document
           };
-          
+
           return Validator.validate(corp_data, 'corporates/new_corporate')
                           .then(function(corpObject) {
                             return service.post(corpObject);
                           }).then(function(response) {
                             buyer_data.corporate_id = response.id;
-                            buyer_data.invites = newInvites;
+                            buyer_data.employees = newEmployees;
                             return Restangular.service('products')
                                        .one(product_id)
                                        .post('group_purchase', buyer_data);
@@ -55,7 +55,7 @@
         if (!credentials) { return; }
         return service.one().get({owner_id: credentials.id});
       };
-      
+
 
       return _.extend(service, extensions);
     });

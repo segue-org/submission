@@ -26,11 +26,11 @@ main.corporate {
 
   }
 
-  ul.invited_list {
+  ul.employee_list {
     padding: 0;
     margin: 1em 0;
   }
-  .invited {
+  .employee {
     cursor: pointer;
     list-style-type: none;
     float: left;
@@ -44,7 +44,7 @@ main.corporate {
     .name      {
       font-weight: bold;
     }
-    .recipient {
+    .email {
       font-style: oblique;
     }
     .status {
@@ -56,13 +56,13 @@ main.corporate {
       &.you { color: green; }
     }
 
-    .name, .recipient {
+    .name, .email {
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
     }
   }
-  .invited.invite-new {
+  .employee.employee-new {
     text-align: center;
     position: relative;
 
@@ -83,7 +83,7 @@ main.corporate {
 }
 
 .ngdialog-content {
-  .invite {
+  .employee {
     section {
       font-size: large;
       padding: 0.9rem;

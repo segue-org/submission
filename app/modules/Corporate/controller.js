@@ -20,7 +20,7 @@
             main:   { template:    "<div ui-view='form'></div>", controller: 'CorporateController' }
           },
           resolve: {
-            
+
           }
         })
         .state('corporate.new', {
@@ -61,99 +61,81 @@
     .controller('NewCorporateController', function($scope, ngDialog, Products, Product, Purchases,
                                                   FormErrors, Validator, Corporates,
                                                   currentCorporate, products_list) {
-      $scope.selectedProduct = {};
+      $scope.selectedProduct = { price: 0 };
 
-      $scope.newInvites = [];
-      
+      $scope.newEmployees = [
+        {
+          'name': 'daniel at dois',
+          'email': 'daniel@dois.com.br',
+          'document': '964.212.900-00'
+        },
+        {
+          'name': 'daniel at tres',
+          'email': 'daniel@tres.com.br',
+          'document': '123.456.789-00'
+        }
+      ];
+
       $scope.productsByPeriod = _(products_list).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
                                            .value();
 
-      $scope.$watch('corporate', Corporates.localSave);
-      $scope.buyer = {};
+      $scope.buyer = currentCorporate;
       $scope.buyer.kind = 'company';
+      $scope.$watch('corporate', Corporates.localSave);
       $scope.payment = { method: 'boleto' };
       $scope.temp_name = $scope.buyer.name;
-      
+
+      $scope.numberOfTickets = function() {
+          return $scope.newEmployees.length;
+      };
+
+      $scope.totalValueOfTickets = function() {
+        return $scope.selectedProduct.price * ($scope.numberOfTickets())
+      };
+
       $scope.updateSelectedProduct = function(newId) {
         $scope.selectedProduct = _(products_list).findWhere({ id: newId });
       };
-      
+
       $scope.isDirty = function() {
-        return $scope.credentials && (($scope.corporate_form.$dirty) || ($scope.newInvites.length > 0));
+        return $scope.credentials && $scope.newEmployees.length > 0 && (($scope.corporate_form.$dirty));
       };
 
       $scope.submit = function() {
+        Corporates.localSave($scope.buyer);
         Validator.validate($scope.buyer, 'purchases/buyer')
-                 .then(Corporates.saveIt($scope.buyer, $scope.selectedProduct.id, $scope.newInvites))
-                 .then(Purchases.pay($scope.payment.method, $scope.newInvites, $scope.selectedProduct))
+                 .then(Corporates.saveIt($scope.buyer, $scope.selectedProduct.id, $scope.newEmployees))
+                 .then(Purchases.pay($scope.payment.method))
                  .then(Purchases.followPaymentInstructions)
                  .then(Purchases.localForget)
                  .catch(FormErrors.set);
       };
 
-      $scope.openInviteModal = function() {
-        var inviteConfig = { controller: "NewCorporateInviteController", template: 'modules/Corporate/invite.html' };
-        var dialog = ngDialog.open(inviteConfig);
+      $scope.openEmployeeModal = function() {
+        var employeeConfig = { controller: "NewEmployeeController", template: 'modules/Corporate/employee.html' };
+        var dialog = ngDialog.open(employeeConfig);
         return dialog.closePromise.then(function(data) {
           FormErrors.clear();
           if (_(data.value).isString()) { return; }
           if (_(data.value).isEmpty()) { return; }
-          $scope.newInvites.push(data.value);
+          $scope.newEmployees.push(data.value);
         });
       };
     })
-    .controller('NewCorporateAuthorController', function($scope, AuthModal, focusOn) {
+    .controller('NewCorporateLoginController', function($scope, AuthModal, focusOn) {
       $scope.signup = {};
 
       $scope.openLoginModal = AuthModal.login;
       $scope.focusName = _.partial(focusOn, 'person.name');
     })
-    .controller('NewCorporateInviteController', function($scope, FormErrors, Validator, focusOn) {
-      $scope.invite = {};
-      $scope.submitInvite = function() {
-        return Validator.validate($scope.invite, 'corporates/new_invite')
+    .controller('NewEmployeeController', function($scope, FormErrors, Validator, focusOn) {
+      $scope.employee = {};
+      $scope.submitEmployee = function() {
+        return Validator.validate($scope.employee, 'corporates/new_employee')
                         .then($scope.closeThisDialog)
                         .catch(FormErrors.set);
-      };
-    })
-    .controller('EditCorporateController', function($scope, ngDialog,
-                                                  FormErrors, Validator, Corporates,
-                                                  currentCorporate, invites, products_list) {
-      $scope.productsByPeriod = _(products_list).groupBy('sold_until')
-                                           .pairs()
-                                           .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
-                                           .value();
-
-      $scope.corporate = currentCorporate;
-      $scope.$watch('corporate', Corporates.localSave);
-      $scope.invites = invites;
-
-      $scope.newInvites = [];
-
-      $scope.isDirty = function() {
-        return $scope.credentials && (($scope.corporate_form.$dirty) || ($scope.newInvites.length > 0));
-      };
-
-      $scope.submit = function() {
-        Validator.validate($scope.corporate, 'corporates/edit_corporate')
-                 .then(Corporates.saveIt)
-                 .then(Corporates.createInvites($scope.newInvites))
-                 .then(Corporates.localForget)
-                 .then($scope.home)
-                 .catch(FormErrors.set);
-      };
-
-      $scope.openInviteModal = function() {
-        var inviteConfig = { controller: "NewCorporateInviteController", template: 'modules/Corporate/invite.html' };
-        var dialog = ngDialog.open(inviteConfig);
-        return dialog.closePromise.then(function(data) {
-          FormErrors.clear();
-          if (_(data.value).isString()) { return; }
-          if (_(data.value).isEmpty()) { return; }
-          $scope.newInvites.push(data.value);
-        });
       };
     });
 })();

@@ -1,25 +1,25 @@
-<section class="invite">
+<section class="employee">
   <header translate>adicionar ingresso corporativo</header>
   <form novalidate>
     <input type="name" maxlength=80
           placeholder="{{ 'nome' | translate }}"
           focusable required
-          ng-model="invite.name" />
+          ng-model="employee.name" />
     <div form-error="name.*" translate>por favor, informe o nome</div>
 
     <input type="email" maxlength=80
           placeholder="{{ 'e-mail' | translate }}"
-          focusable required ng-model="invite.recipient" />
-    <div form-error="recipient.*" translate>por favor, informe o e-mail</div>
+          focusable required ng-model="employee.email" />
+    <div form-error="email.*" translate>por favor, informe o e-mail</div>
 
     <input type="text" maxlength=80
           placeholder="{{ 'cpf' | translate }}"
           focusable required
           ui-br-cpf-mask
-          ng-model="invite.document" />
+          ng-model="employee.document" />
     <div form-error="document.*" translate>por favor, informe o CPF</div>
 
-    <button ng-click="submitInvite()" class="only-expanded" translate>
+    <button ng-click="submitEmployee()" class="only-expanded" translate>
       adicionar
     </button>
   </form>

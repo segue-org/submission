@@ -1,0 +1,27 @@
+<fieldset class="employees">
+  <legend translate>quem utilizará os ingressos?</legend>
+
+  <p class="alert alert-danger" ng-show="buyer.kind == 'company'">
+    número de ingressos adicionados: {{ numberOfTickets() }}
+    <br />
+    valor: {{ totalValueOfTickets() | realbrasileiro }}
+  </p>
+
+  <ul ng-show="credentials" class="employee_list">
+    <li class="employee" ng-repeat="employee in employees">
+      <img gravatar-src="employee.email" gravatar-size="50">
+      <div class="name">{{ employee.name }}</div>
+      <div class="email">{{ employee.email }}</div>
+    </li>
+    <li class="employee in-progress" ng-repeat="employee in newEmployees">
+      <img gravatar-src="invite.recipient" gravatar-size="50">
+      <div class="name">{{ employee.name }}</div>
+      <div class="email">{{ employee.email }}</div>
+      <div class="status {{employee.status}}" translate>será inserido ao salvar</div>
+    </li>
+    <li class="employee employee-new" ng-click="openEmployeeModal()">
+      <i class="fa fa-plus"></i>
+      <span translate>adicionar pessoa</span>
+    </li>
+  </ul>
+</fieldset>
