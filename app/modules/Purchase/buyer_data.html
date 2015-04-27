@@ -2,17 +2,11 @@
   <legend translate>dados do comprador</legend>
 
   <p class="alert alert-warning">
-    atenção: não é possível alterar os dados do comprador após a realização da compra    
+    atenção: não é possível alterar os dados do comprador após a realização da compra
   </p>
 
   <p class="alert alert-info">
     os dados abaixo são necessários para realização do pagamento e posterior emissão de nota fiscal
-  </p>
-
-  <p class="alert alert-info" ng-show="buyer.kind == 'company'">
-    número de ingressos adicionados: {{ invites.length + newInvites.length }}
-    <br />
-    valor: {{ selectedProduct.price * (invites.length + newInvites.length) | realbrasileiro }}
   </p>
 
   <p>
@@ -39,7 +33,7 @@
              ng-model="payment.method" />
       <label for="payment_boleto" translate>boleto bancário</label>
     </span>
-    <span>
+    <span ng-hide="isCorporate">
       <input type="radio" id="payment_pagseguro" name="payment_method" value="pagseguro"
              ng-model="payment.method" />
       <label for="payment_pagseguro" translate>pagseguro</label>
@@ -66,7 +60,7 @@
       <span translate>contato</span>
       <small translate>(de 5 até 80 caracteres)</small>
     </label>
-    <input type="text" focusable 
+    <input type="text" focusable
           minlength="5" maxlength="100"
           ng-model="buyer.contact"
           ng-required="buyer.kind == 'company'" />
@@ -164,7 +158,7 @@
   </p>
 
   </div>
-  
+
   <p>
     <label>
       <span translate>cidade</span>
