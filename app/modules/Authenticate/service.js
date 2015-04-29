@@ -60,11 +60,12 @@
 
       self.logout = function() {
         LocalSession.destroy();
-        
-        if (!$state.includes('home')) {
-          $state.go('home');
-        }
       };
+
+      self.logoutAndSplash = function() {
+        self.logout();
+        $state.go('splash');
+      }
 
       self.login = function(email, password) {
         LocalSession.destroy();

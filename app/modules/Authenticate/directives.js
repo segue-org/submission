@@ -34,7 +34,7 @@
         templateUrl: 'modules/Authenticate/logged-as.html',
         controller: function($scope) {
           $scope.credentials = Auth.glue($scope,'credentials');
-          $scope.logout  = Auth.logout;
+          $scope.logout  = Auth.logoutAndSplash;
         }
       };
     });
