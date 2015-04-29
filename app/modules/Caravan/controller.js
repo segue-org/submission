@@ -20,7 +20,7 @@
             main:   { template:    "<div ui-view='form'></div>", controller: 'CaravanController' }
           },
           resolve: {
-            
+
           }
         })
         .state('caravan.new', {
@@ -88,7 +88,7 @@
       };
 
       $scope.openInviteModal = function() {
-        var inviteConfig = { controller: "NewInviteController", template: 'modules/Caravan/invite.html' };
+        var inviteConfig = { controller: "NewCaravanInviteController", template: 'modules/Caravan/invite.html' };
         var dialog = ngDialog.open(inviteConfig);
         return dialog.closePromise.then(function(data) {
           FormErrors.clear();
@@ -105,7 +105,7 @@
       $scope.$watch('caravan', Caravans.localSave);
 
       $scope.newInvites = [];
-      
+
       $scope.isCaravan = true;
       $scope.selectable = false;
       $scope.productsByPeriod = _(products_list).groupBy('sold_until')
@@ -127,7 +127,7 @@
       };
 
       $scope.openInviteModal = function() {
-        var inviteConfig = { controller: "NewInviteController", template: 'modules/Caravan/invite.html' };
+        var inviteConfig = { controller: "NewCaravanInviteController", template: 'modules/Caravan/invite.html' };
         var dialog = ngDialog.open(inviteConfig);
         return dialog.closePromise.then(function(data) {
           FormErrors.clear();
@@ -137,13 +137,13 @@
         });
       };
     })
-    .controller('NewCaravanInviteController', function($scope, AuthModal, focusOn) {
+    .controller('NewCaravanAuthorController', function($scope, AuthModal, focusOn) {
       $scope.signup = {};
 
       $scope.openLoginModal = AuthModal.login;
       $scope.focusName = _.partial(focusOn, 'person.name');
     })
-    .controller('NewInviteController', function($scope, FormErrors, Validator, focusOn) {
+    .controller('NewCaravanInviteController', function($scope, FormErrors, Validator, focusOn) {
       $scope.invite = {};
       $scope.submitInvite = function() {
         return Validator.validate($scope.invite, 'caravans/new_invite')

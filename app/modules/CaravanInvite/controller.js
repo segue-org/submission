@@ -55,7 +55,7 @@
       UserLocation.autobind($scope, 'signup');
 
       focusOn('signup.name', 100);
-      
+
       function finishedSignUp(signup) {
         Auth.login($scope.signup.email, $scope.signup.password).then(function() {
           $scope.signup = null;
@@ -71,11 +71,11 @@
       };
     })
     .controller("AnswerCaravanInviteController", function($scope, $state, $stateParams, Auth, AuthModal, CaravanInvites, invite) {
-      //Auth.logout();
+      Auth.logout();
 
       $scope.account = Auth.glue($scope, 'account');
       $scope.invite = invite;
-      
+
       function retryWithLogin() {
         AuthModal.login().closePromise.then(function(data) {
           if (_(data.value).isString()) { return; }
