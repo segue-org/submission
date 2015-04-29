@@ -63,19 +63,6 @@
                                                   currentCorporate, products_list) {
       $scope.selectedProduct = { price: 0 };
 
-      $scope.newEmployees = [
-        {
-          'name': 'daniel at dois',
-          'email': 'daniel@dois.com.br',
-          'document': '964.212.900-00'
-        },
-        {
-          'name': 'daniel at tres',
-          'email': 'daniel@tres.com.br',
-          'document': '123.456.789-00'
-        }
-      ];
-
       $scope.productsByPeriod = _(products_list).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
