@@ -1,7 +1,6 @@
 <VirtualHost *:{{ webport }}>
   ServerAdmin webmaster@localhost
   ServerName  {{ sitename }}.{{ master_host }}
-  ServerName  {{ sitename }}.{{ ansible_default_ipv4.address }}.xip.io
 
   DocumentRoot /var/www/{{ sitename }}.{{ master_host }}
   ErrorLog ${APACHE_LOG_DIR}/error.log
