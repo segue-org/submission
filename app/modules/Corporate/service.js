@@ -36,26 +36,16 @@
                             buyer_data.employees = newEmployees;
                             return Restangular.service('products')
                                        .one(product_id)
-                                       .post('group_purchase', buyer_data);
+                                       .post('corporate_purchase', buyer_data);
                           })
                           .catch(function() { console.log(arguments); });
         }
-      };
-      extensions.createInvites = function(newInvites) {
-        return function(corporate) {
-          return $q.all(newInvites.map(function(invite) {
-            return Validator.validate(invite, 'corporates/new_invite')
-                            .then(function() { corporate.post('invites', invite); })
-                            .catch(function() { console.log(arguments); });
-          }));
-        };
       };
       extensions.getOwnedByCredentials = function() {
         var credentials = Auth.credentials();
         if (!credentials) { return; }
         return service.one().get({owner_id: credentials.id});
       };
-
 
       return _.extend(service, extensions);
     });

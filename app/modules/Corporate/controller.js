@@ -74,6 +74,8 @@
       $scope.payment = { method: 'boleto' };
       $scope.temp_name = $scope.buyer.name;
 
+      $scope.newEmployees = [];
+
       $scope.numberOfTickets = function() {
           return $scope.newEmployees.length;
       };
