@@ -55,6 +55,15 @@ main.caravan {
       &.accepted { color: green; }
       &.you { color: green; }
     }
+    .has-paid {
+      font-size:80%;
+    }
+    .paid {
+      color:green;
+    }
+    .pending {
+      color:red;
+    }
 
     .name, .recipient {
       text-overflow: ellipsis;

@@ -18,9 +18,6 @@
           views: {
             header: { templateUrl: 'modules/common/nav.html' },
             main:   { template:    "<div ui-view='form'></div>", controller: 'CaravanController' }
-          },
-          resolve: {
-            
           }
         })
         .state('caravan.new', {
@@ -63,9 +60,8 @@
                                                   currentCaravan, products_list) {
       $scope.caravan = currentCaravan;
       $scope.$watch('caravan', Caravans.localSave);
-
       $scope.newInvites = [];
-      
+
       $scope.productsByPeriod = _(products_list).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
@@ -115,8 +111,7 @@
       $scope.caravan = currentCaravan;
       $scope.$watch('caravan', Caravans.localSave);
       $scope.lockCity = true;
-      $scope.invites = invites;
-
+      $scope.invites = Caravans.getPaidRiders(invites, currentCaravan.paid_riders);
       $scope.newInvites = [];
 
       $scope.productsByPeriod = _(products_list).groupBy('sold_until')

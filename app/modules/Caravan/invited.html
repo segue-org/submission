@@ -12,7 +12,8 @@
       <img gravatar-src="invite.recipient" gravatar-size="50">
       <div class="name">{{ invite.name }}</div>
       <div class="recipient">{{ invite.recipient }}</div>
-      <div class="status {{invite.status}}">{{ invite.status }}</div>
+      <div class="status {{invite.status}}" translate>{{ invite.status }}</div>
+      <div class="has-paid {{invite.paid}}" translate>$ {{ invite.paid }}</div>
     </li>
     <li class="invited in-progress" ng-repeat="invite in newInvites">
       <img gravatar-src="invite.recipient" gravatar-size="50">

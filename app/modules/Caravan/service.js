@@ -37,7 +37,21 @@
         if (!credentials) { return; }
         return service.one().get({owner_id: credentials.id});
       };
-      
+      extensions.getPaidRiders = function(invites, paid_riders) {
+        _(invites).each(function(invite) {
+          var found = _(paid_riders).find(function(item) {
+            return item.customer.email == invite.recipient;
+          });
+          invite.paid = 'pending';
+          if (found) {
+            if (found.status == 'paid' || found.status == 'confirmed') {
+              invite.paid = 'paid';
+            }
+          }
+        });
+
+        return invites;
+      };
 
       return _.extend(service, extensions);
     });
