@@ -34,10 +34,10 @@
         }
 
 3) user selects one result, and submits it
-<------ POST http://server/api/matches/1234/vote
+<------ POST http://server/api/match/1234/vote
 <------ {
           hash: "ABCDEF"
-          result: "player1" (or "tie" or "player2")
+          vote: "player1" (or "tie" or "player2")
         }
 ####### records the result, decreases token count
 ------> 200 OK

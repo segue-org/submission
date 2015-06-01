@@ -1,0 +1,48 @@
+<dl class="judge">
+  <dt translate>token</dt>
+  <dd class="token">{{ judge.hash }}</dd>
+
+  <dt translate>votos totais</dt>
+  <dd class="token">{{ judge.votes }}</dd>
+
+  <dt translate>votos usados</dt>
+  <dd class="token">{{ judge.spent }}</dd>
+
+  <dt translate>votos restantes</dt>
+  <dd class="token">{{ judge.remaining }}</dd>
+</dl>
+<div class="done" ng-hide="match.player1">
+  <h3 translate>Obrigado por participar!</h3>
+
+  <p>
+    Todos os seus votos foram computados. Em breve, anunciaremos
+    as propostas classificadas. Nos vemos no FISL16!
+  </p>
+</div>
+<div class="match" ng-show="match.player1">
+  <div class="versus">x</div>
+  <div class="player player-{{$index}}" ng-repeat="player in [ match.player1, match.player2 ]">
+    <h4>{{ player.title }}</h4>
+    <dl class="scrollable">
+      <dt translate>trilha</dt>
+      <dd class="track">{{ player.track.zone }} - {{ player.track.track }}</dd>
+
+      <dt translate>autores</dt>
+      <dd class="author" ng-repeat="author in player.authors">
+        {{ author.name }}
+        <a ng-click="toggleResume($id)" ng-show="author.resume">currículo...</a>
+        <span ng-show="displayResume[$id]">
+          {{ author.resume }}
+        </span>
+      </dd>
+      <dt translate>descrição</dt>
+      <dd class="full pre-wrap">{{ player.full }}</dd>
+    </dl>
+  </div>
+  <div class="buttons">
+    <button ng-click="voteFor('player1')" translate>prefiro proposta 1</button>
+    <button ng-click="voteFor('tie')"     translate>gostei de ambas</button>
+    <button ng-click="voteFor('player2')" translate>prefiro proposta 2</button>
+  </div>
+</div>
+
