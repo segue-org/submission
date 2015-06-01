@@ -50,11 +50,12 @@
       $scope.cfpState        = cfpState;
       $scope.lockEmail = true;
       $scope.signup = signup;
-      
+
       $scope.today = new Date();
 
       $scope.hasCaravan   = _.has(myCaravan, '$type');
       $scope.hasCorporate = _.has(myCorporate, '$type');
+      $scope.isCaravan = _.has($stateParams, 'caravan_hash') && !_.isUndefined($stateParams.caravan_hash);
 
       if (_.has($scope.signup, 'country')) {
         $scope.signup[Account.getDocumentField($scope.signup.country)] = $scope.signup.document;

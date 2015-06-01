@@ -18,6 +18,8 @@
           views: {
             header: { templateUrl: 'modules/common/nav.html' },
             main:   { template:    "<div ui-view='form'></div>", controller: 'CaravanController' }
+          },
+          resolve: {
           }
         })
         .state('caravan.new', {
@@ -114,6 +116,8 @@
       $scope.invites = Caravans.getPaidRiders(invites, currentCaravan.paid_riders);
       $scope.newInvites = [];
 
+      $scope.isCaravan = true;
+      $scope.selectable = false;
       $scope.productsByPeriod = _(products_list).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
@@ -141,6 +145,20 @@
           if (_(data.value).isEmpty()) { return; }
           $scope.newInvites.push(data.value);
         });
+      };
+    })
+    .controller('NewCaravanAuthorController', function($scope, AuthModal, focusOn) {
+      $scope.signup = {};
+
+      $scope.openLoginModal = AuthModal.login;
+      $scope.focusName = _.partial(focusOn, 'person.name');
+    })
+    .controller('NewCaravanInviteController', function($scope, FormErrors, Validator, focusOn) {
+      $scope.invite = {};
+      $scope.submitInvite = function() {
+        return Validator.validate($scope.invite, 'caravans/new_invite')
+                        .then($scope.closeThisDialog)
+                        .catch(FormErrors.set);
       };
     });
 })();

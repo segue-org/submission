@@ -1,0 +1,85 @@
+main.judge {
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: 1rem;
+  }
+
+  .judge {
+    position: fixed;
+    width: 8rem;
+    border: 1px solid gray;
+    box-shadow: 3px 3px 3px gray;
+    left: 0;
+    top: 10%;
+    overflow: hidden;
+    background: white;
+    text-overflow: ellipsis;
+    padding: 2px;
+  }
+
+  .buttons {
+    clear: both;
+    position: fixed;
+    bottom: 5%;
+    width: 80%;
+    left: 10%;
+    padding: 1em;
+    background: white;
+    button {
+      padding: 1rem;
+      width: 33%;
+      font-size: 150%;
+    }
+  }
+
+  .match {
+    .versus {
+      font-size: 800%;
+      position: absolute;
+      z-index: 100;
+      left: 46%;
+      top: 15rem;
+      float: left;
+      font-family: Orbitron;
+    }
+
+    .player {
+      border: 1px solid lightgray;
+      box-shadow: 3px 3px 3px gray;
+      width: 43%;
+      &.player-0 { float: left; }
+      &.player-1 { float: right; }
+
+      h4 {
+        padding: 1em;
+        margin: 0;
+        background: gray;
+        color: white;
+      }
+
+      .scrollable {
+        padding: 0 1rem;
+        margin: 0;
+        height: 60vh;
+        overflow: auto;
+      }
+
+
+      .author {
+        a {
+          font-size: small;
+          color: blue;
+        }
+        span {
+          display: block;
+          font-size: 80%;
+          color: green;
+          margin-left: 1rem;
+          border-left: 1px solid green;
+        }
+      }
+    }
+  }
+}

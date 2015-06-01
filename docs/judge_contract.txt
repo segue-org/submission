@@ -1,0 +1,45 @@
+1) user starts judging a pair of proposals
+
+<----- GET http://server/api/judges/ABCDEF [as html]
+-----> 304 http://frontend/judges/ABCDEF
+<----- GET http://server/api/judges/ABCDEF [as json]
+-----> {
+         hash: "ABCDEF",
+         count: 5
+       }
+
+2) user gets a match to judge
+<----- GET http://server/api/judges/ABCDEF/match
+###### under the hood returns the currently assigned match
+###### (or assigns a new one)
+------> {
+          id: 1234,
+          player1: {
+            title: "Amazing things",
+            full: "...",
+            authors: [
+              { name: "Fulano",   resume: "a nice dude" },
+              { name: "Beltrano", resume: "another nice dude" },
+            ]
+          },
+          player2: {
+            title: "Amazing things",
+            full: "...",
+            authors: [
+              { name: "Fulano",   resume: "a nice dude" },
+              { name: "Beltrano", resume: "another nice dude" },
+            ]
+
+          }
+        }
+
+3) user selects one result, and submits it
+<------ POST http://server/api/match/1234/vote
+<------ {
+          hash: "ABCDEF"
+          vote: "player1" (or "tie" or "player2")
+        }
+####### records the result, decreases token count
+------> 200 OK
+
+4) user app cycles back to step 1
