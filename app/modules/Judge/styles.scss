@@ -1,6 +1,11 @@
 main.judge {
   dt {
     font-weight: bold;
+    &.header {
+      background: lightgray;
+      margin: 0;
+      padding: 2px;
+    }
   }
   dd {
     margin-left: 1rem;
@@ -16,7 +21,7 @@ main.judge {
     overflow: hidden;
     background: white;
     text-overflow: ellipsis;
-    padding: 2px;
+    padding: 0px;
   }
 
   .buttons {

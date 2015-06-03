@@ -1,15 +1,16 @@
 <dl class="judge">
+  <dt class="header" translate>avaliador</dt>
   <dt translate>token</dt>
   <dd class="token">{{ judge.hash }}</dd>
 
   <dt translate>votos totais</dt>
-  <dd class="token">{{ judge.votes }}</dd>
+  <dd class="votes">{{ judge.votes }}</dd>
 
   <dt translate>votos usados</dt>
-  <dd class="token">{{ judge.spent }}</dd>
+  <dd class="spent">{{ judge.spent }}</dd>
 
   <dt translate>votos restantes</dt>
-  <dd class="token">{{ judge.remaining }}</dd>
+  <dd class="remaining">{{ judge.remaining }}</dd>
 </dl>
 <div class="done" ng-hide="match.player1">
   <h3 translate>Obrigado por participar!</h3>
