@@ -33,6 +33,8 @@
       $scope.match = match;
       $scope.displayResume = {};
 
+      $scope.instructions = Judges.instructions;
+
       $scope.toggleResume = function(id) {
         $scope.displayResume[id] = !$scope.displayResume[id];
       };

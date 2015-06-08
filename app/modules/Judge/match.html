@@ -11,7 +11,35 @@
 
   <dt translate>votos restantes</dt>
   <dd class="remaining">{{ judge.remaining }}</dd>
+
+  <dt>
+    <button ng-click="instructions.setDisplay(true)">
+      ajuda!!
+    </button>
+  </dt>
+
 </dl>
+<div class="instructions" ng-show="instructions.display">
+  <h3 translate>Instruções</h3>
+
+  <p>
+    Participar da seleção pública de palestras do FISL16 é muito fácil!
+  </p>
+  <p>
+    Nas telas a seguir, serão mostradas duas propostas de palestra
+    que foram enviadas pela comunidade este ano. Selecione a que
+    você mais gostaria de ver apresentada no FISL16.</p>
+  <p>
+    Você poderá efetuar esse processo {{ judge.remaining }} vezes,
+    escolhendo uma proposta de palestra preferida em cada vez.
+  </p>
+
+  <button ng-click="instructions.setDisplay(false)">
+    ok, quero começar!
+  </button>
+
+
+</div>
 <div class="done" ng-hide="match.player1">
   <h3 translate>Obrigado por participar!</h3>
 
