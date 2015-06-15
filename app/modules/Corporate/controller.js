@@ -10,6 +10,7 @@
       'segue.submission.corporate.service',
       'segue.submission.purchase.service',
       'segue.submission.authenticate',
+      'segue.submission.account.service',
       'ngDialog'
     ])
     .config(function($stateProvider) {
@@ -119,10 +120,12 @@
       $scope.openLoginModal = AuthModal.login;
       $scope.focusName = _.partial(focusOn, 'person.name');
     })
-    .controller('NewEmployeeController', function($scope, FormErrors, Validator, focusOn) {
+    .controller('NewEmployeeController', function($scope, FormErrors, Validator, focusOn, Account) {
       $scope.employee = {};
+
       $scope.submitEmployee = function() {
-        return Validator.validate($scope.employee, 'corporates/new_employee')
+        return Account.isRegistered($scope.employee.email)
+                        .then(Validator.validate($scope.employee, 'corporates/new_employee'))
                         .then($scope.closeThisDialog)
                         .catch(FormErrors.set);
       };

@@ -49,6 +49,10 @@
         };
       };
 
+      extensions.isRegistered = function(email) {
+        return Restangular.service('accounts/is_registered').one().get({'email': email});
+      }
+
       return _.extend(service, extensions);
     });
 })();
