@@ -29,6 +29,7 @@
   angular
     .module("segue.submission.judge.controller",[ ])
     .controller("JudgeController", function($scope, $state, judge, match, Judges, ngToast) {
+      $scope.endOfTournament = (judge.tournament_state == 'closed');
       $scope.judge = judge;
       $scope.match = match;
       $scope.displayResume = {};

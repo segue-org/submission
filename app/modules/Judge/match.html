@@ -46,7 +46,16 @@
 
 
 </div>
-<div class="done" ng-hide="match.player1">
+<div class="end" ng-show="endOfTournament">
+  <h3 translate>Avaliação encerrada</h3>
+
+  <p>
+    A avaliação de propostas para o FISL16 está encerrada. Aguarde enquanto
+    analisamos os resultados. A convocação dos palestrantes selecionados
+    será iniciada em breve.
+  </p>
+</div>
+<div class="done" ng-hide="match.player1 || endOfTournament">
   <h3 translate>Obrigado por participar!</h3>
 
   <p>
