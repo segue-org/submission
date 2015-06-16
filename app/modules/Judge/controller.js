@@ -20,6 +20,7 @@
             judge: function(Judges, $stateParams) { return Judges.judge($stateParams.hash); },
             match: function(judge, Judges, $stateParams) {
               if (judge.remaining === 0) { return {}; }
+              if (judge.tournament_state == 'closed') { return {}; }
               return Judges.match($stateParams.hash);
             }
           }
