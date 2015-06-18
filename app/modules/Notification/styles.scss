@@ -1,0 +1,27 @@
+@import 'modules/common/mixins.scss';
+
+main.notification {
+
+  .intro {
+    width: 50%;
+  }
+
+  ul {
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .done {
+    border: 1px solid blue;
+    background: lightblue;
+    padding: 2em;
+    width: 30%;
+  }
+
+  button {
+    font-size: large;
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
