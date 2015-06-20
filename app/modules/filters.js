@@ -13,24 +13,17 @@
     })
     .filter('date_locale',function() {
       return function(input) {
-        if (input) {
-          var d = new Date(input);
-          return d.toLocaleDateString();
-        } else {
-          return "";
-        }
+        var timestamp = Date.parse(input);
+        if (isNaN(timestamp)) { return ''; }
+        return (new Date(timestamp)).toLocaleDateString();
       };
     })
     .filter('datetime_locale', function(Config) {
       return function(input, timezone) {
         if (!timezone) { timezone = Config.TIMEZONE; }
-
-        if (input) {
-          var d = new Date(input+timezone);
-          return d.toLocaleString();
-        } else {
-          return "";
-        }
+        var timestamp = Date.parse(input+timezone);
+        if (isNaN(timestamp)) { return ''; }
+        return (new Date(timestamp)).toLocaleString();
       };
     })
     .filter('realbrasileiro', function() {

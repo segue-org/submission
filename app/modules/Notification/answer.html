@@ -8,12 +8,6 @@
     proponentes.
   </div>
 
-  <ul ng-show="notification.is_expired">
-    <li><span>mensagem enviada em:</span> {{ notification.sent | datetime_locale }}</li>
-    <li><span>prazo para resposta:</span> {{ notification.deadline | datetime_locale }}</li>
-    <li><span>código de ativação:</span> {{ notification.hash }}</li>
-  </ul>
-
   <div class="intro" ng-hide="notification.is_expired" translate>
     Sua palestra (descrita abaixo) foi aceita para apresentação no <b>FISL16</b>.
     Para confirmar sua vinda ao evento para apresentação dessa palestra, utilize
@@ -24,6 +18,10 @@
     <li><span translate>título:</span> {{ notification.target.title }}</li>
     <li><span translate>trilha:</span> {{ notification.target.track.name_pt }}</li>
     <li><span translate>língua:</span> {{ notification.target.language }}</li>
+
+    <li><span translate>mensagem enviada em:</span> {{ notification.sent | datetime_locale }}</li>
+    <li><span translate>prazo para resposta:</span> {{ notification.deadline | datetime_locale }}</li>
+    <li><span translate>código de ativação:</span> {{ notification.hash }}</li>
   </ul>
 
   <div ng-hide="notification.is_expired" ng-switch="notification.status">
