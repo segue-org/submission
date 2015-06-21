@@ -16,6 +16,7 @@
       'ui.utils.masks',
 
       'segue.submission.libs',
+      'segue.submission.filters',
       'segue.submission.locale',
       'segue.submission.home',
       'segue.submission.splash',
@@ -29,7 +30,8 @@
       'segue.submission.notification',
       'segue.submission.judge'
     ])
-    .controller('SubmissionController', function($scope, $state, Auth, $stateParams) {
+    .controller('SubmissionController', function($scope, $state, Config, Auth, $stateParams) {
+      $scope.CONFIG = Config;
       $scope.$on('$stateChangeSuccess', function(event, newState) {
         $scope.topState = newState.name.split('.')[0];
         $scope.state    = newState;

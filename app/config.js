@@ -12,7 +12,8 @@
         { abbr: 'es', name: 'espanhol' },
         { abbr: 'en', name: 'inglês' },
       ],
-      PROPOSAL_LEVELS: [ "beginner", "advanced" ]
+      PROPOSAL_LEVELS: [ "beginner", "advanced" ],
+      TIMEZONE: "-0300"
     });
 
 })();

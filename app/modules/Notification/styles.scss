@@ -5,6 +5,12 @@ main.notification {
   .intro {
     width: 50%;
   }
+  .expired {
+    border: 1px solid red;
+    background: lightpink;
+    padding: 1em;
+    width: 30em;
+  }
 
   ul {
     span {

@@ -1,7 +1,20 @@
 <fieldset class="invite">
   <legend translate>confirmação de presença como palestrante</legend>
 
-  <div class="intro" translate>
+  <div class="expired" ng-show="notification.is_expired" translate>
+    Pedimos desculpas, mas o prazo para confirmação de sua palestra
+    através da mensagem de notificação está encerrado. Outras propostas
+    de palestras serão convocadas, dando oportunidade a outros
+    proponentes.
+  </div>
+
+  <ul ng-show="notification.is_expired">
+    <li><span>mensagem enviada em:</span> {{ notification.sent | datetime_locale }}</li>
+    <li><span>prazo para resposta:</span> {{ notification.deadline | datetime_locale }}</li>
+    <li><span>código de ativação:</span> {{ notification.hash }}</li>
+  </ul>
+
+  <div class="intro" ng-hide="notification.is_expired" translate>
     Sua palestra (descrita abaixo) foi aceita para apresentação no <b>FISL16</b>.
     Para confirmar sua vinda ao evento para apresentação dessa palestra, utilize
     os botões abaixo.
@@ -13,7 +26,7 @@
     <li><span translate>língua:</span> {{ notification.target.language }}</li>
   </ul>
 
-  <div ng-switch="notification.status">
+  <div ng-hide="notification.is_expired" ng-switch="notification.status">
     <div class="done" ng-switch-when="confirmed">
       OK, a apresentação dessa palestra está confirmada.
     </div>
