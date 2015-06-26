@@ -1,4 +1,4 @@
-<fieldset class="invite">
+<fieldset class="invite" ng-if="notification.kind == 'call'">
   <legend translate>confirmação de presença como palestrante</legend>
 
   <div class="expired" ng-show="notification.is_expired" translate>
@@ -15,9 +15,52 @@
   </div>
 
   <ul>
-    <li><span translate>título:</span> {{ notification.target.title }}</li>
-    <li><span translate>trilha:</span> {{ notification.target.track.name_pt }}</li>
-    <li><span translate>língua:</span> {{ notification.target.language }}</li>
+    <li><span translate>título:</span> {{ notification.proposal.title }}</li>
+    <li><span translate>trilha:</span> {{ notification.proposal.track.name_pt }}</li>
+    <li><span translate>língua:</span> {{ notification.proposal.language }}</li>
+
+    <li><span translate>mensagem enviada em:</span> {{ notification.sent | datetime_locale }}</li>
+    <li><span translate>prazo para resposta:</span> {{ notification.deadline | datetime_locale }}</li>
+    <li><span translate>código de ativação:</span> {{ notification.hash }}</li>
+  </ul>
+
+  <div ng-hide="notification.is_expired" ng-switch="notification.status">
+    <div class="done" ng-switch-when="confirmed">
+      OK, a apresentação dessa palestra está confirmada.
+    </div>
+    <div class="done" ng-switch-when="declined">
+      OK, estamos cientes de seu desejo de <b>NÃO</b> apresentar esta palestra
+    </div>
+    <div class="actions" ng-switch-when="pending">
+      <button ng-click="accept()"  translate>sim, eu vou apresentar esta palestra</button>
+      <button ng-click="decline()" translate>não, eu não vou apresentar esta palestra</button>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="invite" ng-if="notification.kind == 'slot'">
+  <legend translate>confirmação de horário de palestra</legend>
+
+  <div class="expired" ng-show="notification.is_expired" translate>
+    Pedimos desculpas, mas o prazo para confirmação
+    o horário de sua palestra. Por favor entre em
+    contato com a organização através do e-mail abaixo.
+  </div>
+
+  <div class="intro" ng-hide="notification.is_expired" translate>
+    O horário definido para a sua palestra no <b>FISL16</b>
+    está definido conforme os dados abaixo. Para aceitar este
+    horário, por favor utilize os botões abaixo.
+  </div>
+
+  <ul>
+    <li><span translate>data:</span>    {{ notification.slot.begins | date_locale }}</li>
+    <li><span translate>horário:</span> {{ notification.slot.begins | time_locale }}</li>
+    <li><span translate>sala:</span>    {{ notification.slot.room_name }}</li>
+
+    <li><span translate>título:</span> {{ notification.proposal.title }}</li>
+    <li><span translate>trilha:</span> {{ notification.proposal.track.name_pt }}</li>
+    <li><span translate>língua:</span> {{ notification.proposal.language }}</li>
 
     <li><span translate>mensagem enviada em:</span> {{ notification.sent | datetime_locale }}</li>
     <li><span translate>prazo para resposta:</span> {{ notification.deadline | datetime_locale }}</li>

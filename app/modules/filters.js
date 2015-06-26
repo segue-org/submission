@@ -18,6 +18,14 @@
         return (new Date(timestamp)).toLocaleDateString();
       };
     })
+    .filter('time_locale', function(Config) {
+      return function(input, timezone) {
+        if (!timezone) { timezone = Config.TIMEZONE; }
+        var timestamp = Date.parse(input+timezone);
+        if (isNaN(timestamp)) { return ''; }
+        return (new Date(timestamp)).toLocaleTimeString();
+      };
+    })
     .filter('datetime_locale', function(Config) {
       return function(input, timezone) {
         if (!timezone) { timezone = Config.TIMEZONE; }
