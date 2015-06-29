@@ -45,7 +45,7 @@
         <li class="unsaved" ng-show="currentProposal" ui-sref="proposal.new">
         <span class="title">{{ currentProposal.title }}</span>
         <span class="title empty" ng-hide="currentProposal.title" translate> sem título</span>
-        <span class="track">Desenvolvimento de Jogos</span>
+        <span class="track">{{ currentProposal.track }}</span>
         <span class="authors"><b>{{ account.name }}</b></span>
         <span class="when" translate>proposta ainda não enviada!</span>
         <span class="delete" ng-click="removeCurrent($event)" translate>remover</span>

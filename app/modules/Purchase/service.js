@@ -10,11 +10,16 @@
     .factory('Products', function(Restangular) {
       var service = Restangular.service('products');
       var extensions = {};
-      
-      extensions.getCaravanList = function(caravan_hash) {
-        return Restangular.all('products/caravan/' + caravan_hash).getList();
+
+      extensions.getCaravanList = function(hash) {
+        if (!hash) { return []; }
+        return service.one('caravan').getList(hash);
       };
-      
+
+      extensions.getProponentOffer = function(hash) {
+        return service.one('proponent').getList(hash);
+      };
+
       return _.extend(service, extensions);
     })
     .factory('Product', function(Restangular) {
@@ -25,6 +30,13 @@
         return function(buyer_data) {
           var product = service.one(product_id);
           return product.post('purchase', buyer_data);
+        };
+      };
+      extensions.purchaseOffer = function(hash, product_id) {
+        return function(buyer_data) {
+          buyer_data.hash = hash;
+          var product = service.one(product_id);
+          return product.post('purchase-offer', buyer_data);
         };
       };
 

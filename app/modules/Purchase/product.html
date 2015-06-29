@@ -21,8 +21,15 @@
         </td>
       </tr>
     </table>
-    
-    <p ng-hide="isCaravan" class="alert alert-danger">
+    <p ng-show="isProponent" class="alert alert-danger">
+      atenção: os preços aqui oferecidos são os mesmos
+      vigentes à época do envio da sua primeira proposta
+      de palestra. Essa oferta é exclusiva para proponentes
+      não selecionados e não é passível de transferência
+      para terceiros.
+    </p>
+
+    <p ng-hide="isCaravan || isProponent" class="alert alert-danger">
       atenção:
       <br />
       <br />
@@ -33,7 +40,7 @@
           - para inscrições em caravanas deve ser utilizado apenas o link que você recebeu através do e-mail.
       <br />
     </p>
-    
+
   </p>
 
 </fieldset>

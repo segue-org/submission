@@ -86,19 +86,6 @@
     <span form-error="cpf.object_required" translate>residentes no Brasil, favor informar o CPF</span>
   </p>
 
-  <p class="cnpj" ng-show="buyer.kind == 'company'">
-    <label>
-      <span translate>CNPJ</span>
-      <small translate>(somente empresas brasileiras)</small>
-    </label>
-    <input type="text" required
-          minlength="11" maxlength="15"
-          ng-model="buyer.document"
-          ui-br-cnpj-mask/>
-    <i class="fa fa-check"></i>
-    <span form-error="cnpj.object_required" translate>residentes no Brasil, favor informar o CNPJ</span>
-  </p>
-
   <p class="passport" ng-show="isForeignPerson">
     <label>
       <span translate>passaporte</span>

@@ -29,8 +29,11 @@
             form: { controller: 'NewPurchaseController', templateUrl: 'modules/Purchase/form.html' }
           },
           resolve: {
-            currentPurchase:  function(Purchases, $window)     { return Purchases.current(); },
-            products_caravan: function(Products, $stateParams) { if ($stateParams.caravan_hash) return Products.getCaravanList($stateParams.caravan_hash); else return []; }
+            currentPurchase: function(Purchases, $window) { return Purchases.current(); },
+            products:        function(Products, $stateParams) {
+              if ($stateParams.caravan_hash) return Products.getCaravanList($stateParams.caravan_hash);
+              return Products.getList();
+            }
           }
         })
         .state('purchase.conclude', {
@@ -40,12 +43,18 @@
             "main@": { controller: 'ConcludePurchaseController', templateUrl: 'modules/Purchase/conclude.html' }
           },
           resolve: {
-            purchase: function(Purchases, $stateParams) {
-              return Purchases.one($stateParams.purchase_id).get();
-            },
-            payment_id: function($stateParams) {
-              return $stateParams.payment_id;
-            }
+            purchase: function(Purchases, $stateParams) { return Purchases.one($stateParams.purchase_id).get(); },
+          }
+        })
+        .state('purchase.proponentOffer', {
+          parent: 'purchase',
+          url: '^/proponent-offer/:proponent_hash',
+          views: {
+            "main@": { controller: 'NewPurchaseController', templateUrl: 'modules/Purchase/form.html' }
+          },
+          resolve: {
+            currentPurchase: function(Purchases, $window) { return Purchases.current(); },
+            products:        function(Products, $stateParams) { return Products.getProponentOffer($stateParams.proponent_hash); }
           }
         });
     });
@@ -56,47 +65,43 @@
       $scope.credentials = Auth.glue($scope, 'credentials');
       $scope.products = products;
     })
-    .controller('ConcludePurchaseController', function($scope, purchase, payment_id, Auth) {
+    .controller('ConcludePurchaseController', function($scope, $stateParams, purchase, Auth) {
       $scope.credentials = Auth.glue($scope, 'credentials');
       $scope.$on('auth:changed', $scope.home);
 
       $scope.purchase = purchase;
     })
-    .controller('NewPurchaseController', function($rootScope, $scope, $stateParams, Config, Auth, focusOn, products, products_caravan, Product, Purchases, currentPurchase, Validator, FormErrors, Account, ContractModal) {
+    .controller('NewPurchaseController', function($rootScope, $scope, $stateParams,
+                                                  Config, Auth, Validator, FormErrors, ContractModal,
+                                                  focusOn, products, currentPurchase,
+                                                  Product, Purchases, Account) {
       $scope.selectedProduct = {};
-      
-      var products_list = null;
-      
-      if ($stateParams.caravan_hash) {
-        products_list = products_caravan;
-        $scope.isCaravan = true;
-      } else {
-        products_list = products;
-        $scope.isCaravan = false;
-      }
-      
-      $scope.productsByPeriod = _(products_list).groupBy('sold_until')
+
+      $scope.isCaravan = $stateParams.caravan_hash !== undefined;
+      $scope.isProponent = $stateParams.proponent_hash !== undefined;
+
+      $scope.productsByPeriod = _(products).groupBy('sold_until')
                                            .pairs()
                                            .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
                                            .value();
 
       $scope.updateSelectedProduct = function(newId) {
-        $scope.selectedProduct = _(products_list).findWhere({ id: newId });
+        $scope.selectedProduct = _(products).findWhere({ id: newId });
         if ($scope.selectedProduct.category == 'student') {
           $scope.buyer.kind = 'person';
           $scope.showDialog('student');
         }
       };
-      
+
       $scope.showDialog = ContractModal.show;
-      
+
       $scope.$watch('buyer', Purchases.localSave);
       $scope.buyer = currentPurchase;
       $scope.buyer.kind = 'person';
       $scope.payment = { method: 'boleto' };
       $scope.temp_name = $scope.buyer.name;
       delete $scope.buyer.id;
-      
+
       $scope.changeBuyerType = function() {
         if ($scope.buyer.kind == 'company') {
           $scope.temp_name = $scope.buyer.name;
@@ -104,8 +109,8 @@
         } else {
           $scope.buyer.name = $scope.temp_name;
         }
-      }
-      
+      };
+
       $scope.$watch($scope.credentials, function() {
         if ($scope.credentials) {
           Account.get().then(function(account) {
@@ -124,7 +129,7 @@
       $scope.isDirty = function() {
         return $scope.credentials && $scope.selectedProduct.id && $scope.purchase_form.$dirty;
       };
-      
+
       $scope.submit = function() {
         Validator.validate($scope.buyer, 'purchases/buyer')
                  .then(Product.purchase($scope.selectedProduct.id))
