@@ -1,7 +1,7 @@
 <form novalidate name="purchase_form" class="lines">
   <ng-include src="'modules/Purchase/product.html'"></ng-include>
-  <ng-include ng-show="selectedProduct.length" src="'modules/Purchase/user.html'"></ng-include>
-  <ng-include ng-show="selectedProduct.length" src="'modules/Purchase/buyer_data.html'"></ng-include>
+  <ng-include ng-show="selectedProduct.id" src="'modules/Purchase/user.html'"></ng-include>
+  <ng-include ng-show="selectedProduct.id" src="'modules/Purchase/buyer_data.html'"></ng-include>
 
   <aside class="centered action" ng-show="isDirty()">
     <div form-error-any>
