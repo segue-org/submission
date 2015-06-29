@@ -11,13 +11,15 @@
       var service = Restangular.service('products');
       var extensions = {};
 
+      var anEmptyList = function() { return []; };
+
       extensions.getCaravanList = function(hash) {
         if (!hash) { return []; }
         return service.one('caravan').getList(hash);
       };
 
       extensions.getProponentOffer = function(hash) {
-        return service.one('proponent').getList(hash);
+        return service.one('proponent').getList(hash).catch(anEmptyList);
       };
 
       return _.extend(service, extensions);

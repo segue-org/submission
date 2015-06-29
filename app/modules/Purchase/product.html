@@ -1,8 +1,8 @@
 <fieldset class="products">
   <legend translate>qual ingresso você quer comprar?</legend>
-  <span translate>(clique abaixo no ingresso desejado)</span>
+  <span translate ng-show="productsByPeriod.length">(clique abaixo no ingresso desejado)</span>
   <p>
-    <table>
+    <table ng-show="productsByPeriod.length">
       <tr>
         <th class="date">disponível até...</th>
         <th ng-hide="isCaravan" class="category">individual</th>
@@ -21,7 +21,14 @@
         </td>
       </tr>
     </table>
-    <p ng-show="isProponent" class="alert alert-danger">
+    <p ng-hide="productsByPeriod.length" class="error">
+      Erro: não há nenhum produto disponível.
+      <span ng-show="isProponent || isCaravan">
+        Se você recebeu esse link por email, verifique
+        que o mesmo foi copiado corretamente
+      </span>
+    </p>
+    <p ng-show="isProponent && productsByPeriod.length" class="alert alert-danger">
       atenção: os preços aqui oferecidos são os mesmos
       vigentes à época do envio da sua primeira proposta
       de palestra. Essa oferta é exclusiva para proponentes
