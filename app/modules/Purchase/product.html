@@ -10,7 +10,9 @@
         <th ng-show="isCaravan" class="category">caravana</th>
       </tr>
       <tr class="rows" ng-repeat="period in productsByPeriod">
-        <td class="date">{{ period[0] | dateFromTimestamp }}</td>
+        <td class="date">
+          {{ period[0] | dateFromTimestamp }}
+        </td>
         <td class="price" ng-repeat="(category,tickets) in period[1]">
           <input id="product_{{tickets[0].id}}" type="radio"
                  ng-value="tickets[0].id"
@@ -19,8 +21,12 @@
           <label ng-click="updateSelectedProduct(tickets[0].id)"
                  for="product_{{tickets[0].id}}">{{ tickets[0].price | realbrasileiro }}</label>
         </td>
+        <td ng-if="$last">
+          somente para pagamento em dinheiro
+        </td>
       </tr>
     </table>
+
     <p ng-hide="productsByPeriod.length" class="error">
       Erro: não há nenhum produto disponível.
       <span ng-show="isProponent || isCaravan">

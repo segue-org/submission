@@ -107,7 +107,7 @@
                                                   Products, Purchases, Account) {
       $scope.selectedProduct = {};
       $scope.purchaseMode = purchaseMode;
-      var defaultMethod = (purchaseMode == 'online')? 'boleto':'cash';
+
 
       $scope.isCaravan = $stateParams.caravan_hash !== undefined;
       $scope.isProponent = $stateParams.proponent_hash !== undefined;
@@ -123,6 +123,7 @@
           $scope.buyer.kind = 'person';
           $scope.showDialog('student');
         }
+        resetPaymentMethod();
       };
 
       $scope.showDialog = ContractModal.show;
@@ -130,9 +131,21 @@
       $scope.$watch('buyer', Purchases.localSave);
       $scope.buyer = currentPurchase;
       $scope.buyer.kind = 'person';
-      $scope.payment = { method: defaultMethod };
+      $scope.payment = { method: 'boleto' };
       $scope.temp_name = $scope.buyer.name;
       delete $scope.buyer.id;
+
+      function resetPaymentMethod() {
+        if (!$scope.selectedProduct) { return; }
+        var requiresCash = $scope.selectedProduct.can_pay_cash;
+        var isOnline     = purchaseMode == 'online';
+        if (requiresCash) {
+          $scope.payment.method = 'cash';
+        } else if (isOnline) {
+          $scope.payment.method = 'boleto';
+        }
+      }
+      resetPaymentMethod();
 
       $scope.changeBuyerType = function() {
         if ($scope.buyer.kind == 'company') {
