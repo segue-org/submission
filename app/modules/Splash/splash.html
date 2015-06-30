@@ -6,16 +6,30 @@
 </div>
 
 <div class="buttons">
-  <span class="divisor" translate>Palestrantes</span>
-  <button ui-sref="proposal.new" ng-hide="cfpState == 'open'" translate>
-    submissão de propostas encerrada!
-  </button>
-  <button ui-sref="proposal.new" ng-show="cfpState == 'open'" translate>
-    propor nova palestra
-  </button>
-  <br class="clear" />
-  <span class="divisor" translate>Participantes</span>
-  <button ng-click="showInfo('initial', 'contract_large')" translate>quero comprar um ingresso</button>
-  <button ng-click="showInfo('caravan', 'contract_large')" translate>quero montar uma caravana</button>
-  <br class="clear"/>
+  <div>
+    <header translate>Participantes</header>
+    <div ng-show="purchaseMode == 'online'">
+      <button ng-click="showInfo('initial', 'contract_large')" translate>quero comprar um ingresso</button>
+      <button ng-click="showInfo('caravan', 'contract_large')" translate>quero montar uma caravana</button>
+    </div>
+    <div ng-show="purchaseMode == 'reservation'">
+      <button ng-click="showInfo('initial', 'contract_large')" translate>
+        quero reservar meu ingresso
+      </button>
+      <div class="alert">
+        o pagamento deverá ser realizado na secretaria do evento
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <header translate>Palestrantes</header>
+    <button ui-sref="proposal.new" ng-hide="cfpState == 'open'" translate>
+      submissão de propostas encerrada!
+    </button>
+    <button ui-sref="proposal.new" ng-show="cfpState == 'open'" translate>
+      propor nova palestra
+    </button>
+  </div>
 </div>

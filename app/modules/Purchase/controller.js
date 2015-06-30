@@ -19,7 +19,8 @@
             main:   { template:    "<div ui-view='form'></div>", controller: 'PurchaseController' }
           },
           resolve: {
-            products: function(Products) { return Products.getList(); }
+            products: function(Products) { return Products.getList(); },
+            purchaseMode: function(Purchases) { return Purchases.purchaseMode(); }
           }
         })
         .state('purchase.new', {
@@ -36,6 +37,19 @@
             }
           }
         })
+        .state('purchase.guide', {
+          parent: 'purchase',
+          url: '^/purchase/:purchase_id/payment/:payment_id/guide',
+          views: {
+            "main@": { controller: 'GuidePurchaseController', templateUrl: 'modules/Purchase/guide.html' }
+          },
+          resolve: {
+            guide: function(Purchases, $stateParams) {
+              return Purchases.guide($stateParams.purchase_id, $stateParams.payment_id);
+            },
+          }
+        })
+
         .state('purchase.conclude', {
           parent: 'purchase',
           url: '^/purchase/:purchase_id/payment/:payment_id/conclude',
@@ -71,11 +85,29 @@
 
       $scope.purchase = purchase;
     })
+    .controller('GuidePurchaseController', function($scope, $stateParams, guide, Auth) {
+      var HUMAN_STATUSES = {
+        pending: 'aguardando pagamento',
+        paid: 'pagamento confirmado',
+        reimburse: 'reembolsada'
+      };
+      $scope.credentials = Auth.glue($scope, 'credentials');
+      $scope.$on('auth:changed', $scope.home);
+
+      $scope.buyer    = guide.buyer;
+      $scope.payment  = guide.payment;
+      $scope.purchase = guide.purchase;
+      $scope.customer = guide.purchase.customer;
+      $scope.product  = guide.purchase.product;
+      $scope.human_status = HUMAN_STATUSES[guide.purchase.status];
+    })
     .controller('NewPurchaseController', function($rootScope, $scope, $stateParams,
                                                   Config, Auth, Validator, FormErrors, ContractModal,
-                                                  focusOn, products, currentPurchase,
-                                                  Product, Purchases, Account) {
+                                                  focusOn, products, currentPurchase, purchaseMode,
+                                                  Products, Purchases, Account) {
       $scope.selectedProduct = {};
+      $scope.purchaseMode = purchaseMode;
+      var defaultMethod = (purchaseMode == 'online')? 'boleto':'cash';
 
       $scope.isCaravan = $stateParams.caravan_hash !== undefined;
       $scope.isProponent = $stateParams.proponent_hash !== undefined;
@@ -98,7 +130,7 @@
       $scope.$watch('buyer', Purchases.localSave);
       $scope.buyer = currentPurchase;
       $scope.buyer.kind = 'person';
-      $scope.payment = { method: 'boleto' };
+      $scope.payment = { method: defaultMethod };
       $scope.temp_name = $scope.buyer.name;
       delete $scope.buyer.id;
 
@@ -132,7 +164,7 @@
 
       $scope.submit = function() {
         Validator.validate($scope.buyer, 'purchases/buyer')
-                 .then(Product.purchase($scope.selectedProduct.id))
+                 .then(Products.purchase($scope.selectedProduct.id))
                  .then(Purchases.pay($scope.payment.method))
                  .then(Purchases.followPaymentInstructions)
                  .then(Purchases.localForget)

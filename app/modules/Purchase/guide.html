@@ -1,0 +1,63 @@
+<fieldset class="guide">
+  <legend translate>
+    Guia de Pagamento
+  </legend>
+
+
+  <h1>
+    INSCRIÇÃO #{{ purchase.id }} - {{ product.category }}<br/>
+    {{ human_status }} -
+    <span ng-hide="purchase.status == 'paid'">
+      {{ product.price | realbrasileiro }}
+    </span>
+  </h1>
+
+  <h2>
+    Para agilizar o seu atendimento, por favor
+    leve essa página impressa e apresente-a
+    no balcão de atendimento.
+  </h2>
+
+  <div class="info" ng-hide="purchase.status == 'paid'">
+    O pagamento de sua inscrição deverá ser realizado
+    presencialmente no dia do evento. O pagamento
+    poderá ser efetuado em dinheiro ou através de cartão
+    de crédito/débito.
+  </div>
+
+  <fieldset>
+    <legend>Dados do Participante</legend>
+
+    <ul>
+      <li class="important"><b>nome:</b> {{ customer.name }}</li>
+      <li class="important"><b>email:</b> {{ customer.email }}</li>
+      <li class="important"><b>documento:</b> {{ customer.document }}</li>
+
+      <li><b>organização:</b> {{ customer.organization }}</li>
+      <li><b>telefone:</b> {{ customer.phone }}</li>
+
+      <li><b>valor:</b> {{ product.price | realbrasileiro }}</li>
+      <li><b>categoria:</b> {{ product.category }}</li>
+      <li ng-show="product.gives_kit"><b>recebe kit:</b> sim</li>
+      <li ng-hide="product.gives_kit"><b>recebe kit:</b> não</li>
+      <li><b>tipo:</b> {{ product.description }}</li>
+    </ul>
+  </fieldset>
+
+  <fieldset>
+    <legend>Dados do Comprador</legend>
+
+    <ul>
+      <li><b>nome:</b> {{ buyer.name }}</li>
+      <li><b>tipo:</b> {{ buyer.kind }}</li>
+      <li><b>documento:</b> {{ buyer.document }}</li>
+      <li><b>país:</b> {{ buyer.address_country }}</li>
+      <li><b>cidade:</b> {{ buyer.address_city }}</li>
+      <li><b>rua:</b> {{ buyer.address_street }}</li>
+      <li><b>número:</b> {{ buyer.address_number }}</li>
+      <li><b>complemento:</b> {{ buyer.address_extra }}</li>
+      <li><b>CEP:</b> {{ buyer.address_zipcode }}</li>
+    </ul>
+  </fieldset>
+
+</fieldset>

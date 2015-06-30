@@ -3,31 +3,24 @@
     Conclusão do pagamento
   </legend>
 
-  <p ng-hide="purchase.status == 'paid'">
+  <div class="info" ng-hide="purchase.status == 'paid'">
     <strong>Inscrição aguardando pagamento.</strong> Sua inscrição será confirmada tão logo
     seu pagamento seja processado. Caso você tenha optado por meios de pagamento
     off-line (por exemplo, boleto bancário), fique atento à data de vencimento
     impressa no mesmo.
-  </p>
+  </div>
 
-  <p ng-show="purchase.status == 'paid'">
+  <div class="info" ng-show="purchase.status == 'paid'">
     <strong>Ingresso confirmado!</strong>
 
     Seu pagamento foi recebido e processado com sucesso. Em breve você receberá uma
     mensagem por e-mail confirmando todos os dados de seu ingresso.
 
-  </p>
+  </div>
 
-  <p>
-    Tipo de ingresso: <strong>{{ purchase.product.description }}</strong>
-
-    <br />
-
-    Valor: <strong>{{ purchase.product.price | realbrasileiro }}</strong>
-
-    <br />
-
-    Status: <strong>{{ purchase.status }}</strong>
-
-  </p>
+  <ul>
+    <li><b>Tipo de ingresso:</b> {{ purchase.product.description }}</li>
+    <li><b>Valor:</b>{{ purchase.product.price | realbrasileiro }}</li>
+    <li><b>Status:</b>{{ purchase.status }}</li>
+  </ul>
 </fieldset>

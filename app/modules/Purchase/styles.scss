@@ -97,32 +97,61 @@ main.purchase {
   }
 }
 
-.conclude {
+.conclude, .guide {
 
-  padding:3rem;
-  margin-top:2rem;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
 
-  p {
+
+  h1 {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 110%;
+    text-align: center;
+    color: black;
+  }
+
+  .info {
     font-size:large;
     font-family:sans-serif;
+  }
+
+  ul {
+    margin: 0.5rem;
+    color: gray;
+    .important {
+      font-size: large;
+      color: black;
+    }
+  }
+
+  fieldset {
+    margin: 0.2rem;
+    padding: 0.5rem;
+    border: 0px;
   }
 }
 
 .address_number_extra {
-  
+
   p:first-child {
   }
-  
+
   p:last-child {
   }
-  
+
   p:last-child label {
   }
-  
+
   p:first-child input {
   }
-  
+
   p:last-child input {
   }
-  
+
 }

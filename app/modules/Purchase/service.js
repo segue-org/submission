@@ -22,23 +22,10 @@
         return service.one('proponent').getList(hash).catch(anEmptyList);
       };
 
-      return _.extend(service, extensions);
-    })
-    .factory('Product', function(Restangular) {
-      var service = Restangular.service('products') ;
-      var extensions = {};
-
       extensions.purchase = function(product_id) {
         return function(buyer_data) {
           var product = service.one(product_id);
           return product.post('purchase', buyer_data);
-        };
-      };
-      extensions.purchaseOffer = function(hash, product_id) {
-        return function(buyer_data) {
-          buyer_data.hash = hash;
-          var product = service.one(product_id);
-          return product.post('purchase-offer', buyer_data);
         };
       };
 
@@ -47,6 +34,16 @@
     .factory('Purchases', function(Restangular, Auth, Validator, FormErrors, $localStorage, $q, $window) {
       var service = Restangular.service('purchases');
       var extensions = {};
+
+      extensions.purchaseMode = function() {
+        return service.one('mode').get().then(function(data) {
+          return data.mode;
+        });
+      };
+
+      extensions.guide = function(purchaseId, paymentId) {
+        return service.one(purchaseId).one('payments').one(paymentId).one('guide').get();
+      };
 
       extensions.current = function() {
         return $localStorage.savedPurchase || {};

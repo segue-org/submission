@@ -1,0 +1,13 @@
+@media print {
+  body {
+    >header {
+      display: none;
+    }
+    >aside {
+      display: none;
+    }
+    main {
+      position: static;
+    }
+  }
+}

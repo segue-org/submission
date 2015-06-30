@@ -24,7 +24,8 @@
             myPurchases:      function(Purchases) { return Purchases.getOwnedByCredentials(); },
             currentProposal:  function(Proposals) { return Proposals.current(); },
             signup:           function(Account)   { return Account.get(); },
-            cfpState:         function(Proposals) { return Proposals.cfpState(); }
+            cfpState:         function(Proposals) { return Proposals.cfpState(); },
+            purchaseMode:     function(Purchases) { return Purchases.purchaseMode(); }
           }
         });
 
@@ -35,9 +36,10 @@
                                            Auth, Proposals, Purchases, Account,
                                            myPurchases, myProposals, myInvites, myCaravan,
                                            currentProposal, signup, cfpState,
-                                           Validator, FormErrors, ngToast) {
+                                           Validator, FormErrors, purchaseMode, ngToast) {
       if (!Auth.credentials()) { $state.go('splash'); }
 
+      $scope.purchaseMode    = purchaseMode;
       $scope.myCaravan       = myCaravan;
       $scope.myPurchases     = myPurchases;
       $scope.myProposals     = myProposals;
@@ -47,7 +49,7 @@
       $scope.cfpState        = cfpState;
       $scope.lockEmail = true;
       $scope.signup = signup;
-      
+
       $scope.today = new Date();
 
       $scope.hasCaravan = _.has(myCaravan, '$type');
@@ -80,7 +82,8 @@
       };
 
       $scope.canStartPayment = function(purchaseObject) {
-        return $scope.isPending(purchaseObject) &&
+        return $scope.purchaseMode == 'online' &&
+               $scope.isPending(purchaseObject) &&
                $scope.paymentMethodIsBlank() &&
                $scope.isTimely(purchaseObject);
       };
@@ -89,7 +92,7 @@
         return $scope.isPending(purchaseObject) &&
                $scope.paymentMethodIsBlank() &&
                !$scope.isTimely(purchaseObject);
-      }
+      };
 
       $scope.isPending = function(purchaseObject) {
         return purchaseObject.status == 'pending';
@@ -101,7 +104,7 @@
       };
 
       $scope.paymentMethodIsBlank = function() {
-        return $scope.payment.method == null;
+        return $scope.payment.method === null;
       };
 
       $scope.submit = function() {

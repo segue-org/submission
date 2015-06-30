@@ -16,14 +16,16 @@
             main:   { controller: 'SplashController', templateUrl: 'modules/Splash/splash.html' }
           },
           resolve: {
-            cfpState: function(Proposals) { return Proposals.cfpState(); }
+            cfpState: function(Proposals) { return Proposals.cfpState(); },
+            purchaseMode: function(Purchases) { return Purchases.purchaseMode(); }
           }
         });
     });
 
   angular
     .module('segue.submission.splash.controller', [])
-    .controller('SplashController', function($rootScope, $scope, $state, $window, cfpState, Auth, ContractModal) {
+    .controller('SplashController', function($rootScope, $scope, $state, $window, cfpState, purchaseMode, Auth, ContractModal) {
+      $scope.purchaseMode = purchaseMode;
       $scope.cfpState = cfpState;
 
       if (Auth.credentials()) { $state.go('home'); }
