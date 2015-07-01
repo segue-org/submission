@@ -20,7 +20,7 @@
     <span form-error="kind.object_required" translate>por favor, informe o tipo de comprador</span>
   </p>
 
-  <p>
+  <p ng-hide="!haveDiscount && isPromoCode">
     <label translate>forma de pagamento: </label>
     <span ng-show="purchaseMode == 'online' && selectedProduct.can_pay_cash == false">
       <input type="radio" id="payment_boleto" name="payment_method" value="boleto"

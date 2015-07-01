@@ -29,6 +29,31 @@ main.purchase {
 
 .products {
 
+  .wide {
+    width:auto;
+    line-height:2rem;
+  }
+
+  .input-promocode {
+    width:10rem;
+    float:left;
+  }
+
+  .button-promocode {
+    float:none;
+    margin-left:0.5rem;
+    font-size:1rem;
+    padding:0.2rem 0.6rem;
+  }
+
+  .button-promocode-valid {
+    color: green;
+  }
+
+  .promocode-error {
+    color:red;
+  }
+
   .product_list {
     input[type=radio] {
       display:none;

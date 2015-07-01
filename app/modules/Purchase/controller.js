@@ -108,23 +108,35 @@
       $scope.selectedProduct = {};
       $scope.purchaseMode = purchaseMode;
 
+      $scope.haveDiscount = false;
+      $scope.isPromoCode = false;
+      $scope.discountValue = 0;
+      $scope.products = products;
+
+      $scope.promoCodeError = false;
+      $scope.promocode = { "hash": "" };
 
       $scope.isCaravan = $stateParams.caravan_hash !== undefined;
       $scope.isProponent = $stateParams.proponent_hash !== undefined;
 
-      $scope.productsByPeriod = _(products).groupBy('sold_until')
-                                           .pairs()
-                                           .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
-                                           .value();
+      $scope.refreshProducts = function(products) {
+        $scope.selectedProduct = {};
+        return _(products).groupBy('sold_until')
+                          .pairs()
+                          .map(function(p) { return [p[0],_.groupBy(p[1], 'category')]; })
+                          .value();
+      }
 
       $scope.updateSelectedProduct = function(newId) {
-        $scope.selectedProduct = _(products).findWhere({ id: newId });
+        $scope.selectedProduct = _($scope.products).findWhere({ id: newId });
         if ($scope.selectedProduct.category == 'student') {
           $scope.buyer.kind = 'person';
           $scope.showDialog('student');
         }
         resetPaymentMethod();
       };
+
+      $scope.productsByPeriod = $scope.refreshProducts($scope.products);
 
       $scope.showDialog = ContractModal.show;
 
@@ -155,6 +167,36 @@
           $scope.buyer.name = $scope.temp_name;
         }
       };
+
+      $scope.verifyPromoCode = function() {
+        console.log($scope.promocode.hash);
+        Purchases.verifyPromoCode($scope.promocode.hash).then(
+          function(ret) {
+            $scope.promoCodeError = false;
+            $scope.isPromoCode = true;
+
+            $scope.buyer.hash_code = $scope.promocode.hash;
+            var promo_products = {
+              0: ret.product
+            };
+            $scope.products = promo_products;
+            $scope.productsByPeriod = $scope.refreshProducts(promo_products);
+
+            if (ret.discount < 1) {
+              console.log('valid promocode, partial discount');
+              $scope.haveDiscount = true;
+              $scope.discountValue = ret.discount*100;
+            } else {
+              console.log('valid promocode, full discount');
+              $scope.haveDiscount = false;
+            }
+          }
+        ).catch(function() {
+          console.log('invalid promocode');
+          $scope.isPromoCode = false;
+          $scope.promoCodeError = true;
+        })
+      }
 
       $scope.$watch($scope.credentials, function() {
         if ($scope.credentials) {

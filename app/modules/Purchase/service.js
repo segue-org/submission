@@ -71,6 +71,9 @@
         if (!credentials) { return; }
         return service.getList({ customer_id: credentials.id });
       };
+      extensions.verifyPromoCode = function(hash) {
+        return service.one('promocode').one(hash).get();
+      };
 
       return _.extend(service, extensions);
     });

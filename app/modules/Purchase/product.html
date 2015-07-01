@@ -2,12 +2,22 @@
   <legend translate>qual ingresso você quer comprar?</legend>
   <span translate ng-show="productsByPeriod.length">(clique abaixo no ingresso desejado)</span>
   <p>
+    <p>
+      <label class="wide" translate>insira aqui seu código promocional:</label>
+      <input class="input-promocode" ng-readonly="isPromoCode" name="promocode" ng-model="promocode.hash" type="text" />
+      <button ng-click="verifyPromoCode()" ng-hide="isPromoCode" class="button-promocode" translate>verificar</button>
+      <button ng-hide="!isPromoCode" ng-disabled="isPromoCode" class="button-promocode button-promocode-valid" translate>verificado!</button>
+      <span class="promocode-error" ng-hide="!promoCodeError">Código promocional inválido ou já utilizado</span>
+      <span class="promocode-discount" ng-show="haveDiscount && isPromoCode">Ingresso com desconto parcial: {{discountValue}}%</span>
+      <span class="promocode-discount free" ng-show="!haveDiscount && isPromoCode">Ingresso cortesia</span>
+    </p>
     <table ng-show="productsByPeriod.length">
       <tr>
         <th class="date">disponível até...</th>
-        <th ng-hide="isCaravan" class="category">individual</th>
-        <th ng-hide="isCaravan" class="category">estudante</th>
+        <th ng-hide="isCaravan || isPromoCode" class="category">individual</th>
+        <th ng-hide="isCaravan || isPromoCode" class="category">estudante</th>
         <th ng-show="isCaravan" class="category">caravana</th>
+        <th ng-show="isPromoCode" class="category">código promocional</th>
       </tr>
       <tr class="rows" ng-repeat="period in productsByPeriod">
         <td class="date">
