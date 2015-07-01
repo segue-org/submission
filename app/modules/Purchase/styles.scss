@@ -1,5 +1,9 @@
 @import 'modules/common/mixins.scss';
 
+.print-only {
+  display:none;
+}
+
 main.purchase {
   input { @include hide-placeholder; }
 
@@ -133,6 +137,7 @@ main.purchase {
     padding: 1rem;
     border: 1px solid black;
     text-align: center;
+    font-size:1.8rem;
   }
 
   h2 {
@@ -159,6 +164,16 @@ main.purchase {
     margin: 0.2rem;
     padding: 0.5rem;
     border: 0px;
+  }
+
+  @media print {
+    .no-print {
+      display:none;
+    }
+
+    .print-only {
+      display:block;
+    }
   }
 }
 

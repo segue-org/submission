@@ -1,8 +1,13 @@
 <fieldset class="guide">
+  <button class="no-print" ng-click="printWindow()">Imprimir</button>
+
+  <div class="print-only">
+    <img width="100" class="logo ng-scope" src="/images/logo-pt.png" />
+  </div>
+
   <legend translate>
     Ficha de Participante
   </legend>
-
 
   <h1>
     INSCRIÇÃO #{{ purchase.id }} - {{ human_category }}<br/>

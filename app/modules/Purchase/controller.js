@@ -85,7 +85,11 @@
 
       $scope.purchase = purchase;
     })
-    .controller('GuidePurchaseController', function($scope, $stateParams, guide, Auth) {
+    .controller('GuidePurchaseController', function($scope, $stateParams, guide, Auth, $window) {
+      $scope.printWindow = function() {
+        $window.print();
+      }
+
       var HUMAN_STATUSES = {
         pending: 'aguardando pagamento',
         paid: 'pagamento confirmado',
