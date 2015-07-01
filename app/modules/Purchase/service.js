@@ -59,12 +59,26 @@
       };
       extensions.pay = function(method) {
         return function(purchaseObject) {
-          var purchase = service.one(purchaseObject.id);
-          return purchase.post('pay/' + method);
+          var p = service.one(purchaseObject.id).get().then(function(purchase) {
+            if (purchase.status == "paid")
+              return purchase;
+            else
+              return purchase.post('pay/' + method);
+          });
+          return p;
         };
       };
       extensions.followPaymentInstructions = function(response) {
-        $window.location.href = response.redirectUserTo;
+        var instructions_url = "";
+        if (_.has(response, '$type')) {
+          if (response['$type'] == 'Purchase.normal') {
+            instructions_url = "/#/purchase/" + response['id'] + "/payment/" + response['payments'][0].id + "/guide";
+          }
+        }
+        else {
+          instructions_url = response.redirectUserTo;
+        }
+        $window.location.href = instructions_url;
       };
       extensions.getOwnedByCredentials = function() {
         var credentials = Auth.credentials();

@@ -6,13 +6,18 @@
 
   <h1>
     INSCRIÇÃO #{{ purchase.id }} - {{ human_category }}<br/>
-    {{ human_status }} -
+    {{ human_status }}
     <span ng-hide="purchase.status == 'paid'">
-      {{ product.price | realbrasileiro }}
+      <span ng-hide="product.is_promo">
+       - {{ product.price | realbrasileiro }}
+      </span>
+      <span ng-show="product.is_promo">
+        - {{ product.price * promocode.discount | realbrasileiro }} ({{ promocode.discount * 100 }}%)
+      </span>
     </span>
     <br />
     <span ng-show="product.is_promo">
-      CÓDIGO PROMOCIONAL: {{  }}
+      CÓDIGO PROMOCIONAL: {{ promocode.hash_code }}
     </span>
   </h1>
 

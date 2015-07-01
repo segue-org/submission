@@ -103,11 +103,12 @@
       $scope.credentials = Auth.glue($scope, 'credentials');
       $scope.$on('auth:changed', $scope.home);
 
-      $scope.buyer    = guide.buyer;
-      $scope.payment  = guide.payment;
-      $scope.purchase = guide.purchase;
-      $scope.customer = guide.purchase.customer;
-      $scope.product  = guide.purchase.product;
+      $scope.buyer     = guide.buyer;
+      $scope.payment   = guide.payment;
+      $scope.purchase  = guide.purchase;
+      $scope.customer  = guide.purchase.customer;
+      $scope.product   = guide.purchase.product;
+      $scope.promocode = guide.promocode;
       $scope.human_status = HUMAN_STATUSES[guide.purchase.status];
       $scope.human_category = HUMAN_CATEGORIES[$scope.product.category];
     })
