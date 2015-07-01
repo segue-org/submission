@@ -1,14 +1,18 @@
 <fieldset class="guide">
   <legend translate>
-    Guia de Pagamento
+    Ficha de Participante
   </legend>
 
 
   <h1>
-    INSCRIÇÃO #{{ purchase.id }} - {{ product.category }}<br/>
+    INSCRIÇÃO #{{ purchase.id }} - {{ human_category }}<br/>
     {{ human_status }} -
     <span ng-hide="purchase.status == 'paid'">
       {{ product.price | realbrasileiro }}
+    </span>
+    <br />
+    <span ng-show="product.is_promo">
+      CÓDIGO PROMOCIONAL: {{  }}
     </span>
   </h1>
 
@@ -37,7 +41,7 @@
       <li><b>telefone:</b> {{ customer.phone }}</li>
 
       <li><b>valor:</b> {{ product.price | realbrasileiro }}</li>
-      <li><b>categoria:</b> {{ product.category }}</li>
+      <li><b>categoria:</b> {{ human_category }} ({{ product.category }})</li>
       <li ng-show="product.gives_kit"><b>recebe kit:</b> sim</li>
       <li ng-hide="product.gives_kit"><b>recebe kit:</b> não</li>
       <li><b>tipo:</b> {{ product.description }}</li>

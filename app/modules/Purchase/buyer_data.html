@@ -20,19 +20,19 @@
     <span form-error="kind.object_required" translate>por favor, informe o tipo de comprador</span>
   </p>
 
-  <p ng-hide="!haveDiscount && isPromoCode">
+  <p>
     <label translate>forma de pagamento: </label>
-    <span ng-show="purchaseMode == 'online' && selectedProduct.can_pay_cash == false">
+    <span ng-show="purchaseMode == 'online' && !selectedProduct.can_pay_cash">
       <input type="radio" id="payment_boleto" name="payment_method" value="boleto"
              ng-model="payment.method"/>
       <label for="payment_boleto" translate>boleto bancário</label>
     </span>
-    <span ng-show="purchaseMode == 'online' && selectedProduct.can_pay_cash == false">
+    <span ng-show="purchaseMode == 'online' && !selectedProduct.can_pay_cash">
       <input type="radio" id="payment_pagseguro" name="payment_method" value="pagseguro"
              ng-model="payment.method" />
       <label for="payment_pagseguro" translate>pagseguro</label>
     </span>
-    <span ng-show="selectedProduct.can_pay_cash == true">
+    <span ng-show="selectedProduct.can_pay_cash">
       <input type="radio" id="payment_cash" name="payment_method" value="cash"
              ng-model="payment.method"/>
       <label for="payment_cash" translate>no evento</label>

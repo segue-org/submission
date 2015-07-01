@@ -91,6 +91,15 @@
         paid: 'pagamento confirmado',
         reimburse: 'reembolsada'
       };
+      var HUMAN_CATEGORIES = {
+        speaker: 'palestrante',
+        proponent: 'proponente',
+        normal: 'normal',
+        promocode: 'código promocional',
+        student: 'estudante',
+        caravan: 'caravana',
+        'proponent-student': 'proponente - estudante'
+      }
       $scope.credentials = Auth.glue($scope, 'credentials');
       $scope.$on('auth:changed', $scope.home);
 
@@ -100,6 +109,7 @@
       $scope.customer = guide.purchase.customer;
       $scope.product  = guide.purchase.product;
       $scope.human_status = HUMAN_STATUSES[guide.purchase.status];
+      $scope.human_category = HUMAN_CATEGORIES[$scope.product.category];
     })
     .controller('NewPurchaseController', function($rootScope, $scope, $stateParams,
                                                   Config, Auth, Validator, FormErrors, ContractModal,
@@ -176,9 +186,7 @@
             $scope.isPromoCode = true;
 
             $scope.buyer.hash_code = $scope.promocode.hash;
-            var promo_products = {
-              0: ret.product
-            };
+            var promo_products = [ ret.product ];
             $scope.products = promo_products;
             $scope.productsByPeriod = $scope.refreshProducts(promo_products);
 
@@ -218,6 +226,9 @@
       };
 
       $scope.submit = function() {
+        // This is UGLY, fix it later
+        $scope.buyer.payment_method = $scope.payment.method;
+
         Validator.validate($scope.buyer, 'purchases/buyer')
                  .then(Products.purchase($scope.selectedProduct.id))
                  .then(Purchases.pay($scope.payment.method))
