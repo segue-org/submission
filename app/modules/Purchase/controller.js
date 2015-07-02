@@ -194,6 +194,7 @@
             var promo_products = [ ret.product ];
             $scope.products = promo_products;
             $scope.productsByPeriod = $scope.refreshProducts(promo_products);
+            $scope.updateSelectedProduct(ret.product.id);
 
             if (ret.discount < 1) {
               console.log('valid promocode, partial discount');

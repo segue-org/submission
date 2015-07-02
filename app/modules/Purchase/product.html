@@ -11,7 +11,7 @@
       <span class="promocode-discount" ng-show="haveDiscount && isPromoCode">Ingresso com desconto parcial: {{discountValue}}%</span>
       <span class="promocode-discount free" ng-show="!haveDiscount && isPromoCode">Ingresso cortesia</span>
     </p>
-    <table ng-show="productsByPeriod.length">
+    <table ng-show="productsByPeriod.length && !isPromoCode">
       <tr>
         <th class="date">disponível até...</th>
         <th ng-hide="isCaravan || isPromoCode" class="category">individual</th>
