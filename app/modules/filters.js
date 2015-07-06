@@ -2,7 +2,9 @@
   "use strict";
 
   angular
-    .module('segue.submission.filters', [ ])
+    .module('segue.submission.filters', [
+      'segue.submission.humanized'
+    ])
     .filter('dateFromTimestamp', function() {
       return function(input) {
         var year  = input.substring(0,4);
@@ -40,6 +42,17 @@
           return n.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
         }
         return 'R$ ' + formatCurrency(parseFloat(input));
+      };
+    })
+    .filter('humanize', function(HumanizedStrings) {
+      return function(input) {
+        return HumanizedStrings[input] || input;
+      };
+    })
+    .filter('document', function() {
+      return function(input) {
+        if (!input) { return; }
+        return input.replace(/(\d\d\d)/g,"$1.").replace(/.(\d\d)$/,"-$1");
       };
     });
 })();

@@ -1,0 +1,42 @@
+fieldset.reception {
+
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+
+
+  h1 {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid black;
+    text-align: center;
+    font-size:1.8rem;
+  }
+
+  h2 {
+    font-size: 110%;
+    text-align: center;
+    color: black;
+  }
+
+  .info {
+    font-size:large;
+    font-family:sans-serif;
+  }
+
+  ul {
+    margin: 0.5rem;
+    color: gray;
+    .important {
+      font-size: large;
+      color: black;
+    }
+  }
+
+  fieldset {
+    margin: 0.2rem;
+    padding: 0.5rem;
+    border: 0px;
+  }
+
+}
+

@@ -28,6 +28,7 @@
       'segue.submission.caravan',
       'segue.submission.caravaninvite',
       'segue.submission.notification',
+      'segue.submission.reception',
       'segue.submission.judge'
     ])
     .controller('SubmissionController', function($scope, $state, Config, Auth, $stateParams) {

@@ -1,0 +1,77 @@
+<fieldset class="reception">
+  <button class="no-print" ng-click="printWindow()">Imprimir</button>
+
+  <div class="print-only">
+    <img width="100" class="logo ng-scope" src="/images/logo-pt.png" />
+  </div>
+
+  <legend translate>
+    Ficha de Participante
+  </legend>
+
+  <h1>
+    INSCRIÇÃO #{{ person.id }}<br/>
+    {{ person.category | humanize }} - {{ person.status | humanize }}
+  </h1>
+
+  <div ng-hide="person.has_valid_ticket">
+    <span>
+      valor: {{ product.price | realbrasileiro }}
+    </span>
+
+    <div ng-repeat="payment in person.payments">
+      ...
+    </div>
+  </div>
+  <div ng-show="product.is_promo">
+    CÓDIGO PROMOCIONAL: {{ promocode.hash_code }}
+  </div>
+
+  <h2>
+    Para agilizar o seu atendimento, por favor
+    leve essa página impressa e apresente-a
+    no balcão de atendimento.
+  </h2>
+
+  <div class="info" ng-hide="person.has_valid_ticket">
+    O pagamento de sua inscrição deverá ser realizado
+    presencialmente no dia do evento. O pagamento
+    poderá ser efetuado em dinheiro ou através de cartão
+    de crédito/débito.
+  </div>
+
+  <fieldset>
+    <legend>Dados do Participante</legend>
+
+    <ul>
+      <li class="important"><b>nome:</b> {{ person.name }}</li>
+      <li class="important"><b>email:</b> {{ person.email }}</li>
+      <li class="important"><b>documento:</b> {{ person.document |document }}</li>
+
+      <li><b>organização:</b> {{ person.organization }}</li>
+
+      <li><b>valor:</b> {{ person.price | realbrasileiro }}</li>
+      <li><b>categoria:</b> {{ person.category | humanize }}</li>
+      <li ng-show="person.product.gives_kit"><b>recebe kit:</b> sim</li>
+      <li ng-hide="person.product.gives_kit"><b>recebe kit:</b> não</li>
+      <li><b>tipo:</b> {{ product.description }}</li>
+    </ul>
+  </fieldset>
+
+  <fieldset>
+    <legend>Dados do Comprador</legend>
+
+    <ul>
+      <li><b>nome:</b> {{ person.buyer.name }}</li>
+      <li><b>tipo:</b> {{ person.buyer.kind | humanize }}</li>
+      <li><b>documento:</b> {{ person.buyer.document | document }}</li>
+      <li><b>país:</b> {{ person.buyer.address_country }}</li>
+      <li><b>cidade:</b> {{ person.buyer.address_city }}</li>
+      <li><b>rua:</b> {{ person.buyer.address_street }}</li>
+      <li><b>número:</b> {{ person.buyer.address_number }}</li>
+      <li><b>complemento:</b> {{ person.buyer.address_extra }}</li>
+      <li><b>CEP:</b> {{ person.buyer.address_zipcode }}</li>
+    </ul>
+  </fieldset>
+
+</fieldset>
