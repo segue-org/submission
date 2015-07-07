@@ -18,6 +18,9 @@
     })
     .controller('ReceptionController', function($scope, Reception, person) {
       $scope.person = person;
+
+      var promocode_payment = _.findWhere(person.payments, { "type": "promocode" });
+      if (promocode_payment) { $scope.promocode = promocode_payment.promocode; }
     })
     .service('Reception', function(Restangular) {
       var service = Restangular.service('fd/reception');

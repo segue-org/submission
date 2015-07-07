@@ -12,20 +12,20 @@
   <h1>
     INSCRIÇÃO #{{ person.id }}<br/>
     {{ person.category | humanize }}
-    <span ng-hide="person.category == 'speaker'">{{ person.status | humanize }}</span>
+    <span ng-show="person.kind == 'public'" ng-hide="promocode">{{ person.status | humanize }}</span>
+
+    <span ng-show="promocode">
+      <br/>
+      {{ promocode.hash_code }}
+    </span>
+
   </h1>
 
   <div ng-hide="person.has_valid_ticket">
     <span>
-      valor: {{ product.price | realbrasileiro }}
+      valor pendente: {{ person.outstanding_amount | realbrasileiro }}
     </span>
 
-    <div ng-repeat="payment in person.payments">
-      ...
-    </div>
-  </div>
-  <div ng-show="product.is_promo">
-    CÓDIGO PROMOCIONAL: {{ promocode.hash_code }}
   </div>
 
   <h2>
