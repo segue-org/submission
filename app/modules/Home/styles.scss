@@ -97,25 +97,26 @@ main.home {
       position: absolute;
       right: 1%;
       bottom: -20%;
+      padding: 10px;
 
-      &.pending { color: red; }
-      &.paid    { color: green; }
-      &.expired { color: darkred; }
+      &.pending { background-color: lightpink; color: black; }
+      &.paid    { background-color: green;     color: black; }
+      &.expired { background-color: darkred;   color: white; }
     }
-    
+
     .button-expired {
       position:relative;
       font-size:100%;
       background-color:darkred;
- 
+
       &:hover { background-color:pink; }
     }
-    
+
     .button-clone-expired {
       top:1.5em;
       left:10%;
     }
-    
+
     .number {
       position: absolute;
       left: 35%;
@@ -143,16 +144,16 @@ main.home {
         color:black;
       }
     }
-    
+
     .payment_method {
       padding:5px;
       float:right;
       margin-top:-35px;
-      
+
       button {
         font-size:small;
       }
-      
+
       span {
         text-align:center;
         background-color:white;
@@ -164,12 +165,12 @@ main.home {
       }
     }
   }
-  
+
 }
 
 .box-icon {
   position:absolute;
   top:0.2em;
   right:0.2em;
-  font-size:1.5em;    
+  font-size:1.5em;
 }
