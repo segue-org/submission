@@ -11,7 +11,8 @@
 
   <h1>
     INSCRIÇÃO #{{ person.id }}<br/>
-    {{ person.category | humanize }} - {{ person.status | humanize }}
+    {{ person.category | humanize }}
+    <span ng-hide="person.category == 'speaker'">{{ person.status | humanize }}</span>
   </h1>
 
   <div ng-hide="person.has_valid_ticket">
