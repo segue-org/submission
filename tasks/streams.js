@@ -77,8 +77,8 @@
   function minifyCss(fn, filename) {
     return function() {
       return fn().pipe(plugins.concat(filename, { sourceContent: true }))
-                 .pipe(plugins.minifyCss());
-    }
+                 .pipe(plugins.minifyCss({ processImport: false }));
+    };
   }
 
   function streamTemplates () {

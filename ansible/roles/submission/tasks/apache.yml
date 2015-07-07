@@ -15,9 +15,6 @@
             mode=0644
   notify: restart apache2
 
-- name: Disable apache site default
-  command: a2dissite 000-default
-
 - name: Enable apache site {{ sitename }}
   command: a2ensite {{ sitename }}
   notify: restart apache2
