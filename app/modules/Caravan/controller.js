@@ -88,6 +88,8 @@
       };
 
       $scope.openInviteModal = function() {
+        return false;
+        /*
         var inviteConfig = { controller: "NewCaravanInviteController", template: 'modules/Caravan/invite.html' };
         var dialog = ngDialog.open(inviteConfig);
         return dialog.closePromise.then(function(data) {
@@ -95,7 +97,7 @@
           if (_(data.value).isString()) { return; }
           if (_(data.value).isEmpty()) { return; }
           $scope.newInvites.push(data.value);
-        });
+        }); */
       };
     })
     .controller('NewCaravanController', function($scope, ngDialog, Products,
