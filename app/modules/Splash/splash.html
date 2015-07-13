@@ -6,7 +6,13 @@
 </div>
 
 <div class="buttons">
-  <div>
+  <div ng-hide="registrationState == 'open'">
+    <header translate>Certificados <i>em breve!</i></header>
+    <button>
+      aguarde e-mail com informações
+    </button>
+  </div>
+  <div ng-show="registrationState == 'open'">
     <header translate>Participantes</header>
     <div ng-show="purchaseMode == 'online'">
       <button ng-click="showInfo('initial', 'contract_large')" translate>quero comprar um ingresso</button>
@@ -24,7 +30,7 @@
 
   </div>
 
-  <div>
+  <div ng-show="registrationState == 'open'">
     <header translate>Palestrantes</header>
     <button ui-sref="proposal.new" ng-hide="cfpState == 'open'" translate>
       submissão de propostas encerrada!
