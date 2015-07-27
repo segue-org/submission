@@ -25,6 +25,9 @@
           views: {
             "main@": { templateUrl: 'modules/Certificate/certificate.survey.html', controller: 'SurveyController' }
           },
+          resolve: {
+            survey: function(Survey) { return Survey.get(); }
+          }
         })
         .state('certificate.name', {
           url: '^/certificate/set-name',
@@ -61,8 +64,14 @@
         $scope.issue(certificate.descriptor);
       });
     })
-    .controller('SurveyController', function($scope, Survey, certificates) {
-      $scope.certificates = certificates;
+    .controller('SurveyController', function($scope, $state, Survey, survey) {
+      $scope.survey = survey;
+      $scope.responses = {};
+      $scope.doSubmit = function() {
+        Survey.saveAnswers($scope.responses).then(function(data) {
+          $state.go('certificate.name');
+        });
+      };
     })
     .controller('NameController', function($scope, $state, Account, account, certificates, focusOn) {
       if (account.certificate_name) {

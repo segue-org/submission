@@ -1,6 +1,33 @@
 <fieldset class="survey">
-  survey
-  <button ui-sref="certificate.name">
-    prosseguir
-  </button>
+  <legend translate>
+    Pesquisa de Satisfação
+  </legend>
+
+  <div class="info">
+    <span translate>
+      Para ajudar a construir um fisl cada vez melhor,
+      convidamos você para participar de nossa pesquisa
+      de satisfação abaixo.
+    </span>
+
+      <a ui-sref="certificate.name" translate>
+        não, obrigado > >
+      </a>
+  </div>
+
+  <form>
+    <div class="question" ng-repeat="entry in survey">
+      <label>{{ entry.order+1}}) {{ entry.question }}</label>
+      <br/>
+      <span class="option" ng-repeat="option in entry.alternatives">
+        <input type="radio" ng-model="responses[entry.label]" id="opt_{{entry.order}}_{{$index}}" value="{{ option }}"/>
+        <label for="opt_{{entry.order}}_{{$index}}">{{ option }}</label>
+      </span>
+    </div>
+    <div class="action">
+      <button ng-click="doSubmit()" translate>
+        enviar respostas!
+      </button>
+    </div>
+  </form>
 </fieldset>
