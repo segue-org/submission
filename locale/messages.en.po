@@ -73,21 +73,6 @@ msgstr "(will be used for login)"
 msgid "(somente residentes no Brasil)"
 msgstr "(only Brazilian residents)"
 
-#: /Users/fmobus/segue/submission/app/modules/Home/home.html
-msgid ""
-"<button class=\"button-expired button-clone-expired\" ng-click="
-"\"clonePayment(purchase)\">comprar o mesmo ingresso no próximo lote</button>"
-msgstr ""
-
-#: /Users/fmobus/segue/submission/app/modules/Home/home.html
-msgid ""
-"<span>forma de pagamento:</span>\n"
-"            <button ng-click=\"doPayment(purchase, 'boleto')\">boleto "
-"bancário</button>\n"
-"            <button ng-click=\"doPayment(purchase, 'pagseguro')\">pagseguro</"
-"button>"
-msgstr ""
-
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
 msgid ""
 "Acabamos de enviar uma mensagem contendo as instruções\n"
@@ -165,6 +150,15 @@ msgstr "Thanks for your participation!"
 msgid "Palestrantes"
 msgstr "Speakers"
 
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.survey.html
+msgid ""
+"Para ajudar a construir um fisl cada vez melhor,\n"
+"      convidamos você para participar de nossa pesquisa\n"
+"      de satisfação abaixo."
+msgstr ""
+"To help us build a better FISL, we kindly invite youto fill our satisfaction "
+"survey below"
+
 #: /Users/fmobus/segue/submission/app/modules/Invite/register.html
 msgid ""
 "Para participar como co-autor desta palestra, é\n"
@@ -214,10 +208,13 @@ msgid ""
 "    proponentes."
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.survey.html
+msgid "Pesquisa de Satisfação"
+msgstr "Satisfaction Survey"
+
 #: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
 msgid ""
-"Sua palestra (descrita abaixo) foi aceita para apresentação no <b>FISL16</"
-"b>.\n"
+"Sua palestra (descrita abaixo) foi aceita para apresentação no <b>FISL16</b>.\n"
 "    Para confirmar sua vinda ao evento para apresentação dessa palestra, "
 "utilize\n"
 "    os botões abaixo."
@@ -290,6 +287,7 @@ msgstr "authors"
 msgid "avaliador"
 msgstr "judge"
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
 #: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "boleto bancário"
 msgstr ""
@@ -323,6 +321,10 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Purchase/form.html
 msgid "comprar ingresso"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "comprar o mesmo ingresso no próximo lote"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
@@ -478,6 +480,10 @@ msgstr "sign in!"
 msgid "enviar instruções!"
 msgstr "send instructions!"
 
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.survey.html
+msgid "enviar respostas!"
+msgstr "submit answers!"
+
 #: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.issue.html
 msgid "erro!"
 msgstr "error!"
@@ -511,8 +517,8 @@ msgstr "this is you!"
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 #: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid ""
-"estrangeiros não-residentes, favor informar o passaporte; cidadãos do "
-"Mercosul podem informar documento de identidade nacional"
+"estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul "
+"podem informar documento de identidade nacional"
 msgstr ""
 "non-resident foreigners, please inform your passport; mercosur citizens may "
 "inform their national identity numbers"
@@ -531,6 +537,7 @@ msgstr ""
 msgid "favor informar o número"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
 #: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "forma de pagamento:"
 msgstr ""
@@ -637,11 +644,11 @@ msgstr "invitee's name"
 
 #: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
 msgid "nome:"
-msgstr ""
+msgstr "name:"
 
 #: /Users/fmobus/segue/submission/app/modules/Account/reset.html
 msgid "nova senha"
-msgstr ""
+msgstr "new password"
 
 #: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
@@ -652,6 +659,10 @@ msgstr "we could not detect a session on your computer..."
 #: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
 msgid "não, eu não vou apresentar esta palestra"
 msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.survey.html
+msgid "não, obrigado > >"
+msgstr "no, thanks > >"
 
 #: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
@@ -665,7 +676,7 @@ msgstr "technical level"
 
 #: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "número"
-msgstr ""
+msgstr "number"
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
@@ -711,19 +722,20 @@ msgstr "title must have at least 5 characters"
 
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
 msgid "pagar"
-msgstr ""
+msgstr "pay"
 
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
 msgid "pago"
-msgstr ""
+msgstr "paid"
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
 #: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "pagseguro"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "passaporte"
-msgstr ""
+msgstr "passport"
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
