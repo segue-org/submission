@@ -1,3 +1,29 @@
+<fieldset class="certificates">
+  <legend translate>
+    meus certificados
+  </legend>
+  <ul>
+    <li ng-repeat="cert in myCertificates">
+      <span class="title">{{ cert.kind | humanize }}</span>
+      <span class="number" ng-show="cert.kind == 'attendant'">número: <b>{{ cert.person }}</b></span>
+      <span ng-hide="cert.name" class="talk">{{ cert.talk }}</span>
+      <small ng-show="cert.name" class="name">{{ cert.name }} - {{ cert.talk }}</small>
+      <span ng-hide="cert.name" class="empty" translate>grafia não confirmada</span>
+      <a ng-show="cert.status == 'issued'" class="status issued" href="{{cert.full_url}}" target="_blank" translate>
+        emitido no dia {{ cert.issue_date | date_locale }}
+      </a>
+      <span ng-hide="cert.status == 'issued'" class="status {{ cert.status }}" translate>
+        {{ cert.status | humanize }}
+      </span>
+    </li>
+    <li class="button" ui-sref="certificate.survey" ng-show="canIssueNewCerts()">
+      <span translate translate-n="myCertificates.length" translate-plural="emitir certificados..." translate>
+        emitir certificado...
+      </span>
+    </li>
+  </ul>
+</fieldset>
+
 <fieldset class="purchases">
     <legend translate>
         meus ingressos
@@ -43,12 +69,12 @@
     </legend>
     <ul>
         <li class="unsaved" ng-show="currentProposal" ui-sref="proposal.new">
-        <span class="title">{{ currentProposal.title }}</span>
-        <span class="title empty" ng-hide="currentProposal.title" translate> sem título</span>
-        <span class="track">{{ currentProposal.track }}</span>
-        <span class="authors"><b>{{ account.name }}</b></span>
-        <span class="when" translate>proposta ainda não enviada!</span>
-        <span class="delete" ng-click="removeCurrent($event)" translate>remover</span>
+          <span class="title">{{ currentProposal.title }}</span>
+          <span class="title empty" ng-hide="currentProposal.title" translate> sem título</span>
+          <span class="track">{{ currentProposal.track }}</span>
+          <span class="authors"><b>{{ account.name }}</b></span>
+          <span class="when" translate>proposta ainda não enviada!</span>
+          <span class="delete" ng-click="removeCurrent($event)" translate>remover</span>
         </li>
         <li ng-repeat="proposal in myProposals" ui-sref="proposal.edit({ id: proposal.id })">
           <i class="box-icon fa fa-newspaper-o"></i>

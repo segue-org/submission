@@ -1,0 +1,22 @@
+<fieldset class="issue">
+  <legend>
+    meus certificados
+  </legend>
+  <div class="line">
+    <ul>
+      <li ng-repeat="certificate in pending_certificates">
+        {{ certiticate.kind | humanize }}
+        {{ certificate.talk }}
+        <span class="loading" ng-hide="certificate.status == 'failed'" translate>emitindo ...</span>
+        <span class="error"   ng-show="certificate.status == 'failed'" translate>erro!</span>
+      </li>
+      <li ng-repeat="certificate in issued_certificates">
+        {{ certificate.kind | humanize }}
+        {{ certificate.talk }}
+        <a href="{{ certificate.full_url }}" target="_blank" translate>
+          visualizar
+        </a>
+      </li>
+    </ul>
+  </div>
+</fieldset>

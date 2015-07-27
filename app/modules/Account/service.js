@@ -13,7 +13,6 @@
       extensions.get = function() {
         var credentials = Auth.credentials();
         if (!credentials) { return; }
-        var ret = null;
         return service.one(credentials.id).get();
       };
       extensions.getDocumentField = function(country) {
@@ -38,6 +37,11 @@
 
       extensions.askReset = function(data) {
         return service.one('reset').post('', data);
+      };
+      extensions.setCertificateName = function(data) {
+        var credentials = Auth.credentials();
+        if (!credentials) { return; }
+        return service.one(credentials.id).post('certificate-name', data);
       };
 
       extensions.resetPassword = function(accountId) {

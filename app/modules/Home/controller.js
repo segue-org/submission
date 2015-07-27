@@ -7,7 +7,8 @@
       'segue.submission.proposal.service',
       'segue.submission.purchase.service',
       'segue.submission.caravan.service',
-      'segue.submission.home.controller'
+      'segue.submission.certificate.service',
+      'segue.submission.home.controller',
     ])
     .config(function($stateProvider) {
       $stateProvider
@@ -18,14 +19,15 @@
             main:   { controller: 'HomeController', templateUrl: 'modules/Home/home.html'  }
           },
           resolve: {
-            myCaravan:        function(Caravans)  { return Caravans.getOwnedByCredentials(); },
-            myProposals:      function(Proposals) { return Proposals.getOwnedByCredentials(); },
-            myInvites:        function(Proposals) { return Proposals.getByCoAuthors(); },
-            myPurchases:      function(Purchases) { return Purchases.getOwnedByCredentials(); },
-            currentProposal:  function(Proposals) { return Proposals.current(); },
-            signup:           function(Account)   { return Account.get(); },
-            cfpState:         function(Proposals) { return Proposals.cfpState(); },
-            purchaseMode:     function(Purchases) { return Purchases.purchaseMode(); }
+            myCaravan:        function(Caravans)     { return Caravans.getOwnedByCredentials(); },
+            myProposals:      function(Proposals)    { return Proposals.getOwnedByCredentials(); },
+            myInvites:        function(Proposals)    { return Proposals.getByCoAuthors(); },
+            myPurchases:      function(Purchases)    { return Purchases.getOwnedByCredentials(); },
+            myCertificates:   function(Certificates) { return Certificates.getOwnedByCredentials(); },
+            currentProposal:  function(Proposals)    { return Proposals.current(); },
+            signup:           function(Account)      { return Account.get(); },
+            cfpState:         function(Proposals)    { return Proposals.cfpState(); },
+            purchaseMode:     function(Purchases)    { return Purchases.purchaseMode(); },
           }
         });
 
@@ -34,16 +36,17 @@
     .module('segue.submission.home.controller', [])
     .controller('HomeController', function($scope, $state, $stateParams, $window,
                                            Auth, Proposals, Purchases, Account,
-                                           myPurchases, myProposals, myInvites, myCaravan,
+                                           myPurchases, myProposals, myInvites, myCaravan, myCertificates,
                                            currentProposal, signup, cfpState,
                                            Validator, FormErrors, purchaseMode, ngToast) {
       if (!Auth.credentials()) { $state.go('splash'); }
 
-      $scope.purchaseMode    = purchaseMode;
       $scope.myCaravan       = myCaravan;
       $scope.myPurchases     = myPurchases;
       $scope.myProposals     = myProposals;
       $scope.myInvites       = myInvites;
+      $scope.myCertificates  = myCertificates;
+      $scope.purchaseMode    = purchaseMode;
       $scope.currentProposal = (_.isEmpty(currentProposal))? null : currentProposal;
       $scope.caravan_hash    = $stateParams.caravan_hash;
       $scope.cfpState        = cfpState;
@@ -74,6 +77,10 @@
 
       var to_date = function(strDate) {
         return new Date(strDate);
+      };
+
+      $scope.canIssueNewCerts = function() {
+        return _(myCertificates).where({ status: 'issuable' }).value().length > 0;
       };
 
       $scope.doPayment = function(purchaseObject, method) {

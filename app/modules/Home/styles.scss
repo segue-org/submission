@@ -1,8 +1,12 @@
 main.home {
-  .caravans, .proposals, .purchases, .coauthors {
+  .caravans, .proposals, .purchases, .coauthors, .certificates {
     ul {
       padding: 0;
       margin: 0;
+    }
+    .empty {
+      color: maroon;
+      font-style: italic;
     }
 
     li.new {
@@ -24,6 +28,21 @@ main.home {
       }
     }
 
+    li.button {
+      background: gray;
+      box-shadow: 3px 3px 3px lightgray;
+      cursor: pointer !important;
+      color: white;
+      span {
+        padding-top: 0.8rem;
+        font-size: xx-large;
+        text-align: center;
+      }
+      &:hover {
+        outline: 3px solid black !important;
+      }
+    }
+
     li {
       border:1px solid #666;
       padding:10px;
@@ -35,8 +54,7 @@ main.home {
       position: relative;
       height: 4rem;
 
-      &:nth-child(odd)  { background: #BBB; }
-      &:nth-child(even) { background: #DDD; }
+      background: #DDD;
 
       >* { display: block; padding: 2px;}
       &:hover {
@@ -86,7 +104,7 @@ main.home {
     }
   }
 
-  .purchases {
+  .purchases, .certificates {
     li:not(.new) {
       cursor:inherit;
 
@@ -99,9 +117,11 @@ main.home {
       bottom: -20%;
       padding: 10px;
 
-      &.pending { background-color: lightpink; color: black; }
-      &.paid    { background-color: green;     color: black; }
-      &.expired { background-color: darkred;   color: white; }
+      &.pending  { background-color: lightpink; color: black; }
+      &.paid     { background-color: green;     color: black; }
+      &.expired  { background-color: darkred;   color: white; }
+      &.issued   { background-color: green;     color: white; }
+      &.issuable { background-color: lightpink; color: black; }
     }
 
     .button-expired {

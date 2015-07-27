@@ -26,5 +26,10 @@
         'paid':       'pago',
         'reimbursed': 'reembolsado',
         'stale':      'vencido',
+
+        // certificates
+        'attendant': 'participante',
+        'issued':    'emitido',
+        'issuable':  'pendente'
     });
 })();
