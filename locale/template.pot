@@ -6,6 +6,7 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "(Mercosul: use identidade nacional)"
 msgstr ""
 
@@ -17,9 +18,23 @@ msgstr ""
 msgid "(até 400 caracteres)"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/product.html
+msgid "(clique abaixo no ingresso desejado)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "(de 5 até 400 caracateres)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "(de 5 até 80 caracateres)"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "(de 5 até 80 caracteres)"
 msgstr ""
 
@@ -29,6 +44,7 @@ msgid "(inclua código de área)"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
+#: /Users/fmobus/segue/submission/app/modules/Account/reset.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "(mínimo 8 caracteres)"
 msgstr ""
@@ -45,13 +61,86 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "(somente residentes no Brasil)"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "<button class=\"button-expired button-clone-expired\" ng-click=\"clonePayment(purchase)\">comprar o mesmo ingresso no próximo lote</button>"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid ""
+"<span>forma de pagamento:</span>\n"
+"            <button ng-click=\"doPayment(purchase, 'boleto')\">boleto bancário</button>\n"
+"            <button ng-click=\"doPayment(purchase, 'pagseguro')\">pagseguro</button>"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
+msgid ""
+"Acabamos de enviar uma mensagem contendo as instruções\n"
+"      de recuperação de senha para seu e-mail. Caso persistam\n"
+"      os problemas no seu acesso, por favor entre em contato\n"
+"      o nosso suporte."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "Avaliação encerrada"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "CEP"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "Certificados <i>em breve!</i>"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/conclude.html
+msgid "Conclusão do pagamento"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.name.html
+msgid ""
+"Confirme abaixo a correta grafia de seu\n"
+"    nome para a emissão do certificado."
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid ""
 "Detectamos sua cidade e país usando um <a href=\"http://ip-api.com/\">serviço GeoIP</a>.\n"
 "        Caso os dados estejam incorretos, sinta-se a vontade para corrigir."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/guide.html
+#: /Users/fmobus/segue/submission/app/modules/Reception/reception.html
+msgid "Ficha de Participante"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "Instruções"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid ""
+"O horário definido para a sua palestra no <b>FISL16</b>\n"
+"    está definido conforme os dados abaixo. Para aceitar este\n"
+"    horário, por favor utilize os botões abaixo."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+msgid ""
+"O período de envio de propostas de palestra encerrou-se no dia 19 de Abril.\n"
+"    O procedimento de seleção e avaliação com participação do público começará\n"
+"    em breve."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "Obrigado por participar!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "Palestrantes"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Invite/register.html
@@ -61,9 +150,55 @@ msgid ""
 "    preencha os dados abaixo."
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/register.html
+msgid ""
+"Para participar desta caravana, é\n"
+"    necessário cadastrar-se em nosso sistema. Por favor\n"
+"    preencha os dados abaixo."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
+msgid ""
+"Para recuperar acesso a sua conta, por favor preencha\n"
+"      endereço de e-mail com o qual você criou o seu cadastro\n"
+"      inicialmente. Enviaremos uma mensagem com instruções."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "Participantes"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "Passaporte"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid ""
+"Pedimos desculpas, mas o prazo para confirmação\n"
+"    o horário de sua palestra. Por favor entre em\n"
+"    contato com a organização através do e-mail abaixo."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid ""
+"Pedimos desculpas, mas o prazo para confirmação de sua palestra\n"
+"    através da mensagem de notificação está encerrado. Outras propostas\n"
+"    de palestras serão convocadas, dando oportunidade a outros\n"
+"    proponentes."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid ""
+"Sua palestra (descrita abaixo) foi aceita para apresentação no <b>FISL16</b>.\n"
+"    Para confirmar sua vinda ao evento para apresentação dessa palestra, utilize\n"
+"    os botões abaixo."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
+msgid ""
+"Você está sendo convidado por <b>{{ invite.caravan.owner.name }}</b> para\n"
+"    participar de uma caravana para o <b>FISL 16</b>:"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
@@ -71,6 +206,22 @@ msgid ""
 "Você está sendo convidado por <b>{{ invite.proposal.owner.name }}</b> para\n"
 "    participar do <b>FISL 16</b> na condição de co-autor da proposta de palestra\n"
 "    descrita abaixo:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "a cidade da caravana deve ter no máximo 80 caracteres"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "a cidade da caravana deve ter no mínimo 5 caracteres"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "a cidade da caravana é obrigatória"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.name.html
+msgid "a grafia está correta"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
@@ -89,13 +240,72 @@ msgstr ""
 msgid "a proposta completa deve ter no mínimo 5 caracteres"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
 msgid "aceito este convite"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.name.html
+msgid "atenção: não é possível alterar o nome do certificado após essa confirmação"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "autores"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "avaliador"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "boleto bancário"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
+msgid "chefe da caravana:"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "cidade"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
+msgid "cidade:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "como co-autor"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "complemento"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "compra iniciada {{ purchase.created | date_locale }}"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/form.html
+msgid "comprar ingresso"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "confirmação de horário de palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.name.html
+msgid "confirmação de nome para o certificado"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "confirmação de presença como palestrante"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "contato"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
@@ -110,12 +320,29 @@ msgstr ""
 msgid "convidar outro co-autor..."
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invited.html
+msgid "convidar para a caravana..."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invite.html
+msgid "convidar participante para a caravana"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invite.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
 msgid "convidar!"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
+msgid "convite para caravana"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
 msgid "convite para co-autor"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/form.html
+msgid "criar caravana"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
@@ -130,16 +357,51 @@ msgstr ""
 msgid "criar proposta"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "criar uma caravana"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "criar uma conta"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "código de ativação:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Account/reset.html
+msgid "código de recuperação"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "dados do comprador"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "data:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "descrição"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
+msgid "descrição:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "e-mail"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invite.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
 msgid "e-mail do convidado"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "efetuar nova compra"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
@@ -147,9 +409,27 @@ msgstr ""
 msgid "email"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "emitido no dia {{ cert.issue_date | date_locale }}"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.issue.html
+msgid "emitindo ..."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "emitir certificado..."
+msgid_plural "emitir certificados..."
+msgstr[0] ""
+msgstr[1] ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "empresa / universidade"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "endereço"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
@@ -161,10 +441,19 @@ msgstr ""
 msgid "entrar!"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
+msgid "enviar instruções!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.issue.html
+msgid "erro!"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "escolha uma trilha"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "esqueci minha senha!"
 msgstr ""
@@ -176,13 +465,67 @@ msgid ""
 "        no sistema, por favor escolha outro"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "este ingresso está sendo comprado:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invited.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "este é você!"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "estrangeiros não-residentes, favor informar o passaporte; cidadãos do Mercosul podem informar documento de identidade nacional"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "expirou em <span class=\"date_small\">{{ purchase.product.sold_until | date_locale }}</span>"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "favor informar o endereço"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "favor informar o número"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "forma de pagamento:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "gostei de ambas"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "grafia não confirmada"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "horário:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "informe os dados da caravana abaixo"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/product.html
+msgid "insira aqui seu código promocional:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/common/contract.html
+msgid "leia o texto abaixo:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/common/contract.html
+msgid "li e aceito"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/common/contract.html
+msgid "li e não aceito"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
@@ -190,11 +533,28 @@ msgid "língua"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
 msgid "língua:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "mensagem enviada em:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "meus certificados"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 msgid "meus dados pessoais"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "meus ingressos"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "minha caravana"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
@@ -207,7 +567,11 @@ msgid "mini-currículo"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
-msgid "modificada em {{ proposal.last_updated }}"
+msgid "modificada em {{ proposal.last_updated | date_locale }}"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "no evento"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
@@ -215,15 +579,44 @@ msgstr ""
 msgid "nome"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "nome da caravana"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "nome da empresa"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "nome do comprador"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invite.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
 msgid "nome do convidado"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
+msgid "nome:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Account/reset.html
+msgid "nova senha"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "não conseguimos detectar sua sessão neste computador..."
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "não, eu não vou apresentar esta palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "não, quero criar uma conta"
 msgstr ""
 
@@ -231,9 +624,30 @@ msgstr ""
 msgid "nível da palestra"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "número"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "número do CPF"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "número: <b>{{ purchase.id }}</b>"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "o nome da caravana deve ter no máximo 80 caracteres"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "o nome da caravana deve ter no mínimo 5 caracteres"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/caravan.html
+msgid "o nome da caravana é obrigatório"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
@@ -256,16 +670,36 @@ msgstr ""
 msgid "o título deve ter no mínimo 5 caracteres"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "pagar"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "pago"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "pagseguro"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "passaporte"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "país"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/form.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/form.html
 msgid "por favor verifique as mensagens acima e tente novamente"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
+#: /Users/fmobus/segue/submission/app/modules/Account/reset.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
 msgid "por favor, defina uma senha com no mínimo 8 caracteres"
 msgstr ""
@@ -275,12 +709,30 @@ msgstr ""
 msgid "por favor, infome o seu número de telefone"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "por favor, informe a forma de pagamento"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invite.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
 msgid "por favor, informe o e-mail do convidado"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "por favor, informe o nome"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "por favor, informe o nome do contato"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invite.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/invite.html
 msgid "por favor, informe o nome do convidado"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "por favor, informe o tipo de comprador"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
@@ -295,6 +747,7 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "por favor, informe seu país"
 msgstr ""
 
@@ -305,6 +758,22 @@ msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "por favor, informe uma trilha válida"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "por mim"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "prazo para resposta:"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "prefiro proposta 1"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "prefiro proposta 2"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
@@ -319,14 +788,45 @@ msgstr ""
 msgid "proposta ainda não enviada!"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/product.html
+msgid "qual ingresso você quer comprar?"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invited.html
+msgid "quem será convidado?"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "quem vai apresentar?"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "quem é você?"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "quero comprar um ingresso"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "quero montar uma caravana"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "quero reservar meu ingresso"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Account/reset.html
+msgid "recuperar acesso!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Account/reset.html
+msgid "recuperação de senha"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/CaravanInvite/answer.html
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
 msgid "rejeito este convite"
 msgstr ""
@@ -335,8 +835,17 @@ msgstr ""
 msgid "remover"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "residentes no Brasil, favor informar a cidade"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
+msgid "residentes no Brasil, favor informar o CEP"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
 #: /Users/fmobus/segue/submission/app/modules/Account/signup.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/buyer_data.html
 msgid "residentes no Brasil, favor informar o CPF"
 msgstr ""
 
@@ -344,7 +853,12 @@ msgstr ""
 msgid "sair"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "sala:"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
+#: /Users/fmobus/segue/submission/app/modules/Caravan/form.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
 msgid "salvar alterações"
 msgstr ""
@@ -359,12 +873,24 @@ msgstr ""
 msgid "senha"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/invited.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/coauthors.html
 msgid "será convidado ao salvar"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
+msgid "sim, eu vou apresentar esta palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "sim, já tenho conta"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Proposal/form.html
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "submissão de propostas encerrada!"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Account/form.html
@@ -372,11 +898,21 @@ msgstr ""
 msgid "telefone"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
+msgid "tenho um código promocional"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "token"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/proposal.html
 msgid "trilha"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
 msgid "trilha:"
 msgstr ""
 
@@ -385,18 +921,38 @@ msgid "título da palestra"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Invite/answer.html
+#: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
 msgid "título:"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/product.html
+msgid "valores dos ingressos"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/product.html
+msgid "verificado!"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Purchase/product.html
+msgid "verificar"
+msgstr ""
+
 #: /Users/fmobus/segue/submission/app/modules/Proposal/wait.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/wait.html
 msgid "verifique sua caixa de e-mail"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Certificate/certificate.issue.html
+msgid "visualizar"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/logged-as.html
 msgid "você está logado como"
 msgstr ""
 
+#: /Users/fmobus/segue/submission/app/modules/Caravan/author.html
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
+#: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "você já tem conta no sistema?"
 msgstr ""
 
@@ -404,4 +960,20 @@ msgstr ""
 msgid ""
 "você pode convidar até três pessoas para\n"
 "    ajudar na apresentação dessa palestra"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "votos restantes"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "votos totais"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Judge/match.html
+msgid "votos usados"
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Home/home.html
+msgid "{{ cert.status | humanize }}"
 msgstr ""
