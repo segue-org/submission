@@ -44,13 +44,15 @@
                 expirou em <span class="date_small">{{ purchase.product.sold_until | date_locale }}</span>
             </button>
         </span>
-        <span class="payment_method" translate ng-show="payment.method[purchase.id] == 'clone'">
-            <button class="button-expired button-clone-expired" ng-click="clonePayment(purchase)">comprar o mesmo ingresso no próximo lote</button>
+        <span class="payment_method" ng-show="payment.method[purchase.id] == 'clone'">
+          <button class="button-expired button-clone-expired" ng-click="clonePayment(purchase)" translate>
+            comprar o mesmo ingresso no próximo lote
+          </button>
         </span>
-        <span class="payment_method" translate ng-show="payment.method[purchase.id] == 'show'">
-            <span>forma de pagamento:</span>
-            <button ng-click="doPayment(purchase, 'boleto')">boleto bancário</button>
-            <button ng-click="doPayment(purchase, 'pagseguro')">pagseguro</button>
+        <span class="payment_method" ng-show="payment.method[purchase.id] == 'show'">
+            <span translate>forma de pagamento:</span>
+            <button translate ng-click="doPayment(purchase, 'boleto')">boleto bancário</button>
+            <button translate ng-click="doPayment(purchase, 'pagseguro')">pagseguro</button>
         </span>
         <span class="status paid" ng-show="purchase.status == 'paid'" translate>pago</span>
         <span class="number" ng-show="purchase.status == 'paid'" translate>
