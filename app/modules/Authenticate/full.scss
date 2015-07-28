@@ -39,6 +39,13 @@ main.authenticate {
       &.expanded.done .only-expanded { transition: all 0.2s ease; display: normal; opacity: 1; }
 
       &.lines.expanded input { @include hide-placeholder; }
+
+      input + .forgot {
+        position: absolute;
+        font-size: x-large;
+        margin-top: 18px;
+        right: 70px;
+      }
     }
   }
 }

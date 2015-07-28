@@ -11,9 +11,8 @@
       $stateProvider
         .state('certificate', {
           url: '^/certificate/',
-          abstract: 'true',
           views: {
-            header: { templateUrl: 'modules/common/nav.html' }
+            header: { templateUrl: 'modules/common/nav.html', controller: 'CertificateController' }
           },
           resolve: {
             account: function(Account) { return Account.get(); },
@@ -42,8 +41,25 @@
           },
         });
     })
-    .controller('IssueController', function($scope, Certificates, Config, certificates) {
+    .controller('CertificateController', function($scope, $state, account, certificates) {
       $scope.enforceAuth();
+
+      function decideNext() {
+        console.log(account.has_filled_survey, account.certificate_name);
+        if (!account.has_filled_survey) {
+          $state.go('certificate.survey');
+        }
+        else if (!account.certificate_name) {
+          $state.go('certificate.name');
+        }
+        else {
+          $state.go('certificate.issue');
+        }
+      }
+
+      if (account && $state.is("certificate")) { decideNext(); }
+    })
+    .controller('IssueController', function($scope, Certificates, Config, certificates) {
       $scope.pending_certificates = _(certificates).where({ status: 'issuable' }).value();
       $scope.issued_certificates  = _(certificates).where({ status: 'issued' }).value();
 
@@ -66,7 +82,6 @@
       });
     })
     .controller('SurveyController', function($scope, $state, Survey, survey) {
-      $scope.enforceAuth();
       $scope.survey = survey;
       $scope.responses = {};
       $scope.doSubmit = function() {
@@ -76,7 +91,6 @@
       };
     })
     .controller('NameController', function($scope, $state, Account, account, certificates, focusOn) {
-      $scope.enforceAuth();
       if (account.certificate_name) {
         console.log('name already set, skipping');
         $state.go('certificate.issue');

@@ -12,10 +12,10 @@
     .config(function($stateProvider) {
       $stateProvider
         .state('authenticate', {
-          url: '^/authenticate',
+          url: '^/authenticate/:next',
           views: {
             "header": { templateUrl: 'modules/common/nav.html' },
-            "main":   { templateUrl: 'modules/Authenticate/master.html' },
+            "main":   { templateUrl: 'modules/Authenticate/master.html', controller: 'AuthController' },
             "left@authenticate":  { controller: 'LoginController',  templateUrl: 'modules/Authenticate/login.html' },
             "right@authenticate": { controller: 'SignUpController', templateUrl: 'modules/Account/signup.html' }
           },
@@ -37,8 +37,13 @@
       "segue.submission.authenticate.directive",
       "segue.submission.authenticate.service",
     ])
-    .controller("ForgotPasswordController", function($scope, $stateParams, Account, FormErrors, focusOn) {
-      $scope.forgot = { email: $stateParams.email };
+    .controller('AuthController', function($scope, $state, focusOn) {
+      $scope.nextState = $state.params.next;
+      $scope.authMode = "loginOnly";
+      focusOn("login.email");
+    })
+    .controller("ForgotPasswordController", function($scope, $state, Account, FormErrors, focusOn) {
+      $scope.forgot = { email: $state.params.email };
       $scope.sent = false;
       focusOn("forgot.email", 100);
 
@@ -59,6 +64,9 @@
         if ($scope.closeThisDialog) {
           $scope.closeThisDialog(credentials);
         }
+        else if ($scope.nextState) {
+          $state.go($scope.nextState);
+        }
         else {
           $scope.home();
         }
@@ -77,6 +85,7 @@
       var loginConfig  = { controller: "LoginController",  template: 'modules/Authenticate/login.html' };
       return {
         login:  function() { return ngDialog.open(loginConfig); }
+
       };
     });
 })();

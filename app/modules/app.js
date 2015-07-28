@@ -61,7 +61,7 @@
       };
       $scope.enforceAuth = function() {
         if (Auth.credentials()) { return; }
-        $state.go('authenticate');
+        $state.go('authenticate', { next: $state.current.name });
       };
     })
 
