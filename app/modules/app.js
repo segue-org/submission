@@ -59,6 +59,10 @@
           $state.go('splash');
         }
       };
+      $scope.enforceAuth = function() {
+        if (Auth.credentials()) { return; }
+        $state.go('authenticate');
+      };
     })
 
     .config(function(RestangularProvider, Config) {

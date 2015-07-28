@@ -7,9 +7,9 @@
 
 <div class="buttons">
   <div ng-hide="registrationState == 'open'">
-    <header translate>Certificados <i>em breve!</i></header>
-    <button>
-      aguarde e-mail com informações
+    <header translate>Certificados</header>
+    <button ui-sref="certificate.survey">
+      emitir certificados!
     </button>
   </div>
   <div ng-show="registrationState == 'open'">

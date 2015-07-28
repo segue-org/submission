@@ -43,6 +43,7 @@
         });
     })
     .controller('IssueController', function($scope, Certificates, Config, certificates) {
+      $scope.enforceAuth();
       $scope.pending_certificates = _(certificates).where({ status: 'issuable' }).value();
       $scope.issued_certificates  = _(certificates).where({ status: 'issued' }).value();
 
@@ -65,6 +66,7 @@
       });
     })
     .controller('SurveyController', function($scope, $state, Survey, survey) {
+      $scope.enforceAuth();
       $scope.survey = survey;
       $scope.responses = {};
       $scope.doSubmit = function() {
@@ -74,6 +76,7 @@
       };
     })
     .controller('NameController', function($scope, $state, Account, account, certificates, focusOn) {
+      $scope.enforceAuth();
       if (account.certificate_name) {
         console.log('name already set, skipping');
         $state.go('certificate.issue');
