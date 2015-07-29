@@ -93,8 +93,8 @@ msgid "CEP"
 msgstr "zipcode"
 
 #: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
-msgid "Certificados <i>em breve!</i>"
-msgstr "Certificates <i>soon</i>"
+msgid "Certificados"
+msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Purchase/conclude.html
 msgid "Conclusão do pagamento"
@@ -493,7 +493,6 @@ msgid "escolha uma trilha"
 msgstr "choose a track"
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "esqueci minha senha!"
 msgstr "forgot my password!"
 
@@ -655,6 +654,10 @@ msgstr "new password"
 #: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "não conseguimos detectar sua sessão neste computador..."
 msgstr "we could not detect a session on your computer..."
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "não sei minha senha!"
+msgstr "I don't know my password"
 
 #: /Users/fmobus/segue/submission/app/modules/Notification/answer.html
 msgid "não, eu não vou apresentar esta palestra"
@@ -1028,6 +1031,9 @@ msgstr ""
 #: /Users/fmobus/segue/submission/app/modules/Home/home.html
 msgid "{{ cert.status | humanize }}"
 msgstr ""
+
+#~ msgid "Certificados <i>em breve!</i>"
+#~ msgstr "Certificates <i>soon</i>"
 
 #~ msgid "modificada em {{ proposal.last_updated }}"
 #~ msgstr "last modification: {{ proposal.last_updated }}"

@@ -82,7 +82,7 @@ msgid "CEP"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Splash/splash.html
-msgid "Certificados <i>em breve!</i>"
+msgid "Certificados"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Purchase/conclude.html
@@ -463,7 +463,6 @@ msgid "escolha uma trilha"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Authenticate/forgot.html
-#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
 msgid "esqueci minha senha!"
 msgstr ""
 
@@ -618,6 +617,10 @@ msgstr ""
 #: /Users/fmobus/segue/submission/app/modules/Proposal/author.html
 #: /Users/fmobus/segue/submission/app/modules/Purchase/user.html
 msgid "não conseguimos detectar sua sessão neste computador..."
+msgstr ""
+
+#: /Users/fmobus/segue/submission/app/modules/Authenticate/login.html
+msgid "não sei minha senha!"
 msgstr ""
 
 #: /Users/fmobus/segue/submission/app/modules/Notification/answer.html

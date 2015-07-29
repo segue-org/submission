@@ -45,7 +45,6 @@
       $scope.enforceAuth();
 
       function decideNext() {
-        console.log(account.has_filled_survey, account.certificate_name);
         if (!account.has_filled_survey) {
           $state.go('certificate.survey');
         }
