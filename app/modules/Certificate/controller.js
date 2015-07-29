@@ -58,7 +58,7 @@
 
       if (account && $state.is("certificate")) { decideNext(); }
     })
-    .controller('IssueController', function($scope, Certificates, Config, certificates) {
+    .controller('IssueController', function($scope, $window, Certificates, Config, certificates) {
       $scope.pending_certificates = _(certificates).where({ status: 'issuable' }).value();
       $scope.issued_certificates  = _(certificates).where({ status: 'issued' }).value();
 
@@ -79,6 +79,10 @@
       _($scope.pending_certificates).each(function(certificate) {
         $scope.issue(certificate.descriptor);
       });
+
+      $scope.openCertificate = function(cert) {
+        $window.open(cert.full_url);
+      };
     })
     .controller('SurveyController', function($scope, $state, Survey, survey) {
       $scope.survey = survey;

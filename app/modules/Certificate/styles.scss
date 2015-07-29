@@ -5,15 +5,6 @@ fieldset.name {
   }
 }
 
-fieldset.issue {
-  ul {
-    margin-left: 10rem;
-  }
-  .loading {
-    color: red;
-  }
-}
-
 fieldset.survey {
   div.info {
     border: 1px solid black;
@@ -66,5 +57,35 @@ fieldset.survey {
     text-align: right;
     font-size: x-large;
     padding: 1rem;
+  }
+}
+fieldset.issue {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      float: left;
+      width: 20rem;
+      height: 3rem;
+      padding: 10px;
+      margin: 10px;
+
+      background-repeat: no-repeat;
+      background-position: top right;
+
+      span.talk {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-weight: bold;
+        display: block;
+      }
+
+      &.pending { border: 1px solid maroon; background-color: lightpink;  }
+      &.issued  { border: 1px solid green;  background-color: lightgreen; }
+
+    }
   }
 }
