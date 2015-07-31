@@ -5,6 +5,7 @@
   <div class="line">
     <ul>
       <li ng-repeat="certificate in pending_certificates" class="pending">
+        <i class="indicator fa fa-cog fa-spin"></i>
         certificado de {{ certificate.kind | humanize }}
         <span ng-show="certificate.talk" class="talk">
           "{{ certificate.talk }}"
@@ -14,6 +15,7 @@
       <li ng-repeat="certificate in issued_certificates"
           ng-click="openCertificate(certificate)"
           class="issued">
+        <i class="indicator fa fa-check"></i>
         certificado de {{ certificate.kind | humanize }}
 
         <span ng-show="certificate.talk" class="talk">

@@ -83,6 +83,8 @@ fieldset.issue {
         display: block;
       }
 
+      i.indicator { float: right; }
+
       &.pending { border: 1px solid maroon; background-color: lightpink;  }
       &.issued  { border: 1px solid green;  background-color: lightgreen; }
 
